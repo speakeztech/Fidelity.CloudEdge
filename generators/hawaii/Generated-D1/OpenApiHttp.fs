@@ -1,4 +1,4 @@
-namespace CloudFlare.Management.D1.Http
+namespace Fidelity.CloudEdge.Management.D1.Http
 
 open System
 open System.Net.Http

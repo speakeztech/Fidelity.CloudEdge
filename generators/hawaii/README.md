@@ -33,7 +33,7 @@ dotnet tool install -g hawaii
 Invoke-WebRequest -Uri "https://api.cloudflare.com/schemas/openapi.json" -OutFile cloudflare-openapi.json
 
 # Generate F# client
-hawaii cloudflare-openapi.json --output ../../src/Management/CloudFlare.Api/Generated.fs --namespace CloudFlare.Api
+hawaii cloudflare-openapi.json --output ../../src/Management/CloudFlare.Api/Generated.fs --namespace Fidelity.CloudEdge.Api
 ```
 
 ## Configuration
@@ -57,7 +57,7 @@ Create a `hawaii.json` configuration file for custom settings:
 ## Usage Example
 
 ```fsharp
-open CloudFlare.Api
+open Fidelity.CloudEdge.Api
 
 let createKVNamespace accountId name = async {
     let client = CloudflareClient(apiToken = "your-token")

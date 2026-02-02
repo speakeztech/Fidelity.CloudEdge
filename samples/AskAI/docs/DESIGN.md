@@ -6,7 +6,7 @@
 
 ## Executive Summary
 
-This document describes the architecture for an AI-powered query system that allows visitors to ask questions about a content corpus and receive grounded, contextually-relevant answers with proper source attribution. The system is built on Cloudflare's infrastructure using CloudflareFS bindings, demonstrating both the practical utility of the framework and the potential for sophisticated retrieval-augmented generation.
+This document describes the architecture for an AI-powered query system that allows visitors to ask questions about a content corpus and receive grounded, contextually-relevant answers with proper source attribution. The system is built on Cloudflare's infrastructure using Fidelity.CloudEdge bindings, demonstrating both the practical utility of the framework and the potential for sophisticated retrieval-augmented generation.
 
 The design follows a phased approach. **Phase 1** (implemented in this sample) establishes a functional baseline using Cloudflare's managed AI Search (AutoRAG) service, proving rapid deployment capability and providing immediate value. Future phases introduce progressively more sophisticated features: section-aware chunking, knowledge graph enhancement, hybrid response composition, and automated webhook-triggered ingestion.
 
@@ -22,7 +22,7 @@ An intelligent query system transforms passive content into an active knowledge 
 
 ### Strategic Objectives
 
-1. **Rapid Deployment**: Cloudflare's AI Search provides a managed pipeline that can be deployed quickly using CloudflareFS bindings.
+1. **Rapid Deployment**: Cloudflare's AI Search provides a managed pipeline that can be deployed quickly using Fidelity.CloudEdge bindings.
 
 2. **Architectural Sophistication**: The phased approach demonstrates that F# can support advanced AI application patterns beyond basic integrations.
 
@@ -164,7 +164,7 @@ event: sources
 data: {"sources": [...]}
 
 event: chunk
-data: {"text": "CloudflareFS is"}
+data: {"text": "Fidelity.CloudEdge is"}
 
 event: chunk
 data: {"text": " a collection of"}
@@ -221,7 +221,7 @@ This enables analysis of:
 
 ## CLI Tool Architecture
 
-The CLI orchestrates all deployment operations using CloudflareFS Management API bindings:
+The CLI orchestrates all deployment operations using Fidelity.CloudEdge Management API bindings:
 
 ### Commands
 
@@ -304,7 +304,7 @@ Different audiences have different needs. A business leader asking about a frame
 
 ### Why CLI-Based Deployment?
 
-Using CloudflareFS Management API bindings for deployment (rather than Wrangler) enables:
+Using Fidelity.CloudEdge Management API bindings for deployment (rather than Wrangler) enables:
 - Type-safe infrastructure code
 - Integration into existing F# build pipelines
 - Programmatic deployment for CI/CD
@@ -318,7 +318,7 @@ AI Search handles chunking, embedding, vector storage, and retrieval as a manage
 ## References
 
 - [Cloudflare AI Search (AutoRAG)](https://developers.cloudflare.com/ai-search/)
-- [CloudflareFS GitHub](https://github.com/speakeztech/CloudflareFS)
+- [Fidelity.CloudEdge GitHub](https://github.com/speakeztech/Fidelity.CloudEdge)
 - [Fable Compiler](https://fable.io/)
 - [Hawaii OpenAPI Generator](https://github.com/Zaid-Ajaj/Hawaii)
 - [Glutinum TypeScript Bindings](https://github.com/glutinum-org/Glutinum)

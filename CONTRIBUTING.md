@@ -1,6 +1,6 @@
-# Contributing to CloudflareFS
+# Contributing to Fidelity.CloudEdge
 
-First off, thank you for considering contributing to CloudflareFS! It's people like you that help make CloudflareFS a great tool for the F# and Cloudflare communities.
+First off, thank you for considering contributing to Fidelity.CloudEdge! It's people like you that help make Fidelity.CloudEdge a great tool for the F# and Cloudflare communities.
 
 ## Code of Conduct
 
@@ -66,8 +66,8 @@ dotnet tool install -g hawaii
 
 ```bash
 # Clone your fork
-git clone https://github.com/your-username/CloudflareFS.git
-cd CloudflareFS
+git clone https://github.com/your-username/Fidelity.CloudEdge.git
+cd Fidelity.CloudEdge
 
 # Install dependencies
 dotnet restore
@@ -88,13 +88,13 @@ dotnet fantomas . --recurse
 Understanding the project structure will help you contribute effectively:
 
 ```
-CloudflareFS/
+Fidelity.CloudEdge/
 ├── src/
 │   ├── Runtime/          # In-Worker APIs (JavaScript interop)
 │   │   └── CloudFlare.*/ # Individual service bindings
 │   │
 │   ├── Management/       # REST APIs (HTTP clients)
-│   │   └── CloudFlare.Management.*/ # Management clients
+│   │   └── Fidelity.CloudEdge.Management.*/ # Management clients
 │   │
 │   └── Core/            # Shared utilities and types
 │
@@ -165,8 +165,8 @@ Working on Runtime APIs (in-Worker JavaScript interop):
 
 Example contribution:
 ```fsharp
-// src/Runtime/CloudFlare.Queues/Types.fs
-namespace CloudFlare.Queues
+// src/Runtime/Fidelity.CloudEdge.Queues/Types.fs
+namespace Fidelity.CloudEdge.Queues
 
 [<AllowNullLiteral>]
 type Queue =
@@ -185,8 +185,8 @@ Working on Management APIs (REST clients):
 
 Example:
 ```fsharp
-// src/Management/CloudFlare.Management.DNS/Helpers.fs
-module CloudFlare.Management.DNS.Helpers
+// src/Management/Fidelity.CloudEdge.Management.DNS/Helpers.fs
+module Fidelity.CloudEdge.Management.DNS.Helpers
 
 let createARecord zone name ipAddress =
     { Type = "A"
@@ -217,7 +217,7 @@ To add support for a new Cloudflare service:
 ### Unit Tests
 
 ```fsharp
-// tests/CloudFlare.KV.Tests/Tests.fs
+// tests/Fidelity.CloudEdge.KV.Tests/Tests.fs
 [<Test>]
 let ``KV.get returns None for missing key`` () =
     let kv = mockKVNamespace()
@@ -256,7 +256,7 @@ test: Add R2 multipart upload tests
 - **Discord**: Join our community chat (link in README)
 - **GitHub Discussions**: Ask questions and share ideas
 - **Issues**: Report bugs or request features
-- **Twitter**: Follow @CloudflareFS for updates
+- **Twitter**: Follow @Fidelity.CloudEdge for updates
 
 ## Recognition
 
@@ -271,6 +271,6 @@ By contributing, you agree that your contributions will be licensed under the sa
 
 ## Thank You!
 
-Your contributions make CloudflareFS better for everyone. Whether it's fixing a typo, adding a new binding, or implementing a major feature, every contribution is valued and appreciated.
+Your contributions make Fidelity.CloudEdge better for everyone. Whether it's fixing a typo, adding a new binding, or implementing a major feature, every contribution is valued and appreciated.
 
 Happy coding! 🚀

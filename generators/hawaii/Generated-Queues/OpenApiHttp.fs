@@ -1,4 +1,4 @@
-namespace CloudFlare.Management.Queues.Http
+namespace Fidelity.CloudEdge.Management.Queues.Http
 
 open System
 open System.Net.Http

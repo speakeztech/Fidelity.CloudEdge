@@ -3,7 +3,7 @@
 ## Building the Solution
 ```bash
 # Build entire solution
-cd /home/hhh/repos/CloudflareFS
+cd /home/hhh/repos/Fidelity.CloudEdge
 dotnet build
 
 # Build specific project

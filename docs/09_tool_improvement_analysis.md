@@ -1,14 +1,14 @@
-# CloudflareFS Code Generation Analysis: Glutinum & Hawaii Improvement Opportunities
+# Fidelity.CloudEdge Code Generation Analysis: Glutinum & Hawaii Improvement Opportunities
 
 **Tool Versions**: This analysis is based on Glutinum CLI v0.12.0 and Hawaii v0.66.0.
 
 ## Executive Summary
 
-After thoroughly exploring the CloudflareFS repository and understanding both Glutinum (TypeScript→F#) and Hawaii (OpenAPI→F#) tools, I've identified specific improvement opportunities that would make them more robust "fire and forget" conversion tools. The repository is in good shape with successful generation of 16 services (9 Runtime, 7 Management), but several recurring patterns require manual intervention.
+After thoroughly exploring the Fidelity.CloudEdge repository and understanding both Glutinum (TypeScript→F#) and Hawaii (OpenAPI→F#) tools, I've identified specific improvement opportunities that would make them more robust "fire and forget" conversion tools. The repository is in good shape with successful generation of 16 services (9 Runtime, 7 Management), but several recurring patterns require manual intervention.
 
 ## Understanding the Compilation Pipeline
 
-Before diving into improvements, it's important to understand the complete transformation pipeline for CloudflareFS bindings:
+Before diving into improvements, it's important to understand the complete transformation pipeline for Fidelity.CloudEdge bindings:
 
 ### Runtime Layer: The TypeScript → JavaScript Round-Trip
 
@@ -384,14 +384,14 @@ let opts = { new Opts with member _.timeout with get() = _timeout }
 #### Priority 3: Globals Module Wrapping
 **Current Issue**:
 ```fsharp
-namespace CloudFlare.Worker.Context
+namespace Fidelity.CloudEdge.Worker.Context
 [<Global>]
 let Headers: HeadersConstructor = jsNative  // FS0201 error
 ```
 
 **Desired Output**:
 ```fsharp
-namespace CloudFlare.Worker.Context
+namespace Fidelity.CloudEdge.Worker.Context
 
 module Globals =
     [<Global>]
@@ -779,7 +779,7 @@ module ReservedKeywords =
 - [ ] Validation catches issues before file write
 - [ ] Version tracking enables safe schema updates
 
-## Immediate Action Items for CloudflareFS
+## Immediate Action Items for Fidelity.CloudEdge
 
 ### Short-Term Workarounds (Until Tool Improvements)
 1. **Create Post-Processing Script** (`fix-generated.fsx`):
@@ -868,7 +868,7 @@ jobs:
           cd generators/hawaii && ./generate-all.sh
 
       - name: Build All Projects
-        run: dotnet build CloudflareFS.sln
+        run: dotnet build Fidelity.CloudEdge.sln
 
       - name: Fail if Manual Edits Required
         run: |
@@ -946,7 +946,7 @@ Based on the repository and documentation:
 - Limited support for `anyOf`/`oneOf` schemas
 - Early-stage tool with potential rough edges
 
-**CloudflareFS-Specific Issues**:
+**Fidelity.CloudEdge-Specific Issues**:
 1. ✅ Workers spec discriminated unions (resolved with post-processing)
 2. 🔄 KV spec null reference exceptions (complex schemas - still under investigation)
 3. ⚠️ Special character handling in discriminated unions (workaround: backticks)
@@ -1082,32 +1082,32 @@ let opts = { timeout = 30000; retries = 3 }
 
 **Phase 1: Issue Documentation**
 1. Create detailed GitHub issues with examples
-2. Reference CloudflareFS as real-world use case
+2. Reference Fidelity.CloudEdge as real-world use case
 3. Offer to implement fixes
 
 **Phase 2: Pull Request Preparation**
 1. Fork Glutinum repository
 2. Implement reserved keyword escaping
 3. Add comprehensive tests
-4. Submit PR with CloudflareFS validation
+4. Submit PR with Fidelity.CloudEdge validation
 
 **Phase 3: Ongoing Collaboration**
-1. Test Glutinum releases against CloudflareFS
+1. Test Glutinum releases against Fidelity.CloudEdge
 2. Report edge cases discovered
 3. Contribute additional patterns
 
 ### Hawaii Contribution Plan
 
 **Similar approach to Glutinum**:
-1. Document issues with CloudflareFS examples
+1. Document issues with Fidelity.CloudEdge examples
 2. Implement fixes in fork
-3. Validate against all CloudflareFS services
+3. Validate against all Fidelity.CloudEdge services
 4. Submit PR with thorough testing
 
 **Unique Hawaii Considerations**:
 - OpenAPI complexity varies greatly
 - Need comprehensive test suite across different spec styles
-- CloudflareFS provides excellent validation corpus (10+ services)
+- Fidelity.CloudEdge provides excellent validation corpus (10+ services)
 
 ## Harmonized Approach: Shared Concerns, Different Solutions
 
@@ -1199,7 +1199,7 @@ index.Type <- "vector"
 
 ## Conclusion
 
-CloudflareFS has demonstrated that both Glutinum and Hawaii are capable tools, successfully generating bindings for 80% of Cloudflare's services. However, to achieve true "fire and forget" generation, focused improvements are needed.
+Fidelity.CloudEdge has demonstrated that both Glutinum and Hawaii are capable tools, successfully generating bindings for 80% of Cloudflare's services. However, to achieve true "fire and forget" generation, focused improvements are needed.
 
 ### The Evolution of Understanding
 
@@ -1259,17 +1259,17 @@ Both tools need **semantic property mapping**, not mechanical escaping:
 - **Both**: Share reserved keyword detection logic
 - **Both**: Prioritize clean F# API surfaces
 
-By addressing these systematically with a harmonized approach, CloudflareFS can evolve from a "generation + manual cleanup" workflow to a fully automated binding compiler. The improvements benefit not just CloudflareFS, but the entire F# community working with TypeScript or OpenAPI bindings.
+By addressing these systematically with a harmonized approach, Fidelity.CloudEdge can evolve from a "generation + manual cleanup" workflow to a fully automated binding compiler. The improvements benefit not just Fidelity.CloudEdge, but the entire F# community working with TypeScript or OpenAPI bindings.
 
 ### Immediate Next Steps
 
-**For CloudflareFS**:
+**For Fidelity.CloudEdge**:
 1. Implement post-processing scripts for immediate relief (1 week)
 2. Document all manual fixes required in conversion patterns (ongoing)
 3. Build CI validation to prevent regressions (2 weeks)
 
 **For Tool Contributions**:
-1. Create GitHub issues with CloudflareFS examples (1 week)
+1. Create GitHub issues with Fidelity.CloudEdge examples (1 week)
 2. Implement reserved keyword fixes for both tools (1 month)
 3. Submit PRs with comprehensive testing (6 weeks)
 4. Collaborate on advanced features (ongoing)
@@ -1280,4 +1280,4 @@ By addressing these systematically with a harmonized approach, CloudflareFS can 
 3. Create tutorial content for Glutinum/Hawaii users
 4. Build reusable validation infrastructure
 
-This positions CloudflareFS as both a consumer and contributor to the F# tooling ecosystem, advancing the state of the art for binding generation while delivering a production-ready Cloudflare SDK for F#.
+This positions Fidelity.CloudEdge as both a consumer and contributor to the F# tooling ecosystem, advancing the state of the art for binding generation while delivering a production-ready Cloudflare SDK for F#.

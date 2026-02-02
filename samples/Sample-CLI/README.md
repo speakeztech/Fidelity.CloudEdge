@@ -1,10 +1,10 @@
 # Sample CLI
 
-A command-line tool for managing and deploying Cloudflare Workers using F# and the CloudflareFS Management API. This tool demonstrates **code-first deployment** - deploy workers **without requiring `wrangler` or `wrangler.toml` configuration files**.
+A command-line tool for managing and deploying Cloudflare Workers using F# and the Fidelity.CloudEdge Management API. This tool demonstrates **code-first deployment** - deploy workers **without requiring `wrangler` or `wrangler.toml` configuration files**.
 
 ## Philosophy
 
-This CLI demonstrates the **code-first deployment** approach using CloudflareFS:
+This CLI demonstrates the **code-first deployment** approach using Fidelity.CloudEdge:
 
 - ✅ **Pure F# and Management API** - No TOML configuration files
 - ✅ **Type-safe operations** - Full IntelliSense and compile-time checking
@@ -114,7 +114,7 @@ sample-cli deploy -p ../HelloWorker --force
 **Example Output**:
 ```
 Deploying: helloworker
-Source: D:\repos\CloudflareFS\samples\HelloWorker
+Source: D:\repos\Fidelity.CloudEdge\samples\HelloWorker
 Entry point: HelloWorker.js
 ✓ Deployed successfully!
 
@@ -250,19 +250,19 @@ sample-cli remove-user --username alice
 
 ## Architecture
 
-This CLI demonstrates CloudflareFS's dual-layer architecture:
+This CLI demonstrates Fidelity.CloudEdge's dual-layer architecture:
 
 ### Management Layer (This CLI)
-- **CloudFlare.Management.R2** - R2 bucket management
-- **CloudFlare.Management.Workers** - Worker deployment and configuration
+- **Fidelity.CloudEdge.Management.R2** - R2 bucket management
+- **Fidelity.CloudEdge.Management.Workers** - Worker deployment and configuration
 - Generated from OpenAPI specs using **Hawaii**
 - Uses **FSharp.SystemTextJson** for modern JSON handling
 - Runs on your local machine or CI/CD
 - Built on **.NET 10**
 
 ### Runtime Layer (The Workers)
-- **CloudFlare.Worker.Context** - Worker runtime bindings
-- **CloudFlare.R2** - R2 runtime operations
+- **Fidelity.CloudEdge.Worker.Context** - Worker runtime bindings
+- **Fidelity.CloudEdge.R2** - R2 runtime operations
 - Generated from TypeScript definitions using **Glutinum**
 - Compiled to JavaScript via **Fable**
 - Runs inside Cloudflare Workers
@@ -293,7 +293,7 @@ samples/Sample-CLI/
 2. **Code-First** - Infrastructure as code, not TOML configuration
 3. **Single Language** - F# for both infrastructure and runtime logic
 4. **API-Driven** - Direct Management API access, no CLI wrapper subprocess
-5. **Composable** - Build custom workflows using CloudflareFS libraries
+5. **Composable** - Build custom workflows using Fidelity.CloudEdge libraries
 6. **Modern Stack** - .NET 10, FSharp.SystemTextJson, pure F# idioms
 7. **Multi-Worker** - Deploy different workers from same tool
 8. **Idempotent** - Safe to re-run commands without side effects
@@ -304,7 +304,7 @@ samples/Sample-CLI/
 ### API-First Architecture
 
 ```fsharp
-// ✅ API-first: Use CloudflareFS Management APIs
+// ✅ API-first: Use Fidelity.CloudEdge Management APIs
 let r2 = R2Operations(config)
 let! result = r2.CreateBucket(bucketName)
 
@@ -434,7 +434,7 @@ Both can be deployed with this CLI!
 
 ## Related Documentation
 
-See the CloudflareFS documentation in `docs/`:
+See the Fidelity.CloudEdge documentation in `docs/`:
 
 - `docs/00_architecture_decisions.md` - Why dual-layer architecture
 - `docs/02_dual_layer_architecture.md` - Understanding Runtime vs Management
@@ -454,8 +454,8 @@ See the CloudflareFS documentation in `docs/`:
 
 ## License
 
-Same as CloudflareFS project
+Same as Fidelity.CloudEdge project
 
 ---
 
-**Note**: This is a sample project demonstrating CloudflareFS Management API usage. It's designed as a learning resource and starting point for building your own infrastructure-as-code tools with F#.
+**Note**: This is a sample project demonstrating Fidelity.CloudEdge Management API usage. It's designed as a learning resource and starting point for building your own infrastructure-as-code tools with F#.

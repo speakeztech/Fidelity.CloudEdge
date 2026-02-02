@@ -1,58 +1,138 @@
-# CloudflareFS
+# Fidelity.CloudEdge
 
-[![CloudflareFS.Runtime](https://img.shields.io/nuget/v/CloudflareFS.Runtime?label=CloudflareFS.Runtime)](https://www.nuget.org/packages/CloudflareFS.Runtime)
-[![CloudflareFS.Management](https://img.shields.io/nuget/v/CloudflareFS.Management?label=CloudflareFS.Management)](https://www.nuget.org/packages/CloudflareFS.Management)
+[![Fidelity.CloudEdge.Runtime](https://img.shields.io/nuget/v/Fidelity.CloudEdge.Runtime?label=Runtime)](https://www.nuget.org/packages/Fidelity.CloudEdge.Runtime)
+[![Fidelity.CloudEdge.Management](https://img.shields.io/nuget/v/Fidelity.CloudEdge.Management?label=Management)](https://www.nuget.org/packages/Fidelity.CloudEdge.Management)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE-MIT)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE-APACHE)
 [![Powered by Cloudflare](https://img.shields.io/badge/Powered%20by-Cloudflare-orange?logo=cloudflare&logoColor=white)](https://www.cloudflare.com)
 
-<div align="center">
-
-  ### v0.1.0 available via [nuget](https://www.nuget.org/packages?q=CloudflareFS&includeComputedFrameworks=true&prerel=true&sortby=relevance) ###
-
-</div>
-
-CloudflareFS brings F# to the Cloudflare platform through comprehensive, type-safe bindings auto-generated from TypeScript definitions and OpenAPI specifications. This project aims to advance both the binding generation tools (Hawaii and Glutinum) and eventually deliver production-ready F# libraries for Cloudflare's entire ecosystem.
+**Fidelity.CloudEdge** extends the [Fidelity Framework](https://github.com/FidelityFramework) to Cloudflare's edge platform, providing substrate-agnostic actor model support across bare metal and edge computing environments. Built on F#, Fable, and comprehensive type-safe bindings, it enables seamless actor migration between execution contexts while preserving semantic guarantees.
 
 ## Overview
 
-CloudflareFS is more than a set of libraries, it is designed to provide a complete set of F# tools that targets Cloudflare's platform through a **dual-layer architecture**:
+Fidelity.CloudEdge is a **framework extension**, not a standalone tool. It represents the edge computing layer of the broader Fidelity Framework architecture, which provides substrate-transparent actor model abstractions:
 
-- **Runtime APIs**: In-Worker JavaScript interop for edge computing
-- **Management APIs**: REST clients for infrastructure provisioning
+- **Bare Metal**: Actors compiled via MLIR through Fidelity.Firefly
+- **Edge Computing**: Actors compiled to JavaScript via Fable for Cloudflare Workers
+- **Architectural Fidelity**: Same `MailboxProcessor` code, different execution contexts
 
-Built on [Fable](https://fable.io/) for JavaScript compilation, [Glutinum](https://github.com/glutinum-org/cli) for TypeScript binding generation, and [Hawaii](https://github.com/Zaid-Ajaj/Hawaii) for OpenAPI client generation.
+This dual-substrate approach enables:
+- **Actor Migration**: Move actors between bare metal and edge without code changes
+- **Hybrid Deployments**: Latency-sensitive operations at the edge, compute-intensive work on bare metal
+- **Unified Semantics**: Sequential processing guarantees preserved across contexts
 
 ## Architecture
 
-### Two-Layer Design
+### Framework Hierarchy
 
-```bash
-CloudflareFS/
-└─ src/
-   ├── Runtime/           # In-Worker APIs (JavaScript interop)
-   │   ├── CloudFlare.Worker.Context/
-   │   ├── CloudFlare.D1/
-   │   ├── CloudFlare.R2/
-   │   ├── CloudFlare.KV/
-   │   └── CloudFlare.AI/
-   │
-   └── Management/        # REST APIs (HTTP clients)
-       ├── CloudFlare.Management.D1/
-       ├── CloudFlare.Management.R2/
-       ├── CloudFlare.Management.Analytics/
-       └── CloudFlare.Management.KV/
+```
+Fidelity Framework
+├── Fidelity.Core           # Core actor model abstractions
+├── Fidelity.Firefly        # MLIR backend for bare metal
+└── Fidelity.CloudEdge      # Edge extension (this project)
+    ├── Runtime             # In-Worker APIs (JavaScript interop)
+    └── Management          # Infrastructure provisioning (REST clients)
 ```
 
-### Runtime Layer (In-Worker)
-- **Purpose**: Operations inside Cloudflare Workers
-- **Source**: TypeScript definitions via Glutinum
-- **Usage**: Direct platform access with microsecond latency
+### Dual-Layer Architecture
 
-### Management Layer (External)
-- **Purpose**: Infrastructure provisioning, monitoring and management
-- **Source**: OpenAPI specs via Hawaii
-- **Usage**: REST API clients for external tools
+Fidelity.CloudEdge maintains the dual-layer design pattern:
+
+```
+Fidelity.CloudEdge/
+└─ src/
+   ├── Runtime/                    # In-Worker APIs (JavaScript interop)
+   │   ├── CloudEdge.Core/
+   │   ├── CloudEdge.Worker.Context/
+   │   ├── CloudEdge.D1/
+   │   ├── CloudEdge.R2/
+   │   ├── CloudEdge.KV/
+   │   ├── CloudEdge.AI/
+   │   ├── CloudEdge.Queues/
+   │   ├── CloudEdge.Vectorize/
+   │   ├── CloudEdge.Hyperdrive/
+   │   └── CloudEdge.DurableObjects/
+   │
+   └── Management/                 # REST APIs (HTTP clients)
+       ├── CloudEdge.Management.D1/
+       ├── CloudEdge.Management.R2/
+       ├── CloudEdge.Management.Workers/
+       ├── CloudEdge.Management.Analytics/
+       ├── CloudEdge.Management.Queues/
+       ├── CloudEdge.Management.Vectorize/
+       ├── CloudEdge.Management.Hyperdrive/
+       └── CloudEdge.Management.DurableObjects/
+```
+
+#### Runtime Layer (In-Worker)
+- **Purpose**: Operations inside Cloudflare Workers
+- **Source**: TypeScript definitions via [Glutinum](https://github.com/glutinum-org/cli)
+- **Usage**: Direct platform access with microsecond latency
+- **Actor Context**: Provides sequential execution guarantees for actor message processing
+
+#### Management Layer (External)
+- **Purpose**: Infrastructure provisioning, monitoring, and orchestration
+- **Source**: OpenAPI specifications via [Hawaii](https://github.com/Zaid-Ajaj/Hawaii)
+- **Usage**: REST API clients for deployment tools and scripts
+- **Framework Role**: Enables dynamic resource allocation for actor migrations
+
+### Actor Model Substrate Transparency
+
+The core insight of Fidelity.CloudEdge is that the actor model doesn't care where it runs:
+
+```fsharp
+// Same code, different substrates
+type UserActor() =
+    let mailbox = MailboxProcessor<UserMsg>.Start(fun inbox ->
+        async {
+            while true do
+                let! msg = inbox.Receive()
+                match msg with
+                | GetUser userId ->
+                    // Sequential processing guaranteed
+                    let! user = database.GetUser(userId)
+                    // ...
+        })
+
+// Bare Metal (via Firefly): MLIR compilation → native code
+// Edge (via Fable): F# → JavaScript → V8 in Cloudflare Workers
+
+// Both provide: message queue, sequential processing, state isolation
+```
+
+### Durable Objects as Actor Substrate
+
+Cloudflare's Durable Objects provide the sequential execution context necessary for actor model guarantees:
+
+- **Single-threaded execution**: Each Durable Object instance handles one request at a time
+- **Guaranteed ordering**: Messages are processed in FIFO order
+- **State isolation**: Each actor instance has isolated state
+- **Geographic affinity**: Objects can be co-located with data for low latency
+
+This makes Durable Objects a natural substrate for F# actors at the edge:
+
+```fsharp
+// RAG Agent as Durable Object
+open Fidelity.CloudEdge.DurableObjects
+open Fidelity.CloudEdge.AI
+open Fidelity.CloudEdge.Vectorize
+
+[<DurableObject>]
+type RAGAgent(state: DurableObjectState, env: Env) =
+    let vectorize = env.VECTOR_INDEX
+    let ai = env.AI
+
+    member this.fetch(request: Request) = async {
+        let! query = request.json<QueryRequest>()
+
+        // Sequential processing guaranteed by Durable Object runtime
+        let! vectors = vectorize.query(query.embedding, topK = 5)
+        let context = vectors |> buildContext
+        let! response = ai.run(Llama_3, {| prompt = query.text; context = context |})
+
+        return Response.json(response)
+    }
+```
 
 ## Current Implementation Status
 
@@ -62,63 +142,114 @@ CloudflareFS/
 
 | Layer | Package | Description |
 |-------|---------|-------------|
-| **Runtime** | CloudFlare.Worker.Context | Core Worker types (Request, Response) |
-| **Runtime** | CloudFlare.KV | Key-Value storage bindings |
-| **Runtime** | CloudFlare.R2 | Object storage bindings |
-| **Runtime** | CloudFlare.D1 | Database bindings |
-| **Runtime** | CloudFlare.AI | Workers AI bindings |
-| **Runtime** | CloudFlare.Queues | Message queue bindings |
-| **Runtime** | CloudFlare.Vectorize | Vector database bindings |
-| **Runtime** | CloudFlare.Hyperdrive | Database connection pooling |
-| **Runtime** | CloudFlare.DurableObjects | Stateful serverless compute |
-| **Management** | CloudFlare.Management.Workers | Worker deployment and configuration |
-| **Management** | CloudFlare.Management.R2 | R2 bucket management |
-| **Management** | CloudFlare.Management.D1 | D1 database management |
-| **Management** | CloudFlare.Management.Analytics | Analytics API client |
-| **Management** | CloudFlare.Management.Queues | Queue management |
-| **Management** | CloudFlare.Management.Vectorize | Vector index management (V2 API) |
-| **Management** | CloudFlare.Management.Hyperdrive | Connection config management |
-| **Management** | CloudFlare.Management.DurableObjects | Namespace management |
+| **Runtime** | Fidelity.CloudEdge.Core | Core types and utilities |
+| **Runtime** | Fidelity.CloudEdge.Worker.Context | Core Worker types (Request, Response) |
+| **Runtime** | Fidelity.CloudEdge.KV | Key-Value storage bindings |
+| **Runtime** | Fidelity.CloudEdge.R2 | Object storage bindings |
+| **Runtime** | Fidelity.CloudEdge.D1 | Database bindings |
+| **Runtime** | Fidelity.CloudEdge.AI | Workers AI bindings |
+| **Runtime** | Fidelity.CloudEdge.Queues | Message queue bindings |
+| **Runtime** | Fidelity.CloudEdge.Vectorize | Vector database bindings |
+| **Runtime** | Fidelity.CloudEdge.Hyperdrive | Database connection pooling |
+| **Runtime** | Fidelity.CloudEdge.DurableObjects | Stateful serverless compute (actor substrate) |
+| **Management** | Fidelity.CloudEdge.Management.Workers | Worker deployment and configuration |
+| **Management** | Fidelity.CloudEdge.Management.R2 | R2 bucket management |
+| **Management** | Fidelity.CloudEdge.Management.D1 | D1 database management |
+| **Management** | Fidelity.CloudEdge.Management.Analytics | Analytics API client |
+| **Management** | Fidelity.CloudEdge.Management.Queues | Queue management |
+| **Management** | Fidelity.CloudEdge.Management.Vectorize | Vector index management (V2 API) |
+| **Management** | Fidelity.CloudEdge.Management.Hyperdrive | Connection config management |
+| **Management** | Fidelity.CloudEdge.Management.DurableObjects | Namespace management |
 
 ### 🔄 In Progress
 
-- CloudFlare.Management.KV (Hawaii generation issues)
-- CloudFlare.Management.Logs (spec extraction pending)
+- CloudEdge.Management.KV (Hawaii generation issues)
+- CloudEdge.Management.Logs (spec extraction pending)
 - Browser APIs (WebSockets, Streams, Cache, WebCrypto)
 
 ### 📝 Recent Updates
 
-- **Namespace Standardization** (January 2025): Unified all Management APIs under consistent `CloudFlare.Management.*` naming, removing legacy `Api.Compute.*` and `Api.Storage.*` patterns.
-- **System.Text.Json Migration**: All generated clients now use `FSharp.SystemTextJson` instead of `Newtonsoft.Json` for better Fable compatibility.
+- **Fidelity.CloudEdge Rebrand** (February 2025): Complete transformation from CloudflareFS to Fidelity.CloudEdge, emphasizing Framework extension and actor model substrate transparency.
+- **Namespace Standardization** (January 2025): Unified all Management APIs under consistent `Fidelity.CloudEdge.Management.*` naming.
+- **System.Text.Json Migration**: All generated clients now use `FSharp.SystemTextJson` for better Fable compatibility.
 - **Hawaii Post-Processing**: Automated post-processing pipeline for discriminated unions and type generation improvements.
-- **Vectorize V2 Migration**: Successfully migrated from deprecated V1 API to V2 (August 2024). Hawaii correctly skips deprecated operations.
+- **Vectorize V2 Migration**: Successfully migrated from deprecated V1 API to V2 (August 2024).
 - **Full Compilation**: All Runtime and Management packages now compile cleanly with zero errors.
 
 ## Installation
 
 ### Runtime Packages (For Workers)
 ```bash
-dotnet add package CloudFlare.Worker.Context
-dotnet add package CloudFlare.D1
-dotnet add package CloudFlare.R2
-dotnet add package CloudFlare.KV
+dotnet add package Fidelity.CloudEdge.Runtime
+# Or individual packages:
+dotnet add package Fidelity.CloudEdge.Worker.Context
+dotnet add package Fidelity.CloudEdge.D1
+dotnet add package Fidelity.CloudEdge.R2
+dotnet add package Fidelity.CloudEdge.KV
 ```
 
 ### Management Packages (For Tools/Scripts)
 ```bash
-dotnet add package CloudFlare.Management.Workers
-dotnet add package CloudFlare.Management.D1
-dotnet add package CloudFlare.Management.R2
-dotnet add package CloudFlare.Management.Analytics
+dotnet add package Fidelity.CloudEdge.Management
+# Or individual packages:
+dotnet add package Fidelity.CloudEdge.Management.Workers
+dotnet add package Fidelity.CloudEdge.Management.D1
+dotnet add package Fidelity.CloudEdge.Management.R2
+dotnet add package Fidelity.CloudEdge.Management.Analytics
 ```
 
 ## Usage Examples
+
+### Actor Model Example: Sequential Processing
+
+```fsharp
+open Fidelity.CloudEdge.Worker.Context
+open Fidelity.CloudEdge.DurableObjects
+open Fidelity.CloudEdge.D1
+
+// Traditional actor pattern - works identically on bare metal or edge
+type CounterMsg =
+    | Increment
+    | GetCount of AsyncReplyChannel<int>
+
+type Counter() =
+    let agent = MailboxProcessor<CounterMsg>.Start(fun inbox ->
+        let rec loop count = async {
+            let! msg = inbox.Receive()
+            match msg with
+            | Increment -> return! loop (count + 1)
+            | GetCount reply ->
+                reply.Reply(count)
+                return! loop count
+        }
+        loop 0)
+
+    member _.Increment() = agent.Post(Increment)
+    member _.GetCount() = agent.PostAndReply(GetCount)
+
+// On edge: Durable Object provides sequential execution context
+[<DurableObject>]
+type CounterDO(state: DurableObjectState, env: Env) =
+    let mutable count = 0
+
+    member this.fetch(request: Request) = async {
+        // Guaranteed sequential processing - no race conditions
+        match request.method with
+        | "POST" ->
+            count <- count + 1
+            return Response.json({| count = count |})
+        | "GET" ->
+            return Response.json({| count = count |})
+        | _ ->
+            return Response.methodNotAllowed()
+    }
+```
 
 ### Complete Workflow: Infrastructure + Runtime
 
 ```fsharp
 // 1. Infrastructure Setup (Management API - runs on your machine)
-open CloudFlare.Management.D1
+open Fidelity.CloudEdge.Management.D1
 open System.Net.Http
 
 let setupInfrastructure (accountId: string) (apiToken: string) = async {
@@ -137,8 +268,8 @@ let setupInfrastructure (accountId: string) (apiToken: string) = async {
 }
 
 // 2. Runtime Operations (Runtime API - runs in Worker)
-open CloudFlare.D1
-open CloudFlare.Worker.Context
+open Fidelity.CloudEdge.D1
+open Fidelity.CloudEdge.Worker.Context
 
 [<Export>]
 let fetch (request: Request) (env: Env) (ctx: ExecutionContext) =
@@ -167,7 +298,7 @@ let fetch (request: Request) (env: Env) (ctx: ExecutionContext) =
 
 ```fsharp
 // Runtime API - Inside Worker
-open CloudFlare.KV
+open Fidelity.CloudEdge.KV
 
 let handleKVRequest (env: Env) = async {
     // Get value
@@ -225,17 +356,21 @@ let handleR2Request (env: Env) = async {
 
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/CloudflareFS.git
-cd CloudflareFS
+git clone https://github.com/speakeztech/Fidelity.CloudEdge.git
+cd Fidelity.CloudEdge
 
-# Build Runtime bindings
-dotnet build src/Runtime/CloudFlare.Worker.Context
+# Build entire solution
+dotnet build Fidelity.CloudEdge.sln -c Release
 
-# Build Management APIs
-dotnet build src/Management/CloudFlare.Management.D1
+# Run tests
+dotnet test Fidelity.CloudEdge.sln -c Release
+
+# Build NuGet packages
+cd nuget
+dotnet fsi build.fsx
 
 # Run sample Worker
-cd samples/HelloWorker
+cd ../samples/HelloWorker
 dotnet fable . --outDir dist
 npx wrangler dev
 ```
@@ -245,9 +380,9 @@ npx wrangler dev
 ### Runtime Bindings (TypeScript → F#)
 ```bash
 cd generators/glutinum
-npx @glutinum/cli generate
+npx @glutinum/cli generate \
     ../../node_modules/@cloudflare/workers-types/index.d.ts \
-    --output ../../src/Runtime/CloudFlare.Worker.Context/Generated.fs
+    --output ../../src/Runtime/CloudEdge.Worker.Context/Generated.fs
 ```
 
 ### Management APIs (OpenAPI → F#)
@@ -285,74 +420,77 @@ dotnet fable . --outDir dist
 npx wrangler dev
 ```
 
+### AskAI
+RAG agent demonstrating actor model on edge:
+- Durable Objects for stateful actor instances
+- Vectorize for semantic search
+- Workers AI for LLM inference
+- CLI management interface
+
 ## Vision & Roadmap
 
-> **Note**: The following features represent future roadmap elements for CloudflareFS as a complete toolkit.
+### Framework-Level Integration
 
-### The CloudflareFS CLI (`cfs`)
+Fidelity.CloudEdge is evolving toward deeper integration with the broader Fidelity Framework:
 
-The `cfs` command-line tool will be a key command-and-control element of CloudflareFS, providing a type-safe, F#-first wrapper to Wrangler that unifies both runtime deployment and management plane orchestration. Unlike traditional TOML-based configuration, `cfs` will use F# scripts for infrastructure-as-code with full IntelliSense support.
+#### Actor Migration
+- **Dynamic Substrate Selection**: Framework-level orchestration to move actors between bare metal and edge
+- **Latency-Aware Placement**: Actors automatically placed based on geographic and computational requirements
+- **Seamless State Transfer**: Unified state management across execution contexts
 
-#### Deployment Flexibility
+#### Deployment Orchestration
+The planned `cfs` CLI will provide type-safe, F#-first deployment with Framework integration:
 
 ```fsharp
-// deploy.fsx - Type-safe deployment configuration
-#r "nuget: CloudflareFS"
-open CloudflareFS.Deployment
+// deploy.fsx - Framework-aware deployment
+#r "nuget: Fidelity.CloudEdge"
+open Fidelity.CloudEdge.Deployment
 
 let deploy env = cloudflare {
     account (getAccountId env)
 
+    // Actor-aware resource management
     worker $"api-service-{env}" {
-        // Intelligent resource management
+        actors [
+            // Framework can migrate these between bare metal and edge
+            actor<UserService> (durable "user-service")
+            actor<RAGAgent> (durable "rag-agent")
+        ]
+
+        // Intelligent resource provisioning
         kv "CACHE" (ensureOrCreate "cache-namespace")
-        r2 "STORAGE" (ensureOrCreate "assets-bucket")
         d1 "DATABASE" (ensureOrCreate "app-database" {
             migrations = "./migrations"
             location = "wnam"
         })
 
         route $"api-{env}.example.com/*"
-        compatibilityDate "2024-01-01"
     }
 }
 
-// Execute with different modes:
 // cfs deploy ./deploy.fsx              # Direct API deployment
 // cfs deploy ./deploy.fsx --offline    # Generate wrangler.toml
 // cfs deploy ./deploy.fsx --hybrid     # Provision + TOML generation
 ```
 
-#### Orchestration Capabilities
-
-The CLI will handle the complete lifecycle of Cloudflare resources:
-
-- **Provisioning**: Create and configure KV namespaces, R2 buckets, D1 databases
-- **Migration**: Database schema migrations, data transfers, blue-green deployments
-- **Monitoring**: Real-time logs, metrics, and alerts directly in the terminal
-- **Testing**: Integration test runners for Workers
-- **Rollback**: Intelligent deployment history with one-command rollbacks
-
 ### Firetower - Visual Platform Observatory
 
-Firetower will provide Erlang Observer-style monitoring for Cloudflare, deployable both as a desktop application and on Cloudflare Pages itself:
+Firetower will provide Erlang Observer-style monitoring for the entire Fidelity ecosystem:
 
-#### Real-Time Observability
-
-- **Worker Health**: CPU usage, memory consumption, request rates, error tracking
-- **Resource Monitoring**: KV operations, R2 bandwidth, D1 query performance
-- **Distributed Tracing**: Request flow across Workers and services
-- **Cost Analytics**: Real-time billing estimates and optimization suggestions
+- **Actor Visualization**: Live actor topology, message flow, and supervision trees
+- **Cross-Substrate Monitoring**: Unified view of actors on bare metal and edge
+- **Performance Analytics**: Latency heatmaps, throughput metrics, bottleneck detection
+- **Cost Optimization**: Real-time billing estimates and substrate-switching recommendations
 
 ### Unified Development Experience
 
-The complete CloudflareFS toolkit will provide:
+The complete toolkit will provide:
 
-1. **Local Development**: Full Worker emulation with F# hot-reload with full multi-Worker local development support that Cloudflare supports
-2. **CI/CD Integration**: GitHub Actions first, with GitLab CI templates for later in the roadmap
-3. **Multi-Environment Management**: Development, staging, and production configurations
-4. **Team Collaboration**: Shared deployment scripts with role-based permissions
-5. **Compliance & Auditing**: Deployment history, change tracking, and approval workflows
+1. **Local Development**: Multi-Worker emulation with F# hot-reload
+2. **Hybrid Testing**: Test actor code against both Firefly and Fable backends
+3. **CI/CD Integration**: GitHub Actions with automatic substrate selection
+4. **Multi-Environment Management**: Development, staging, production configurations
+5. **Framework Observability**: Actor lifecycle tracking across substrates
 
 ## Documentation
 
@@ -372,7 +510,7 @@ The complete CloudflareFS toolkit will provide:
 - [Pulumi Insights](docs/07_pulumi_insights.md) - Lessons from Pulumi's approach
 
 ### Examples
-- [Samples](samples/) - Working examples demonstrating the framework capabilities
+- [Samples](samples/) - Working examples demonstrating framework capabilities
 
 ## Contributing
 
@@ -380,11 +518,11 @@ We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ### Development Areas
 
-CloudflareFS is advancing toward production-ready bindings through systematic tool improvement and comprehensive coverage:
+Fidelity.CloudEdge is advancing toward production-ready bindings and Framework integration:
 
 **Completed**:
-- ✅ Management API namespace standardization (all services now use `CloudFlare.Management.*`)
-- ✅ Workers Management API with automated post-processing for discriminated unions
+- ✅ Complete rebrand to Fidelity.CloudEdge with Framework positioning
+- ✅ Management API namespace standardization (all services use `Fidelity.CloudEdge.Management.*`)
 - ✅ System.Text.Json migration for Fable compatibility
 - ✅ All Runtime bindings (KV, R2, D1, AI, Queues, Vectorize, Hyperdrive, DurableObjects)
 - ✅ 8 Management APIs fully generated and compiling
@@ -392,18 +530,19 @@ CloudflareFS is advancing toward production-ready bindings through systematic to
 **In Progress**:
 - 🔄 KV Management API (Hawaii generation challenges)
 - 🔄 Logs Management API (extraction patterns pending)
-- 🔄 Tool improvement analysis for Glutinum and Hawaii
+- 🔄 Framework integration planning for actor migration
 
 **Future Work**:
-- Build the `cfs` CLI tool for type-safe deployment
-- Create Firetower monitoring application
-- Expand sample applications and documentation
+- Build the `cfs` CLI tool for type-safe, Framework-aware deployment
+- Create Firetower monitoring application with cross-substrate visibility
+- Implement actor migration between bare metal (Firefly) and edge (Fable)
+- Expand sample applications demonstrating actor model patterns
 - Contribute improvements back to Glutinum and Hawaii
 
 ## Support
 
-- **Issues**: [GitHub Issues](https://github.com/yourusername/CloudflareFS/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/CloudflareFS/discussions)
+- **Issues**: [GitHub Issues](https://github.com/speakeztech/Fidelity.CloudEdge/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/speakeztech/Fidelity.CloudEdge/discussions)
 
 ## License
 
@@ -422,16 +561,18 @@ Unless you explicitly state otherwise, any contribution intentionally submitted 
 
 ## Acknowledgments
 
-CloudflareFS stands on the shoulders of giants:
+Fidelity.CloudEdge stands on the shoulders of giants:
 
-- **[Fable](https://fable.io/)** - The magnificent F# to JavaScript compiler. Special thanks to Alfonso García-Caro, Maxime Mangel and all maintainers/contributors.
+- **[Fable](https://fable.io/)** - The magnificent F# to JavaScript compiler enabling substrate-agnostic actors at the edge. Special thanks to Alfonso García-Caro, Maxime Mangel, and all maintainers/contributors.
 
-- **[Glutinum](https://github.com/glutinum-org)** - TypeScript to F# binding generator. Thanks to Maxime Mangel for this invaluable tool.
+- **[Glutinum](https://github.com/glutinum-org)** - TypeScript to F# binding generator. Thanks to Maxime Mangel for this invaluable tool that makes Worker bindings possible.
 
 - **[Hawaii](https://github.com/Zaid-Ajaj/Hawaii)** - OpenAPI to F# client generator. Thanks to Zaid Ajaj for creating this and pioneering F# on Cloudflare Workers.
 
-- **[F# Software Foundation](https://fsharp.org/)** - For fostering a language that makes functional programming practical and enjoyable.
+- **[F# Software Foundation](https://fsharp.org/)** - For fostering a language that makes functional programming practical and enjoyable, and for `MailboxProcessor` which proves the actor model's substrate transparency.
 
-- **[Cloudflare](https://cloudflare.com)** - For building an incredible edge platform and commitment to open source.
+- **[Cloudflare](https://cloudflare.com)** - For building an incredible edge platform with Durable Objects, providing the sequential execution context necessary for actor guarantees at the edge.
 
-This project is SpeakEZ's contribution back to these amazing communities.
+- **CloudflareFS** - This project evolved from CloudflareFS, transforming from standalone tooling into a full Framework extension. We're grateful for the foundations laid by that earlier work.
+
+This project is SpeakEZ's contribution to the F#, Fable, and Cloudflare communities, and a key component of the broader Fidelity Framework vision.

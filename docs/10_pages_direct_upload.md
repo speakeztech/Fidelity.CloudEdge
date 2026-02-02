@@ -2,17 +2,17 @@
 
 ## Document Purpose
 
-This document captures the exploration, design decisions, and implementation plan for adding Cloudflare Pages direct upload support to CloudflareFS. It serves as both documentation and "breadcrumbs" for continuing work on this feature.
+This document captures the exploration, design decisions, and implementation plan for adding Cloudflare Pages direct upload support to Fidelity.CloudEdge. It serves as both documentation and "breadcrumbs" for continuing work on this feature.
 
 ## Background & Context
 
 ### The Goal
 
-Enable deployment of static sites to Cloudflare Pages entirely through CloudflareFS, without falling back to wrangler CLI. This is part of the broader SpeakEZ project which uses CloudflareFS as its sole interface to Cloudflare services.
+Enable deployment of static sites to Cloudflare Pages entirely through Fidelity.CloudEdge, without falling back to wrangler CLI. This is part of the broader SpeakEZ project which uses Fidelity.CloudEdge as its sole interface to Cloudflare services.
 
 ### Why This Matters
 
-The SpeakEZ CLI already successfully uses CloudflareFS for:
+The SpeakEZ CLI already successfully uses Fidelity.CloudEdge for:
 - R2 bucket management
 - D1 database management
 - Workers deployment (including ES modules with bindings)
@@ -285,8 +285,8 @@ Response:
 
 ## Code Location Reference
 
-### CloudflareFS
-- `src/Management/CloudFlare.Management.Pages/` - Generated Pages client
+### Fidelity.CloudEdge
+- `src/Management/Fidelity.CloudEdge.Management.Pages/` - Generated Pages client
 - `generators/hawaii/schemas/Pages-openapi.json` - Extracted OpenAPI spec
 - `generators/hawaii/pages-hawaii.json` - Hawaii configuration
 

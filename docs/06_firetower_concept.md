@@ -109,7 +109,7 @@
 module Firetower.Desktop
 
 open Avalonia.FuncUI
-open CloudFlare.Api.Monitoring
+open Fidelity.CloudEdge.Api.Monitoring
 
 type Model = {
     account: Account
@@ -155,7 +155,7 @@ module Firetower.Web
 
 open Feliz
 open Feliz.Router
-open CloudFlare.Api.Monitoring
+open Fidelity.CloudEdge.Api.Monitoring
 
 [<ReactComponent>]
 let App() =
@@ -281,9 +281,9 @@ let mobileView = firetower {
 }
 ```
 
-## Integration with CloudflareFS
+## Integration with Fidelity.CloudEdge
 
-Firetower is built on the same CloudflareFS API layer:
+Firetower is built on the same Fidelity.CloudEdge API layer:
 
 ```fsharp
 // Shared monitoring module

@@ -2,7 +2,7 @@
 
 ## Root Directory
 ```
-/home/hhh/repos/CloudflareFS/
+/home/hhh/repos/Fidelity.CloudEdge/
 ├── src/                      # Main source code
 ├── generators/               # Code generation tools
 ├── samples/                  # Example applications
@@ -11,7 +11,7 @@
 ├── build/                    # Build scripts
 ├── nuget/                    # NuGet package configuration
 ├── patches/                  # Third-party patches
-├── CloudflareFS.sln          # Solution file
+├── Fidelity.CloudEdge.sln          # Solution file
 ├── README.md                 # Project readme
 ├── CONTRIBUTING.md           # Contribution guidelines
 ├── PROJECT_STATUS.md         # Implementation status

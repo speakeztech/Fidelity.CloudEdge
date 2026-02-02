@@ -2,7 +2,7 @@
 
 ## Overview
 
-CloudflareFS uses a dual-generation approach:
+Fidelity.CloudEdge uses a dual-generation approach:
 - **Glutinum**: TypeScript to F# for Runtime APIs
 - **Hawaii**: OpenAPI to F# for Management APIs
 

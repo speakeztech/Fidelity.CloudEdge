@@ -1,12 +1,12 @@
-# CloudflareFS.Runtime
+# Fidelity.CloudEdge.Runtime
 
 **F# and Fable bindings for Cloudflare Workers Runtime APIs**
 
-> **Worker-side bindings** — Use this package to write Cloudflare Workers in F#. For managing Cloudflare resources from .NET applications, see [CloudflareFS.Management](https://www.nuget.org/packages/CloudflareFS.Management).
+> **Worker-side bindings** — Use this package to write Cloudflare Workers in F#. For managing Cloudflare resources from .NET applications, see [Fidelity.CloudEdge.Management](https://www.nuget.org/packages/Fidelity.CloudEdge.Management).
 
 ## What is this?
 
-CloudflareFS.Runtime provides F# type bindings for the APIs available *inside* a running Cloudflare Worker. These bindings are designed for use with [Fable](https://fable.io/) to compile F# to JavaScript that runs on Cloudflare's edge network.
+Fidelity.CloudEdge.Runtime provides F# type bindings for the APIs available *inside* a running Cloudflare Worker. These bindings are designed for use with [Fable](https://fable.io/) to compile F# to JavaScript that runs on Cloudflare's edge network.
 
 ## Supported Services
 
@@ -25,14 +25,14 @@ CloudflareFS.Runtime provides F# type bindings for the APIs available *inside* a
 ## Installation
 
 ```bash
-dotnet add package CloudflareFS.Runtime
+dotnet add package Fidelity.CloudEdge.Runtime
 ```
 
 ## Quick Example
 
 ```fsharp
-open CloudFlare.Worker.Context
-open CloudFlare.KV
+open Fidelity.CloudEdge.Worker.Context
+open Fidelity.CloudEdge.KV
 
 let handler (request: Request) (env: obj) (ctx: ExecutionContext) =
     promise {
@@ -54,11 +54,11 @@ let handler (request: Request) (env: obj) (ctx: ExecutionContext) =
 
 ## Related Package
 
-- **[CloudflareFS.Management](https://www.nuget.org/packages/CloudflareFS.Management)** — .NET clients for Cloudflare's REST Management APIs (create databases, deploy workers, manage buckets, etc.)
+- **[Fidelity.CloudEdge.Management](https://www.nuget.org/packages/Fidelity.CloudEdge.Management)** — .NET clients for Cloudflare's REST Management APIs (create databases, deploy workers, manage buckets, etc.)
 
 ## Links
 
-- [GitHub Repository](https://github.com/speakeztech/CloudflareFS)
+- [GitHub Repository](https://github.com/speakeztech/Fidelity.CloudEdge)
 - [Cloudflare Workers Documentation](https://developers.cloudflare.com/workers/)
 - [Fable Documentation](https://fable.io/docs/)
 

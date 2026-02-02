@@ -1,12 +1,12 @@
-# CloudflareFS.Management
+# Fidelity.CloudEdge.Management
 
 **F# clients for Cloudflare Management REST APIs**
 
-> **Management-side clients** — Use this package to manage Cloudflare resources from .NET applications. For writing Cloudflare Workers in F#, see [CloudflareFS.Runtime](https://www.nuget.org/packages/CloudflareFS.Runtime).
+> **Management-side clients** — Use this package to manage Cloudflare resources from .NET applications. For writing Cloudflare Workers in F#, see [Fidelity.CloudEdge.Runtime](https://www.nuget.org/packages/Fidelity.CloudEdge.Runtime).
 
 ## What is this?
 
-CloudflareFS.Management provides F# client libraries for Cloudflare's REST Management APIs. Use these to programmatically create, configure, and manage Cloudflare resources from any .NET application — deployment scripts, admin tools, CI/CD pipelines, or backend services.
+Fidelity.CloudEdge.Management provides F# client libraries for Cloudflare's REST Management APIs. Use these to programmatically create, configure, and manage Cloudflare resources from any .NET application — deployment scripts, admin tools, CI/CD pipelines, or backend services.
 
 ## Supported Services
 
@@ -26,14 +26,14 @@ CloudflareFS.Management provides F# client libraries for Cloudflare's REST Manag
 ## Installation
 
 ```bash
-dotnet add package CloudflareFS.Management
+dotnet add package Fidelity.CloudEdge.Management
 ```
 
 ## Quick Example
 
 ```fsharp
 open System.Net.Http
-open CloudFlare.Management.D1
+open Fidelity.CloudEdge.Management.D1
 
 let httpClient = new HttpClient()
 httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {apiToken}")
@@ -71,11 +71,11 @@ httpClient.DefaultRequestHeaders.Add("X-Auth-Email", email)
 
 ## Related Package
 
-- **[CloudflareFS.Runtime](https://www.nuget.org/packages/CloudflareFS.Runtime)** — F# and Fable bindings for writing Cloudflare Workers (in-worker APIs for KV, R2, D1, etc.)
+- **[Fidelity.CloudEdge.Runtime](https://www.nuget.org/packages/Fidelity.CloudEdge.Runtime)** — F# and Fable bindings for writing Cloudflare Workers (in-worker APIs for KV, R2, D1, etc.)
 
 ## Links
 
-- [GitHub Repository](https://github.com/speakeztech/CloudflareFS)
+- [GitHub Repository](https://github.com/speakeztech/Fidelity.CloudEdge)
 - [Cloudflare API Documentation](https://developers.cloudflare.com/api/)
 
 ## License

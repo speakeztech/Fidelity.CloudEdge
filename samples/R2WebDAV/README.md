@@ -13,7 +13,7 @@ A production-ready WebDAV server implementation running on Cloudflare Workers, w
 
 ## Architecture
 
-This sample demonstrates CloudflareFS's dual-layer architecture:
+This sample demonstrates Fidelity.CloudEdge's dual-layer architecture:
 
 - **Types.fs** - WebDAV property types and R2 object conversion
 - **Auth.fs** - Basic authentication with timing-safe comparison
@@ -93,7 +93,7 @@ Directories are represented as zero-byte objects with `resourcetype: <collection
 The F# code compiles to JavaScript via Fable:
 
 ```fsharp
-// F# with CloudflareFS bindings
+// F# with Fidelity.CloudEdge bindings
 let fetch (request: Request) (env: Env) (ctx: ExecutionContext) =
     promise {
         let! authResult = parseAndVerifyAuth authHeader env
@@ -115,12 +115,12 @@ The original TypeScript implementation is a single 881-line file. This F# versio
 - Uses modular architecture (5 files)
 - Leverages F# pattern matching for request routing
 - Uses computation expressions (`promise { }`) for async
-- Provides type safety via CloudflareFS bindings
+- Provides type safety via Fidelity.CloudEdge bindings
 - Compiles to equivalent JavaScript output
 
-## CloudflareFS Benefits
+## Fidelity.CloudEdge Benefits
 
-1. **Type-safe bindings** - R2Bucket, Request, Response types from CloudflareFS.Worker.Context and CloudflareFS.R2
+1. **Type-safe bindings** - R2Bucket, Request, Response types from Fidelity.CloudEdge.Worker.Context and Fidelity.CloudEdge.R2
 2. **Wrapper functions** - Clean F# API hiding JavaScript interop details
 3. **Fable compilation** - F# → JavaScript for Workers runtime
 4. **Idiomatic F#** - Pattern matching, computation expressions, options instead of nulls

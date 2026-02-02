@@ -4,8 +4,8 @@ open System.Net
 open System.Net.Http
 open System.Text
 open System.Threading
-open CloudFlare.Management.DurableObjects.Types
-open CloudFlare.Management.DurableObjects.Http
+open Fidelity.CloudEdge.Management.DurableObjects.Types
+open Fidelity.CloudEdge.Management.DurableObjects.Http
 
 ///Durable Objects Management API
 type DurableObjectsClient(httpClient: HttpClient) =

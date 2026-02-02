@@ -4,8 +4,8 @@ open System.Net
 open System.Net.Http
 open System.Text
 open System.Threading
-open CloudFlare.Management.Logs.Types
-open CloudFlare.Management.Logs.Http
+open Fidelity.CloudEdge.Management.Logs.Types
+open Fidelity.CloudEdge.Management.Logs.Http
 
 ///Logs API
 type LogsClient(httpClient: HttpClient) =

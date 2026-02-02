@@ -4,8 +4,8 @@ open System.Net
 open System.Net.Http
 open System.Text
 open System.Threading
-open CloudFlare.Management.Hyperdrive.Types
-open CloudFlare.Management.Hyperdrive.Http
+open Fidelity.CloudEdge.Management.Hyperdrive.Types
+open Fidelity.CloudEdge.Management.Hyperdrive.Http
 
 ///Database Connection Pooling API
 type HyperdriveClient(httpClient: HttpClient) =

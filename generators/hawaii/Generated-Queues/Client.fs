@@ -4,8 +4,8 @@ open System.Net
 open System.Net.Http
 open System.Text
 open System.Threading
-open CloudFlare.Management.Queues.Types
-open CloudFlare.Management.Queues.Http
+open Fidelity.CloudEdge.Management.Queues.Types
+open Fidelity.CloudEdge.Management.Queues.Http
 
 ///Message Queue Management API
 type QueuesClient(httpClient: HttpClient) =

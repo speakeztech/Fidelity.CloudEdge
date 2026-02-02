@@ -1,4 +1,4 @@
-namespace CloudFlare.Management.DurableObjects.Http
+namespace Fidelity.CloudEdge.Management.DurableObjects.Http
 
 open System
 open System.Net.Http

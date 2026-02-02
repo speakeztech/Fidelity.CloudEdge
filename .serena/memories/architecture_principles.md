@@ -74,10 +74,10 @@ The Cloudflare OpenAPI spec (15.5MB) is too large for tools:
 - Direct data operations (use for setup only)
 
 ## Code-First Philosophy
-CloudflareFS's goal is to make F# `.fsx` configuration first-class:
+Fidelity.CloudEdge's goal is to make F# `.fsx` configuration first-class:
 
 ```fsharp
-// CloudflareFS code-first approach - bindings defined in F#
+// Fidelity.CloudEdge code-first approach - bindings defined in F#
 let workerBindings = [
     D1Database("DATABASE", databaseId = "abc-123-def")
     KVNamespace("CACHE", namespaceId = "xyz-456-789")

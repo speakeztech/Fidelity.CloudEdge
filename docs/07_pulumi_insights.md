@@ -1,19 +1,19 @@
-# Pulumi .NET SDK Analysis: Selective Influences for CloudflareFS `cfs` Tool
+# Pulumi .NET SDK Analysis: Selective Influences for Fidelity.CloudEdge `cfs` Tool
 
 ## Executive Summary
 
-This document analyzes the Pulumi .NET SDK to identify specific patterns that may **influence** (not dictate) certain aspects of CloudflareFS's `cfs` tool design. CloudflareFS has its own unique vision - particularly around actor-model hierarchies of Workers and Cloudflare-specific optimizations - that goes well beyond what Pulumi contemplates.
+This document analyzes the Pulumi .NET SDK to identify specific patterns that may **influence** (not dictate) certain aspects of Fidelity.CloudEdge's `cfs` tool design. Fidelity.CloudEdge has its own unique vision - particularly around actor-model hierarchies of Workers and Cloudflare-specific optimizations - that goes well beyond what Pulumi contemplates.
 
-**Important Distinction**: CloudflareFS is NOT a Pulumi clone or port. It is an independent F# framework with its own architectural vision that happens to draw selective inspiration from certain Pulumi patterns where they align with our goals. Pulumi's generalized provider model for multiple clouds is explicitly NOT a goal for CloudflareFS, which is proudly Cloudflare-specific.
+**Important Distinction**: Fidelity.CloudEdge is NOT a Pulumi clone or port. It is an independent F# framework with its own architectural vision that happens to draw selective inspiration from certain Pulumi patterns where they align with our goals. Pulumi's generalized provider model for multiple clouds is explicitly NOT a goal for Fidelity.CloudEdge, which is proudly Cloudflare-specific.
 
-## CloudflareFS's Unique Vision (Not Found in Pulumi)
+## Fidelity.CloudEdge's Unique Vision (Not Found in Pulumi)
 
 ### Actor-Model Worker Hierarchies
 
-CloudflareFS envisions deploying complex actor-model hierarchies:
+Fidelity.CloudEdge envisions deploying complex actor-model hierarchies:
 
 ```fsharp
-// CloudflareFS unique concept - Worker actor hierarchies
+// Fidelity.CloudEdge unique concept - Worker actor hierarchies
 type WorkerActor =
     | Supervisor of children: WorkerActor list
     | Worker of script: string * bindings: Binding list
@@ -42,10 +42,10 @@ let deploy = cloudflare {
 
 ### F# Computation Expression Innovation
 
-CloudflareFS aims for computation expressions that model Cloudflare's unique capabilities:
+Fidelity.CloudEdge aims for computation expressions that model Cloudflare's unique capabilities:
 
 ```fsharp
-// CloudflareFS-specific computation expressions
+// Fidelity.CloudEdge-specific computation expressions
 let deploy = cloudflare {
     // Distributed state across regions
     distributed_state {
@@ -152,7 +152,7 @@ The `LocalWorkspace` class (from Pulumi.Automation) reveals how Pulumi achieves 
 ```csharp
 public sealed class LocalWorkspace : Workspace
 {
-    // Pulumi uses file-based state storage, while CloudflareFS
+    // Pulumi uses file-based state storage, while Fidelity.CloudEdge
     // leverages Cloudflare's native infrastructure for state management
 
     // Operations are idempotent through state comparison
@@ -312,14 +312,14 @@ module Deployment =
         |> Async.RunSynchronously
 ```
 
-## CloudflareFS's Independent Design Approach
+## Fidelity.CloudEdge's Independent Design Approach
 
-### 1. CloudflareFS Computation Expression Design
+### 1. Fidelity.CloudEdge Computation Expression Design
 
-While Pulumi's Output<T> pattern offers interesting ideas about dependency tracking, CloudflareFS takes its own approach that better fits F# idioms and Cloudflare's architecture:
+While Pulumi's Output<T> pattern offers interesting ideas about dependency tracking, Fidelity.CloudEdge takes its own approach that better fits F# idioms and Cloudflare's architecture:
 
 ```fsharp
-// CloudflareFS Output type inspired by Pulumi
+// Fidelity.CloudEdge Output type inspired by Pulumi
 type Output<'T> = {
     Value: 'T option
     IsKnown: bool
@@ -437,7 +437,7 @@ type WorkerBinding =
     | AnalyticsEngine of name: string * dataset: string option
 ```
 
-### 4. CloudflareFS `cfs` Tool Architecture
+### 4. Fidelity.CloudEdge `cfs` Tool Architecture
 
 Based on Pulumi's approach, the `cfs` tool should:
 
@@ -476,12 +476,12 @@ let deployProduction accountId = cloudflare {
 }
 ```
 
-### 5. CloudflareFS Workspace Implementation
+### 5. Fidelity.CloudEdge Workspace Implementation
 
-CloudflareFS leverages Cloudflare's own infrastructure for state management, storing application state within Cloudflare's native services:
+Fidelity.CloudEdge leverages Cloudflare's own infrastructure for state management, storing application state within Cloudflare's native services:
 
 ```fsharp
-// CloudflareFS stores state within Cloudflare's infrastructure
+// Fidelity.CloudEdge stores state within Cloudflare's infrastructure
 type CloudflareWorkspace(workDir: string) =
 
     // State persisted in Cloudflare-native backends (KV/D1)
@@ -601,12 +601,12 @@ cfs refresh
 
 ### Patterns to Improve Upon
 
-1. **Simpler State Model**: Pulumi's state can become complex; CloudflareFS can use F#'s immutability for simpler state
+1. **Simpler State Model**: Pulumi's state can become complex; Fidelity.CloudEdge can use F#'s immutability for simpler state
 2. **Native F# Computation Expressions**: Better than wrapping C# classes
 3. **Cloudflare-Specific Optimizations**: Use KV/D1 for state instead of files when appropriate
 4. **Higher-Level Abstractions**: Go beyond 1:1 resource mappings
 
-## CloudflareFS Implementation Strategy
+## Fidelity.CloudEdge Implementation Strategy
 
 ### Selective Influences from Pulumi (Where Aligned with Our Vision)
 
@@ -615,7 +615,7 @@ cfs refresh
 3. **Workspace Abstraction**: Separate execution context from resources
 4. **F# Functional Helpers**: apply, bind, pair, all operations
 
-### CloudflareFS-Unique Innovations (Beyond Pulumi's Scope)
+### Fidelity.CloudEdge-Unique Innovations (Beyond Pulumi's Scope)
 
 1. **Pure F# Implementation**: No C# base classes needed
 2. **Cloudflare-Native State**: Use KV/D1 for distributed state
@@ -668,7 +668,7 @@ cfs refresh
 
 **Important Context**: Pulumi's Cloudflare provider deals exclusively with **Management APIs** (OpenAPI/Swagger-based). It doesn't handle Runtime APIs (in-Worker JavaScript interop) because Pulumi's purpose is infrastructure provisioning, not Worker code execution.
 
-This means Pulumi's approach is most relevant to CloudflareFS's **Hawaii-generated Management layer**, not the **Glutinum-generated Runtime layer**.
+This means Pulumi's approach is most relevant to Fidelity.CloudEdge's **Hawaii-generated Management layer**, not the **Glutinum-generated Runtime layer**.
 
 ### What We Discovered
 
@@ -697,7 +697,7 @@ The Pulumi.FSharp library (`Library.fs`) provides functional wrappers:
 
 **Key Observation**: Pulumi.FSharp does NOT attempt to hide or rename properties with reserved keywords. Instead, it wraps the type system and operational patterns while leaving property access unchanged.
 
-### Two Valid Approaches for CloudflareFS
+### Two Valid Approaches for Fidelity.CloudEdge
 
 #### Approach 1: Direct Generation with Attributes (Analyzed in 09)
 - Generate clean F# property names with `CompiledName`/`JsonPropertyName` attributes
@@ -709,11 +709,11 @@ The Pulumi.FSharp library (`Library.fs`) provides functional wrappers:
 - Generate code with backticks at the binding level
 - Provide idiomatic F# wrapper functions for common patterns
 - **Advantage**: Preserves compilation pipeline integrity, works with existing tools
-- **Use Case**: CloudflareFS generates JavaScript, not .NET assemblies
+- **Use Case**: Fidelity.CloudEdge generates JavaScript, not .NET assemblies
 
-### Context: CloudflareFS Has Two Different Scenarios
+### Context: Fidelity.CloudEdge Has Two Different Scenarios
 
-CloudflareFS's dual-layer architecture means we have different contexts for the reserved keyword problem:
+Fidelity.CloudEdge's dual-layer architecture means we have different contexts for the reserved keyword problem:
 
 #### Management APIs (Hawaii) - Similar to Pulumi
 - **Source**: OpenAPI/Swagger specifications (same as Pulumi)
@@ -726,7 +726,7 @@ CloudflareFS's dual-layer architecture means we have different contexts for the 
 - Property names follow REST conventions (camelCase, not keywords)
 - Schema authors are aware of cross-language concerns
 
-#### Runtime APIs (Glutinum) - Unique to CloudflareFS
+#### Runtime APIs (Glutinum) - Unique to Fidelity.CloudEdge
 - **Source**: TypeScript definitions from `@cloudflare/workers-types`
 - **Target**: Fable → JavaScript for in-Worker execution
 - **Use Case**: Worker code that runs on Cloudflare's edge
@@ -734,11 +734,11 @@ CloudflareFS's dual-layer architecture means we have different contexts for the 
 
 **Different Compilation Pipeline**:
 - Pulumi: F# → .NET assemblies (property access in .NET runtime)
-- CloudflareFS Runtime: F# → Fable → JavaScript (binding layer is temporary)
+- Fidelity.CloudEdge Runtime: F# → Fable → JavaScript (binding layer is temporary)
 
 **Implication for Runtime Layer**: The backtick "cost" is paid only at development time. The final JavaScript doesn't care about F# syntax. Wrapper functions could provide clean design-time experience while preserving the Glutinum → Fable → JavaScript pipeline.
 
-### Example: Wrapper Function Pattern for CloudflareFS
+### Example: Wrapper Function Pattern for Fidelity.CloudEdge
 
 ```fsharp
 // Generated binding (with backticks - hidden from user)
@@ -780,7 +780,7 @@ let fetchValue storage = async {
 3. Tool enhancement is feasible
 4. Generated code is the primary API surface
 
-### CloudflareFS Decision Criteria by Layer
+### Fidelity.CloudEdge Decision Criteria by Layer
 
 The choice between approaches should consider the different needs of each layer:
 
@@ -798,7 +798,7 @@ The choice between approaches should consider the different needs of each layer:
 - Manual fixes for a handful of properties might be acceptable
 
 #### Runtime APIs (Glutinum-Generated)
-**Pulumi Has No Insights Here**: This is unique to CloudflareFS's in-Worker execution model.
+**Pulumi Has No Insights Here**: This is unique to Fidelity.CloudEdge's in-Worker execution model.
 
 **Key Questions**:
 1. Does the TypeScript → F# → Fable → JavaScript pipeline benefit from wrapper functions?
@@ -826,12 +826,12 @@ The choice between approaches should consider the different needs of each layer:
 This approach recognizes that:
 1. **Pulumi's scope is limited** - Only relevant to Management layer
 2. **Problem size may be small** - Reserved keywords might be rare in practice
-3. **CloudflareFS is unique** - Runtime layer needs different solutions than Pulumi
+3. **Fidelity.CloudEdge is unique** - Runtime layer needs different solutions than Pulumi
 4. **Ship and learn** - Better to deploy and discover real issues than solve theoretical ones
 
 ## Conclusion
 
-This analysis of Pulumi .NET provides useful context for certain implementation patterns, but CloudflareFS is fundamentally its own framework with distinct goals:
+This analysis of Pulumi .NET provides useful context for certain implementation patterns, but Fidelity.CloudEdge is fundamentally its own framework with distinct goals:
 
 ### Selective Patterns Worth Considering from Pulumi
 
@@ -840,7 +840,7 @@ This analysis of Pulumi .NET provides useful context for certain implementation 
 3. **Workspace Abstraction**: Clean separation of concerns
 4. **Functional Helpers**: The Pulumi.FSharp patterns are excellent
 
-### CloudflareFS's Independent Vision
+### Fidelity.CloudEdge's Independent Vision
 
 1. **Pure F# Implementation**: No inheritance hierarchy needed
 2. **Cloudflare-Native Features**:
@@ -860,7 +860,7 @@ This analysis of Pulumi .NET provides useful context for certain implementation 
 
 ## Legal and Technical Disclaimer
 
-CloudflareFS is an independent project with its own architectural vision and implementation. While this document analyzes Pulumi for educational purposes and identifies certain patterns that may influence our design thinking, CloudflareFS:
+Fidelity.CloudEdge is an independent project with its own architectural vision and implementation. While this document analyzes Pulumi for educational purposes and identifies certain patterns that may influence our design thinking, Fidelity.CloudEdge:
 
 1. **Is NOT a fork, port, or derivative of Pulumi**
 2. **Does NOT aim for Pulumi compatibility**
@@ -872,4 +872,4 @@ The `cfs` tool represents an original approach to Cloudflare orchestration that 
 
 ### Attribution
 
-Where specific patterns are influenced by Pulumi's approach (such as the concept of tracking dependencies through a monad-like structure), this represents common computer science patterns that appear in many systems, from React's hooks to Terraform's resource graphs. CloudflareFS implements these patterns in its own way, optimized for F# and Cloudflare's unique architecture.
+Where specific patterns are influenced by Pulumi's approach (such as the concept of tracking dependencies through a monad-like structure), this represents common computer science patterns that appear in many systems, from React's hooks to Terraform's resource graphs. Fidelity.CloudEdge implements these patterns in its own way, optimized for F# and Cloudflare's unique architecture.

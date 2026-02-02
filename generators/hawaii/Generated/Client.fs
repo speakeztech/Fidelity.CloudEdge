@@ -4,8 +4,8 @@ open System.Net
 open System.Net.Http
 open System.Text
 open System.Threading
-open CloudFlare.Api.Storage.R2.Types
-open CloudFlare.Api.Storage.R2.Http
+open Fidelity.CloudEdge.Api.Storage.R2.Types
+open Fidelity.CloudEdge.Api.Storage.R2.Http
 
 ///R2 Object Storage Management API
 type R2Client(httpClient: HttpClient) =

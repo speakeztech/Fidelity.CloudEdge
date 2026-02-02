@@ -1,6 +1,6 @@
-# CloudflareFS Samples
+# Fidelity.CloudEdge Samples
 
-This directory contains sample applications demonstrating the CloudflareFS F# bindings for Cloudflare Workers.
+This directory contains sample applications demonstrating the Fidelity.CloudEdge F# bindings for Cloudflare Workers.
 
 ## Samples
 
@@ -160,10 +160,10 @@ curl -X POST http://localhost:8787/api/messages \
 
 ### Getting Help
 
-- CloudflareFS Issues: [GitHub Issues](https://github.com/cloudflarefs/cloudflarefs/issues)
+- Fidelity.CloudEdge Issues: [GitHub Issues](https://github.com/cloudflarefs/cloudflarefs/issues)
 - Cloudflare Workers Docs: [developers.cloudflare.com](https://developers.cloudflare.com/workers)
 - F# Community: [fsharp.org](https://fsharp.org)
 
 ## License
 
-These samples are part of CloudflareFS and are dual-licensed under MIT OR Apache-2.0.
+These samples are part of Fidelity.CloudEdge and are dual-licensed under MIT OR Apache-2.0.

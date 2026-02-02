@@ -1,4 +1,4 @@
-namespace CloudFlare.Api.Storage.R2.Http
+namespace Fidelity.CloudEdge.Api.Storage.R2.Http
 
 open System
 open System.Net.Http

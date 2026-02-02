@@ -1,31 +1,31 @@
-# CloudflareFS Architecture Decisions
+# Fidelity.CloudEdge Architecture Decisions
 
 ## Executive Summary
 
-CloudflareFS implements a **dual-layer architecture** that separates Runtime APIs (in-Worker JavaScript interop) from Management APIs (external REST operations), providing complete type-safe F# coverage of the Cloudflare platform.
+Fidelity.CloudEdge implements a **dual-layer architecture** that separates Runtime APIs (in-Worker JavaScript interop) from Management APIs (external REST operations), providing complete type-safe F# coverage of the Cloudflare platform.
 
 ## Current Implementation Status
 
 ### ✅ Completed Runtime Bindings (Layer 1)
-- **CloudFlare.Worker.Context**: Core Worker types (Request, Response, Headers)
-- **CloudFlare.KV**: Key-Value storage operations
-- **CloudFlare.R2**: Object storage operations
-- **CloudFlare.D1**: Database query operations
-- **CloudFlare.AI**: Workers AI service bindings
+- **Fidelity.CloudEdge.Worker.Context**: Core Worker types (Request, Response, Headers)
+- **Fidelity.CloudEdge.KV**: Key-Value storage operations
+- **Fidelity.CloudEdge.R2**: Object storage operations
+- **Fidelity.CloudEdge.D1**: Database query operations
+- **Fidelity.CloudEdge.AI**: Workers AI service bindings
 
 ### ✅ Completed Management APIs (Layer 2)
-- **CloudFlare.Management.Workers**: Worker deployment and configuration (Hawaii-generated with post-processing)
-- **CloudFlare.Management.R2**: R2 bucket management (Hawaii-generated)
-- **CloudFlare.Management.D1**: D1 database management (Hawaii-generated)
-- **CloudFlare.Management.Analytics**: Analytics API (Hawaii-generated)
-- **CloudFlare.Management.Queues**: Queue management (Hawaii-generated)
-- **CloudFlare.Management.Vectorize**: Vector index management V2 (Hawaii-generated)
-- **CloudFlare.Management.Hyperdrive**: Connection config management (Hawaii-generated)
-- **CloudFlare.Management.DurableObjects**: Namespace management (Hawaii-generated)
+- **Fidelity.CloudEdge.Management.Workers**: Worker deployment and configuration (Hawaii-generated with post-processing)
+- **Fidelity.CloudEdge.Management.R2**: R2 bucket management (Hawaii-generated)
+- **Fidelity.CloudEdge.Management.D1**: D1 database management (Hawaii-generated)
+- **Fidelity.CloudEdge.Management.Analytics**: Analytics API (Hawaii-generated)
+- **Fidelity.CloudEdge.Management.Queues**: Queue management (Hawaii-generated)
+- **Fidelity.CloudEdge.Management.Vectorize**: Vector index management V2 (Hawaii-generated)
+- **Fidelity.CloudEdge.Management.Hyperdrive**: Connection config management (Hawaii-generated)
+- **Fidelity.CloudEdge.Management.DurableObjects**: Namespace management (Hawaii-generated)
 
 ### 🔄 In Progress
-- **CloudFlare.Management.KV**: KV namespace management (Hawaii complex schema issues)
-- **CloudFlare.Management.Logs**: Logs API (extraction patterns pending)
+- **Fidelity.CloudEdge.Management.KV**: KV namespace management (Hawaii complex schema issues)
+- **Fidelity.CloudEdge.Management.Logs**: Logs API (extraction patterns pending)
 
 ## The Two-Layer Architecture
 
@@ -88,20 +88,20 @@ type D1ManagementClient =
 **Rationale**: Each Cloudflare service gets its own project for better modularity.
 
 ```
-CloudflareFS/
+Fidelity.CloudEdge/
 ├── src/
 │   ├── Runtime/                    # In-Worker APIs
-│   │   ├── CloudFlare.Worker.Context/
-│   │   ├── CloudFlare.D1/
-│   │   ├── CloudFlare.R2/
-│   │   ├── CloudFlare.KV/
-│   │   └── CloudFlare.AI/
+│   │   ├── Fidelity.CloudEdge.Worker.Context/
+│   │   ├── Fidelity.CloudEdge.D1/
+│   │   ├── Fidelity.CloudEdge.R2/
+│   │   ├── Fidelity.CloudEdge.KV/
+│   │   └── Fidelity.CloudEdge.AI/
 │   │
 │   └── Management/                 # REST APIs
-│       ├── CloudFlare.Management.D1/
-│       ├── CloudFlare.Management.R2/
-│       ├── CloudFlare.Management.KV/
-│       └── CloudFlare.Management.Analytics/
+│       ├── Fidelity.CloudEdge.Management.D1/
+│       ├── Fidelity.CloudEdge.Management.R2/
+│       ├── Fidelity.CloudEdge.Management.KV/
+│       └── Fidelity.CloudEdge.Management.Analytics/
 ```
 
 ### Decision 4: Pure F# Portability for Management APIs ✅
@@ -134,7 +134,7 @@ type D1ManagementClient =
 
 **Contrast with Other Libraries**:
 - CloudFlare.Client (C#) uses `Task<T>` - locked to .NET only
-- CloudflareFS uses `async { }` - portable to any target
+- Fidelity.CloudEdge uses `async { }` - portable to any target
 
 ### Decision 5: OpenAPI Segmentation Pipeline ✅
 
@@ -153,7 +153,7 @@ type D1ManagementClient =
 # TypeScript definitions → F# bindings
 npx @glutinum/cli generate
     ./node_modules/@cloudflare/workers-types/index.d.ts \
-    --output ./src/Runtime/CloudFlare.Worker.Context/Generated.fs
+    --output ./src/Runtime/Fidelity.CloudEdge.Worker.Context/Generated.fs
 ```
 
 ### Management API Generation (Hawaii)
@@ -163,7 +163,7 @@ dotnet fsi generators/hawaii/extract-services.fsx
 
 # 2. Generate F# clients
 hawaii --config generators/hawaii/d1-hawaii.json
-# Output: src/Management/CloudFlare.Management.D1/
+# Output: src/Management/Fidelity.CloudEdge.Management.D1/
 ```
 
 ## Usage Patterns
@@ -197,7 +197,7 @@ let fetch (request: Request) (env: Env) =
 
 ## Future Architectural Considerations
 
-### CloudflareFS CLI Tool (`cfs`)
+### Fidelity.CloudEdge CLI Tool (`cfs`)
 
 Will leverage both API layers:
 ```fsharp
@@ -226,7 +226,7 @@ Desktop/web monitoring application:
 
 1. **Hawaii Limitations**: Some complex OpenAPI structures cause null reference exceptions (KV specs remain problematic)
 2. **OpenAPI Size**: Large specs need segmentation for tooling compatibility
-3. **Namespace Standardization**: Consistent `CloudFlare.Management.*` naming eliminates confusion and improves discoverability
+3. **Namespace Standardization**: Consistent `Fidelity.CloudEdge.Management.*` naming eliminates confusion and improves discoverability
 4. **Post-Processing Pipeline**: Automated discriminated union generation and System.Text.Json migration are essential for production-ready clients
 5. **Dual Benefits**: Separation enables both infrastructure-as-code AND runtime operations in F#
 6. **Portability Matters**: Avoiding .NET-specific patterns (Task, HttpClient) enables compilation via Fable and Fidelity
@@ -250,4 +250,4 @@ The dual-layer architecture successfully provides:
 - **Clear Separation**: No confusion between runtime and management concerns
 - **Future Flexibility**: Foundation for CLI tools, monitoring, and automation
 
-This architecture positions CloudflareFS as the comprehensive F# solution for the entire Cloudflare platform.
+This architecture positions Fidelity.CloudEdge as the comprehensive F# solution for the entire Cloudflare platform.

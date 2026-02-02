@@ -1,10 +1,10 @@
-# Code-First Deployment Strategy for CloudflareFS
+# Code-First Deployment Strategy for Fidelity.CloudEdge
 
 ## Executive Summary
 
-CloudflareFS will implement code-first Infrastructure as Code (IaC) where the primary configuration method is expressed as F# code, as opposed to managing a fragmented array of TOML files. The framework makes code-driven migrations and deployments a primary mechanism. While we may provide wrangler.toml export for backward compatibility with existing Cloudflare tooling, static configuration diverges from our vision of application/solution-level code-driven infrastructure.
+Fidelity.CloudEdge will implement code-first Infrastructure as Code (IaC) where the primary configuration method is expressed as F# code, as opposed to managing a fragmented array of TOML files. The framework makes code-driven migrations and deployments a primary mechanism. While we may provide wrangler.toml export for backward compatibility with existing Cloudflare tooling, static configuration diverges from our vision of application/solution-level code-driven infrastructure.
 
-After analyzing the wrangler source code (from `cloudflare/workers-sdk`), deploying directly via REST APIs using F# configuration scripts is not only feasible but architecturally consistent. CloudflareFS already has the foundation for this with the Management API layer, and the wrangler source reveals the exact metadata structure needed.
+After analyzing the wrangler source code (from `cloudflare/workers-sdk`), deploying directly via REST APIs using F# configuration scripts is not only feasible but architecturally consistent. Fidelity.CloudEdge already has the foundation for this with the Management API layer, and the wrangler source reveals the exact metadata structure needed.
 
 ## Core Approach
 
@@ -12,16 +12,16 @@ F# .fsx configuration of solutions is our choice for deployment and configuratio
 
 ## Deployment Modes
 
-CloudflareFS supports multiple deployment modes to fit different workflows - from direct API deployment to offline TOML generation for traditional CI/CD pipelines.
+Fidelity.CloudEdge supports multiple deployment modes to fit different workflows - from direct API deployment to offline TOML generation for traditional CI/CD pipelines.
 
 ### 1. Direct API Deployment (Default)
 
 ```fsharp
 // deploy.fsx - Direct deployment via Cloudflare APIs
-#r "nuget: CloudflareFS"
+#r "nuget: Fidelity.CloudEdge"
 
-open CloudflareFS.Api
-open CloudflareFS.Deployment
+open Fidelity.CloudEdge.Api
+open Fidelity.CloudEdge.Deployment
 
 let deploy() = cloudflare {
     account "abc123"
@@ -178,8 +178,8 @@ export default {
 ### F# Implementation Strategy
 
 ```fsharp
-// CloudflareFS Direct Deployment
-module CloudflareFS.Deployment.Direct
+// Fidelity.CloudEdge Direct Deployment
+module Fidelity.CloudEdge.Deployment.Direct
 
 open System.Net.Http
 open System.Text
@@ -235,7 +235,7 @@ type DirectDeployer(httpClient: HttpClient, accountId: string) =
 
 ```fsharp
 // deploy.fsx
-open CloudflareFS
+open Fidelity.CloudEdge
 
 let getDeploymentMode() =
     match Environment.GetEnvironmentVariable("CF_DEPLOY_MODE") with
@@ -438,7 +438,7 @@ let fetch (req: Request) (env: Env) = async {
 ### Challenge 1: Resource ID Management
 
 **Problem**: Need to know KV namespace IDs, R2 bucket names, D1 database IDs
-**Solution**: CloudflareFS Management APIs already handle this:
+**Solution**: Fidelity.CloudEdge Management APIs already handle this:
 
 ```fsharp
 // Provision resources and get IDs
@@ -531,8 +531,8 @@ jobs:
         with:
           dotnet-version: '8.0'
 
-      - name: Install CloudflareFS CLI
-        run: dotnet tool install -g CloudflareFS.CLI
+      - name: Install Fidelity.CloudEdge CLI
+        run: dotnet tool install -g Fidelity.CloudEdge.CLI
 
       - name: Provision Resources and Generate TOML
         env:
@@ -594,7 +594,7 @@ deploy:
 ```fsharp
 // Easiest migration - generate TOML from F#
 let config = parseExistingWrangler "wrangler.toml"
-            |> toCloudflareFS
+            |> toFidelity.CloudEdge
             |> enhance  // Add type safety
 
 generateToml config "wrangler-new.toml"
@@ -640,7 +640,7 @@ cfs deploy-direct ./worker.js --bindings ./bindings.fsx
 ```fsharp
 // Full F# deployment script - this IS the configuration
 // No TOML or YAML needed - code is the single source of truth
-#r "nuget: CloudflareFS"
+#r "nuget: Fidelity.CloudEdge"
 
 let deploy() = cloudflare {
     // Provision resources - all in F# code
@@ -702,7 +702,7 @@ type CloudflareDirect(apiToken: string, accountId: string) =
 
 ## Updated Implementation Strategy
 
-### What CloudflareFS Should Build
+### What Fidelity.CloudEdge Should Build
 
 1. **Workers Upload Client** (Priority 1):
 
@@ -745,7 +745,7 @@ let deployDirectly (deployment: WorkerDeployment) = async {
 ## Recommendation
 
 **Core Approach**:
-CloudflareFS implements code-first IaC as a primary feature. Configuration files like TOML and YAML are treated as secondary formats. While we may provide export functionality for compatibility, the primary approach is pure F# code configuration.
+Fidelity.CloudEdge implements code-first IaC as a primary feature. Configuration files like TOML and YAML are treated as secondary formats. While we may provide export functionality for compatibility, the primary approach is pure F# code configuration.
 
 **Short Term**:
 
@@ -762,7 +762,7 @@ CloudflareFS implements code-first IaC as a primary feature. Configuration files
 
 ## Conclusion
 
-CloudflareFS's code-first approach provides a viable alternative for Cloudflare infrastructure management. After analyzing wrangler's source code, we've confirmed that static configuration files like TOML are unnecessary for the purposes of this toolkit and can be eliminated in favor of direct F# code managed deployment to forward environments.
+Fidelity.CloudEdge's code-first approach provides a viable alternative for Cloudflare infrastructure management. After analyzing wrangler's source code, we've confirmed that static configuration files like TOML are unnecessary for the purposes of this toolkit and can be eliminated in favor of direct F# code managed deployment to forward environments.
 
 The discoveries reveal:
 
@@ -777,7 +777,7 @@ The wrangler source code confirms our code-first approach is viable because:
 - No static files are actually required by Cloudflare's APIs
 - Everything can be computed and deployed via code
 
-CloudflareFS already has most of what's needed. The missing components are:
+Fidelity.CloudEdge already has most of what's needed. The missing components are:
 
 1. **Workers Script Upload API binding** (for direct F# script deployment)
 2. **Asset manifest generation** (code-driven, not config-driven)
@@ -792,7 +792,7 @@ CloudflareFS already has most of what's needed. The missing components are:
 
 ## Summary
 
-CloudflareFS provides flexible deployment modes:
+Fidelity.CloudEdge provides flexible deployment modes:
 
 1. **Direct** - Pure API deployment for maximum control
 2. **Offline** - TOML generation for compatibility

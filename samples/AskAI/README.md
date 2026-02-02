@@ -1,10 +1,10 @@
 # Ask AI Sample
 
-A complete example demonstrating CloudflareFS for building a RAG-powered question answering system using Cloudflare's AI Search (AutoRAG).
+A complete example demonstrating Fidelity.CloudEdge for building a RAG-powered question answering system using Cloudflare's AI Search (AutoRAG).
 
 ## Overview
 
-This sample shows both sides of the CloudflareFS dual-layer architecture:
+This sample shows both sides of the Fidelity.CloudEdge dual-layer architecture:
 
 - **Worker/** - Runtime code that executes in Cloudflare Workers, using Glutinum-generated bindings
 - **CLI/** - Management code that provisions resources and deploys workers, using Hawaii-generated bindings
@@ -116,7 +116,7 @@ Non-streaming question endpoint.
 
 ```json
 {
-  "question": "What is CloudflareFS?",
+  "question": "What is Fidelity.CloudEdge?",
   "persona": "engineer",
   "interests": ["cloudflarefs"]
 }
@@ -125,9 +125,9 @@ Non-streaming question endpoint.
 Response:
 ```json
 {
-  "answer": "CloudflareFS is a collection of F# bindings...",
+  "answer": "Fidelity.CloudEdge is a collection of F# bindings...",
   "sources": [
-    { "title": "CloudflareFS Introduction", "url": "/blog/cloudflarefs/", "relevance": 0.92 }
+    { "title": "Fidelity.CloudEdge Introduction", "url": "/blog/cloudflarefs/", "relevance": 0.92 }
   ],
   "phase": "1"
 }
@@ -240,7 +240,7 @@ GROUP BY hour;
 
 ## Related Documentation
 
-- [CloudflareFS GitHub](https://github.com/speakeztech/CloudflareFS)
+- [Fidelity.CloudEdge GitHub](https://github.com/speakeztech/Fidelity.CloudEdge)
 - [Cloudflare AI Search (AutoRAG)](https://developers.cloudflare.com/ai-gateway/providers/autorag/)
 - [Fable Compiler](https://fable.io/)
 - [Hawaii OpenAPI Generator](https://github.com/Zaid-Ajaj/Hawaii)

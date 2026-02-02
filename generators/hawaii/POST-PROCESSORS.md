@@ -119,9 +119,9 @@ dotnet fsi post-process-discriminators.fsx Generated-Workers/Types.fs
 dotnet fsi post-process-jobject.fsx Generated-Workers/Client.fs
 
 # Copy and build
-cp Generated-Workers/*.fs ../../src/Management/CloudFlare.Management.Workers/
+cp Generated-Workers/*.fs ../../src/Management/Fidelity.CloudEdge.Management.Workers/
 cd ../../
-dotnet build src/Management/CloudFlare.Management.Workers/
+dotnet build src/Management/Fidelity.CloudEdge.Management.Workers/
 ```
 
 Should compile with zero errors.

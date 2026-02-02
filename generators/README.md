@@ -1,6 +1,6 @@
-# CloudflareFS Generators
+# Fidelity.CloudEdge Generators
 
-This directory contains TypeScript-to-F# binding generators and utilities for CloudflareFS.
+This directory contains TypeScript-to-F# binding generators and utilities for Fidelity.CloudEdge.
 
 ## Structure
 

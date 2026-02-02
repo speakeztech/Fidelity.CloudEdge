@@ -59,12 +59,12 @@ let options = { start = Some "cursor-123" }
 **Issue**: Placing global values directly in namespaces
 ```fsharp
 // WRONG - FS0201: Namespaces cannot contain values
-namespace CloudFlare.Worker.Context
+namespace Fidelity.CloudEdge.Worker.Context
 [<Global>]
 let Headers: HeadersConstructor = jsNative
 
 // CORRECT - use a module
-namespace CloudFlare.Worker.Context
+namespace Fidelity.CloudEdge.Worker.Context
 module Globals =
     [<Global>]
     let Headers: HeadersConstructor = jsNative

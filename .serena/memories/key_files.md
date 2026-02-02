@@ -1,7 +1,7 @@
 # Key Files
 
 ## Configuration & Build
-- `/CloudflareFS.sln` - Main solution file
+- `/Fidelity.CloudEdge.sln` - Main solution file
 - `/global.json` - .NET SDK version configuration
 - `/package.json` - Node.js dependencies for workers-types
 

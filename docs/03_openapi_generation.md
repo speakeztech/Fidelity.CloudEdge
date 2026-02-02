@@ -1,4 +1,4 @@
-# OpenAPI Generation Strategy for CloudflareFS Management APIs
+# OpenAPI Generation Strategy for Fidelity.CloudEdge Management APIs
 
 ## Executive Summary
 
@@ -64,9 +64,9 @@ D:/repos/Cloudflare/api-schemas/
 | **User** | `/user/...` | `/user/tokens` | User management |
 | **Global** | `/{service}` | `/memberships` | Cross-account ops |
 
-### Service Categories for CloudflareFS
+### Service Categories for Fidelity.CloudEdge
 
-#### Storage Services (Core CloudflareFS)
+#### Storage Services (Core Fidelity.CloudEdge)
 - **KV Namespaces**: `/accounts/{account_id}/storage/kv/namespaces`
 - **R2 Buckets**: `/accounts/{account_id}/r2/buckets`
 - **D1 Databases**: `/accounts/{account_id}/d1/database`
@@ -182,7 +182,7 @@ Create Hawaii configuration for each service:
 ```json
 // generators/hawaii/configs/d1-hawaii.json
 {
-  "namespace": "CloudFlare.Management.D1",
+  "namespace": "Fidelity.CloudEdge.Management.D1",
   "synchronous": false,
   "target": "fsharp",
   "generateClient": true,
@@ -213,7 +213,7 @@ foreach ($service in $services) {
 
     $input = "./temp/$($service.ToLower())-openapi.json"
     $config = "./configs/$($service.ToLower())-hawaii.json"
-    $output = "../../src/Management/CloudFlare.Management.$service/Generated.fs"
+    $output = "../../src/Management/Fidelity.CloudEdge.Management.$service/Generated.fs"
 
     hawaii --input $input --config $config --output $output
 
@@ -230,14 +230,14 @@ Remove-Item "./temp" -Recurse -Force
 
 ### Step 4: Post-Processing Pipeline
 
-CloudflareFS implements an automated post-processing pipeline to handle Hawaii's current limitations and ensure production-ready bindings.
+Fidelity.CloudEdge implements an automated post-processing pipeline to handle Hawaii's current limitations and ensure production-ready bindings.
 
 #### Why Post-Processing?
 
 Hawaii is excellent at generating F# clients from OpenAPI specs, but some patterns require additional transformation:
 1. **Discriminated Unions**: OpenAPI discriminator schemas aren't natively supported
 2. **System.Text.Json**: Migration from Newtonsoft.Json for Fable compatibility
-3. **Namespace Standardization**: Ensuring consistent `CloudFlare.Management.*` naming
+3. **Namespace Standardization**: Ensuring consistent `Fidelity.CloudEdge.Management.*` naming
 
 #### Post-Processing Scripts
 
@@ -268,7 +268,7 @@ type workersbindings = list<workersbindingitem>  // ✅ Fully typed!
 
 **Usage**:
 ```bash
-dotnet fsi post-process-discriminators.fsx ../../src/Management/CloudFlare.Management.Workers/Types.fs
+dotnet fsi post-process-discriminators.fsx ../../src/Management/Fidelity.CloudEdge.Management.Workers/Types.fs
 # Output: ✓ Successfully added discriminated union for workersbindingitem
 #         Cases: 29
 ```
@@ -308,14 +308,14 @@ dotnet fsi extract-services.fsx
 hawaii --config workers-hawaii.json
 
 # 3. Apply post-processing
-dotnet fsi post-process-discriminators.fsx ../../src/Management/CloudFlare.Management.Workers/Types.fs
+dotnet fsi post-process-discriminators.fsx ../../src/Management/Fidelity.CloudEdge.Management.Workers/Types.fs
 
 # 4. Copy to source (with correct .fsproj)
-cp Generated-Workers/*.fs ../../src/Management/CloudFlare.Management.Workers/
-cp Generated-Workers/*.fsproj ../../src/Management/CloudFlare.Management.Workers/
+cp Generated-Workers/*.fs ../../src/Management/Fidelity.CloudEdge.Management.Workers/
+cp Generated-Workers/*.fsproj ../../src/Management/Fidelity.CloudEdge.Management.Workers/
 
 # 5. Verify compilation
-cd ../../src/Management/CloudFlare.Management.Workers && dotnet build
+cd ../../src/Management/Fidelity.CloudEdge.Management.Workers && dotnet build
 ```
 
 #### Post-Processing Success Stories
@@ -328,7 +328,7 @@ cd ../../src/Management/CloudFlare.Management.Workers && dotnet build
 
 **All Management APIs**:
 - ✅ System.Text.Json migration complete across 8 services
-- ✅ Consistent namespacing (`CloudFlare.Management.*`)
+- ✅ Consistent namespacing (`Fidelity.CloudEdge.Management.*`)
 - ✅ Fable-compatible serialization
 
 #### Future Enhancements
@@ -390,13 +390,13 @@ Create a single entry point for all management APIs:
 
 ```fsharp
 // src/Management/CloudFlare.Management/Client.fs
-namespace CloudFlare.Management
+namespace Fidelity.CloudEdge.Management
 
 open System
 open System.Net.Http
-open CloudFlare.Management.D1
-open CloudFlare.Management.R2
-open CloudFlare.Management.KV
+open Fidelity.CloudEdge.Management.D1
+open Fidelity.CloudEdge.Management.R2
+open Fidelity.CloudEdge.Management.KV
 
 type CloudflareManagementClient(apiToken: string, ?httpClient: HttpClient) =
     let httpClient = defaultArg httpClient (new HttpClient())
@@ -473,4 +473,4 @@ type CloudflareManagementClient(apiToken: string, ?httpClient: HttpClient) =
 
 ## Conclusion
 
-By extracting service-specific OpenAPI specifications and generating focused F# bindings, CloudflareFS leverages Hawaii effectively despite the massive size of Cloudflare's API surface. This modular approach ensures maintainability, performance, and provides a complete type-safe F# SDK for Cloudflare's management plane that complements our runtime bindings. The strategy handles API version changes gracefully and produces idiomatic F# code suitable for cross-platform compilation via Fable, Fidelity, or standard .NET.
+By extracting service-specific OpenAPI specifications and generating focused F# bindings, Fidelity.CloudEdge leverages Hawaii effectively despite the massive size of Cloudflare's API surface. This modular approach ensures maintainability, performance, and provides a complete type-safe F# SDK for Cloudflare's management plane that complements our runtime bindings. The strategy handles API version changes gracefully and produces idiomatic F# code suitable for cross-platform compilation via Fable, Fidelity, or standard .NET.

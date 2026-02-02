@@ -1,24 +1,24 @@
-# Runtime vs Management APIs in CloudflareFS
+# Runtime vs Management APIs in Fidelity.CloudEdge
 
 ## Architecture Overview
 
-CloudflareFS implements a **dual-layer API architecture** that separates runtime operations from management operations, reflecting Cloudflare's own platform design.
+Fidelity.CloudEdge implements a **dual-layer API architecture** that separates runtime operations from management operations, reflecting Cloudflare's own platform design.
 
 ```
-CloudflareFS/
+Fidelity.CloudEdge/
 └── src/
    ├── Runtime/           # In-Worker APIs (JavaScript interop)
-   │   ├── CloudFlare.D1/
-   │   ├── CloudFlare.R2/
-   │   ├── CloudFlare.KV/
-   │   └── CloudFlare.Worker.Context/
+   │   ├── Fidelity.CloudEdge.D1/
+   │   ├── Fidelity.CloudEdge.R2/
+   │   ├── Fidelity.CloudEdge.KV/
+   │   └── Fidelity.CloudEdge.Worker.Context/
    │
    └── Management/        # REST APIs (HTTP clients)
-       ├── CloudFlare.Management.Workers/
-       ├── CloudFlare.Management.D1/
-       ├── CloudFlare.Management.R2/
-       ├── CloudFlare.Management.Analytics/
-       └── CloudFlare.Management.Queues/
+       ├── Fidelity.CloudEdge.Management.Workers/
+       ├── Fidelity.CloudEdge.Management.D1/
+       ├── Fidelity.CloudEdge.Management.R2/
+       ├── Fidelity.CloudEdge.Management.Analytics/
+       └── Fidelity.CloudEdge.Management.Queues/
 ```
 
 ## Runtime APIs (In-Worker)
@@ -32,7 +32,7 @@ CloudflareFS/
 ### Example: Runtime D1 Operations
 ```fsharp
 // Inside a Worker - using Runtime API
-open CloudFlare.D1
+open Fidelity.CloudEdge.D1
 
 let handleRequest (request: Request) (env: Env) =
     async {
@@ -69,7 +69,7 @@ let handleRequest (request: Request) (env: Env) =
 ### Example: Management D1 Operations
 ```fsharp
 // External application - using Management API
-open CloudFlare.Management.D1
+open Fidelity.CloudEdge.Management.D1
 open System.Net.Http
 
 let provisionDatabase (accountId: string) (apiToken: string) =
@@ -120,7 +120,7 @@ let provisionDatabase (accountId: string) (apiToken: string) =
 
 This process is still under review, but it's worth noting the "head space" that various approaches require as design moves toward implementation.
 
-**Important**: CloudflareFS's goal is to make F# .fsx configuration of solutions a first-class consideration. All infrastructure should be defined in code, not configuration files. While we may export wrangler.toml for compatibility with existing Cloudflare tooling, it is an express goal of this framework to operate code-first.
+**Important**: Fidelity.CloudEdge's goal is to make F# .fsx configuration of solutions a first-class consideration. All infrastructure should be defined in code, not configuration files. While we may export wrangler.toml for compatibility with existing Cloudflare tooling, it is an express goal of this framework to operate code-first.
 
 1. **Infrastructure Setup** (Management API)
 
@@ -134,7 +134,7 @@ This process is still under review, but it's worth noting the "head space" that 
 2. **Configure Bindings** (F# code, NOT TOML)
 
    ```fsharp
-   // CloudflareFS code-first approach - bindings defined in F#
+   // Fidelity.CloudEdge code-first approach - bindings defined in F#
    let workerBindings = [
        D1Database("DATABASE", databaseId = "abc-123-def")
        KVNamespace("CACHE", namespaceId = "xyz-456-789")
@@ -164,8 +164,8 @@ This process is still under review, but it's worth noting the "head space" that 
 ```bash
 # TypeScript → F#
 npx @glutinum/cli generate ./node_modules/@cloudflare/workers-types/index.d.ts \
-    --output ./src/Runtime/CloudFlare.Worker.Context/Generated.fs \
-    --namespace CloudFlare.Worker
+    --output ./src/Runtime/Fidelity.CloudEdge.Worker.Context/Generated.fs \
+    --namespace Fidelity.CloudEdge.Worker
 ```
 
 ### Management APIs (Hawaii)
@@ -173,7 +173,7 @@ npx @glutinum/cli generate ./node_modules/@cloudflare/workers-types/index.d.ts \
 ```bash
 # OpenAPI → F#
 hawaii --config ./generators/hawaii/d1-hawaii.json
-# Generates: src/Management/CloudFlare.Management.D1/
+# Generates: src/Management/Fidelity.CloudEdge.Management.D1/
 ```
 
 ## Key Benefits
@@ -186,7 +186,7 @@ hawaii --config ./generators/hawaii/d1-hawaii.json
 
 ## Future: The `cfs` CLI Tool
 
-The CloudflareFS CLI will leverage both API layers:
+The Fidelity.CloudEdge CLI will leverage both API layers:
 
 ```fsharp
 // cfs deploy command - uses both APIs

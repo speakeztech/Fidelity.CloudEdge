@@ -1,8 +1,8 @@
-# CloudflareFS Generation Strategy
+# Fidelity.CloudEdge Generation Strategy
 
 ## Overview
 
-CloudflareFS uses a dual-generation approach: **Glutinum** for TypeScript-based Runtime APIs (in-Worker) and **Hawaii** for OpenAPI-based Management APIs (external). This strategy ensures type-safe F# bindings across the entire Cloudflare platform.
+Fidelity.CloudEdge uses a dual-generation approach: **Glutinum** for TypeScript-based Runtime APIs (in-Worker) and **Hawaii** for OpenAPI-based Management APIs (external). This strategy ensures type-safe F# bindings across the entire Cloudflare platform.
 
 ## Generation Decision Matrix
 
@@ -59,17 +59,17 @@ CloudflareFS uses a dual-generation approach: **Glutinum** for TypeScript-based 
 ├─────────────────────────────────────────────────────────────┤
 │ src/                                                        │
 │   ├── Runtime/     (Glutinum-generated, Fable-compatible)   │
-│   │   ├── CloudFlare.Worker.Context/                        │
-│   │   ├── CloudFlare.KV/                                    │
-│   │   ├── CloudFlare.R2/                                    │
-│   │   ├── CloudFlare.D1/                                    │
-│   │   └── CloudFlare.AI/                                    │
+│   │   ├── Fidelity.CloudEdge.Worker.Context/                        │
+│   │   ├── Fidelity.CloudEdge.KV/                                    │
+│   │   ├── Fidelity.CloudEdge.R2/                                    │
+│   │   ├── Fidelity.CloudEdge.D1/                                    │
+│   │   └── Fidelity.CloudEdge.AI/                                    │
 │   │                                                         │
 │   └── Management/  (Hawaii-generated, multi-target)         │
-│       ├── CloudFlare.Management.KV/                         │
-│       ├── CloudFlare.Management.R2/                         │
-│       ├── CloudFlare.Management.D1/                         │
-│       └── CloudFlare.Management.Analytics/                  │
+│       ├── Fidelity.CloudEdge.Management.KV/                         │
+│       ├── Fidelity.CloudEdge.Management.R2/                         │
+│       ├── Fidelity.CloudEdge.Management.D1/                         │
+│       └── Fidelity.CloudEdge.Management.Analytics/                  │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -83,8 +83,8 @@ CloudflareFS uses a dual-generation approach: **Glutinum** for TypeScript-based 
 ```json
 {
   "input": "./node_modules/@cloudflare/workers-types/index.d.ts",
-  "output": "./src/Runtime/CloudFlare.Worker.Context/Generated.fs",
-  "namespace": "CloudFlare.Worker.Context",
+  "output": "./src/Runtime/Fidelity.CloudEdge.Worker.Context/Generated.fs",
+  "namespace": "Fidelity.CloudEdge.Worker.Context",
   "generateStaticMembers": true
 }
 ```
@@ -115,7 +115,7 @@ let services = [
 2. **Generate F# Clients**:
 ```bash
 hawaii --config generators/hawaii/d1-hawaii.json
-# Output: src/Management/CloudFlare.Management.D1/
+# Output: src/Management/Fidelity.CloudEdge.Management.D1/
 ```
 
 ## Key Implementation Decisions
@@ -132,8 +132,8 @@ hawaii --config generators/hawaii/d1-hawaii.json
 - Each service gets independent generation
 
 ### 3. Namespace Organization
-- Runtime: `CloudFlare.{Service}` (e.g., CloudFlare.D1)
-- Management: `CloudFlare.Management.{Service}`
+- Runtime: `CloudFlare.{Service}` (e.g., Fidelity.CloudEdge.D1)
+- Management: `Fidelity.CloudEdge.Management.{Service}`
 - Clear separation prevents confusion
 
 ### 4. F# Portability (Management APIs)
@@ -150,7 +150,7 @@ hawaii --config generators/hawaii/d1-hawaii.json
 **Example Post-Processing**:
 ```bash
 # After Hawaii generation
-dotnet fsi post-process-discriminators.fsx ../../src/Management/CloudFlare.Management.Workers/Types.fs
+dotnet fsi post-process-discriminators.fsx ../../src/Management/Fidelity.CloudEdge.Management.Workers/Types.fs
 # Output: Creates workersbindingitem DU with 29 cases
 ```
 
