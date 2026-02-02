@@ -1,11 +1,11 @@
 // F# idiomatic helpers and computation expressions for Cloudflare Workers
-module CloudFlare.Worker.Context.Helpers
+module Fidelity.CloudEdge.Worker.Context.Helpers
 
 open Fable.Core
 open Fable.Core.JsInterop
 open System
-open CloudFlare.Worker.Context
-open CloudFlare.Worker.Context.Globals
+open Fidelity.CloudEdge.Worker.Context
+open Fidelity.CloudEdge.Worker.Context.Globals
 
 // Response builder helpers
 module ResponseBuilder =

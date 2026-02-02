@@ -1,11 +1,11 @@
-namespace rec CloudFlare.Management.Pages
+namespace rec Fidelity.CloudEdge.Management.Pages
 
 open System.Net
 open System.Net.Http
 open System.Text
 open System.Threading
-open CloudFlare.Management.Pages.Types
-open CloudFlare.Management.Pages.Http
+open Fidelity.CloudEdge.Management.Pages.Types
+open Fidelity.CloudEdge.Management.Pages.Http
 
 ///Cloudflare Pages Management API - Create and deploy static sites
 type PagesClient(httpClient: HttpClient) =

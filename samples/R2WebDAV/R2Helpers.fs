@@ -2,7 +2,7 @@ module R2WebDAV.R2Helpers
 
 open Fable.Core
 open Fable.Core.JsInterop
-open CloudFlare.R2
+open Fidelity.CloudEdge.R2
 
 /// List all objects in a bucket with optional prefix
 let listAll (bucket: R2Bucket) (prefix: string) (isRecursive: bool) : JS.Promise<R2Object array> =

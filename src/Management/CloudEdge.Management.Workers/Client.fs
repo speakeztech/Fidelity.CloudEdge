@@ -1,11 +1,11 @@
-namespace rec CloudFlare.Management.Workers
+namespace rec Fidelity.CloudEdge.Management.Workers
 
 open System.Net
 open System.Net.Http
 open System.Text
 open System.Threading
-open CloudFlare.Management.Workers.Types
-open CloudFlare.Management.Workers.Http
+open Fidelity.CloudEdge.Management.Workers.Types
+open Fidelity.CloudEdge.Management.Workers.Http
 
 ///Workers Script Management API
 type WorkersClient(httpClient: HttpClient) =

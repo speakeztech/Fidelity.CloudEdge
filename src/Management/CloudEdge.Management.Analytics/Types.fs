@@ -1,4 +1,4 @@
-namespace rec CloudFlare.Management.Analytics.Types
+namespace rec Fidelity.CloudEdge.Management.Analytics.Types
 
 ///Identifier
 type argoanalyticsidentifier = string

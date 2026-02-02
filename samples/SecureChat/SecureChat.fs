@@ -3,10 +3,10 @@ module SecureChat
 
 open Fable.Core
 open Fable.Core.JsInterop
-open CloudFlare.Worker.Context.Generated
-open CloudFlare.Worker.Context.Helpers
-open CloudFlare.Worker.Context.Helpers.ResponseBuilder
-open CloudFlare.Worker.Context.D1
+open Fidelity.CloudEdge.Worker.Context.Generated
+open Fidelity.CloudEdge.Worker.Context.Helpers
+open Fidelity.CloudEdge.Worker.Context.Helpers.ResponseBuilder
+open Fidelity.CloudEdge.Worker.Context.D1
 open System
 
 // Message types

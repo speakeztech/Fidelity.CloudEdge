@@ -1,4 +1,4 @@
-namespace rec CloudFlare.Management.Queues.Types
+namespace rec Fidelity.CloudEdge.Management.Queues.Types
 
 type ``mqapi-v4-errorArrayItem`` =
     { code: int

@@ -2,7 +2,7 @@ namespace AskAI.Worker
 
 open Fable.Core
 open Fable.Core.JsInterop
-open CloudFlare.Worker.Context
+open Fidelity.CloudEdge.Worker.Context
 
 /// Main entry point for the Ask AI worker
 /// Routes requests to appropriate handlers

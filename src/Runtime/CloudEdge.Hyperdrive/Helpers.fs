@@ -1,6 +1,6 @@
-module CloudFlare.Hyperdrive.Helpers
+module Fidelity.CloudEdge.Hyperdrive.Helpers
 
-open CloudFlare.Hyperdrive
+open Fidelity.CloudEdge.Hyperdrive
 open Fable.Core
 open Fable.Core.JsInterop
 open System

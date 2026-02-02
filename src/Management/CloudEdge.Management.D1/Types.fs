@@ -1,4 +1,4 @@
-namespace rec CloudFlare.Management.D1.Types
+namespace rec Fidelity.CloudEdge.Management.D1.Types
 
 ///Account identifier tag.
 type d1accountidentifier = string

@@ -1,4 +1,4 @@
-namespace CloudFlare.Vectorize
+namespace Fidelity.CloudEdge.Vectorize
 
 open Fable.Core
 open Fable.Core.JsInterop

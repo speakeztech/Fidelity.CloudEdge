@@ -1,4 +1,4 @@
-namespace rec CloudFlare.Management.Pages.Types
+namespace rec Fidelity.CloudEdge.Management.Pages.Types
 
 ///The domain name.
 type pagesdomainname = string

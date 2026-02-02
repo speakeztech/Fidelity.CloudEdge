@@ -1,10 +1,10 @@
-module CloudFlare.Tests.RuntimeTests
+module Fidelity.CloudEdge.Tests.RuntimeTests
 
 open Expecto
 open Fable.Core
-open CloudFlare.Worker.Context
-open CloudFlare.Worker.Context.Helpers
-open CloudFlare.AI
+open Fidelity.CloudEdge.Worker.Context
+open Fidelity.CloudEdge.Worker.Context.Helpers
+open Fidelity.CloudEdge.AI
 
 #if FABLE_COMPILER
 open Fable.Mocha

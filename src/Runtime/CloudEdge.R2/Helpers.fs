@@ -1,6 +1,6 @@
-module CloudFlare.R2.Helpers
+module Fidelity.CloudEdge.R2.Helpers
 
-open CloudFlare.R2
+open Fidelity.CloudEdge.R2
 open Fable.Core
 open Fable.Core.JsInterop
 

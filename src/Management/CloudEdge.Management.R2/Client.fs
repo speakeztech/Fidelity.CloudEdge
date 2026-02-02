@@ -1,11 +1,11 @@
-namespace rec CloudFlare.Management.R2
+namespace rec Fidelity.CloudEdge.Management.R2
 
 open System.Net
 open System.Net.Http
 open System.Text
 open System.Threading
-open CloudFlare.Management.R2.Types
-open CloudFlare.Management.R2.Http
+open Fidelity.CloudEdge.Management.R2.Types
+open Fidelity.CloudEdge.Management.R2.Http
 
 ///R2 Object Storage Management API
 type R2Client(httpClient: HttpClient) =

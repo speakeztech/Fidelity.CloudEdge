@@ -1,4 +1,4 @@
-namespace rec CloudFlare.Management.Vectorize.Types
+namespace rec Fidelity.CloudEdge.Management.Vectorize.Types
 
 ///Identifier
 type vectorizeidentifier = string

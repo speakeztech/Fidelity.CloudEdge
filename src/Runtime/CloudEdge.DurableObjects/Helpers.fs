@@ -1,8 +1,8 @@
-module CloudFlare.DurableObjects.Helpers
+module Fidelity.CloudEdge.DurableObjects.Helpers
 
-open CloudFlare.DurableObjects
-open CloudFlare.Worker.Context
-open CloudFlare.Worker.Context.Globals
+open Fidelity.CloudEdge.DurableObjects
+open Fidelity.CloudEdge.Worker.Context
+open Fidelity.CloudEdge.Worker.Context.Globals
 open Fable.Core
 open Fable.Core.JsInterop
 open System

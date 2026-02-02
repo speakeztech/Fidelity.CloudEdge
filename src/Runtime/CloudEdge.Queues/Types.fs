@@ -1,4 +1,4 @@
-namespace CloudFlare.Queues
+namespace Fidelity.CloudEdge.Queues
 
 open Fable.Core
 open Fable.Core.JsInterop

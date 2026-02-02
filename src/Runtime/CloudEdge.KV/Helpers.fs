@@ -1,6 +1,6 @@
-module CloudFlare.KV.Helpers
+module Fidelity.CloudEdge.KV.Helpers
 
-open CloudFlare.KV
+open Fidelity.CloudEdge.KV
 open Fable.Core
 open Fable.Core.JsInterop
 

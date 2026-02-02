@@ -1,4 +1,4 @@
-namespace CloudFlare.Management.Analytics.Http
+namespace Fidelity.CloudEdge.Management.Analytics.Http
 
 open System
 open System.Net.Http

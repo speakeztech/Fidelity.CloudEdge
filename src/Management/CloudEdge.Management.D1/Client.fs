@@ -1,11 +1,11 @@
-namespace rec CloudFlare.Management.D1
+namespace rec Fidelity.CloudEdge.Management.D1
 
 open System.Net
 open System.Net.Http
 open System.Text
 open System.Threading
-open CloudFlare.Management.D1.Types
-open CloudFlare.Management.D1.Http
+open Fidelity.CloudEdge.Management.D1.Types
+open Fidelity.CloudEdge.Management.D1.Http
 
 ///D1 Database Management API
 type D1Client(httpClient: HttpClient) =

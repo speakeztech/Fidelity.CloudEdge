@@ -1,6 +1,6 @@
-module CloudFlare.Queues.Helpers
+module Fidelity.CloudEdge.Queues.Helpers
 
-open CloudFlare.Queues
+open Fidelity.CloudEdge.Queues
 open Fable.Core
 open Fable.Core.JsInterop
 open System

@@ -1,4 +1,4 @@
-namespace CloudFlare.D1
+namespace Fidelity.CloudEdge.D1
 
 open Fable.Core
 open Fable.Core.JsInterop

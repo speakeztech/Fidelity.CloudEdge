@@ -3,9 +3,9 @@ namespace AskAI.Worker
 open System
 open Fable.Core
 open Fable.Core.JsInterop
-open CloudFlare.Worker.Context
-open CloudFlare.D1
-open CloudFlare.AI.Generated
+open Fidelity.CloudEdge.Worker.Context
+open Fidelity.CloudEdge.D1
+open Fidelity.CloudEdge.AI.Generated
 
 /// Request handlers for the Ask AI worker
 /// Demonstrates streaming SSE responses, AutoRAG integration, and D1 logging

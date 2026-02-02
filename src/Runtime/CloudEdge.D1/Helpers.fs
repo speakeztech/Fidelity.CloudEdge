@@ -1,6 +1,6 @@
-module CloudFlare.D1.Helpers
+module Fidelity.CloudEdge.D1.Helpers
 
-open CloudFlare.D1
+open Fidelity.CloudEdge.D1
 open Fable.Core
 
 /// Execute a parameterized query and return all results

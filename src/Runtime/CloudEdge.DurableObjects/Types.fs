@@ -1,8 +1,8 @@
-namespace CloudFlare.DurableObjects
+namespace Fidelity.CloudEdge.DurableObjects
 
 open Fable.Core
 open Fable.Core.JsInterop
-open CloudFlare.Worker.Context
+open Fidelity.CloudEdge.Worker.Context
 open System
 
 /// Durable Object ID

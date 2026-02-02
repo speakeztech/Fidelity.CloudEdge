@@ -1,4 +1,4 @@
-namespace rec CloudFlare.Management.Hyperdrive.Types
+namespace rec Fidelity.CloudEdge.Management.Hyperdrive.Types
 
 type ``hyperdrivehyperdrive-name`` = string
 type ``hyperdrivehyperdrive-origin-connection-limit`` = int

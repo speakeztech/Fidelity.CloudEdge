@@ -1,4 +1,4 @@
-namespace CloudFlare.AI
+namespace Fidelity.CloudEdge.AI
 
 [<AutoOpen>]
 module Extensions =

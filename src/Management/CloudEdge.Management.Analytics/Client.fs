@@ -1,11 +1,11 @@
-namespace rec CloudFlare.Management.Analytics
+namespace rec Fidelity.CloudEdge.Management.Analytics
 
 open System.Net
 open System.Net.Http
 open System.Text
 open System.Threading
-open CloudFlare.Management.Analytics.Types
-open CloudFlare.Management.Analytics.Http
+open Fidelity.CloudEdge.Management.Analytics.Types
+open Fidelity.CloudEdge.Management.Analytics.Http
 
 ///Analytics API
 type AnalyticsClient(httpClient: HttpClient) =

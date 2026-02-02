@@ -1,4 +1,4 @@
-namespace rec CloudFlare.Management.Workers.Types
+namespace rec Fidelity.CloudEdge.Management.Workers.Types
 
 type workerskvbulkdelete = list<workerskvkeynamebulk>
 

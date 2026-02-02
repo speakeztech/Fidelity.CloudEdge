@@ -1,7 +1,7 @@
-module CloudFlare.Tests.CoreTests
+module Fidelity.CloudEdge.Tests.CoreTests
 
 open Expecto
-open CloudFlare.Core
+open Fidelity.CloudEdge.Core
 
 let tests =
     testList "CloudFlare.Core Tests" [

@@ -1,4 +1,4 @@
-module CloudFlare.Tests.DeploymentTests
+module Fidelity.CloudEdge.Tests.DeploymentTests
 
 open Expecto
 open System

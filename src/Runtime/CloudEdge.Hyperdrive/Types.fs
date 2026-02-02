@@ -1,4 +1,4 @@
-namespace CloudFlare.Hyperdrive
+namespace Fidelity.CloudEdge.Hyperdrive
 
 open Fable.Core
 open Fable.Core.JsInterop

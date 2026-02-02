@@ -1,6 +1,6 @@
-module CloudFlare.Vectorize.Helpers
+module Fidelity.CloudEdge.Vectorize.Helpers
 
-open CloudFlare.Vectorize
+open Fidelity.CloudEdge.Vectorize
 open Fable.Core
 open Fable.Core.JsInterop
 open System

@@ -1,4 +1,4 @@
-namespace CloudFlare.Management.Hyperdrive.Http
+namespace Fidelity.CloudEdge.Management.Hyperdrive.Http
 
 open System
 open System.Net.Http

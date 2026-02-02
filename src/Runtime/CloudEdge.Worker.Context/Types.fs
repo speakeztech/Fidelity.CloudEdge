@@ -1,4 +1,4 @@
-namespace CloudFlare.Worker.Context
+namespace Fidelity.CloudEdge.Worker.Context
 
 open Fable.Core
 open Fable.Core.JsInterop

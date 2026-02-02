@@ -2,9 +2,9 @@ module R2WebDAV.Auth
 
 open Fable.Core
 open Fable.Core.JsInterop
-open CloudFlare.Worker.Context
-open CloudFlare.Worker.Context.Globals
-open CloudFlare.R2
+open Fidelity.CloudEdge.Worker.Context
+open Fidelity.CloudEdge.Worker.Context.Globals
+open Fidelity.CloudEdge.R2
 
 [<Emit("new TextEncoder()")>]
 let createTextEncoder() : obj = jsNative

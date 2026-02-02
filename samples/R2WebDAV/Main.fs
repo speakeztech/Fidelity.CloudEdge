@@ -2,9 +2,9 @@ module R2WebDAV.Main
 
 open Fable.Core
 open Fable.Core.JsInterop
-open CloudFlare.Worker.Context
-open CloudFlare.Worker.Context.Globals
-open CloudFlare.Worker.Context.Helpers
+open Fidelity.CloudEdge.Worker.Context
+open Fidelity.CloudEdge.Worker.Context.Globals
+open Fidelity.CloudEdge.Worker.Context.Helpers
 open R2WebDAV.Auth
 open R2WebDAV.WebDav
 

@@ -3,7 +3,7 @@ module Sample.CLI.WorkersClient
 open System
 open System.Net.Http
 open System.Text.Json
-open CloudFlare.Management.Workers
+open Fidelity.CloudEdge.Management.Workers
 open Sample.CLI.Config
 
 type WorkersOperations(config: CloudflareConfig) =

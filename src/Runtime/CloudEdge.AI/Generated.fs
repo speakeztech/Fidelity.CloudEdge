@@ -1,4 +1,4 @@
-module rec CloudFlare.AI.Generated
+module rec Fidelity.CloudEdge.AI.Generated
 
 open Fable.Core
 open Fable.Core.JsInterop

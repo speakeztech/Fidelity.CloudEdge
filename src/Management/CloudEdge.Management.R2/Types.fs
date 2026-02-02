@@ -1,4 +1,4 @@
-namespace rec CloudFlare.Management.R2.Types
+namespace rec Fidelity.CloudEdge.Management.R2.Types
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type r2slurperJobStatus =

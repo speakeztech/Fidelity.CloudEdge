@@ -1,4 +1,4 @@
-namespace rec CloudFlare.Management.DurableObjects.Types
+namespace rec Fidelity.CloudEdge.Management.DurableObjects.Types
 
 ///Opaque token indicating the position from which to continue when requesting the next set of records. A valid value for the cursor can be obtained from the cursors object in the result_info structure.
 type workerscursor = string

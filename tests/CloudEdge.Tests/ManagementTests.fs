@@ -1,10 +1,10 @@
-module CloudFlare.Tests.ManagementTests
+module Fidelity.CloudEdge.Tests.ManagementTests
 
 open Expecto
 open System
 open System.Net.Http
-open CloudFlare.Management.D1
-open CloudFlare.Management.R2
+open Fidelity.CloudEdge.Management.D1
+open Fidelity.CloudEdge.Management.R2
 
 let tests =
     testList "CloudFlare.Management Tests" [

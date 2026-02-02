@@ -3,7 +3,7 @@ module Sample.CLI.R2Client
 open System
 open System.Net.Http
 open System.Text.Json
-open CloudFlare.Management.R2
+open Fidelity.CloudEdge.Management.R2
 open Sample.CLI.Config
 
 type BucketInfo = {
