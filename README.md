@@ -390,29 +390,6 @@ The complete toolkit will provide:
 
 We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
-### Development Areas
-
-Fidelity.CloudEdge is advancing toward production-ready bindings and Framework integration:
-
-**Completed**:
-- ✅ Complete rebrand to Fidelity.CloudEdge with Framework positioning
-- ✅ Management API namespace standardization (all services use `Fidelity.CloudEdge.Management.*`)
-- ✅ System.Text.Json migration for Fable compatibility
-- ✅ All Runtime bindings (KV, R2, D1, AI, Queues, Vectorize, Hyperdrive, DurableObjects)
-- ✅ 8 Management APIs fully generated and compiling
-
-**In Progress**:
-- 🔄 KV Management API (Hawaii generation challenges)
-- 🔄 Logs Management API (extraction patterns pending)
-- 🔄 Framework integration planning for actor migration
-
-**Future Work**:
-- Build the `cfs` CLI tool for type-safe, Framework-aware deployment
-- Create Firetower monitoring application with cross-substrate visibility
-- Implement actor migration between bare metal (Firefly) and edge (Fable)
-- Expand sample applications demonstrating actor model patterns
-- Contribute improvements back to Glutinum and Hawaii
-
 ## Support
 
 - **Issues**: [GitHub Issues](https://github.com/speakeztech/Fidelity.CloudEdge/issues)
@@ -442,8 +419,6 @@ Fidelity.CloudEdge stands on the shoulders of giants:
 - **[Glutinum](https://github.com/glutinum-org)** - TypeScript to F# binding generator. Thanks to Maxime Mangel for this invaluable tool that makes Worker bindings possible.
 
 - **[Hawaii](https://github.com/Zaid-Ajaj/Hawaii)** - OpenAPI to F# client generator. Thanks to Zaid Ajaj for creating this and pioneering F# on Cloudflare Workers.
-
-- **[F# Software Foundation](https://fsharp.org/)** - For fostering a language that makes functional programming practical and enjoyable, and for `MailboxProcessor` which proves the actor model's substrate transparency.
 
 - **[Cloudflare](https://cloudflare.com)** - For building an incredible edge platform with Durable Objects, providing the sequential execution context necessary for actor guarantees at the edge.
 

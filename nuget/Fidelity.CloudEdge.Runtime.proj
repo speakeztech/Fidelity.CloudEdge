@@ -26,30 +26,30 @@
 
   <!-- Core: DLLs and XML docs -->
   <ItemGroup>
-    <None Include="..\src\Core\CloudEdge.Core\bin\Release\net8.0\CloudEdge.Core.dll" Pack="true" PackagePath="lib\net8.0" />
-    <None Include="..\src\Core\CloudEdge.Core\bin\Release\net8.0\CloudEdge.Core.xml" Pack="true" PackagePath="lib\net8.0" />
+    <None Include="..\src\Core\CloudEdge.Core\bin\Release\net8.0\Fidelity.CloudEdge.Core.dll" Pack="true" PackagePath="lib\net8.0" />
+    <None Include="..\src\Core\CloudEdge.Core\bin\Release\net8.0\Fidelity.CloudEdge.Core.xml" Pack="true" PackagePath="lib\net8.0" />
   </ItemGroup>
 
   <!-- Runtime: DLLs and XML docs -->
   <ItemGroup>
-    <None Include="..\src\Runtime\CloudEdge.AI\bin\Release\net8.0\CloudEdge.AI.dll" Pack="true" PackagePath="lib\net8.0" />
-    <None Include="..\src\Runtime\CloudEdge.AI\bin\Release\net8.0\CloudEdge.AI.xml" Pack="true" PackagePath="lib\net8.0" />
-    <None Include="..\src\Runtime\CloudEdge.D1\bin\Release\net8.0\CloudEdge.D1.dll" Pack="true" PackagePath="lib\net8.0" />
-    <None Include="..\src\Runtime\CloudEdge.D1\bin\Release\net8.0\CloudEdge.D1.xml" Pack="true" PackagePath="lib\net8.0" />
-    <None Include="..\src\Runtime\CloudEdge.DurableObjects\bin\Release\net8.0\CloudEdge.DurableObjects.dll" Pack="true" PackagePath="lib\net8.0" />
-    <None Include="..\src\Runtime\CloudEdge.DurableObjects\bin\Release\net8.0\CloudEdge.DurableObjects.xml" Pack="true" PackagePath="lib\net8.0" />
-    <None Include="..\src\Runtime\CloudEdge.Hyperdrive\bin\Release\net8.0\CloudEdge.Hyperdrive.dll" Pack="true" PackagePath="lib\net8.0" />
-    <None Include="..\src\Runtime\CloudEdge.Hyperdrive\bin\Release\net8.0\CloudEdge.Hyperdrive.xml" Pack="true" PackagePath="lib\net8.0" />
-    <None Include="..\src\Runtime\CloudEdge.KV\bin\Release\net8.0\CloudEdge.KV.dll" Pack="true" PackagePath="lib\net8.0" />
-    <None Include="..\src\Runtime\CloudEdge.KV\bin\Release\net8.0\CloudEdge.KV.xml" Pack="true" PackagePath="lib\net8.0" />
-    <None Include="..\src\Runtime\CloudEdge.Queues\bin\Release\net8.0\CloudEdge.Queues.dll" Pack="true" PackagePath="lib\net8.0" />
-    <None Include="..\src\Runtime\CloudEdge.Queues\bin\Release\net8.0\CloudEdge.Queues.xml" Pack="true" PackagePath="lib\net8.0" />
-    <None Include="..\src\Runtime\CloudEdge.R2\bin\Release\net8.0\CloudEdge.R2.dll" Pack="true" PackagePath="lib\net8.0" />
-    <None Include="..\src\Runtime\CloudEdge.R2\bin\Release\net8.0\CloudEdge.R2.xml" Pack="true" PackagePath="lib\net8.0" />
-    <None Include="..\src\Runtime\CloudEdge.Vectorize\bin\Release\net8.0\CloudEdge.Vectorize.dll" Pack="true" PackagePath="lib\net8.0" />
-    <None Include="..\src\Runtime\CloudEdge.Vectorize\bin\Release\net8.0\CloudEdge.Vectorize.xml" Pack="true" PackagePath="lib\net8.0" />
-    <None Include="..\src\Runtime\CloudEdge.Worker.Context\bin\Release\net8.0\CloudEdge.Worker.Context.dll" Pack="true" PackagePath="lib\net8.0" />
-    <None Include="..\src\Runtime\CloudEdge.Worker.Context\bin\Release\net8.0\CloudEdge.Worker.Context.xml" Pack="true" PackagePath="lib\net8.0" />
+    <None Include="..\src\Runtime\CloudEdge.AI\bin\Release\net8.0\Fidelity.CloudEdge.AI.dll" Pack="true" PackagePath="lib\net8.0" />
+    <None Include="..\src\Runtime\CloudEdge.AI\bin\Release\net8.0\Fidelity.CloudEdge.AI.xml" Pack="true" PackagePath="lib\net8.0" />
+    <None Include="..\src\Runtime\CloudEdge.D1\bin\Release\net8.0\Fidelity.CloudEdge.D1.dll" Pack="true" PackagePath="lib\net8.0" />
+    <None Include="..\src\Runtime\CloudEdge.D1\bin\Release\net8.0\Fidelity.CloudEdge.D1.xml" Pack="true" PackagePath="lib\net8.0" />
+    <None Include="..\src\Runtime\CloudEdge.DurableObjects\bin\Release\net8.0\Fidelity.CloudEdge.DurableObjects.dll" Pack="true" PackagePath="lib\net8.0" />
+    <None Include="..\src\Runtime\CloudEdge.DurableObjects\bin\Release\net8.0\Fidelity.CloudEdge.DurableObjects.xml" Pack="true" PackagePath="lib\net8.0" />
+    <None Include="..\src\Runtime\CloudEdge.Hyperdrive\bin\Release\net8.0\Fidelity.CloudEdge.Hyperdrive.dll" Pack="true" PackagePath="lib\net8.0" />
+    <None Include="..\src\Runtime\CloudEdge.Hyperdrive\bin\Release\net8.0\Fidelity.CloudEdge.Hyperdrive.xml" Pack="true" PackagePath="lib\net8.0" />
+    <None Include="..\src\Runtime\CloudEdge.KV\bin\Release\net8.0\Fidelity.CloudEdge.KV.dll" Pack="true" PackagePath="lib\net8.0" />
+    <None Include="..\src\Runtime\CloudEdge.KV\bin\Release\net8.0\Fidelity.CloudEdge.KV.xml" Pack="true" PackagePath="lib\net8.0" />
+    <None Include="..\src\Runtime\CloudEdge.Queues\bin\Release\net8.0\Fidelity.CloudEdge.Queues.dll" Pack="true" PackagePath="lib\net8.0" />
+    <None Include="..\src\Runtime\CloudEdge.Queues\bin\Release\net8.0\Fidelity.CloudEdge.Queues.xml" Pack="true" PackagePath="lib\net8.0" />
+    <None Include="..\src\Runtime\CloudEdge.R2\bin\Release\net8.0\Fidelity.CloudEdge.R2.dll" Pack="true" PackagePath="lib\net8.0" />
+    <None Include="..\src\Runtime\CloudEdge.R2\bin\Release\net8.0\Fidelity.CloudEdge.R2.xml" Pack="true" PackagePath="lib\net8.0" />
+    <None Include="..\src\Runtime\CloudEdge.Vectorize\bin\Release\net8.0\Fidelity.CloudEdge.Vectorize.dll" Pack="true" PackagePath="lib\net8.0" />
+    <None Include="..\src\Runtime\CloudEdge.Vectorize\bin\Release\net8.0\Fidelity.CloudEdge.Vectorize.xml" Pack="true" PackagePath="lib\net8.0" />
+    <None Include="..\src\Runtime\CloudEdge.Worker.Context\bin\Release\net8.0\Fidelity.CloudEdge.Worker.Context.dll" Pack="true" PackagePath="lib\net8.0" />
+    <None Include="..\src\Runtime\CloudEdge.Worker.Context\bin\Release\net8.0\Fidelity.CloudEdge.Worker.Context.xml" Pack="true" PackagePath="lib\net8.0" />
   </ItemGroup>
 
   <!-- Fable: consolidated project file for Fable compilation -->

@@ -26,15 +26,15 @@
 
   <!-- Management: DLLs -->
   <ItemGroup>
-    <None Include="..\src\Management\CloudEdge.Management.Analytics\bin\Release\netstandard2.0\CloudEdge.Management.Analytics.dll" Pack="true" PackagePath="lib\netstandard2.0" />
-    <None Include="..\src\Management\CloudEdge.Management.D1\bin\Release\netstandard2.0\CloudEdge.Management.D1.dll" Pack="true" PackagePath="lib\netstandard2.0" />
-    <None Include="..\src\Management\CloudEdge.Management.DurableObjects\bin\Release\netstandard2.0\CloudEdge.Management.DurableObjects.dll" Pack="true" PackagePath="lib\netstandard2.0" />
-    <None Include="..\src\Management\CloudEdge.Management.Hyperdrive\bin\Release\netstandard2.0\CloudEdge.Management.Hyperdrive.dll" Pack="true" PackagePath="lib\netstandard2.0" />
-    <None Include="..\src\Management\CloudEdge.Management.Pages\bin\Release\netstandard2.0\CloudEdge.Management.Pages.dll" Pack="true" PackagePath="lib\netstandard2.0" />
-    <None Include="..\src\Management\CloudEdge.Management.Queues\bin\Release\netstandard2.0\CloudEdge.Management.Queues.dll" Pack="true" PackagePath="lib\netstandard2.0" />
-    <None Include="..\src\Management\CloudEdge.Management.R2\bin\Release\netstandard2.0\CloudEdge.Management.R2.dll" Pack="true" PackagePath="lib\netstandard2.0" />
-    <None Include="..\src\Management\CloudEdge.Management.Vectorize\bin\Release\netstandard2.0\CloudEdge.Management.Vectorize.dll" Pack="true" PackagePath="lib\netstandard2.0" />
-    <None Include="..\src\Management\CloudEdge.Management.Workers\bin\Release\netstandard2.0\CloudEdge.Management.Workers.dll" Pack="true" PackagePath="lib\netstandard2.0" />
+    <None Include="..\src\Management\CloudEdge.Management.Analytics\bin\Release\netstandard2.0\Fidelity.CloudEdge.Management.Analytics.dll" Pack="true" PackagePath="lib\netstandard2.0" />
+    <None Include="..\src\Management\CloudEdge.Management.D1\bin\Release\netstandard2.0\Fidelity.CloudEdge.Management.D1.dll" Pack="true" PackagePath="lib\netstandard2.0" />
+    <None Include="..\src\Management\CloudEdge.Management.DurableObjects\bin\Release\netstandard2.0\Fidelity.CloudEdge.Management.DurableObjects.dll" Pack="true" PackagePath="lib\netstandard2.0" />
+    <None Include="..\src\Management\CloudEdge.Management.Hyperdrive\bin\Release\netstandard2.0\Fidelity.CloudEdge.Management.Hyperdrive.dll" Pack="true" PackagePath="lib\netstandard2.0" />
+    <None Include="..\src\Management\CloudEdge.Management.Pages\bin\Release\netstandard2.0\Fidelity.CloudEdge.Management.Pages.dll" Pack="true" PackagePath="lib\netstandard2.0" />
+    <None Include="..\src\Management\CloudEdge.Management.Queues\bin\Release\netstandard2.0\Fidelity.CloudEdge.Management.Queues.dll" Pack="true" PackagePath="lib\netstandard2.0" />
+    <None Include="..\src\Management\CloudEdge.Management.R2\bin\Release\netstandard2.0\Fidelity.CloudEdge.Management.R2.dll" Pack="true" PackagePath="lib\netstandard2.0" />
+    <None Include="..\src\Management\CloudEdge.Management.Vectorize\bin\Release\netstandard2.0\Fidelity.CloudEdge.Management.Vectorize.dll" Pack="true" PackagePath="lib\netstandard2.0" />
+    <None Include="..\src\Management\CloudEdge.Management.Workers\bin\Release\netstandard2.0\Fidelity.CloudEdge.Management.Workers.dll" Pack="true" PackagePath="lib\netstandard2.0" />
   </ItemGroup>
 
 </Project>
