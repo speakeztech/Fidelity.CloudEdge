@@ -144,13 +144,122 @@ The actor model does not operate in isolation. Cloudflare provides a full comple
 | Log export | Logpush | Structured logs from Diagnostics Channel can be exported to external systems (S3, Splunk, Datadog) for long-term retention and cross-system correlation. |
 | Real-time debugging | Tail Workers | Attach to live actor traffic for debugging without modifying the actor code or adding instrumentation. Zero overhead when not attached. |
 | Distributed tracing | Workers Traces | Automatic span capture across Worker invocations, DO handlers, and subrequests. No SDK required; enable via wrangler configuration. |
+| Dynamic compute | Worker Loader | Runtime spawning of lightweight V8 isolates with millisecond startup. Used by the elastic scaling pattern to create disposable replicas that consume from Queues without the overhead of full Durable Objects. |
 
-Back-pressure in particular is well-served by this model. WebSocket does not natively support flow control, but the combination of Queues (as a durable buffer between a fast producer and a slow consumer), Analytics Engine (to detect throughput imbalances), and Prospero supervision (to spawn additional Olivier workers when queue depth exceeds a threshold) provides a complete solution without application-level flow control protocols.
+Back-pressure in particular is well-served by this model. WebSocket does not natively support flow control, but the combination of Queues (as a durable buffer between a fast producer and a slow consumer), Analytics Engine (to detect throughput imbalances), and Prospero supervision (to spawn additional Olivier workers when queue depth exceeds a threshold) provides a complete solution without application-level flow control protocols. See [Elastic Scaling](#elastic-scaling) below for the full pattern.
+
+## Elastic Scaling
+
+### Referential Transparency and Actor Replication
+
+The standard actor model assumes one instance per identity: a single DO processes all messages for a given actor ID. For stateful actors, this is essential. For referentially transparent actors, those whose output is determined solely by the input message with no dependency on local mutable state, the single-instance constraint is a throughput bottleneck, not a correctness requirement.
+
+The framework introduces an elastic scaling pattern for referentially transparent Olivier actors, using Cloudflare Queues as the pivot between single-instance and replicated execution.
+
+### Adaptive Fan-Out
+
+The scaling lifecycle is managed entirely by the supervising Prospero:
+
+1. **Normal operation**: Messages flow via WebSocket directly to the Olivier. Single instance, minimal latency.
+2. **Threshold breach**: The Prospero detects queue depth or latency exceeding a configured threshold (via `PendingCount` or Analytics Engine metrics).
+3. **Queue pivot**: The Prospero redirects inbound messages from the direct WebSocket path to a Cloudflare Queue bound to the actor's message type.
+4. **Replica spawn**: The Prospero spawns replicas as Queue consumers (see [Replica Strategies](#replica-strategies) below). Each replica pulls messages at its own rate with automatic batching and retry.
+5. **Drain and converge**: As the Queue drains and throughput normalizes, the Prospero stops replicas and reverts to direct WebSocket delivery.
+
+```
+Normal:
+  Sender ──WS──▶ Olivier (single instance)
+
+Under load:
+  Sender ──WS──▶ Prospero ──▶ Queue
+                                │
+                    ┌───────────┼───────────┐
+                    ▼           ▼           ▼
+                Olivier-1   Olivier-2   Olivier-3
+                (consumer)  (consumer)  (consumer)
+```
+
+The transition is invisible to the sender. The Prospero rewrites the routing; the sender continues to `Tell` via the same `ActorRef`. Queue consumers receive messages through the standard Cloudflare Queue consumer handler, which the `Olivier<'Msg>` base class adapts into the same `Handle(msg)` dispatch path.
+
+### Replica Strategies
+
+The replica instantiation mechanism depends on the weight of the work being scaled.
+
+**Worker Loader Isolates (Lightweight)**
+
+Cloudflare's Worker Loader binding (`worker_loaders`) enables runtime spawning of lightweight V8 isolates with millisecond startup. For referentially transparent Oliviers, the Prospero can use Worker Loader to spin up disposable isolates that consume from the Queue. These isolates carry no identity, no transactional storage, and no WebSocket overhead; they are pure compute units that exist only to process messages and terminate.
+
+```fsharp
+type ReplicaStrategy =
+    | Isolate       // Worker Loader: lightweight, no state, millisecond startup
+    | DurableObject // Full DO: has identity and storage, heavier but recoverable
+```
+
+The `Isolate` strategy is appropriate when replicas need only the `Handle(msg)` logic and no access to actor state or storage. The Prospero loads the Olivier's compiled JavaScript via the Worker Loader binding, injects the Queue consumer binding as an environment variable, and the isolate begins processing immediately. When the Queue drains, the Prospero simply stops requesting isolates; they are garbage collected by the runtime.
+
+The `DurableObject` strategy is appropriate when replicas need access to shared state (e.g., a read-only view of a configuration store) or when the work is long-lived enough to benefit from DO hibernation between Queue batches.
+
+**Worker Loader Configuration**
+
+The Prospero's wrangler configuration includes a Worker Loader binding:
+
+```jsonc
+{
+  "worker_loaders": [
+    { "binding": "ACTOR_LOADER" }
+  ]
+}
+```
+
+At runtime, the Prospero resolves replicas by loading the actor's Fable-compiled JavaScript module:
+
+```javascript
+let replica = env.ACTOR_LOADER.get(`replica-${actorId}-${n}`, async () => ({
+  compatibilityDate: "2025-06-01",
+  mainModule: "olivier-handler.js",
+  modules: actorModules,
+  env: { QUEUE: queueBinding, ACTOR_CONFIG: config }
+}));
+```
+
+Isolates start in milliseconds and cost less than DOs, making them suitable for burst scaling where the replica count might fluctuate rapidly.
+
+### Supervision Metadata
+
+The Prospero must know which children are eligible for replication. This is expressed as supervision metadata, not as a property of the actor itself:
+
+```fsharp
+type ChildSpec<'Msg> =
+    { ActorType: Type
+      Strategy: SupervisionStrategy
+      Scaling: ScalingPolicy }
+
+type ScalingPolicy =
+    | SingleInstance                          // Stateful; never replicate
+    | Elastic of ElasticConfig
+
+type ElasticConfig =
+    { MinReplicas: int
+      MaxReplicas: int
+      QueueThreshold: int
+      ReplicaStrategy: ReplicaStrategy }
+
+type ReplicaStrategy =
+    | Isolate       // Worker Loader: lightweight, no state, millisecond startup
+    | DurableObject // Full DO: has identity and storage, heavier but recoverable
+```
+
+A `SingleInstance` policy means the actor is stateful and must remain a single DO. An `Elastic` policy declares the actor referentially transparent and specifies scaling bounds and the replica instantiation mechanism. The Prospero manages the lifecycle of replicas, the Queue binding, and the routing pivot.
+
+### What Elastic Scaling Solves
+
+This pattern addresses two concerns simultaneously:
+
+- **Back-pressure**: Queues absorb burst traffic that would overwhelm a single actor's WebSocket buffer. Messages are durable and retried on failure; no data is lost.
+- **WebSocket connection limits**: Replicas consume from a Queue, not from a WebSocket. The sender maintains a single WebSocket to the Prospero. The fan-out happens behind the Queue, where connection limits do not apply.
 
 ## Open Questions
 
-1. **WebSocket connection limits**: Cloudflare imposes limits on the number of concurrent WebSocket connections per DO. For supervision trees with many children, this may require connection pooling or hierarchical supervision (Prosperos supervising other Prosperos).
+1. **Message ordering under elastic scaling**: When messages are distributed across replicas via a Queue, per-sender ordering is lost. For referentially transparent actors this is acceptable (processing is commutative), but the framework should make this trade-off explicit in the `ScalingPolicy` declaration.
 
-2. **Message ordering across connections**: WebSocket guarantees ordering within a single connection, but not across connections. If Actor A sends messages to Actor C, and Actor B also sends messages to Actor C, the interleaving between A's and B's messages is non-deterministic. This is consistent with standard actor semantics (per-sender ordering, not global ordering).
-
-3. **State migration**: When a Prospero decides to migrate an Olivier from one substrate to another (e.g., Cloudflare to bare metal), the state transfer protocol needs definition. BAREWire can serialize the state, but the trigger, coordination, and consistency guarantees require design.
+2. **State migration**: When a Prospero decides to migrate an Olivier from one substrate to another (e.g., Cloudflare to bare metal), the state transfer protocol needs definition. BAREWire can serialize the state, but the trigger, coordination, and consistency guarantees require design.

@@ -274,6 +274,30 @@ Prospero: "session-supervisor"
 
 Each node is a Durable Object. Each edge is a WebSocket connection. The entire tree can span multiple Cloudflare data centers; the platform handles routing transparently.
 
+### 5.4 Elastic Scaling
+
+For referentially transparent Olivier actors (stateless message processors whose output depends solely on the input message), the Prospero can dynamically scale from single-instance to replicated execution using Cloudflare Queues as the pivot.
+
+The Prospero's `ChildSpec` declares a `ScalingPolicy`:
+
+```fsharp
+type ScalingPolicy =
+    | SingleInstance                          // Stateful; never replicate
+    | Elastic of minReplicas: int * maxReplicas: int * queueThreshold: int
+```
+
+When an `Elastic` child's queue depth exceeds the threshold, the Prospero:
+
+1. Creates a Cloudflare Queue for the actor's message type (if not already provisioned).
+2. Redirects inbound messages from WebSocket delivery to Queue writes.
+3. Spawns additional Olivier instances as Queue consumers.
+4. Monitors Queue depth and scales replicas up or down within the declared bounds.
+5. Reverts to direct WebSocket delivery when the Queue drains and load normalizes.
+
+This is a supervision-level concern. The Olivier code is unchanged; it processes messages through the same `Handle(msg)` path whether messages arrive via WebSocket or Queue consumer handler. The `Olivier<'Msg>` base class adapts both delivery mechanisms into a uniform dispatch.
+
+See [Elastic Scaling in the Overview](08a_actor_model_overview.md#elastic-scaling) for the full architectural description.
+
 ## 6. Connection Topology
 
 ### 6.1 Intra-Cloudflare
