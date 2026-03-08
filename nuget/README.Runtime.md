@@ -12,70 +12,50 @@ The package includes 727 types generated from the official [@cloudflare/workers-
 
 ## Supported Services
 
-### Core Worker APIs
+The runtime surface is split into two tiers. **Dedicated packages** provide hand-crafted types and idiomatic F# helper modules for the most commonly used Cloudflare services. The **Worker.Context** package contains Glutinum-generated bindings covering the remainder of the `@cloudflare/workers-types` surface.
 
-| Service | Namespace | Description |
-|---------|-----------|-------------|
-| **Worker.Context** | `Fidelity.CloudEdge.Worker.Context` | Request, Response, Headers, FetchEvent, ExecutionContext, Fetcher, ServiceWorkerGlobalScope |
-| **Fetch and Networking** | `Fidelity.CloudEdge.Worker.Context` | Fetch API, Socket, SocketAddress, SocketOptions, URL, URLPattern, URLSearchParams |
-| **Streams** | `Fidelity.CloudEdge.Worker.Context` | ReadableStream, WritableStream, TransformStream, FixedLengthStream, CompressionStream, DecompressionStream |
-| **Crypto** | `Fidelity.CloudEdge.Worker.Context` | Web Crypto API: SubtleCrypto, CryptoKey, CryptoKeyPair, DigestStream |
-| **Cache** | `Fidelity.CloudEdge.Worker.Context` | Cache API, CacheStorage, CacheQueryOptions |
-| **HTMLRewriter** | `Fidelity.CloudEdge.Worker.Context` | HTML parsing and transformation on the edge |
-| **Encoding** | `Fidelity.CloudEdge.Worker.Context` | TextEncoderStream, TextDecoderStream |
-| **Forms and Blobs** | `Fidelity.CloudEdge.Worker.Context` | FormData, Blob, BlobOptions |
+### Dedicated Service Packages
 
-### Storage and Data
+Each package below has its own `Types.fs` and `Helpers.fs` modules with idiomatic F# APIs.
 
-| Service | Namespace | Description |
-|---------|-----------|-------------|
-| **KV** | `Fidelity.CloudEdge.KV` | Key-value storage: get, put, delete, list with expiration and metadata |
-| **R2** | `Fidelity.CloudEdge.R2` | S3-compatible object storage operations |
-| **D1** | `Fidelity.CloudEdge.D1` | SQLite database queries, prepared statements, batch operations, sessions |
-| **Durable Objects** | `Fidelity.CloudEdge.DurableObjects` | Stateful compute with transactional storage, alarms, WebSocket hibernation, and RPC |
-| **Queues** | `Fidelity.CloudEdge.Queues` | Message queue producers and consumers with retry and batching |
-| **Vectorize** | `Fidelity.CloudEdge.Vectorize` | Vector database for embeddings, similarity search, and metadata filtering |
-| **Hyperdrive** | `Fidelity.CloudEdge.Hyperdrive` | Database connection pooling with automatic caching |
-| **Analytics Engine** | `Fidelity.CloudEdge.Worker.Context` | AnalyticsEngineDataset, AnalyticsEngineDataPoint |
+| Package | Namespace | Key Types |
+|---------|-----------|-----------|
+| **D1** | `Fidelity.CloudEdge.D1` | D1Database, D1PreparedStatement, D1Result\<'T\>, D1ExecResult |
+| **KV** | `Fidelity.CloudEdge.KV` | KVNamespace, KVPutOptions, KVListOptions, KVListResult, KVKey |
+| **R2** | `Fidelity.CloudEdge.R2` | R2Bucket, R2Object, R2ObjectBody, R2PutOptions, R2HTTPMetadata |
+| **DurableObjects** | `Fidelity.CloudEdge.DurableObjects` | DurableObjectId, DurableObjectStub, DurableObjectNamespace |
+| **Queues** | `Fidelity.CloudEdge.Queues` | Queue\<'Body\>, Message\<'Body\>, MessageBatch\<'Body\>, QueueSendOptions |
+| **AI** | `Fidelity.CloudEdge.AI` | Per-model typed I/O for text generation, embeddings, image generation, speech, translation, classification, object detection |
+| **Vectorize** | `Fidelity.CloudEdge.Vectorize` | VectorizeVector, VectorizeMatches, VectorMatch, VectorizeQueryOptions |
+| **Hyperdrive** | `Fidelity.CloudEdge.Hyperdrive` | Hyperdrive, connection pooling, PostgreSQL/MySQL URL builders |
 
-### AI and ML
+### Worker.Context (Generated Bindings)
 
-| Service | Namespace | Description |
-|---------|-----------|-------------|
-| **Workers AI** | `Fidelity.CloudEdge.AI` | Full inference API with per-model typed inputs and outputs (text generation, embeddings, image generation, speech, translation, classification, object detection, and more) |
-| **AI Gateway** | `Fidelity.CloudEdge.Worker.Context` | AiGateway routing, logging, and provider configuration |
-| **AI Search** | `Fidelity.CloudEdge.Worker.Context` | AiSearchInstance, search requests and responses |
-| **AutoRAG** | `Fidelity.CloudEdge.Worker.Context` | Automated retrieval-augmented generation with search and chat |
+`Fidelity.CloudEdge.Worker.Context` contains the core Worker runtime types plus the full Glutinum-generated surface from `@cloudflare/workers-types`. All types below share the `Fidelity.CloudEdge.Worker.Context` namespace.
 
-### Compute and Orchestration
-
-| Service | Namespace | Description |
-|---------|-----------|-------------|
-| **Containers** | `Fidelity.CloudEdge.Worker.Context` | Container runtime with startup options |
-| **Workflows** | `Fidelity.CloudEdge.Worker.Context` | Durable workflow instances, sleep/retry durations, error handling |
-| **Service Bindings** | `Fidelity.CloudEdge.Worker.Context` | Service-to-service RPC via Fetcher and Service types |
-| **Cron Triggers** | `Fidelity.CloudEdge.Worker.Context` | ExportedHandlerScheduledHandler, SchedulerWaitOptions |
-
-### Media
-
-| Service | Namespace | Description |
-|---------|-----------|-------------|
-| **Images** | `Fidelity.CloudEdge.Worker.Context` | ImagesBinding, ImageTransformer, transformations, draw, metadata, upload |
-| **Media Transforms** | `Fidelity.CloudEdge.Worker.Context` | MediaTransformer, MediaTransformationGenerator for video/audio processing |
-| **Markdown** | `Fidelity.CloudEdge.Worker.Context` | ToMarkdownService for HTML-to-Markdown conversion |
-
-### Email
-
-| Service | Namespace | Description |
-|---------|-----------|-------------|
-| **Email Routing** | `Fidelity.CloudEdge.Worker.Context` | EmailMessage, EmailEvent, ForwardableEmailMessage, SendEmail |
-
-### Observability
-
-| Service | Namespace | Description |
-|---------|-----------|-------------|
-| **Tail and Trace** | `Fidelity.CloudEdge.Worker.Context` | TailEvent, TraceItem, TraceLog, TraceMetrics, TraceDiagnosticChannelEvent |
-| **WebSockets** | `Fidelity.CloudEdge.Worker.Context` | WebSocket, WebSocketEventMap, hibernatable WebSocket events |
+| Category | Key Types |
+|----------|-----------|
+| **Core Worker APIs** | Request, Response, Headers, FetchEvent, ExecutionContext, Fetcher, ServiceWorkerGlobalScope |
+| **Fetch and Networking** | Fetch API, Socket, SocketAddress, SocketOptions, URL, URLPattern, URLSearchParams |
+| **Streams** | ReadableStream, WritableStream, TransformStream, FixedLengthStream, CompressionStream, DecompressionStream |
+| **Crypto** | SubtleCrypto, CryptoKey, CryptoKeyPair, DigestStream |
+| **Cache** | Cache, CacheStorage, CacheQueryOptions |
+| **HTMLRewriter** | HTMLRewriter, Element, Comment, Text, DocumentEnd |
+| **WebSockets** | WebSocket, WebSocketEventMap, hibernatable WebSocket events |
+| **Encoding and Data** | TextEncoderStream, TextDecoderStream, FormData, Blob, BlobOptions |
+| **Analytics Engine** | AnalyticsEngineDataset, AnalyticsEngineDataPoint |
+| **AI Gateway** | AiGateway routing, logging, and provider configuration |
+| **AI Search** | AiSearchInstance, search requests and responses |
+| **AutoRAG** | Automated retrieval-augmented generation with search and chat |
+| **Containers** | Container runtime with startup options |
+| **Workflows** | Durable workflow instances, sleep/retry durations, error handling |
+| **Service Bindings** | Fetcher, Service types for service-to-service RPC |
+| **Cron Triggers** | ExportedHandlerScheduledHandler, SchedulerWaitOptions |
+| **Images** | ImagesBinding, ImageTransformer, transformations, draw, metadata, upload |
+| **Media Transforms** | MediaTransformer, MediaTransformationGenerator for video/audio processing |
+| **Markdown** | ToMarkdownService for HTML-to-Markdown conversion |
+| **Email Routing** | EmailMessage, EmailEvent, ForwardableEmailMessage, SendEmail |
+| **Tail and Trace** | TailEvent, TraceItem, TraceLog, TraceMetrics, TraceDiagnosticChannelEvent |
 
 ## Installation
 
@@ -109,20 +89,22 @@ This package includes both compiled .NET DLLs (for IDE support and type checking
 ### Package Structure
 
 ```
-lib/net10.0/           Compiled DLLs for IDE intellisense
-fable/                 F# sources for Fable compilation
-  Core/                  Shared utilities
+lib/net10.0/                       Compiled DLLs for IDE intellisense
+fable/                             F# sources for Fable compilation
+  Core/                              Shared utilities
   Runtime/
-    CloudEdge.AI/        Workers AI bindings
-    CloudEdge.D1/        D1 database bindings
-    CloudEdge.DurableObjects/  Durable Objects bindings
-    CloudEdge.Hyperdrive/      Hyperdrive bindings
-    CloudEdge.KV/        KV storage bindings
-    CloudEdge.Queues/    Queue bindings
-    CloudEdge.R2/        R2 object storage bindings
-    CloudEdge.Vectorize/ Vector database bindings
-    CloudEdge.Worker.Context/  Core types + full workers-types surface (727 types)
+    CloudEdge.Worker.Context/        Core types + Glutinum-generated surface
+    CloudEdge.D1/                    D1 database (Types.fs + Helpers.fs)
+    CloudEdge.KV/                    KV storage (Types.fs + Helpers.fs)
+    CloudEdge.R2/                    R2 object storage (Types.fs + Helpers.fs)
+    CloudEdge.DurableObjects/        Durable Objects (Types.fs + Helpers.fs)
+    CloudEdge.Queues/                Queue messaging (Types.fs + Helpers.fs)
+    CloudEdge.AI/                    Workers AI (Generated.fs + Extensions.fs)
+    CloudEdge.Vectorize/             Vector database (Types.fs + Helpers.fs)
+    CloudEdge.Hyperdrive/            Database proxy (Types.fs + Helpers.fs)
 ```
+
+The 727 type count spans all 9 assemblies. `Worker.Context` accounts for the majority via its `Generated.fs` Glutinum output; the dedicated packages contribute focused, hand-crafted types with helper modules.
 
 ## Requirements
 

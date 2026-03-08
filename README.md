@@ -43,24 +43,28 @@ This dual-substrate approach enables:
 
 ### Runtime Bindings (727 types)
 
-The Runtime package covers the complete Cloudflare Workers runtime surface:
+The runtime surface is distributed across focused packages. `Worker.Context` provides the core Worker API and generated Glutinum bindings; each additional service ships as a separate package with its own `Types` and `Helpers` modules.
 
-| Category | Services |
-|----------|----------|
-| **Core Worker APIs** | Request, Response, Headers, FetchEvent, ExecutionContext, Fetch, Socket, URL, URLPattern, URLSearchParams |
-| **Streams** | ReadableStream, WritableStream, TransformStream, FixedLengthStream, CompressionStream, DecompressionStream |
-| **Crypto** | Web Crypto API: SubtleCrypto, CryptoKey, CryptoKeyPair, DigestStream |
-| **Cache** | Cache API, CacheStorage, CacheQueryOptions |
-| **HTMLRewriter** | HTML parsing and transformation on the edge |
-| **Storage** | KV, R2, D1 (with sessions), Durable Objects (with RPC, alarms, WebSocket hibernation) |
-| **Messaging** | Queues (producers, consumers, retry, batching) |
-| **AI/ML** | Workers AI (per-model typed I/O), AI Gateway, AI Search, AutoRAG |
-| **Data** | Vectorize, Hyperdrive, Analytics Engine |
-| **Compute** | Containers, Workflows, Service Bindings, Cron Triggers |
-| **Media** | Images (transform, draw, upload), Media Transforms, Markdown conversion |
-| **Email** | EmailMessage, EmailEvent, ForwardableEmailMessage, SendEmail |
-| **Observability** | Tail, Trace, TraceLog, TraceMetrics, diagnostic channels |
-| **Networking** | WebSocket (with hibernation), Encoding streams, FormData, Blob |
+| Package | Category | Key Types |
+|---------|----------|-----------|
+| `Worker.Context` | Core Worker APIs | Request, Response, Headers, FetchEvent, ExecutionContext, Fetch, Socket, URL, URLPattern, URLSearchParams |
+| `Worker.Context` | Streams | ReadableStream, WritableStream, TransformStream, FixedLengthStream, CompressionStream, DecompressionStream |
+| `Worker.Context` | Crypto | SubtleCrypto, CryptoKey, CryptoKeyPair, DigestStream |
+| `Worker.Context` | Cache | Cache, CacheStorage, CacheQueryOptions |
+| `Worker.Context` | HTMLRewriter | HTMLRewriter, Element, Comment, Text, DocumentEnd |
+| `Worker.Context` | Networking | WebSocket (with hibernation), Encoding streams, FormData, Blob |
+| `Worker.Context` | Media | Images (transform, draw, upload), Media Transforms, Markdown conversion |
+| `Worker.Context` | Email | EmailMessage, EmailEvent, ForwardableEmailMessage, SendEmail |
+| `Worker.Context` | Compute | Containers, Workflows, Service Bindings, Cron Triggers |
+| `Worker.Context` | Observability | Tail, Trace, TraceLog, TraceMetrics, diagnostic channels |
+| `D1` | SQL Database | D1Database, D1PreparedStatement, D1Result\<'T\>, D1ExecResult |
+| `KV` | Key-Value Store | KVNamespace, KVPutOptions, KVListOptions, KVListResult, KVKey |
+| `R2` | Object Storage | R2Bucket, R2Object, R2ObjectBody, R2PutOptions, R2HTTPMetadata |
+| `DurableObjects` | Stateful Actors | DurableObjectId, DurableObjectStub, DurableObjectNamespace |
+| `Queues` | Messaging | Queue\<'Body\>, Message\<'Body\>, MessageBatch\<'Body\>, QueueSendOptions |
+| `AI` | AI/ML Inference | Workers AI (per-model typed I/O), AI Gateway, AI Search, AutoRAG |
+| `Vectorize` | Vector Search | VectorizeVector, VectorizeMatches, VectorMatch, VectorizeQueryOptions |
+| `Hyperdrive` | Database Proxy | Hyperdrive, connection pooling, PostgreSQL/MySQL URL builders |
 
 ### Management Clients (32 services)
 
