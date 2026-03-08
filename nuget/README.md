@@ -20,14 +20,13 @@ This will:
 
 ## Changing the Version
 
-Edit the respective `.proj` file and update the `<Version>` element:
-
-- `Fidelity.CloudEdge.Runtime.proj` for the Runtime package
-- `Fidelity.CloudEdge.Management.proj` for the Management package
+Edit `Directory.Build.props` and update the `<Version>` element:
 
 ```xml
-<Version>0.1.0</Version>
+<Version>0.1.2</Version>
 ```
+
+The version is shared by both packages. It can also be overridden at pack time via `/p:PackageVersion=x.y.z`. The GitHub Actions workflow (`nuget-publish.yml`) extracts the version from the git tag automatically.
 
 ---
 
@@ -57,7 +56,7 @@ This means when you add, remove, or rename files in any Runtime project, you jus
 
 ```
 Fidelity.CloudEdge.Runtime.{version}.nupkg
-├── lib/net8.0/           # Compiled DLLs for IDE support
+├── lib/net10.0/           # Compiled DLLs for IDE support
 │   ├── Fidelity.CloudEdge.AI.dll
 │   ├── Fidelity.CloudEdge.D1.dll
 │   ├── Fidelity.CloudEdge.KV.dll
@@ -106,17 +105,40 @@ Fidelity.CloudEdge.Management.{version}.nupkg
 └── README.md
 ```
 
-### Projects Included
+### Projects Included (32 services)
 
+- `Fidelity.CloudEdge.Management.Access` - Zero Trust Access management
+- `Fidelity.CloudEdge.Management.AI` - Workers AI management
+- `Fidelity.CloudEdge.Management.AIGateway` - AI Gateway management
+- `Fidelity.CloudEdge.Management.AISearch` - AI Search management
 - `Fidelity.CloudEdge.Management.Analytics` - Analytics API client
+- `Fidelity.CloudEdge.Management.AutoRAG` - AutoRAG management
+- `Fidelity.CloudEdge.Management.BrowserRendering` - Browser Rendering management
+- `Fidelity.CloudEdge.Management.Builds` - Builds management
+- `Fidelity.CloudEdge.Management.Calls` - Calls management
+- `Fidelity.CloudEdge.Management.Containers` - Containers management
 - `Fidelity.CloudEdge.Management.D1` - D1 database management
 - `Fidelity.CloudEdge.Management.DurableObjects` - Durable Objects management
+- `Fidelity.CloudEdge.Management.Email` - Email Routing management
+- `Fidelity.CloudEdge.Management.Gateway` - Zero Trust Gateway management
 - `Fidelity.CloudEdge.Management.Hyperdrive` - Hyperdrive management
+- `Fidelity.CloudEdge.Management.Images` - Images management
+- `Fidelity.CloudEdge.Management.KV` - KV storage management
+- `Fidelity.CloudEdge.Management.LoadBalancers` - Load Balancers management
+- `Fidelity.CloudEdge.Management.Logs` - Logs management
+- `Fidelity.CloudEdge.Management.Magic` - Magic Transit management
 - `Fidelity.CloudEdge.Management.Pages` - Pages management
+- `Fidelity.CloudEdge.Management.Pipelines` - Pipelines management
 - `Fidelity.CloudEdge.Management.Queues` - Queues management
 - `Fidelity.CloudEdge.Management.R2` - R2 storage management
+- `Fidelity.CloudEdge.Management.R2Catalog` - R2 Catalog management
+- `Fidelity.CloudEdge.Management.SecretsStore` - Secrets Store management
+- `Fidelity.CloudEdge.Management.Stream` - Stream management
+- `Fidelity.CloudEdge.Management.Tunnels` - Tunnels management
 - `Fidelity.CloudEdge.Management.Vectorize` - Vectorize management
+- `Fidelity.CloudEdge.Management.WaitingRooms` - Waiting Rooms management
 - `Fidelity.CloudEdge.Management.Workers` - Workers management
+- `Fidelity.CloudEdge.Management.Workflows` - Workflows management
 
 ---
 
