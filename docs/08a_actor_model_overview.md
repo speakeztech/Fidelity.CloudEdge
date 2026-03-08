@@ -131,6 +131,22 @@ Akka.NET interoperability is planned via a BAREWire serializer plugin and a stat
 - MoQ transport evaluation and integration
 - Akka.NET serializer plugin for BAREWire
 
+## Cloudflare Backplane Services
+
+The actor model does not operate in isolation. Cloudflare provides a full complement of backplane services that address common distributed systems concerns without requiring custom infrastructure. The framework should be designed with awareness that these services exist and can be composed with actors as needed.
+
+| Concern | Cloudflare Service | Actor Model Integration |
+|---------|-------------------|------------------------|
+| Back-pressure / buffering | Queues | Actors can consume from Queues at their own rate; producers write to Queues instead of sending directly to a slow actor. Queues provide durable, ordered message delivery with configurable batch sizes and retry policies. |
+| Scheduled work | Cron Triggers, DO Alarms | Cron Triggers invoke Workers on a schedule; DO Alarms wake individual actors at specific times. Both are push-based, consistent with the actor model's reactive design. |
+| Dead-letter storage | KV, D1, R2 | Messages that fail processing after retry can be written to KV (fast, simple), D1 (queryable), or R2 (large payloads) for later inspection or reprocessing. |
+| Metrics / alerting | Analytics Engine | Actor throughput, latency, and error rates emitted via `writeDataPoint()` are queryable via SQL. Alerting pipelines can monitor for anomalies and trigger corrective actions. |
+| Log export | Logpush | Structured logs from Diagnostics Channel can be exported to external systems (S3, Splunk, Datadog) for long-term retention and cross-system correlation. |
+| Real-time debugging | Tail Workers | Attach to live actor traffic for debugging without modifying the actor code or adding instrumentation. Zero overhead when not attached. |
+| Distributed tracing | Workers Traces | Automatic span capture across Worker invocations, DO handlers, and subrequests. No SDK required; enable via wrangler configuration. |
+
+Back-pressure in particular is well-served by this model. WebSocket does not natively support flow control, but the combination of Queues (as a durable buffer between a fast producer and a slow consumer), Analytics Engine (to detect throughput imbalances), and Prospero supervision (to spawn additional Olivier workers when queue depth exceeds a threshold) provides a complete solution without application-level flow control protocols.
+
 ## Open Questions
 
 1. **WebSocket connection limits**: Cloudflare imposes limits on the number of concurrent WebSocket connections per DO. For supervision trees with many children, this may require connection pooling or hierarchical supervision (Prosperos supervising other Prosperos).
@@ -138,5 +154,3 @@ Akka.NET interoperability is planned via a BAREWire serializer plugin and a stat
 2. **Message ordering across connections**: WebSocket guarantees ordering within a single connection, but not across connections. If Actor A sends messages to Actor C, and Actor B also sends messages to Actor C, the interleaving between A's and B's messages is non-deterministic. This is consistent with standard actor semantics (per-sender ordering, not global ordering).
 
 3. **State migration**: When a Prospero decides to migrate an Olivier from one substrate to another (e.g., Cloudflare to bare metal), the state transfer protocol needs definition. BAREWire can serialize the state, but the trigger, coordination, and consistency guarantees require design.
-
-4. **Back-pressure**: WebSocket does not natively support back-pressure. A fast sender can overwhelm a slow receiver. Options include application-level flow control (credit-based), DO-level rate limiting, or accepting message loss for non-critical paths.
