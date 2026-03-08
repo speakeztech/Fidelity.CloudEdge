@@ -23,7 +23,7 @@ This will:
 Edit `Directory.Build.props` and update the `<Version>` element:
 
 ```xml
-<Version>0.1.3</Version>
+<Version>0.1.4</Version>
 ```
 
 The version is shared by both packages. It can also be overridden at pack time via `/p:PackageVersion=x.y.z`. The GitHub Actions workflow (`nuget-publish.yml`) extracts the version from the git tag automatically.
