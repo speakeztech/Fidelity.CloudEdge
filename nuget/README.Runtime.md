@@ -127,7 +127,6 @@ fable/                 F# sources for Fable compilation
 ## Requirements
 
 - [Fable](https://fable.io/) 4.x for F# to JavaScript compilation
-- A Cloudflare Workers project (typically set up with [Wrangler](https://developers.cloudflare.com/workers/wrangler/))
 - `Fable.Core` and `Fable.Promise` (included as transitive dependencies)
 
 ## Related Package
