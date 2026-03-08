@@ -15,8 +15,8 @@
     <Company>Fidelity Framework</Company>
     <Copyright>Copyright (c) Fidelity Framework Contributors</Copyright>
     <PackageLicenseExpression>MIT OR Apache-2.0</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/speakeztech/Fidelity.CloudEdge</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/speakeztech/Fidelity.CloudEdge</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/FidelityFramework/Fidelity.CloudEdge</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/FidelityFramework/Fidelity.CloudEdge</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
   </PropertyGroup>
