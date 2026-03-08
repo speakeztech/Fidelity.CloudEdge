@@ -1,0 +1,10 @@
+{
+  "schema": "./temp/Images-openapi.json",
+  "project": "Fidelity.CloudEdge.Management.Images",
+  "output": "./Generated-Images",
+  "namespace": "Fidelity.CloudEdge.Management.Images",
+  "synchronous": false,
+  "target": "fsharp",
+  "generateClient": true,
+  "clientName": "ImagesManagementClient"
+}

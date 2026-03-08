@@ -1,7 +1,7 @@
 {
-  "schema": "./schemas/Pages-openapi.json",
+  "schema": "./temp/Pages-openapi.json",
   "project": "Fidelity.CloudEdge.Management.Pages",
-  "output": "../../src/Management/CloudEdge.Management.Pages",
+  "output": "./Generated-Pages",
   "namespace": "Fidelity.CloudEdge.Management.Pages",
   "synchronous": false,
   "target": "fsharp",

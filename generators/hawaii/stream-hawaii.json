@@ -1,0 +1,10 @@
+{
+  "schema": "./temp/Stream-openapi.json",
+  "project": "Fidelity.CloudEdge.Management.Stream",
+  "output": "./Generated-Stream",
+  "namespace": "Fidelity.CloudEdge.Management.Stream",
+  "synchronous": false,
+  "target": "fsharp",
+  "generateClient": true,
+  "clientName": "StreamManagementClient"
+}

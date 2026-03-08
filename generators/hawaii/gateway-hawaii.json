@@ -1,0 +1,10 @@
+{
+  "schema": "./temp/Gateway-openapi.json",
+  "project": "Fidelity.CloudEdge.Management.Gateway",
+  "output": "./Generated-Gateway",
+  "namespace": "Fidelity.CloudEdge.Management.Gateway",
+  "synchronous": false,
+  "target": "fsharp",
+  "generateClient": true,
+  "clientName": "GatewayManagementClient"
+}

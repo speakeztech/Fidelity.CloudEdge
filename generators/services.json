@@ -1,0 +1,441 @@
+{
+  "_comment": "Master service registry for Fidelity.CloudEdge binding generation. Each service maps to a Cloudflare API segment with its OpenAPI path patterns, Hawaii config, and post-processor requirements.",
+  "services": {
+    "kv": {
+      "name": "KV",
+      "description": "KV Storage Management API",
+      "operationPrefix": "kv",
+      "pathPatterns": [
+        "/accounts/{account_id}/storage/kv/namespaces",
+        "/accounts/{account_id}/storage/kv/namespaces/{namespace_id}",
+        "/accounts/{account_id}/storage/kv/namespaces/{namespace_id}/bulk",
+        "/accounts/{account_id}/storage/kv/namespaces/{namespace_id}/keys",
+        "/accounts/{account_id}/storage/kv/namespaces/{namespace_id}/metadata/{key_name}",
+        "/accounts/{account_id}/storage/kv/namespaces/{namespace_id}/values/{key_name}"
+      ],
+      "hawaiiConfig": "kv-hawaii.json",
+      "namespace": "Fidelity.CloudEdge.Management.KV",
+      "postProcessors": [],
+      "status": "active"
+    },
+    "r2": {
+      "name": "R2",
+      "description": "R2 Object Storage Management API",
+      "operationPrefix": "r2",
+      "pathPatterns": [
+        "/accounts/{account_id}/r2/buckets",
+        "/accounts/{account_id}/r2/buckets/{bucket_name}",
+        "/accounts/{account_id}/r2/buckets/{bucket_name}/objects",
+        "/accounts/{account_id}/r2/buckets/{bucket_name}/sippy",
+        "/accounts/{account_id}/r2/buckets/{bucket_name}/usage"
+      ],
+      "hawaiiConfig": "r2-hawaii.json",
+      "namespace": "Fidelity.CloudEdge.Management.R2",
+      "postProcessors": [],
+      "status": "active"
+    },
+    "d1": {
+      "name": "D1",
+      "description": "D1 Database Management API",
+      "operationPrefix": "d1",
+      "pathPatterns": [
+        "/accounts/{account_id}/d1/database",
+        "/accounts/{account_id}/d1/database/{database_id}",
+        "/accounts/{account_id}/d1/database/{database_id}/backup",
+        "/accounts/{account_id}/d1/database/{database_id}/query",
+        "/accounts/{account_id}/d1/database/{database_id}/raw"
+      ],
+      "hawaiiConfig": "d1-hawaii.json",
+      "namespace": "Fidelity.CloudEdge.Management.D1",
+      "postProcessors": [],
+      "status": "active"
+    },
+    "workers": {
+      "name": "Workers",
+      "description": "Workers Script Management API",
+      "operationPrefix": "workers",
+      "pathPatterns": [
+        "/accounts/{account_id}/workers/scripts",
+        "/accounts/{account_id}/workers/scripts/{script_name}",
+        "/accounts/{account_id}/workers/scripts/{script_name}/content",
+        "/accounts/{account_id}/workers/scripts/{script_name}/schedules",
+        "/accounts/{account_id}/workers/scripts/{script_name}/secrets",
+        "/accounts/{account_id}/workers/scripts/{script_name}/tails",
+        "/accounts/{account_id}/workers/scripts/{script_name}/usage-model",
+        "/accounts/{account_id}/workers/scripts/{script_name}/versions",
+        "/accounts/{account_id}/workers/scripts/{script_name}/versions/{version_id}",
+        "/accounts/{account_id}/workers/services",
+        "/accounts/{account_id}/workers/subdomain"
+      ],
+      "hawaiiConfig": "workers-hawaii.json",
+      "namespace": "Fidelity.CloudEdge.Management.Workers",
+      "postProcessors": [
+        {
+          "name": "discriminators",
+          "args": {
+            "listType": "workersbindings",
+            "itemType": "workers_binding_item",
+            "kindPrefix": "workersbindingkind"
+          }
+        },
+        {
+          "name": "jobject-multipart"
+        },
+        {
+          "name": "missing-body-params",
+          "args": {
+            "methodName": "WorkerPutScriptSecret",
+            "bodyType": "Types.workersbindingkindsecrettext"
+          }
+        }
+      ],
+      "status": "active"
+    },
+    "analytics": {
+      "name": "Analytics",
+      "description": "Analytics API",
+      "operationPrefix": "analytics",
+      "pathPatterns": [
+        "/accounts/{account_id}/analytics",
+        "/zones/{zone_id}/analytics/dashboard",
+        "/zones/{zone_id}/analytics/latency",
+        "/accounts/{account_id}/workers/scripts/{script_name}/analytics"
+      ],
+      "hawaiiConfig": "analytics-hawaii.json",
+      "namespace": "Fidelity.CloudEdge.Management.Analytics",
+      "postProcessors": [],
+      "status": "active"
+    },
+    "logs": {
+      "name": "Logs",
+      "description": "Logs and Logpush API",
+      "operationPrefix": "logs",
+      "pathPatterns": [
+        "/zones/{zone_id}/logs/control/retention/flag",
+        "/zones/{zone_id}/logs/rayids/{ray_id}",
+        "/zones/{zone_id}/logs/received",
+        "/zones/{zone_id}/logs/received/fields",
+        "/accounts/{account_id}/logs/control/cmb/config",
+        "/accounts/{account_id}/logpull/datasets/{dataset}/fields",
+        "/accounts/{account_id}/logpull/datasets/{dataset}/jobs",
+        "/accounts/{account_id}/logpush/datasets/{dataset}/fields",
+        "/accounts/{account_id}/logpush/datasets/{dataset}/jobs"
+      ],
+      "hawaiiConfig": "logs-hawaii.json",
+      "namespace": "Fidelity.CloudEdge.Management.Logs",
+      "postProcessors": [],
+      "status": "active"
+    },
+    "queues": {
+      "name": "Queues",
+      "description": "Message Queue Management API",
+      "operationPrefix": "queues",
+      "pathPatterns": [
+        "/accounts/{account_id}/queues",
+        "/accounts/{account_id}/queues/{queue_id}",
+        "/accounts/{account_id}/queues/{queue_id}/consumers",
+        "/accounts/{account_id}/queues/{queue_id}/consumers/{consumer_id}",
+        "/accounts/{account_id}/queues/{queue_id}/messages",
+        "/accounts/{account_id}/queues/{queue_id}/messages/ack",
+        "/accounts/{account_id}/queues/{queue_id}/messages/batch",
+        "/accounts/{account_id}/queues/{queue_id}/messages/pull",
+        "/accounts/{account_id}/queues/{queue_id}/purge"
+      ],
+      "hawaiiConfig": "queues-hawaii.json",
+      "namespace": "Fidelity.CloudEdge.Management.Queues",
+      "postProcessors": [],
+      "status": "active"
+    },
+    "vectorize": {
+      "name": "Vectorize",
+      "description": "Vector Database Management API (V2)",
+      "operationPrefix": "vectorize",
+      "pathPatterns": [
+        "/accounts/{account_id}/vectorize/v2/indexes",
+        "/accounts/{account_id}/vectorize/v2/indexes/{index_name}",
+        "/accounts/{account_id}/vectorize/v2/indexes/{index_name}/delete_by_ids",
+        "/accounts/{account_id}/vectorize/v2/indexes/{index_name}/get_by_ids",
+        "/accounts/{account_id}/vectorize/v2/indexes/{index_name}/info",
+        "/accounts/{account_id}/vectorize/v2/indexes/{index_name}/insert",
+        "/accounts/{account_id}/vectorize/v2/indexes/{index_name}/list",
+        "/accounts/{account_id}/vectorize/v2/indexes/{index_name}/metadata_index/create",
+        "/accounts/{account_id}/vectorize/v2/indexes/{index_name}/metadata_index/delete",
+        "/accounts/{account_id}/vectorize/v2/indexes/{index_name}/metadata_index/list",
+        "/accounts/{account_id}/vectorize/v2/indexes/{index_name}/query",
+        "/accounts/{account_id}/vectorize/v2/indexes/{index_name}/upsert"
+      ],
+      "hawaiiConfig": "vectorize-hawaii.json",
+      "namespace": "Fidelity.CloudEdge.Management.Vectorize",
+      "postProcessors": [],
+      "status": "active"
+    },
+    "hyperdrive": {
+      "name": "Hyperdrive",
+      "description": "Database Connection Pooling API",
+      "operationPrefix": "hyperdrive",
+      "pathPatterns": [
+        "/accounts/{account_id}/hyperdrive/configs",
+        "/accounts/{account_id}/hyperdrive/configs/{hyperdrive_id}"
+      ],
+      "hawaiiConfig": "hyperdrive-hawaii.json",
+      "namespace": "Fidelity.CloudEdge.Management.Hyperdrive",
+      "postProcessors": [],
+      "status": "active"
+    },
+    "durable-objects": {
+      "name": "DurableObjects",
+      "description": "Durable Objects Management API",
+      "operationPrefix": "durable-objects",
+      "pathPatterns": [
+        "/accounts/{account_id}/workers/durable_objects/namespaces",
+        "/accounts/{account_id}/workers/durable_objects/namespaces/{id}/objects"
+      ],
+      "hawaiiConfig": "durableobjects-hawaii.json",
+      "namespace": "Fidelity.CloudEdge.Management.DurableObjects",
+      "postProcessors": [],
+      "status": "active"
+    },
+    "pages": {
+      "name": "Pages",
+      "description": "Pages Deployment Management API",
+      "operationPrefix": "pages",
+      "pathPrefix": "/accounts/{account_id}/pages",
+      "pathPatterns": [],
+      "hawaiiConfig": "pages-hawaii.json",
+      "namespace": "Fidelity.CloudEdge.Management.Pages",
+      "postProcessors": [],
+      "status": "active"
+    },
+    "ai": {
+      "name": "AI",
+      "description": "Workers AI Model Inference and Management API",
+      "operationPrefix": "ai",
+      "pathPrefix": "/accounts/{account_id}/ai",
+      "pathPatterns": [],
+      "hawaiiConfig": "ai-hawaii.json",
+      "namespace": "Fidelity.CloudEdge.Management.AI",
+      "postProcessors": [],
+      "status": "active"
+    },
+    "ai-gateway": {
+      "name": "AIGateway",
+      "description": "AI Gateway Proxy and Observability API",
+      "operationPrefix": "ai-gateway",
+      "pathPrefix": "/accounts/{account_id}/ai-gateway",
+      "pathPatterns": [],
+      "hawaiiConfig": "ai-gateway-hawaii.json",
+      "namespace": "Fidelity.CloudEdge.Management.AIGateway",
+      "postProcessors": [],
+      "status": "active"
+    },
+    "ai-search": {
+      "name": "AISearch",
+      "description": "AI Search Index Management API",
+      "operationPrefix": "ai-search",
+      "pathPrefix": "/accounts/{account_id}/ai-search",
+      "pathPatterns": [],
+      "hawaiiConfig": "ai-search-hawaii.json",
+      "namespace": "Fidelity.CloudEdge.Management.AISearch",
+      "postProcessors": [],
+      "status": "active"
+    },
+    "autorag": {
+      "name": "AutoRAG",
+      "description": "AutoRAG Pipeline Management API",
+      "operationPrefix": "autorag",
+      "pathPrefix": "/accounts/{account_id}/autorag",
+      "pathPatterns": [],
+      "hawaiiConfig": "autorag-hawaii.json",
+      "namespace": "Fidelity.CloudEdge.Management.AutoRAG",
+      "postProcessors": [],
+      "status": "active"
+    },
+    "containers": {
+      "name": "Containers",
+      "description": "Container Registry and Deployment API",
+      "operationPrefix": "containers",
+      "pathPrefix": "/accounts/{account_id}/containers",
+      "pathPatterns": [],
+      "hawaiiConfig": "containers-hawaii.json",
+      "namespace": "Fidelity.CloudEdge.Management.Containers",
+      "postProcessors": [],
+      "status": "active"
+    },
+    "workflows": {
+      "name": "Workflows",
+      "description": "Workflows Orchestration API",
+      "operationPrefix": "workflows",
+      "pathPrefix": "/accounts/{account_id}/workflows",
+      "pathPatterns": [],
+      "hawaiiConfig": "workflows-hawaii.json",
+      "namespace": "Fidelity.CloudEdge.Management.Workflows",
+      "postProcessors": [],
+      "status": "active"
+    },
+    "pipelines": {
+      "name": "Pipelines",
+      "description": "Data Pipelines API",
+      "operationPrefix": "pipelines",
+      "pathPrefix": "/accounts/{account_id}/pipelines",
+      "pathPatterns": [],
+      "hawaiiConfig": "pipelines-hawaii.json",
+      "namespace": "Fidelity.CloudEdge.Management.Pipelines",
+      "postProcessors": [],
+      "status": "active"
+    },
+    "browser-rendering": {
+      "name": "BrowserRendering",
+      "description": "Browser Rendering API",
+      "operationPrefix": "browser-rendering",
+      "pathPrefix": "/accounts/{account_id}/browser-rendering",
+      "pathPatterns": [],
+      "hawaiiConfig": "browser-rendering-hawaii.json",
+      "namespace": "Fidelity.CloudEdge.Management.BrowserRendering",
+      "postProcessors": [],
+      "status": "active"
+    },
+    "stream": {
+      "name": "Stream",
+      "description": "Video Streaming and Processing API",
+      "operationPrefix": "stream",
+      "pathPrefix": "/accounts/{account_id}/stream",
+      "pathPatterns": [],
+      "hawaiiConfig": "stream-hawaii.json",
+      "namespace": "Fidelity.CloudEdge.Management.Stream",
+      "postProcessors": [],
+      "status": "active"
+    },
+    "images": {
+      "name": "Images",
+      "description": "Image Optimization and Storage API",
+      "operationPrefix": "images",
+      "pathPrefix": "/accounts/{account_id}/images",
+      "pathPatterns": [],
+      "hawaiiConfig": "images-hawaii.json",
+      "namespace": "Fidelity.CloudEdge.Management.Images",
+      "postProcessors": [],
+      "status": "active"
+    },
+    "r2-catalog": {
+      "name": "R2Catalog",
+      "description": "R2 Data Catalog API",
+      "operationPrefix": "r2-catalog",
+      "pathPrefix": "/accounts/{account_id}/r2-catalog",
+      "pathPatterns": [],
+      "hawaiiConfig": "r2-catalog-hawaii.json",
+      "namespace": "Fidelity.CloudEdge.Management.R2Catalog",
+      "postProcessors": [],
+      "status": "active"
+    },
+    "secrets-store": {
+      "name": "SecretsStore",
+      "description": "Secrets Store Management API",
+      "operationPrefix": "secrets_store",
+      "pathPrefix": "/accounts/{account_id}/secrets_store",
+      "pathPatterns": [],
+      "hawaiiConfig": "secrets-store-hawaii.json",
+      "namespace": "Fidelity.CloudEdge.Management.SecretsStore",
+      "postProcessors": [],
+      "status": "active"
+    },
+    "tunnels": {
+      "name": "Tunnels",
+      "description": "Cloudflare Tunnel Management API",
+      "operationPrefix": "cfd_tunnel",
+      "pathPrefix": "/accounts/{account_id}/cfd_tunnel",
+      "pathPatterns": [],
+      "hawaiiConfig": "tunnels-hawaii.json",
+      "namespace": "Fidelity.CloudEdge.Management.Tunnels",
+      "postProcessors": [],
+      "status": "active"
+    },
+    "access": {
+      "name": "Access",
+      "description": "Zero Trust Access Management API",
+      "operationPrefix": "access",
+      "pathPrefix": "/accounts/{account_id}/access",
+      "pathPatterns": [],
+      "hawaiiConfig": "access-hawaii.json",
+      "namespace": "Fidelity.CloudEdge.Management.Access",
+      "postProcessors": [],
+      "status": "active"
+    },
+    "gateway": {
+      "name": "Gateway",
+      "description": "Zero Trust Gateway API",
+      "operationPrefix": "gateway",
+      "pathPrefix": "/accounts/{account_id}/gateway",
+      "pathPatterns": [],
+      "hawaiiConfig": "gateway-hawaii.json",
+      "namespace": "Fidelity.CloudEdge.Management.Gateway",
+      "postProcessors": [],
+      "status": "active"
+    },
+    "email": {
+      "name": "Email",
+      "description": "Email Routing API",
+      "operationPrefix": "email",
+      "pathPrefix": "/accounts/{account_id}/email",
+      "pathPatterns": [],
+      "hawaiiConfig": "email-hawaii.json",
+      "namespace": "Fidelity.CloudEdge.Management.Email",
+      "postProcessors": [],
+      "status": "active"
+    },
+    "calls": {
+      "name": "Calls",
+      "description": "Cloudflare Calls API",
+      "operationPrefix": "calls",
+      "pathPrefix": "/accounts/{account_id}/calls",
+      "pathPatterns": [],
+      "hawaiiConfig": "calls-hawaii.json",
+      "namespace": "Fidelity.CloudEdge.Management.Calls",
+      "postProcessors": [],
+      "status": "active"
+    },
+    "builds": {
+      "name": "Builds",
+      "description": "Workers Builds API",
+      "operationPrefix": "builds",
+      "pathPrefix": "/accounts/{account_id}/builds",
+      "pathPatterns": [],
+      "hawaiiConfig": "builds-hawaii.json",
+      "namespace": "Fidelity.CloudEdge.Management.Builds",
+      "postProcessors": [],
+      "status": "active"
+    },
+    "load-balancers": {
+      "name": "LoadBalancers",
+      "description": "Load Balancer Management API",
+      "operationPrefix": "load_balancers",
+      "pathPrefix": "/accounts/{account_id}/load_balancers",
+      "pathPatterns": [],
+      "hawaiiConfig": "load-balancers-hawaii.json",
+      "namespace": "Fidelity.CloudEdge.Management.LoadBalancers",
+      "postProcessors": [],
+      "status": "active"
+    },
+    "waiting-rooms": {
+      "name": "WaitingRooms",
+      "description": "Waiting Room Management API",
+      "operationPrefix": "waiting_rooms",
+      "pathPrefix": "/zones/{zone_id}/waiting_rooms",
+      "pathPatterns": [],
+      "hawaiiConfig": "waiting-rooms-hawaii.json",
+      "namespace": "Fidelity.CloudEdge.Management.WaitingRooms",
+      "postProcessors": [],
+      "status": "active"
+    },
+    "magic": {
+      "name": "Magic",
+      "description": "Magic Transit and WAN API",
+      "operationPrefix": "magic",
+      "pathPrefix": "/accounts/{account_id}/magic",
+      "pathPatterns": [],
+      "hawaiiConfig": "magic-hawaii.json",
+      "namespace": "Fidelity.CloudEdge.Management.Magic",
+      "postProcessors": [],
+      "status": "active"
+    }
+  }
+}

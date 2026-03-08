@@ -1,29 +1,29 @@
-namespace rec CloudFlare.Management.Vectorize.Types
+namespace rec Fidelity.CloudEdge.Management.Vectorize.Types
 
 ///Identifier
 type vectorizeidentifier = string
 ///Specifies the description of the index.
-type vectorizeindexdescription = string
-type vectorizeindexdimensions = int
+type ``vectorizeindex-description`` = string
+type ``vectorizeindex-dimensions`` = int
 
-type vectorizeindexgetvectorsbyidresponseArrayItem =
+type ``vectorizeindex-get-vectors-by-id-responseArrayItem`` =
     { ///Identifier for a Vector
-      id: Option<vectorizevectoridentifier>
-      metadata: Option<System.Text.Json.JsonElement>
+      id: Option<``vectorizevector-identifier``>
+      metadata: Option<Newtonsoft.Json.Linq.JObject>
       ``namespace``: Option<string>
       values: Option<list<float>> }
-    ///Creates an instance of vectorizeindexgetvectorsbyidresponseArrayItem with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): vectorizeindexgetvectorsbyidresponseArrayItem =
+    ///Creates an instance of vectorizeindex-get-vectors-by-id-responseArrayItem with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``vectorizeindex-get-vectors-by-id-responseArrayItem`` =
         { id = None
           metadata = None
           ``namespace`` = None
           values = None }
 
-type vectorizeindexgetvectorsbyidresponse = list<vectorizeindexgetvectorsbyidresponseArrayItem>
+type ``vectorizeindex-get-vectors-by-id-response`` = list<``vectorizeindex-get-vectors-by-id-responseArrayItem``>
 
 ///Specifies the type of metric to use calculating distance.
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
-type vectorizeindexmetric =
+type ``vectorizeindex-metric`` =
     | [<CompiledName "cosine">] Cosine
     | [<CompiledName "euclidean">] Euclidean
     | [<CompiledName "dot-product">] DotProduct
@@ -33,11 +33,11 @@ type vectorizeindexmetric =
         | Euclidean -> "euclidean"
         | DotProduct -> "dot-product"
 
-type vectorizeindexname = string
+type ``vectorizeindex-name`` = string
 
 ///Specifies the preset to use for the index.
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
-type vectorizeindexpreset =
+type ``vectorizeindex-preset`` =
     | [<CompiledName "@cf/baai/bge-small-en-v1.5">] ``@cfBaaiBgeSmallEnV1Numeric_5``
     | [<CompiledName "@cf/baai/bge-base-en-v1.5">] ``@cfBaaiBgeBaseEnV1Numeric_5``
     | [<CompiledName "@cf/baai/bge-large-en-v1.5">] ``@cfBaaiBgeLargeEnV1Numeric_5``
@@ -45,9 +45,9 @@ type vectorizeindexpreset =
     | [<CompiledName "cohere/embed-multilingual-v2.0">] CohereEmbedMultilingualV2Numeric_0
     member this.Format() =
         match this with
-        | (@cfBaaiBgeSmallEnV1Numeric_5) -> "@cf/baai/bge-small-en-v1.5"
-        | (@cfBaaiBgeBaseEnV1Numeric_5) -> "@cf/baai/bge-base-en-v1.5"
-        | (@cfBaaiBgeLargeEnV1Numeric_5) -> "@cf/baai/bge-large-en-v1.5"
+        | ``@cfBaaiBgeSmallEnV1Numeric_5`` -> "@cf/baai/bge-small-en-v1.5"
+        | ``@cfBaaiBgeBaseEnV1Numeric_5`` -> "@cf/baai/bge-base-en-v1.5"
+        | ``@cfBaaiBgeLargeEnV1Numeric_5`` -> "@cf/baai/bge-large-en-v1.5"
         | OpenaiTextEmbeddingAdaNumeric_002 -> "openai/text-embedding-ada-002"
         | CohereEmbedMultilingualV2Numeric_0 -> "cohere/embed-multilingual-v2.0"
 
@@ -59,7 +59,7 @@ type vectorizemessagesArrayItem =
 
 type vectorizemessages = list<vectorizemessagesArrayItem>
 ///Identifier for a Vector
-type vectorizevectoridentifier = string
+type ``vectorizevector-identifier`` = string
 
 type Errors =
     { code: int
@@ -73,118 +73,118 @@ type Messages =
     ///Creates an instance of Messages with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (code: int, message: string): Messages = { code = code; message = message }
 
-type vectorizeapiresponsecollection =
+type ``vectorizeapi-response-collection`` =
     { errors: Option<list<Errors>>
       messages: Option<list<Messages>>
-      result: Option<System.Text.Json.JsonElement>
+      result: Option<Newtonsoft.Json.Linq.JToken>
       ///Whether the API call was successful
       success: Option<bool>
       result_info: Option<vectorizeresultinfo> }
-    ///Creates an instance of vectorizeapiresponsecollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): vectorizeapiresponsecollection =
+    ///Creates an instance of vectorizeapi-response-collection with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``vectorizeapi-response-collection`` =
         { errors = None
           messages = None
           result = None
           success = None
           result_info = None }
 
-type vectorizeapiresponsecommonErrors =
+type ``vectorizeapi-response-commonErrors`` =
     { code: int
       message: string }
-    ///Creates an instance of vectorizeapiresponsecommonErrors with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (code: int, message: string): vectorizeapiresponsecommonErrors =
+    ///Creates an instance of vectorizeapi-response-commonErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``vectorizeapi-response-commonErrors`` =
         { code = code; message = message }
 
-type vectorizeapiresponsecommonMessages =
+type ``vectorizeapi-response-commonMessages`` =
     { code: int
       message: string }
-    ///Creates an instance of vectorizeapiresponsecommonMessages with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (code: int, message: string): vectorizeapiresponsecommonMessages =
+    ///Creates an instance of vectorizeapi-response-commonMessages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``vectorizeapi-response-commonMessages`` =
         { code = code; message = message }
 
-type vectorizeapiresponsecommon =
-    { errors: list<vectorizeapiresponsecommonErrors>
-      messages: list<vectorizeapiresponsecommonMessages>
-      result: System.Text.Json.JsonElement
+type ``vectorizeapi-response-common`` =
+    { errors: list<``vectorizeapi-response-commonErrors``>
+      messages: list<``vectorizeapi-response-commonMessages``>
+      result: Newtonsoft.Json.Linq.JToken
       ///Whether the API call was successful
       success: bool }
-    ///Creates an instance of vectorizeapiresponsecommon with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: list<vectorizeapiresponsecommonErrors>,
-                          messages: list<vectorizeapiresponsecommonMessages>,
-                          result: System.Text.Json.JsonElement,
-                          success: bool): vectorizeapiresponsecommon =
+    ///Creates an instance of vectorizeapi-response-common with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``vectorizeapi-response-commonErrors``>,
+                          messages: list<``vectorizeapi-response-commonMessages``>,
+                          result: Newtonsoft.Json.Linq.JToken,
+                          success: bool): ``vectorizeapi-response-common`` =
         { errors = errors
           messages = messages
           result = result
           success = success }
 
-type vectorizeapiresponsecommonfailure =
-    { errors: System.Text.Json.JsonElement
-      messages: System.Text.Json.JsonElement
-      result: System.Text.Json.JsonElement
+type ``vectorizeapi-response-common-failure`` =
+    { errors: Newtonsoft.Json.Linq.JToken
+      messages: Newtonsoft.Json.Linq.JToken
+      result: Newtonsoft.Json.Linq.JObject
       ///Whether the API call was successful
       success: bool }
-    ///Creates an instance of vectorizeapiresponsecommonfailure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: System.Text.Json.JsonElement,
-                          messages: System.Text.Json.JsonElement,
-                          result: System.Text.Json.JsonElement,
-                          success: bool): vectorizeapiresponsecommonfailure =
+    ///Creates an instance of vectorizeapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: Newtonsoft.Json.Linq.JToken,
+                          messages: Newtonsoft.Json.Linq.JToken,
+                          result: Newtonsoft.Json.Linq.JObject,
+                          success: bool): ``vectorizeapi-response-common-failure`` =
         { errors = errors
           messages = messages
           result = result
           success = success }
 
-type vectorizeapiresponsesingleErrors =
+type ``vectorizeapi-response-singleErrors`` =
     { code: int
       message: string }
-    ///Creates an instance of vectorizeapiresponsesingleErrors with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (code: int, message: string): vectorizeapiresponsesingleErrors =
+    ///Creates an instance of vectorizeapi-response-singleErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``vectorizeapi-response-singleErrors`` =
         { code = code; message = message }
 
-type vectorizeapiresponsesingleMessages =
+type ``vectorizeapi-response-singleMessages`` =
     { code: int
       message: string }
-    ///Creates an instance of vectorizeapiresponsesingleMessages with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (code: int, message: string): vectorizeapiresponsesingleMessages =
+    ///Creates an instance of vectorizeapi-response-singleMessages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``vectorizeapi-response-singleMessages`` =
         { code = code; message = message }
 
-type Result = Map<string, System.Text.Json.JsonElement>
+type Result = Map<string, Newtonsoft.Json.Linq.JToken>
 
-type vectorizeapiresponsesingle =
-    { errors: Option<list<vectorizeapiresponsesingleErrors>>
-      messages: Option<list<vectorizeapiresponsesingleMessages>>
-      result: Option<System.Text.Json.JsonElement>
+type ``vectorizeapi-response-single`` =
+    { errors: Option<list<``vectorizeapi-response-singleErrors``>>
+      messages: Option<list<``vectorizeapi-response-singleMessages``>>
+      result: Option<Newtonsoft.Json.Linq.JToken>
       ///Whether the API call was successful
       success: Option<bool> }
-    ///Creates an instance of vectorizeapiresponsesingle with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): vectorizeapiresponsesingle =
+    ///Creates an instance of vectorizeapi-response-single with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``vectorizeapi-response-single`` =
         { errors = None
           messages = None
           result = None
           success = None }
 
-type vectorizecreateindexrequest =
-    { config: System.Text.Json.JsonElement
+type ``vectorizecreate-index-request`` =
+    { config: Newtonsoft.Json.Linq.JToken
       ///Specifies the description of the index.
-      description: Option<vectorizeindexdescription>
-      name: vectorizeindexname }
-    ///Creates an instance of vectorizecreateindexrequest with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (config: System.Text.Json.JsonElement, name: vectorizeindexname): vectorizecreateindexrequest =
+      description: Option<``vectorizeindex-description``>
+      name: ``vectorizeindex-name`` }
+    ///Creates an instance of vectorizecreate-index-request with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (config: Newtonsoft.Json.Linq.JToken, name: ``vectorizeindex-name``): ``vectorizecreate-index-request`` =
         { config = config
           description = None
           name = name }
 
-type vectorizecreateindexresponse =
-    { config: Option<vectorizeindexdimensionconfiguration>
+type ``vectorizecreate-index-response`` =
+    { config: Option<``vectorizeindex-dimension-configuration``>
       ///Specifies the timestamp the resource was created as an ISO8601 string.
       created_on: Option<System.DateTimeOffset>
       ///Specifies the description of the index.
-      description: Option<vectorizeindexdescription>
+      description: Option<``vectorizeindex-description``>
       ///Specifies the timestamp the resource was modified as an ISO8601 string.
       modified_on: Option<System.DateTimeOffset>
-      name: Option<vectorizeindexname> }
-    ///Creates an instance of vectorizecreateindexresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): vectorizecreateindexresponse =
+      name: Option<``vectorizeindex-name``> }
+    ///Creates an instance of vectorizecreate-index-response with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``vectorizecreate-index-response`` =
         { config = None
           created_on = None
           description = None
@@ -202,101 +202,102 @@ type IndexType =
         | Number -> "number"
         | Boolean -> "boolean"
 
-type vectorizecreatemetadataindexrequest =
+type ``vectorizecreate-metadata-index-request`` =
     { ///Specifies the type of metadata property to index.
       indexType: IndexType
       ///Specifies the metadata property to index.
       propertyName: string }
-    ///Creates an instance of vectorizecreatemetadataindexrequest with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (indexType: IndexType, propertyName: string): vectorizecreatemetadataindexrequest =
+    ///Creates an instance of vectorizecreate-metadata-index-request with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (indexType: IndexType, propertyName: string): ``vectorizecreate-metadata-index-request`` =
         { indexType = indexType
           propertyName = propertyName }
 
-type vectorizecreatemetadataindexresponse =
+type ``vectorizecreate-metadata-index-response`` =
     { ///The unique identifier for the async mutation operation containing the changeset.
-      mutationId: Option<System.Text.Json.JsonElement> }
-    ///Creates an instance of vectorizecreatemetadataindexresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): vectorizecreatemetadataindexresponse = { mutationId = None }
+      mutationId: Option<Newtonsoft.Json.Linq.JToken> }
+    ///Creates an instance of vectorizecreate-metadata-index-response with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``vectorizecreate-metadata-index-response`` = { mutationId = None }
 
-type vectorizedeletemetadataindexrequest =
+type ``vectorizedelete-metadata-index-request`` =
     { ///Specifies the metadata property for which the index must be deleted.
       propertyName: string }
-    ///Creates an instance of vectorizedeletemetadataindexrequest with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (propertyName: string): vectorizedeletemetadataindexrequest = { propertyName = propertyName }
+    ///Creates an instance of vectorizedelete-metadata-index-request with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (propertyName: string): ``vectorizedelete-metadata-index-request`` =
+        { propertyName = propertyName }
 
-type vectorizedeletemetadataindexresponse =
+type ``vectorizedelete-metadata-index-response`` =
     { ///The unique identifier for the async mutation operation containing the changeset.
-      mutationId: Option<System.Text.Json.JsonElement> }
-    ///Creates an instance of vectorizedeletemetadataindexresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): vectorizedeletemetadataindexresponse = { mutationId = None }
+      mutationId: Option<Newtonsoft.Json.Linq.JToken> }
+    ///Creates an instance of vectorizedelete-metadata-index-response with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``vectorizedelete-metadata-index-response`` = { mutationId = None }
 
-type vectorizeindexdeletevectorsbyidrequest =
+type ``vectorizeindex-delete-vectors-by-id-request`` =
     { ///A list of vector identifiers to delete from the index indicated by the path.
-      ids: Option<list<vectorizevectoridentifier>> }
-    ///Creates an instance of vectorizeindexdeletevectorsbyidrequest with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): vectorizeindexdeletevectorsbyidrequest = { ids = None }
+      ids: Option<list<``vectorizevector-identifier``>> }
+    ///Creates an instance of vectorizeindex-delete-vectors-by-id-request with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``vectorizeindex-delete-vectors-by-id-request`` = { ids = None }
 
-type vectorizeindexdeletevectorsbyidresponse =
+type ``vectorizeindex-delete-vectors-by-id-response`` =
     { ///The count of the vectors successfully deleted.
       count: Option<int>
       ///Array of vector identifiers of the vectors that were successfully processed for deletion.
-      ids: Option<list<vectorizevectoridentifier>> }
-    ///Creates an instance of vectorizeindexdeletevectorsbyidresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): vectorizeindexdeletevectorsbyidresponse = { count = None; ids = None }
+      ids: Option<list<``vectorizevector-identifier``>> }
+    ///Creates an instance of vectorizeindex-delete-vectors-by-id-response with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``vectorizeindex-delete-vectors-by-id-response`` = { count = None; ids = None }
 
-type vectorizeindexdeletevectorsbyidv2response =
+type ``vectorizeindex-delete-vectors-by-id-v2-response`` =
     { ///The unique identifier for the async mutation operation containing the changeset.
-      mutationId: Option<System.Text.Json.JsonElement> }
-    ///Creates an instance of vectorizeindexdeletevectorsbyidv2response with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): vectorizeindexdeletevectorsbyidv2response = { mutationId = None }
+      mutationId: Option<Newtonsoft.Json.Linq.JToken> }
+    ///Creates an instance of vectorizeindex-delete-vectors-by-id-v2-response with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``vectorizeindex-delete-vectors-by-id-v2-response`` = { mutationId = None }
 
-type vectorizeindexdimensionconfiguration =
+type ``vectorizeindex-dimension-configuration`` =
     { ///Specifies the number of dimensions for the index
-      dimensions: vectorizeindexdimensions
+      dimensions: ``vectorizeindex-dimensions``
       ///Specifies the type of metric to use calculating distance.
-      metric: vectorizeindexmetric }
-    ///Creates an instance of vectorizeindexdimensionconfiguration with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (dimensions: vectorizeindexdimensions, metric: vectorizeindexmetric): vectorizeindexdimensionconfiguration =
+      metric: ``vectorizeindex-metric`` }
+    ///Creates an instance of vectorizeindex-dimension-configuration with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (dimensions: ``vectorizeindex-dimensions``, metric: ``vectorizeindex-metric``): ``vectorizeindex-dimension-configuration`` =
         { dimensions = dimensions
           metric = metric }
 
-type vectorizeindexgetvectorsbyidrequest =
+type ``vectorizeindex-get-vectors-by-id-request`` =
     { ///A list of vector identifiers to retrieve from the index indicated by the path.
-      ids: Option<list<vectorizevectoridentifier>> }
-    ///Creates an instance of vectorizeindexgetvectorsbyidrequest with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): vectorizeindexgetvectorsbyidrequest = { ids = None }
+      ids: Option<list<``vectorizevector-identifier``>> }
+    ///Creates an instance of vectorizeindex-get-vectors-by-id-request with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``vectorizeindex-get-vectors-by-id-request`` = { ids = None }
 
-type vectorizeindexinforesponse =
+type ``vectorizeindex-info-response`` =
     { ///Specifies the number of dimensions for the index
-      dimensions: Option<vectorizeindexdimensions>
+      dimensions: Option<``vectorizeindex-dimensions``>
       ///Specifies the timestamp the last mutation batch was processed as an ISO8601 string.
       processedUpToDatetime: Option<System.DateTimeOffset>
       ///The unique identifier for the async mutation operation containing the changeset.
-      processedUpToMutation: Option<System.Text.Json.JsonElement>
+      processedUpToMutation: Option<Newtonsoft.Json.Linq.JToken>
       ///Specifies the number of vectors present in the index
       vectorCount: Option<int> }
-    ///Creates an instance of vectorizeindexinforesponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): vectorizeindexinforesponse =
+    ///Creates an instance of vectorizeindex-info-response with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``vectorizeindex-info-response`` =
         { dimensions = None
           processedUpToDatetime = None
           processedUpToMutation = None
           vectorCount = None }
 
-type vectorizeindexinsertresponse =
+type ``vectorizeindex-insert-response`` =
     { ///Specifies the count of the vectors successfully inserted.
       count: Option<int>
       ///Array of vector identifiers of the vectors successfully inserted.
-      ids: Option<list<vectorizevectoridentifier>> }
-    ///Creates an instance of vectorizeindexinsertresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): vectorizeindexinsertresponse = { count = None; ids = None }
+      ids: Option<list<``vectorizevector-identifier``>> }
+    ///Creates an instance of vectorizeindex-insert-response with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``vectorizeindex-insert-response`` = { count = None; ids = None }
 
-type vectorizeindexinsertv2response =
+type ``vectorizeindex-insert-v2-response`` =
     { ///The unique identifier for the async mutation operation containing the changeset.
-      mutationId: Option<System.Text.Json.JsonElement> }
-    ///Creates an instance of vectorizeindexinsertv2response with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): vectorizeindexinsertv2response = { mutationId = None }
+      mutationId: Option<Newtonsoft.Json.Linq.JToken> }
+    ///Creates an instance of vectorizeindex-insert-v2-response with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``vectorizeindex-insert-v2-response`` = { mutationId = None }
 
-type vectorizeindexlistvectorsresponse =
+type ``vectorizeindex-list-vectors-response`` =
     { ///Number of vectors returned in this response
       count: int
       ///When the cursor expires as an ISO8601 string
@@ -308,9 +309,9 @@ type vectorizeindexlistvectorsresponse =
       ///Total number of vectors in the index
       totalCount: int
       ///Array of vector items
-      vectors: list<vectorizevectorlistitem> }
-    ///Creates an instance of vectorizeindexlistvectorsresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (count: int, isTruncated: bool, totalCount: int, vectors: list<vectorizevectorlistitem>): vectorizeindexlistvectorsresponse =
+      vectors: list<``vectorizevector-list-item``> }
+    ///Creates an instance of vectorizeindex-list-vectors-response with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (count: int, isTruncated: bool, totalCount: int, vectors: list<``vectorizevector-list-item``>): ``vectorizeindex-list-vectors-response`` =
         { count = count
           cursorExpirationTimestamp = None
           isTruncated = isTruncated
@@ -318,15 +319,16 @@ type vectorizeindexlistvectorsresponse =
           totalCount = totalCount
           vectors = vectors }
 
-type vectorizeindexpresetconfiguration =
+type ``vectorizeindex-preset-configuration`` =
     { ///Specifies the preset to use for the index.
-      preset: vectorizeindexpreset }
-    ///Creates an instance of vectorizeindexpresetconfiguration with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (preset: vectorizeindexpreset): vectorizeindexpresetconfiguration = { preset = preset }
+      preset: ``vectorizeindex-preset`` }
+    ///Creates an instance of vectorizeindex-preset-configuration with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (preset: ``vectorizeindex-preset``): ``vectorizeindex-preset-configuration`` =
+        { preset = preset }
 
-type vectorizeindexqueryrequest =
+type ``vectorizeindex-query-request`` =
     { ///A metadata filter expression used to limit nearest neighbor results.
-      filter: Option<System.Text.Json.JsonElement>
+      filter: Option<Newtonsoft.Json.Linq.JObject>
       ///Whether to return the metadata associated with the closest vectors.
       returnMetadata: Option<bool>
       ///Whether to return the values associated with the closest vectors.
@@ -335,8 +337,8 @@ type vectorizeindexqueryrequest =
       topK: Option<float>
       ///The search vector that will be used to find the nearest neighbors.
       vector: list<float> }
-    ///Creates an instance of vectorizeindexqueryrequest with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (vector: list<float>): vectorizeindexqueryrequest =
+    ///Creates an instance of vectorizeindex-query-request with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (vector: list<float>): ``vectorizeindex-query-request`` =
         { filter = None
           returnMetadata = None
           returnValues = None
@@ -345,8 +347,8 @@ type vectorizeindexqueryrequest =
 
 type Matches =
     { ///Identifier for a Vector
-      id: Option<vectorizevectoridentifier>
-      metadata: Option<System.Text.Json.JsonElement>
+      id: Option<``vectorizevector-identifier``>
+      metadata: Option<Newtonsoft.Json.Linq.JObject>
       ///The score of the vector according to the index's distance metric
       score: Option<float>
       values: Option<list<float>> }
@@ -357,13 +359,13 @@ type Matches =
           score = None
           values = None }
 
-type vectorizeindexqueryresponse =
+type ``vectorizeindex-query-response`` =
     { ///Specifies the count of vectors returned by the search
       count: Option<int>
       ///Array of vectors matched by the search
       matches: Option<list<Matches>> }
-    ///Creates an instance of vectorizeindexqueryresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): vectorizeindexqueryresponse = { count = None; matches = None }
+    ///Creates an instance of vectorizeindex-query-response with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``vectorizeindex-query-response`` = { count = None; matches = None }
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type ReturnMetadata =
@@ -376,9 +378,9 @@ type ReturnMetadata =
         | Indexed -> "indexed"
         | All -> "all"
 
-type vectorizeindexqueryv2request =
+type ``vectorizeindex-query-v2-request`` =
     { ///A metadata filter expression used to limit nearest neighbor results.
-      filter: Option<System.Text.Json.JsonElement>
+      filter: Option<Newtonsoft.Json.Linq.JObject>
       ///Whether to return no metadata, indexed metadata or all metadata associated with the closest vectors.
       returnMetadata: Option<ReturnMetadata>
       ///Whether to return the values associated with the closest vectors.
@@ -387,51 +389,51 @@ type vectorizeindexqueryv2request =
       topK: Option<float>
       ///The search vector that will be used to find the nearest neighbors.
       vector: list<float> }
-    ///Creates an instance of vectorizeindexqueryv2request with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (vector: list<float>): vectorizeindexqueryv2request =
+    ///Creates an instance of vectorizeindex-query-v2-request with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (vector: list<float>): ``vectorizeindex-query-v2-request`` =
         { filter = None
           returnMetadata = None
           returnValues = None
           topK = None
           vector = vector }
 
-type vectorizeindexqueryv2responseMatches =
+type ``vectorizeindex-query-v2-responseMatches`` =
     { ///Identifier for a Vector
-      id: Option<vectorizevectoridentifier>
-      metadata: Option<System.Text.Json.JsonElement>
+      id: Option<``vectorizevector-identifier``>
+      metadata: Option<Newtonsoft.Json.Linq.JObject>
       ``namespace``: Option<string>
       ///The score of the vector according to the index's distance metric
       score: Option<float>
       values: Option<list<float>> }
-    ///Creates an instance of vectorizeindexqueryv2responseMatches with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): vectorizeindexqueryv2responseMatches =
+    ///Creates an instance of vectorizeindex-query-v2-responseMatches with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``vectorizeindex-query-v2-responseMatches`` =
         { id = None
           metadata = None
           ``namespace`` = None
           score = None
           values = None }
 
-type vectorizeindexqueryv2response =
+type ``vectorizeindex-query-v2-response`` =
     { ///Specifies the count of vectors returned by the search
       count: Option<int>
       ///Array of vectors matched by the search
-      matches: Option<list<vectorizeindexqueryv2responseMatches>> }
-    ///Creates an instance of vectorizeindexqueryv2response with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): vectorizeindexqueryv2response = { count = None; matches = None }
+      matches: Option<list<``vectorizeindex-query-v2-responseMatches``>> }
+    ///Creates an instance of vectorizeindex-query-v2-response with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``vectorizeindex-query-v2-response`` = { count = None; matches = None }
 
-type vectorizeindexupsertresponse =
+type ``vectorizeindex-upsert-response`` =
     { ///Specifies the count of the vectors successfully inserted.
       count: Option<int>
       ///Array of vector identifiers of the vectors successfully inserted.
-      ids: Option<list<vectorizevectoridentifier>> }
-    ///Creates an instance of vectorizeindexupsertresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): vectorizeindexupsertresponse = { count = None; ids = None }
+      ids: Option<list<``vectorizevector-identifier``>> }
+    ///Creates an instance of vectorizeindex-upsert-response with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``vectorizeindex-upsert-response`` = { count = None; ids = None }
 
-type vectorizeindexupsertv2response =
+type ``vectorizeindex-upsert-v2-response`` =
     { ///The unique identifier for the async mutation operation containing the changeset.
-      mutationId: Option<System.Text.Json.JsonElement> }
-    ///Creates an instance of vectorizeindexupsertv2response with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): vectorizeindexupsertv2response = { mutationId = None }
+      mutationId: Option<Newtonsoft.Json.Linq.JToken> }
+    ///Creates an instance of vectorizeindex-upsert-v2-response with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``vectorizeindex-upsert-v2-response`` = { mutationId = None }
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type MetadataIndexesIndexType =
@@ -454,11 +456,11 @@ type MetadataIndexes =
         { indexType = None
           propertyName = None }
 
-type vectorizelistmetadataindexresponse =
+type ``vectorizelist-metadata-index-response`` =
     { ///Array of indexed metadata properties.
       metadataIndexes: Option<list<MetadataIndexes>> }
-    ///Creates an instance of vectorizelistmetadataindexresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): vectorizelistmetadataindexresponse = { metadataIndexes = None }
+    ///Creates an instance of vectorizelist-metadata-index-response with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``vectorizelist-metadata-index-response`` = { metadataIndexes = None }
 
 type vectorizeresultinfo =
     { ///Total number of results for the requested service
@@ -476,18 +478,18 @@ type vectorizeresultinfo =
           per_page = None
           total_count = None }
 
-type vectorizeupdateindexrequest =
+type ``vectorizeupdate-index-request`` =
     { ///Specifies the description of the index.
-      description: vectorizeindexdescription }
-    ///Creates an instance of vectorizeupdateindexrequest with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (description: vectorizeindexdescription): vectorizeupdateindexrequest =
+      description: ``vectorizeindex-description`` }
+    ///Creates an instance of vectorizeupdate-index-request with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (description: ``vectorizeindex-description``): ``vectorizeupdate-index-request`` =
         { description = description }
 
-type vectorizevectorlistitem =
+type ``vectorizevector-list-item`` =
     { ///Identifier for a Vector
-      id: vectorizevectoridentifier }
-    ///Creates an instance of vectorizevectorlistitem with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (id: vectorizevectoridentifier): vectorizevectorlistitem = { id = id }
+      id: ``vectorizevector-identifier`` }
+    ///Creates an instance of vectorizevector-list-item with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (id: ``vectorizevector-identifier``): ``vectorizevector-list-item`` = { id = id }
 
 [<RequireQualifiedAccess>]
 type VectorizeListVectorizeIndexes =

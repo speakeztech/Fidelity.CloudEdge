@@ -1,0 +1,10 @@
+{
+  "schema": "./temp/R2Catalog-openapi.json",
+  "project": "Fidelity.CloudEdge.Management.R2Catalog",
+  "output": "./Generated-R2Catalog",
+  "namespace": "Fidelity.CloudEdge.Management.R2Catalog",
+  "synchronous": false,
+  "target": "fsharp",
+  "generateClient": true,
+  "clientName": "R2CatalogManagementClient"
+}

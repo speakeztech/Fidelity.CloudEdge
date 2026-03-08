@@ -1,0 +1,10 @@
+{
+  "schema": "./temp/Pipelines-openapi.json",
+  "project": "Fidelity.CloudEdge.Management.Pipelines",
+  "output": "./Generated-Pipelines",
+  "namespace": "Fidelity.CloudEdge.Management.Pipelines",
+  "synchronous": false,
+  "target": "fsharp",
+  "generateClient": true,
+  "clientName": "PipelinesManagementClient"
+}

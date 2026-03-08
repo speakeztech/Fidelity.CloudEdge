@@ -437,10 +437,10 @@ Both can be deployed with this CLI!
 See the Fidelity.CloudEdge documentation in `docs/`:
 
 - `docs/00_architecture_decisions.md` - Why dual-layer architecture
-- `docs/02_dual_layer_architecture.md` - Understanding Runtime vs Management
-- `docs/03_openapi_generation.md` - How Management APIs are generated
-- `docs/04_code_first_deployment.md` - Philosophy behind this approach
-- `docs/08_conversion_patterns.md` - Converting between layers
+- `docs/01_dual_layer_architecture.md` - Understanding Runtime vs Management
+- `docs/02_code_first_deployment.md` - Philosophy behind this approach
+- `docs/03_gap_analysis.md` - Service maturity and remaining gaps
+- `docs/06_tool_status.md` - Glutinum/Hawaii limitations and mitigations
 
 ## Technology Stack
 

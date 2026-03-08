@@ -1,0 +1,10 @@
+{
+  "schema": "./temp/LoadBalancers-openapi.json",
+  "project": "Fidelity.CloudEdge.Management.LoadBalancers",
+  "output": "./Generated-LoadBalancers",
+  "namespace": "Fidelity.CloudEdge.Management.LoadBalancers",
+  "synchronous": false,
+  "target": "fsharp",
+  "generateClient": true,
+  "clientName": "LoadBalancersManagementClient"
+}

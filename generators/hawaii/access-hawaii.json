@@ -1,0 +1,10 @@
+{
+  "schema": "./temp/Access-openapi.json",
+  "project": "Fidelity.CloudEdge.Management.Access",
+  "output": "./Generated-Access",
+  "namespace": "Fidelity.CloudEdge.Management.Access",
+  "synchronous": false,
+  "target": "fsharp",
+  "generateClient": true,
+  "clientName": "AccessManagementClient"
+}

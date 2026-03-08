@@ -1,0 +1,10 @@
+{
+  "schema": "./temp/AI-openapi.json",
+  "project": "Fidelity.CloudEdge.Management.AI",
+  "output": "./Generated-AI",
+  "namespace": "Fidelity.CloudEdge.Management.AI",
+  "synchronous": false,
+  "target": "fsharp",
+  "generateClient": true,
+  "clientName": "AIManagementClient"
+}

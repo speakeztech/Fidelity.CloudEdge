@@ -1,11 +1,12 @@
-namespace rec CloudFlare.Management.Hyperdrive.Types
+namespace rec Fidelity.CloudEdge.Management.Hyperdrive.Types
 
-type hyperdrivehyperdrivename = string
-type hyperdrivehyperdriveoriginconnectionlimit = int
+///The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
+type ``hyperdrivehyperdrive-name`` = string
+type ``hyperdrivehyperdrive-origin-connection-limit`` = int
 
 ///Specifies the URL scheme used to connect to your origin database.
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
-type hyperdrivehyperdrivescheme =
+type ``hyperdrivehyperdrive-scheme`` =
     | [<CompiledName "postgres">] Postgres
     | [<CompiledName "postgresql">] Postgresql
     | [<CompiledName "mysql">] Mysql
@@ -38,134 +39,137 @@ type Messages =
     ///Creates an instance of Messages with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (code: int, message: string): Messages = { code = code; message = message }
 
-type hyperdriveapiresponsecollection =
+type ``hyperdriveapi-response-collection`` =
     { errors: Option<list<Errors>>
       messages: Option<list<Messages>>
-      result: Option<System.Text.Json.JsonElement>
+      result: Option<Newtonsoft.Json.Linq.JObject>
       ///Return the status of the API call success.
       success: Option<bool>
       result_info: Option<hyperdriveresultinfo> }
-    ///Creates an instance of hyperdriveapiresponsecollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): hyperdriveapiresponsecollection =
+    ///Creates an instance of hyperdriveapi-response-collection with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``hyperdriveapi-response-collection`` =
         { errors = None
           messages = None
           result = None
           success = None
           result_info = None }
 
-type hyperdriveapiresponsecommonErrors =
+type ``hyperdriveapi-response-commonErrors`` =
     { code: int
       message: string }
-    ///Creates an instance of hyperdriveapiresponsecommonErrors with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (code: int, message: string): hyperdriveapiresponsecommonErrors =
+    ///Creates an instance of hyperdriveapi-response-commonErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``hyperdriveapi-response-commonErrors`` =
         { code = code; message = message }
 
-type hyperdriveapiresponsecommonMessages =
+type ``hyperdriveapi-response-commonMessages`` =
     { code: int
       message: string }
-    ///Creates an instance of hyperdriveapiresponsecommonMessages with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (code: int, message: string): hyperdriveapiresponsecommonMessages =
+    ///Creates an instance of hyperdriveapi-response-commonMessages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``hyperdriveapi-response-commonMessages`` =
         { code = code; message = message }
 
-type hyperdriveapiresponsecommon =
-    { errors: list<hyperdriveapiresponsecommonErrors>
-      messages: list<hyperdriveapiresponsecommonMessages>
-      result: System.Text.Json.JsonElement
+type ``hyperdriveapi-response-common`` =
+    { errors: list<``hyperdriveapi-response-commonErrors``>
+      messages: list<``hyperdriveapi-response-commonMessages``>
+      result: Newtonsoft.Json.Linq.JObject
       ///Return the status of the API call success.
       success: bool }
-    ///Creates an instance of hyperdriveapiresponsecommon with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: list<hyperdriveapiresponsecommonErrors>,
-                          messages: list<hyperdriveapiresponsecommonMessages>,
-                          result: System.Text.Json.JsonElement,
-                          success: bool): hyperdriveapiresponsecommon =
+    ///Creates an instance of hyperdriveapi-response-common with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``hyperdriveapi-response-commonErrors``>,
+                          messages: list<``hyperdriveapi-response-commonMessages``>,
+                          result: Newtonsoft.Json.Linq.JObject,
+                          success: bool): ``hyperdriveapi-response-common`` =
         { errors = errors
           messages = messages
           result = result
           success = success }
 
-type hyperdriveapiresponsecommonfailure =
-    { errors: System.Text.Json.JsonElement
-      messages: System.Text.Json.JsonElement
-      result: System.Text.Json.JsonElement
+type ``hyperdriveapi-response-common-failure`` =
+    { errors: Newtonsoft.Json.Linq.JToken
+      messages: Newtonsoft.Json.Linq.JToken
+      result: Newtonsoft.Json.Linq.JObject
       ///Return the status of the API call success.
       success: bool }
-    ///Creates an instance of hyperdriveapiresponsecommonfailure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: System.Text.Json.JsonElement,
-                          messages: System.Text.Json.JsonElement,
-                          result: System.Text.Json.JsonElement,
-                          success: bool): hyperdriveapiresponsecommonfailure =
+    ///Creates an instance of hyperdriveapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: Newtonsoft.Json.Linq.JToken,
+                          messages: Newtonsoft.Json.Linq.JToken,
+                          result: Newtonsoft.Json.Linq.JObject,
+                          success: bool): ``hyperdriveapi-response-common-failure`` =
         { errors = errors
           messages = messages
           result = result
           success = success }
 
-type hyperdriveapiresponsesingleErrors =
+type ``hyperdriveapi-response-singleErrors`` =
     { code: int
       message: string }
-    ///Creates an instance of hyperdriveapiresponsesingleErrors with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (code: int, message: string): hyperdriveapiresponsesingleErrors =
+    ///Creates an instance of hyperdriveapi-response-singleErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``hyperdriveapi-response-singleErrors`` =
         { code = code; message = message }
 
-type hyperdriveapiresponsesingleMessages =
+type ``hyperdriveapi-response-singleMessages`` =
     { code: int
       message: string }
-    ///Creates an instance of hyperdriveapiresponsesingleMessages with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (code: int, message: string): hyperdriveapiresponsesingleMessages =
+    ///Creates an instance of hyperdriveapi-response-singleMessages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``hyperdriveapi-response-singleMessages`` =
         { code = code; message = message }
 
-type hyperdriveapiresponsesingle =
-    { errors: Option<list<hyperdriveapiresponsesingleErrors>>
-      messages: Option<list<hyperdriveapiresponsesingleMessages>>
-      result: Option<System.Text.Json.JsonElement>
+type ``hyperdriveapi-response-single`` =
+    { errors: Option<list<``hyperdriveapi-response-singleErrors``>>
+      messages: Option<list<``hyperdriveapi-response-singleMessages``>>
+      result: Option<Newtonsoft.Json.Linq.JObject>
       ///Return the status of the API call success.
       success: Option<bool> }
-    ///Creates an instance of hyperdriveapiresponsesingle with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): hyperdriveapiresponsesingle =
+    ///Creates an instance of hyperdriveapi-response-single with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``hyperdriveapi-response-single`` =
         { errors = None
           messages = None
           result = None
           success = None }
 
-type hyperdrivehyperdrivecachingcommon =
+type ``hyperdrivehyperdrive-caching-common`` =
     { ///Set to true to disable caching of SQL responses. Default is false.
       disabled: Option<bool> }
-    ///Creates an instance of hyperdrivehyperdrivecachingcommon with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): hyperdrivehyperdrivecachingcommon = { disabled = None }
+    ///Creates an instance of hyperdrivehyperdrive-caching-common with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``hyperdrivehyperdrive-caching-common`` = { disabled = None }
 
-type hyperdrivehyperdrivecachingdisabled =
+type ``hyperdrivehyperdrive-caching-disabled`` =
     { ///Set to true to disable caching of SQL responses. Default is false.
       disabled: Option<bool> }
-    ///Creates an instance of hyperdrivehyperdrivecachingdisabled with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): hyperdrivehyperdrivecachingdisabled = { disabled = None }
+    ///Creates an instance of hyperdrivehyperdrive-caching-disabled with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``hyperdrivehyperdrive-caching-disabled`` = { disabled = None }
 
-type hyperdrivehyperdrivecachingenabled =
+type ``hyperdrivehyperdrive-caching-enabled`` =
     { ///Set to true to disable caching of SQL responses. Default is false.
       disabled: Option<bool>
-      ///Specify the maximum duration items should persist in the cache. Not returned if set to the default (60).
+      ///Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
       max_age: Option<int>
-      ///Specify the number of seconds the cache may serve a stale response. Omitted if set to the default (15).
+      ///Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
       stale_while_revalidate: Option<int> }
-    ///Creates an instance of hyperdrivehyperdrivecachingenabled with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): hyperdrivehyperdrivecachingenabled =
+    ///Creates an instance of hyperdrivehyperdrive-caching-enabled with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``hyperdrivehyperdrive-caching-enabled`` =
         { disabled = None
           max_age = None
           stale_while_revalidate = None }
 
-type hyperdrivehyperdriveconfig =
-    { caching: Option<System.Text.Json.JsonElement>
+type ``hyperdrivehyperdrive-config`` =
+    { caching: Option<Newtonsoft.Json.Linq.JObject>
       ///Defines the creation time of the Hyperdrive configuration.
       created_on: Option<System.DateTimeOffset>
       ///Define configurations using a unique string identifier.
       id: hyperdriveidentifier
       ///Defines the last modified time of the Hyperdrive configuration.
       modified_on: Option<System.DateTimeOffset>
-      mtls: Option<hyperdrivehyperdrivemtls>
-      name: hyperdrivehyperdrivename
-      origin: System.Text.Json.JsonElement
+      mtls: Option<``hyperdrivehyperdrive-mtls``>
+      ///The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
+      name: ``hyperdrivehyperdrive-name``
+      origin: Newtonsoft.Json.Linq.JObject
       ///The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
-      origin_connection_limit: Option<hyperdrivehyperdriveoriginconnectionlimit> }
-    ///Creates an instance of hyperdrivehyperdriveconfig with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (id: hyperdriveidentifier, name: hyperdrivehyperdrivename, origin: System.Text.Json.JsonElement): hyperdrivehyperdriveconfig =
+      origin_connection_limit: Option<``hyperdrivehyperdrive-origin-connection-limit``> }
+    ///Creates an instance of hyperdrivehyperdrive-config with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (id: hyperdriveidentifier,
+                          name: ``hyperdrivehyperdrive-name``,
+                          origin: Newtonsoft.Json.Linq.JObject): ``hyperdrivehyperdrive-config`` =
         { caching = None
           created_on = None
           id = id
@@ -175,38 +179,40 @@ type hyperdrivehyperdriveconfig =
           origin = origin
           origin_connection_limit = None }
 
-type Origin = Map<string, System.Text.Json.JsonElement>
+type Origin = Map<string, Newtonsoft.Json.Linq.JToken>
 
-type hyperdrivehyperdriveconfigpatch =
-    { caching: Option<System.Text.Json.JsonElement>
-      mtls: Option<hyperdrivehyperdrivemtls>
-      name: Option<hyperdrivehyperdrivename>
+type ``hyperdrivehyperdrive-config-patch`` =
+    { caching: Option<Newtonsoft.Json.Linq.JObject>
+      mtls: Option<``hyperdrivehyperdrive-mtls``>
+      ///The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
+      name: Option<``hyperdrivehyperdrive-name``>
       origin: Option<Origin>
       ///The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
-      origin_connection_limit: Option<hyperdrivehyperdriveoriginconnectionlimit> }
-    ///Creates an instance of hyperdrivehyperdriveconfigpatch with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): hyperdrivehyperdriveconfigpatch =
+      origin_connection_limit: Option<``hyperdrivehyperdrive-origin-connection-limit``> }
+    ///Creates an instance of hyperdrivehyperdrive-config-patch with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``hyperdrivehyperdrive-config-patch`` =
         { caching = None
           mtls = None
           name = None
           origin = None
           origin_connection_limit = None }
 
-type hyperdrivehyperdriveconfigresponse =
-    { caching: System.Text.Json.JsonElement
+type ``hyperdrivehyperdrive-config-response`` =
+    { caching: Newtonsoft.Json.Linq.JObject
       ///Defines the creation time of the Hyperdrive configuration.
       created_on: Option<System.DateTimeOffset>
       ///Define configurations using a unique string identifier.
       id: Option<hyperdriveidentifier>
       ///Defines the last modified time of the Hyperdrive configuration.
       modified_on: Option<System.DateTimeOffset>
-      mtls: Option<hyperdrivehyperdrivemtls>
-      name: Option<hyperdrivehyperdrivename>
-      origin: Option<System.Text.Json.JsonElement>
+      mtls: Option<``hyperdrivehyperdrive-mtls``>
+      ///The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
+      name: Option<``hyperdrivehyperdrive-name``>
+      origin: Option<Newtonsoft.Json.Linq.JObject>
       ///The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
-      origin_connection_limit: Option<hyperdrivehyperdriveoriginconnectionlimit> }
-    ///Creates an instance of hyperdrivehyperdriveconfigresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (caching: System.Text.Json.JsonElement): hyperdrivehyperdriveconfigresponse =
+      origin_connection_limit: Option<``hyperdrivehyperdrive-origin-connection-limit``> }
+    ///Creates an instance of hyperdrivehyperdrive-config-response with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (caching: Newtonsoft.Json.Linq.JObject): ``hyperdrivehyperdrive-config-response`` =
         { caching = caching
           created_on = None
           id = None
@@ -216,84 +222,84 @@ type hyperdrivehyperdriveconfigresponse =
           origin = None
           origin_connection_limit = None }
 
-type hyperdrivehyperdrivedatabase =
+type ``hyperdrivehyperdrive-database`` =
     { ///Set the name of your origin database.
       database: Option<string>
       ///Set the password needed to access your origin database. The API never returns this write-only value.
       password: Option<string>
       ///Specifies the URL scheme used to connect to your origin database.
-      scheme: Option<hyperdrivehyperdrivescheme>
+      scheme: Option<``hyperdrivehyperdrive-scheme``>
       ///Set the user of your origin database.
       user: Option<string> }
-    ///Creates an instance of hyperdrivehyperdrivedatabase with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): hyperdrivehyperdrivedatabase =
+    ///Creates an instance of hyperdrivehyperdrive-database with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``hyperdrivehyperdrive-database`` =
         { database = None
           password = None
           scheme = None
           user = None }
 
-type hyperdrivehyperdrivedatabasefull =
+type ``hyperdrivehyperdrive-database-full`` =
     { ///Set the name of your origin database.
       database: string
       ///Set the password needed to access your origin database. The API never returns this write-only value.
       password: string
       ///Specifies the URL scheme used to connect to your origin database.
-      scheme: hyperdrivehyperdrivescheme
+      scheme: ``hyperdrivehyperdrive-scheme``
       ///Set the user of your origin database.
       user: string }
-    ///Creates an instance of hyperdrivehyperdrivedatabasefull with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (database: string, password: string, scheme: hyperdrivehyperdrivescheme, user: string): hyperdrivehyperdrivedatabasefull =
+    ///Creates an instance of hyperdrivehyperdrive-database-full with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (database: string, password: string, scheme: ``hyperdrivehyperdrive-scheme``, user: string): ``hyperdrivehyperdrive-database-full`` =
         { database = database
           password = password
           scheme = scheme
           user = user }
 
-type hyperdrivehyperdrivemtls =
+type ``hyperdrivehyperdrive-mtls`` =
     { ///Define CA certificate ID obtained after uploading CA cert.
       ca_certificate_id: Option<string>
       ///Define mTLS certificate ID obtained after uploading client cert.
       mtls_certificate_id: Option<string>
       ///Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA.
       sslmode: Option<string> }
-    ///Creates an instance of hyperdrivehyperdrivemtls with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): hyperdrivehyperdrivemtls =
+    ///Creates an instance of hyperdrivehyperdrive-mtls with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``hyperdrivehyperdrive-mtls`` =
         { ca_certificate_id = None
           mtls_certificate_id = None
           sslmode = None }
 
-type hyperdrivehyperdriveorigin =
+type ``hyperdrivehyperdrive-origin`` =
     { ///Set the name of your origin database.
       database: Option<string>
       ///Set the password needed to access your origin database. The API never returns this write-only value.
       password: Option<string>
       ///Specifies the URL scheme used to connect to your origin database.
-      scheme: Option<hyperdrivehyperdrivescheme>
+      scheme: Option<``hyperdrivehyperdrive-scheme``>
       ///Set the user of your origin database.
       user: Option<string> }
-    ///Creates an instance of hyperdrivehyperdriveorigin with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): hyperdrivehyperdriveorigin =
+    ///Creates an instance of hyperdrivehyperdrive-origin with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``hyperdrivehyperdrive-origin`` =
         { database = None
           password = None
           scheme = None
           user = None }
 
-type hyperdriveinternetorigin =
+type ``hyperdriveinternet-origin`` =
     { ///Defines the host (hostname or IP) of your origin database.
       host: string
-      ///Defines the port (default: 5432 for Postgres) of your origin database.
+      ///Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified.
       port: int }
-    ///Creates an instance of hyperdriveinternetorigin with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (host: string, port: int): hyperdriveinternetorigin = { host = host; port = port }
+    ///Creates an instance of hyperdriveinternet-origin with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (host: string, port: int): ``hyperdriveinternet-origin`` = { host = host; port = port }
 
-type hyperdriveoveraccessorigin =
+type ``hyperdriveover-access-origin`` =
     { ///Defines the Client ID of the Access token to use when connecting to the origin database.
       access_client_id: string
       ///Defines the Client Secret of the Access Token to use when connecting to the origin database. The API never returns this write-only value.
       access_client_secret: string
       ///Defines the host (hostname or IP) of your origin database.
       host: string }
-    ///Creates an instance of hyperdriveoveraccessorigin with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (access_client_id: string, access_client_secret: string, host: string): hyperdriveoveraccessorigin =
+    ///Creates an instance of hyperdriveover-access-origin with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (access_client_id: string, access_client_secret: string, host: string): ``hyperdriveover-access-origin`` =
         { access_client_id = access_client_id
           access_client_secret = access_client_secret
           host = host }

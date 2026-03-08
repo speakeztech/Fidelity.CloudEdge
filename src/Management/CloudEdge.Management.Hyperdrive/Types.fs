@@ -1,5 +1,6 @@
 namespace rec Fidelity.CloudEdge.Management.Hyperdrive.Types
 
+///The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
 type ``hyperdrivehyperdrive-name`` = string
 type ``hyperdrivehyperdrive-origin-connection-limit`` = int
 
@@ -141,9 +142,9 @@ type ``hyperdrivehyperdrive-caching-disabled`` =
 type ``hyperdrivehyperdrive-caching-enabled`` =
     { ///Set to true to disable caching of SQL responses. Default is false.
       disabled: Option<bool>
-      ///Specify the maximum duration items should persist in the cache. Not returned if set to the default (60).
+      ///Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
       max_age: Option<int>
-      ///Specify the number of seconds the cache may serve a stale response. Omitted if set to the default (15).
+      ///Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
       stale_while_revalidate: Option<int> }
     ///Creates an instance of hyperdrivehyperdrive-caching-enabled with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``hyperdrivehyperdrive-caching-enabled`` =
@@ -160,6 +161,7 @@ type ``hyperdrivehyperdrive-config`` =
       ///Defines the last modified time of the Hyperdrive configuration.
       modified_on: Option<System.DateTimeOffset>
       mtls: Option<``hyperdrivehyperdrive-mtls``>
+      ///The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
       name: ``hyperdrivehyperdrive-name``
       origin: Newtonsoft.Json.Linq.JObject
       ///The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
@@ -182,6 +184,7 @@ type Origin = Map<string, Newtonsoft.Json.Linq.JToken>
 type ``hyperdrivehyperdrive-config-patch`` =
     { caching: Option<Newtonsoft.Json.Linq.JObject>
       mtls: Option<``hyperdrivehyperdrive-mtls``>
+      ///The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
       name: Option<``hyperdrivehyperdrive-name``>
       origin: Option<Origin>
       ///The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
@@ -203,6 +206,7 @@ type ``hyperdrivehyperdrive-config-response`` =
       ///Defines the last modified time of the Hyperdrive configuration.
       modified_on: Option<System.DateTimeOffset>
       mtls: Option<``hyperdrivehyperdrive-mtls``>
+      ///The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
       name: Option<``hyperdrivehyperdrive-name``>
       origin: Option<Newtonsoft.Json.Linq.JObject>
       ///The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
@@ -282,7 +286,7 @@ type ``hyperdrivehyperdrive-origin`` =
 type ``hyperdriveinternet-origin`` =
     { ///Defines the host (hostname or IP) of your origin database.
       host: string
-      ///Defines the port (default: 5432 for Postgres) of your origin database.
+      ///Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified.
       port: int }
     ///Creates an instance of hyperdriveinternet-origin with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (host: string, port: int): ``hyperdriveinternet-origin`` = { host = host; port = port }

@@ -27,7 +27,15 @@
     "R2Bucket": "CloudFlare.Core.R2Bucket",
     "D1Database": "CloudFlare.Core.D1Database",
     "Queue": "CloudFlare.Core.Queue",
-    "Fetcher": "CloudFlare.Core.Fetcher"
+    "Fetcher": "CloudFlare.Core.Fetcher",
+    "Ai": "CloudFlare.Core.Ai",
+    "Vectorize": "CloudFlare.Core.Vectorize",
+    "Hyperdrive": "CloudFlare.Core.Hyperdrive",
+    "AnalyticsEngineDataset": "CloudFlare.Core.AnalyticsEngineDataset",
+    "Container": "CloudFlare.Core.Container",
+    "Workflow": "CloudFlare.Core.Workflow",
+    "Pipeline": "CloudFlare.Core.Pipeline",
+    "Service": "CloudFlare.Core.Service"
   },
   "interfaces": {
     "strategy": "ConvertToRecord",

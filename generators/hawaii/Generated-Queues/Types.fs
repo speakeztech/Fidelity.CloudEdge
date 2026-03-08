@@ -1,33 +1,33 @@
-namespace rec CloudFlare.Management.Queues.Types
+namespace rec Fidelity.CloudEdge.Management.Queues.Types
 
-type mqapiv4errorArrayItem =
+type ``mqapi-v4-errorArrayItem`` =
     { code: int
       message: string }
-    ///Creates an instance of mqapiv4errorArrayItem with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (code: int, message: string): mqapiv4errorArrayItem = { code = code; message = message }
+    ///Creates an instance of mqapi-v4-errorArrayItem with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``mqapi-v4-errorArrayItem`` = { code = code; message = message }
 
-type mqapiv4error = list<mqapiv4errorArrayItem>
-type mqapiv4message = list<string>
-type mqbatchsize = float
+type ``mqapi-v4-error`` = list<``mqapi-v4-errorArrayItem``>
+type ``mqapi-v4-message`` = list<string>
+type ``mqbatch-size`` = float
 ///A Resource identifier.
 type mqidentifier = string
 ///An ID that represents an "in-flight" message that has been pulled from a Queue. You must hold on to this ID and use it to acknowledge this message.
-type mqleaseid = string
-type mqmaxconcurrency = float
-type mqmaxretries = float
-type mqmaxwaittime = float
-type mqqueuename = string
+type ``mqlease-id`` = string
+type ``mqmax-concurrency`` = float
+type ``mqmax-retries`` = float
+type ``mqmax-wait-time`` = float
+type ``mqqueue-name`` = string
 
-type mqqueuepullbatchArrayItem =
+type ``mqqueue-pull-batchArrayItem`` =
     { attempts: Option<float>
       body: Option<string>
       id: Option<string>
       ///An ID that represents an "in-flight" message that has been pulled from a Queue. You must hold on to this ID and use it to acknowledge this message.
-      lease_id: Option<mqleaseid>
-      metadata: Option<System.Text.Json.JsonElement>
+      lease_id: Option<``mqlease-id``>
+      metadata: Option<Newtonsoft.Json.Linq.JObject>
       timestamp_ms: Option<float> }
-    ///Creates an instance of mqqueuepullbatchArrayItem with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mqqueuepullbatchArrayItem =
+    ///Creates an instance of mqqueue-pull-batchArrayItem with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``mqqueue-pull-batchArrayItem`` =
         { attempts = None
           body = None
           id = None
@@ -35,11 +35,11 @@ type mqqueuepullbatchArrayItem =
           metadata = None
           timestamp_ms = None }
 
-type mqqueuepullbatch = list<mqqueuepullbatchArrayItem>
-type mqretrydelay = float
+type ``mqqueue-pull-batch`` = list<``mqqueue-pull-batchArrayItem``>
+type ``mqretry-delay`` = float
 ///Name of a Worker
-type mqscriptname = string
-type mqvisibilitytimeout = float
+type ``mqscript-name`` = string
+type ``mqvisibility-timeout`` = float
 
 type Errors =
     { code: int
@@ -47,43 +47,43 @@ type Errors =
     ///Creates an instance of Errors with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (code: int, message: string): Errors = { code = code; message = message }
 
-type mqapiv4failure =
+type ``mqapi-v4-failure`` =
     { errors: Option<list<Errors>>
-      messages: Option<mqapiv4message>
+      messages: Option<``mqapi-v4-message``>
       ///Indicates if the API call was successful or not.
       success: Option<bool> }
-    ///Creates an instance of mqapiv4failure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mqapiv4failure =
+    ///Creates an instance of mqapi-v4-failure with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``mqapi-v4-failure`` =
         { errors = None
           messages = None
           success = None }
 
-type mqapiv4successErrors =
+type ``mqapi-v4-successErrors`` =
     { code: int
       message: string }
-    ///Creates an instance of mqapiv4successErrors with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (code: int, message: string): mqapiv4successErrors = { code = code; message = message }
+    ///Creates an instance of mqapi-v4-successErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``mqapi-v4-successErrors`` = { code = code; message = message }
 
-type mqapiv4success =
-    { errors: Option<list<mqapiv4successErrors>>
-      messages: Option<mqapiv4message>
+type ``mqapi-v4-success`` =
+    { errors: Option<list<``mqapi-v4-successErrors``>>
+      messages: Option<``mqapi-v4-message``>
       ///Indicates if the API call was successful or not.
       success: Option<bool> }
-    ///Creates an instance of mqapiv4success with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mqapiv4success =
+    ///Creates an instance of mqapi-v4-success with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``mqapi-v4-success`` =
         { errors = None
           messages = None
           success = None }
 
 type Settings =
     { ///The maximum number of messages to include in a batch.
-      batch_size: Option<mqbatchsize>
+      batch_size: Option<``mqbatch-size``>
       ///The maximum number of retries
-      max_retries: Option<mqmaxretries>
+      max_retries: Option<``mqmax-retries``>
       ///The number of seconds to delay before making the message available for another attempt.
-      retry_delay: Option<mqretrydelay>
+      retry_delay: Option<``mqretry-delay``>
       ///The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.
-      visibility_timeout_ms: Option<mqvisibilitytimeout> }
+      visibility_timeout_ms: Option<``mqvisibility-timeout``> }
     ///Creates an instance of Settings with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): Settings =
         { batch_size = None
@@ -98,32 +98,67 @@ type Type =
         match this with
         | Http_pull -> "http_pull"
 
-type mqhttpconsumer =
+type ``mqhttp-consumer-request`` =
+    { dead_letter_queue: Option<``mqqueue-name``>
+      settings: Option<Settings>
+      ``type``: Type }
+    ///Creates an instance of mqhttp-consumer-request with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (``type``: Type): ``mqhttp-consumer-request`` =
+        { dead_letter_queue = None
+          settings = None
+          ``type`` = ``type`` }
+
+type ``mqhttp-consumer-responseSettings`` =
+    { ///The maximum number of messages to include in a batch.
+      batch_size: Option<``mqbatch-size``>
+      ///The maximum number of retries
+      max_retries: Option<``mqmax-retries``>
+      ///The number of seconds to delay before making the message available for another attempt.
+      retry_delay: Option<``mqretry-delay``>
+      ///The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.
+      visibility_timeout_ms: Option<``mqvisibility-timeout``> }
+    ///Creates an instance of mqhttp-consumer-responseSettings with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``mqhttp-consumer-responseSettings`` =
+        { batch_size = None
+          max_retries = None
+          retry_delay = None
+          visibility_timeout_ms = None }
+
+[<Fable.Core.StringEnum; RequireQualifiedAccess>]
+type ``mqhttp-consumer-responseType`` =
+    | [<CompiledName "http_pull">] Http_pull
+    member this.Format() =
+        match this with
+        | Http_pull -> "http_pull"
+
+type ``mqhttp-consumer-response`` =
     { ///A Resource identifier.
       consumer_id: Option<mqidentifier>
-      created_on: Option<string>
-      ///A Resource identifier.
-      queue_id: Option<mqidentifier>
-      settings: Option<Settings>
-      ``type``: Option<Type> }
-    ///Creates an instance of mqhttpconsumer with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mqhttpconsumer =
+      created_on: Option<System.DateTimeOffset>
+      ///Name of the dead letter queue, or empty string if not configured
+      dead_letter_queue: Option<string>
+      queue_name: Option<``mqqueue-name``>
+      settings: Option<``mqhttp-consumer-responseSettings``>
+      ``type``: Option<``mqhttp-consumer-responseType``> }
+    ///Creates an instance of mqhttp-consumer-response with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``mqhttp-consumer-response`` =
         { consumer_id = None
           created_on = None
-          queue_id = None
+          dead_letter_queue = None
+          queue_name = None
           settings = None
           ``type`` = None }
 
 type mqqueue =
-    { consumers: Option<list<mqconsumer>>
+    { consumers: Option<list<``mqconsumer-response``>>
       consumers_total_count: Option<float>
       created_on: Option<string>
       modified_on: Option<string>
       producers: Option<list<mqproducer>>
       producers_total_count: Option<float>
       queue_id: Option<string>
-      queue_name: Option<mqqueuename>
-      settings: Option<mqqueuesettings> }
+      queue_name: Option<``mqqueue-name``>
+      settings: Option<``mqqueue-settings``> }
     ///Creates an instance of mqqueue with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): mqqueue =
         { consumers = None
@@ -136,20 +171,20 @@ type mqqueue =
           queue_name = None
           settings = None }
 
-type mqqueuebatch =
+type ``mqqueue-batch`` =
     { ///The number of seconds to wait for attempting to deliver this batch to consumers
       delay_seconds: Option<float>
-      messages: Option<list<mqqueuemessage>> }
-    ///Creates an instance of mqqueuebatch with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mqqueuebatch =
+      messages: Option<list<``mqqueue-message``>> }
+    ///Creates an instance of mqqueue-batch with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``mqqueue-batch`` =
         { delay_seconds = None
           messages = None }
 
-type mqqueuemessage =
+type ``mqqueue-message`` =
     { ///The number of seconds to wait for attempting to deliver this message to consumers
       delay_seconds: Option<float> }
-    ///Creates an instance of mqqueuemessage with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mqqueuemessage = { delay_seconds = None }
+    ///Creates an instance of mqqueue-message with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``mqqueue-message`` = { delay_seconds = None }
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type Contenttype =
@@ -158,67 +193,64 @@ type Contenttype =
         match this with
         | Json -> "json"
 
-type mqqueuemessagejson =
-    { body: Option<System.Text.Json.JsonElement>
+type ``mqqueue-message-json`` =
+    { body: Option<Newtonsoft.Json.Linq.JObject>
       content_type: Option<Contenttype> }
-    ///Creates an instance of mqqueuemessagejson with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mqqueuemessagejson = { body = None; content_type = None }
+    ///Creates an instance of mqqueue-message-json with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``mqqueue-message-json`` = { body = None; content_type = None }
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
-type mqqueuemessagetextContenttype =
+type ``mqqueue-message-textContenttype`` =
     | [<CompiledName "text">] Text
     member this.Format() =
         match this with
         | Text -> "text"
 
-type mqqueuemessagetext =
+type ``mqqueue-message-text`` =
     { body: Option<string>
-      content_type: Option<mqqueuemessagetextContenttype> }
-    ///Creates an instance of mqqueuemessagetext with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mqqueuemessagetext = { body = None; content_type = None }
+      content_type: Option<``mqqueue-message-textContenttype``> }
+    ///Creates an instance of mqqueue-message-text with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``mqqueue-message-text`` = { body = None; content_type = None }
 
-type mqqueuesettings =
+type ``mqqueue-settings`` =
     { ///Number of seconds to delay delivery of all messages to consumers.
       delivery_delay: Option<float>
       ///Indicates if message delivery to consumers is currently paused.
       delivery_paused: Option<bool>
       ///Number of seconds after which an unconsumed message will be delayed.
       message_retention_period: Option<float> }
-    ///Creates an instance of mqqueuesettings with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mqqueuesettings =
+    ///Creates an instance of mqqueue-settings with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``mqqueue-settings`` =
         { delivery_delay = None
           delivery_paused = None
           message_retention_period = None }
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
-type mqr2producerType =
+type ``mqr2-producerType`` =
     | [<CompiledName "r2_bucket">] R2_bucket
     member this.Format() =
         match this with
         | R2_bucket -> "r2_bucket"
 
-type mqr2producer =
+type ``mqr2-producer`` =
     { bucket_name: Option<string>
-      ``type``: Option<mqr2producerType> }
-    ///Creates an instance of mqr2producer with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mqr2producer = { bucket_name = None; ``type`` = None }
+      ``type``: Option<``mqr2-producerType``> }
+    ///Creates an instance of mqr2-producer with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``mqr2-producer`` = { bucket_name = None; ``type`` = None }
 
-type Script = Map<string, System.Text.Json.JsonElement>
-type Scriptname = Map<string, System.Text.Json.JsonElement>
-
-type mqworkerconsumerSettings =
+type ``mqworker-consumer-requestSettings`` =
     { ///The maximum number of messages to include in a batch.
-      batch_size: Option<mqbatchsize>
+      batch_size: Option<``mqbatch-size``>
       ///Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended).
-      max_concurrency: Option<mqmaxconcurrency>
+      max_concurrency: Option<``mqmax-concurrency``>
       ///The maximum number of retries
-      max_retries: Option<mqmaxretries>
+      max_retries: Option<``mqmax-retries``>
       ///The number of milliseconds to wait for a batch to fill up before attempting to deliver it
-      max_wait_time_ms: Option<mqmaxwaittime>
+      max_wait_time_ms: Option<``mqmax-wait-time``>
       ///The number of seconds to delay before making the message available for another attempt.
-      retry_delay: Option<mqretrydelay> }
-    ///Creates an instance of mqworkerconsumerSettings with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mqworkerconsumerSettings =
+      retry_delay: Option<``mqretry-delay``> }
+    ///Creates an instance of mqworker-consumer-requestSettings with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``mqworker-consumer-requestSettings`` =
         { batch_size = None
           max_concurrency = None
           max_retries = None
@@ -226,44 +258,94 @@ type mqworkerconsumerSettings =
           retry_delay = None }
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
-type mqworkerconsumerType =
+type ``mqworker-consumer-requestType`` =
     | [<CompiledName "worker">] Worker
     member this.Format() =
         match this with
         | Worker -> "worker"
 
-type mqworkerconsumer =
+type ``mqworker-consumer-request`` =
+    { dead_letter_queue: Option<``mqqueue-name``>
+      ///Name of a Worker
+      script_name: ``mqscript-name``
+      settings: Option<``mqworker-consumer-requestSettings``>
+      ``type``: ``mqworker-consumer-requestType`` }
+    ///Creates an instance of mqworker-consumer-request with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (script_name: ``mqscript-name``, ``type``: ``mqworker-consumer-requestType``): ``mqworker-consumer-request`` =
+        { dead_letter_queue = None
+          script_name = script_name
+          settings = None
+          ``type`` = ``type`` }
+
+type ``mqworker-consumer-responseSettings`` =
+    { ///The maximum number of messages to include in a batch.
+      batch_size: Option<``mqbatch-size``>
+      ///Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended).
+      max_concurrency: Option<``mqmax-concurrency``>
+      ///The maximum number of retries
+      max_retries: Option<``mqmax-retries``>
+      ///The number of milliseconds to wait for a batch to fill up before attempting to deliver it
+      max_wait_time_ms: Option<``mqmax-wait-time``>
+      ///The number of seconds to delay before making the message available for another attempt.
+      retry_delay: Option<``mqretry-delay``> }
+    ///Creates an instance of mqworker-consumer-responseSettings with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``mqworker-consumer-responseSettings`` =
+        { batch_size = None
+          max_concurrency = None
+          max_retries = None
+          max_wait_time_ms = None
+          retry_delay = None }
+
+[<Fable.Core.StringEnum; RequireQualifiedAccess>]
+type ``mqworker-consumer-responseType`` =
+    | [<CompiledName "worker">] Worker
+    member this.Format() =
+        match this with
+        | Worker -> "worker"
+
+type ``mqworker-consumer-response`` =
     { ///A Resource identifier.
       consumer_id: Option<mqidentifier>
-      created_on: Option<string>
-      ///A Resource identifier.
-      queue_id: Option<mqidentifier>
-      script: Option<Script>
-      script_name: Option<Scriptname>
-      settings: Option<mqworkerconsumerSettings>
-      ``type``: Option<mqworkerconsumerType> }
-    ///Creates an instance of mqworkerconsumer with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mqworkerconsumer =
+      created_on: Option<System.DateTimeOffset>
+      ///Name of the dead letter queue, or empty string if not configured
+      dead_letter_queue: Option<string>
+      queue_name: Option<``mqqueue-name``>
+      ///Name of a Worker
+      script_name: Option<``mqscript-name``>
+      settings: Option<``mqworker-consumer-responseSettings``>
+      ``type``: Option<``mqworker-consumer-responseType``> }
+    ///Creates an instance of mqworker-consumer-response with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``mqworker-consumer-response`` =
         { consumer_id = None
           created_on = None
-          queue_id = None
-          script = None
+          dead_letter_queue = None
+          queue_name = None
           script_name = None
           settings = None
           ``type`` = None }
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
-type mqworkerproducerType =
+type ``mqworker-producerType`` =
     | [<CompiledName "worker">] Worker
     member this.Format() =
         match this with
         | Worker -> "worker"
 
-type mqworkerproducer =
+type ``mqworker-producer`` =
     { script: Option<string>
-      ``type``: Option<mqworkerproducerType> }
-    ///Creates an instance of mqworkerproducer with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mqworkerproducer = { script = None; ``type`` = None }
+      ``type``: Option<``mqworker-producerType``> }
+    ///Creates an instance of mqworker-producer with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``mqworker-producer`` = { script = None; ``type`` = None }
+
+[<RequireQualifiedAccess>]
+type ``mqconsumer-response`` =
+    | HttpConsumer of ``mqhttp-consumer-response``
+    | WorkerConsumer of ``mqworker-consumer-response``
+
+[<RequireQualifiedAccess>]
+type ``mqproducer`` =
+    | R2Producer of ``mqr2-producer``
+    | WorkerProducer of ``mqworker-producer``
 
 type QueuesList_OKErrors = { code: int; message: string }
 
@@ -281,7 +363,7 @@ type Resultinfo =
 
 type QueuesList_OK =
     { errors: Option<list<QueuesList_OKErrors>>
-      messages: Option<mqapiv4message>
+      messages: Option<``mqapi-v4-message``>
       ///Indicates if the API call was successful or not.
       success: Option<bool>
       result: Option<list<mqqueue>>
@@ -293,15 +375,15 @@ type QueuesList =
     | OK of payload: QueuesList_OK
 
 type QueuesCreatePayload =
-    { queue_name: mqqueuename }
+    { queue_name: ``mqqueue-name`` }
     ///Creates an instance of QueuesCreatePayload with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (queue_name: mqqueuename): QueuesCreatePayload = { queue_name = queue_name }
+    static member Create (queue_name: ``mqqueue-name``): QueuesCreatePayload = { queue_name = queue_name }
 
 type QueuesCreate_OKErrors = { code: int; message: string }
 
 type QueuesCreate_OK =
     { errors: Option<list<QueuesCreate_OKErrors>>
-      messages: Option<mqapiv4message>
+      messages: Option<``mqapi-v4-message``>
       ///Indicates if the API call was successful or not.
       success: Option<bool>
       result: Option<mqqueue> }
@@ -314,13 +396,13 @@ type QueuesCreate =
 [<RequireQualifiedAccess>]
 type QueuesDelete =
     ///Successful delete
-    | OK of payload: mqapiv4success
+    | OK of payload: ``mqapi-v4-success``
 
 type QueuesGet_OKErrors = { code: int; message: string }
 
 type QueuesGet_OK =
     { errors: Option<list<QueuesGet_OKErrors>>
-      messages: Option<mqapiv4message>
+      messages: Option<``mqapi-v4-message``>
       ///Indicates if the API call was successful or not.
       success: Option<bool>
       result: Option<mqqueue> }
@@ -333,19 +415,19 @@ type QueuesGet =
 type QueuesUpdatePartial_OKErrors = { code: int; message: string }
 
 type Result =
-    { consumers: Option<list<mqconsumer>>
+    { consumers: Option<list<``mqconsumer-response``>>
       consumers_total_count: Option<float>
       created_on: Option<string>
       modified_on: Option<string>
       producers: Option<list<mqproducer>>
       producers_total_count: Option<float>
       queue_id: Option<string>
-      queue_name: Option<mqqueuename>
-      settings: Option<mqqueuesettings> }
+      queue_name: Option<``mqqueue-name``>
+      settings: Option<``mqqueue-settings``> }
 
 type QueuesUpdatePartial_OK =
     { errors: Option<list<QueuesUpdatePartial_OKErrors>>
-      messages: Option<mqapiv4message>
+      messages: Option<``mqapi-v4-message``>
       ///Indicates if the API call was successful or not.
       success: Option<bool>
       result: Option<Result> }
@@ -358,19 +440,19 @@ type QueuesUpdatePartial =
 type QueuesUpdate_OKErrors = { code: int; message: string }
 
 type QueuesUpdate_OKResult =
-    { consumers: Option<list<mqconsumer>>
+    { consumers: Option<list<``mqconsumer-response``>>
       consumers_total_count: Option<float>
       created_on: Option<string>
       modified_on: Option<string>
       producers: Option<list<mqproducer>>
       producers_total_count: Option<float>
       queue_id: Option<string>
-      queue_name: Option<mqqueuename>
-      settings: Option<mqqueuesettings> }
+      queue_name: Option<``mqqueue-name``>
+      settings: Option<``mqqueue-settings``> }
 
 type QueuesUpdate_OK =
     { errors: Option<list<QueuesUpdate_OKErrors>>
-      messages: Option<mqapiv4message>
+      messages: Option<``mqapi-v4-message``>
       ///Indicates if the API call was successful or not.
       success: Option<bool>
       result: Option<QueuesUpdate_OKResult> }
@@ -384,10 +466,10 @@ type QueuesListConsumers_OKErrors = { code: int; message: string }
 
 type QueuesListConsumers_OK =
     { errors: Option<list<QueuesListConsumers_OKErrors>>
-      messages: Option<mqapiv4message>
+      messages: Option<``mqapi-v4-message``>
       ///Indicates if the API call was successful or not.
       success: Option<bool>
-      result: Option<list<mqconsumer>> }
+      result: Option<list<``mqconsumer-response``>> }
 
 [<RequireQualifiedAccess>]
 type QueuesListConsumers =
@@ -398,10 +480,11 @@ type QueuesCreateConsumer_OKErrors = { code: int; message: string }
 
 type QueuesCreateConsumer_OK =
     { errors: Option<list<QueuesCreateConsumer_OKErrors>>
-      messages: Option<mqapiv4message>
+      messages: Option<``mqapi-v4-message``>
       ///Indicates if the API call was successful or not.
       success: Option<bool>
-      result: Option<System.Text.Json.JsonElement> }
+      ///Response body representing a consumer
+      result: Option<Newtonsoft.Json.Linq.JObject> }
 
 [<RequireQualifiedAccess>]
 type QueuesCreateConsumer =
@@ -411,16 +494,17 @@ type QueuesCreateConsumer =
 [<RequireQualifiedAccess>]
 type QueuesDeleteConsumer =
     ///Successful consumer delete
-    | OK of payload: mqapiv4success
+    | OK of payload: ``mqapi-v4-success``
 
 type QueuesGetConsumer_OKErrors = { code: int; message: string }
 
 type QueuesGetConsumer_OK =
     { errors: Option<list<QueuesGetConsumer_OKErrors>>
-      messages: Option<mqapiv4message>
+      messages: Option<``mqapi-v4-message``>
       ///Indicates if the API call was successful or not.
       success: Option<bool>
-      result: Option<System.Text.Json.JsonElement> }
+      ///Response body representing a consumer
+      result: Option<Newtonsoft.Json.Linq.JObject> }
 
 [<RequireQualifiedAccess>]
 type QueuesGetConsumer =
@@ -431,10 +515,11 @@ type QueuesUpdateConsumer_OKErrors = { code: int; message: string }
 
 type QueuesUpdateConsumer_OK =
     { errors: Option<list<QueuesUpdateConsumer_OKErrors>>
-      messages: Option<mqapiv4message>
+      messages: Option<``mqapi-v4-message``>
       ///Indicates if the API call was successful or not.
       success: Option<bool>
-      result: Option<System.Text.Json.JsonElement> }
+      ///Response body representing a consumer
+      result: Option<Newtonsoft.Json.Linq.JObject> }
 
 [<RequireQualifiedAccess>]
 type QueuesUpdateConsumer =
@@ -444,19 +529,19 @@ type QueuesUpdateConsumer =
 [<RequireQualifiedAccess>]
 type QueuesPushMessage =
     ///Successful message ingestion
-    | OK of payload: mqapiv4success
+    | OK of payload: ``mqapi-v4-success``
 
 type Acks =
     { ///An ID that represents an "in-flight" message that has been pulled from a Queue. You must hold on to this ID and use it to acknowledge this message.
-      lease_id: Option<mqleaseid> }
+      lease_id: Option<``mqlease-id``> }
     ///Creates an instance of Acks with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): Acks = { lease_id = None }
 
 type Retries =
     { ///The number of seconds to delay before making the message available for another attempt.
-      delay_seconds: Option<mqretrydelay>
+      delay_seconds: Option<``mqretry-delay``>
       ///An ID that represents an "in-flight" message that has been pulled from a Queue. You must hold on to this ID and use it to acknowledge this message.
-      lease_id: Option<mqleaseid> }
+      lease_id: Option<``mqlease-id``> }
     ///Creates an instance of Retries with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): Retries =
         { delay_seconds = None
@@ -479,7 +564,7 @@ type QueuesAckMessages_OKResult =
 
 type QueuesAckMessages_OK =
     { errors: Option<list<QueuesAckMessages_OKErrors>>
-      messages: Option<mqapiv4message>
+      messages: Option<``mqapi-v4-message``>
       ///Indicates if the API call was successful or not.
       success: Option<bool>
       result: Option<QueuesAckMessages_OKResult> }
@@ -492,13 +577,13 @@ type QueuesAckMessages =
 [<RequireQualifiedAccess>]
 type QueuesPushMessages =
     ///Successful batch ingestion
-    | OK of payload: mqapiv4success
+    | OK of payload: ``mqapi-v4-success``
 
 type QueuesPullMessagesPayload =
     { ///The maximum number of messages to include in a batch.
-      batch_size: Option<mqbatchsize>
+      batch_size: Option<``mqbatch-size``>
       ///The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.
-      visibility_timeout_ms: Option<mqvisibilitytimeout> }
+      visibility_timeout_ms: Option<``mqvisibility-timeout``> }
     ///Creates an instance of QueuesPullMessagesPayload with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): QueuesPullMessagesPayload =
         { batch_size = None
@@ -511,8 +596,8 @@ type Messages =
       body: Option<string>
       id: Option<string>
       ///An ID that represents an "in-flight" message that has been pulled from a Queue. You must hold on to this ID and use it to acknowledge this message.
-      lease_id: Option<mqleaseid>
-      metadata: Option<System.Text.Json.JsonElement>
+      lease_id: Option<``mqlease-id``>
+      metadata: Option<Newtonsoft.Json.Linq.JObject>
       timestamp_ms: Option<float> }
 
 type QueuesPullMessages_OKResult =
@@ -522,7 +607,7 @@ type QueuesPullMessages_OKResult =
 
 type QueuesPullMessages_OK =
     { errors: Option<list<QueuesPullMessages_OKErrors>>
-      messages: Option<mqapiv4message>
+      messages: Option<``mqapi-v4-message``>
       ///Indicates if the API call was successful or not.
       success: Option<bool>
       result: Option<QueuesPullMessages_OKResult> }
@@ -542,7 +627,7 @@ type QueuesPurgeGet_OKResult =
 
 type QueuesPurgeGet_OK =
     { errors: Option<list<QueuesPurgeGet_OKErrors>>
-      messages: Option<mqapiv4message>
+      messages: Option<``mqapi-v4-message``>
       ///Indicates if the API call was successful or not.
       success: Option<bool>
       result: Option<QueuesPurgeGet_OKResult> }
@@ -561,19 +646,19 @@ type QueuesPurgePayload =
 type QueuesPurge_OKErrors = { code: int; message: string }
 
 type QueuesPurge_OKResult =
-    { consumers: Option<list<mqconsumer>>
+    { consumers: Option<list<``mqconsumer-response``>>
       consumers_total_count: Option<float>
       created_on: Option<string>
       modified_on: Option<string>
       producers: Option<list<mqproducer>>
       producers_total_count: Option<float>
       queue_id: Option<string>
-      queue_name: Option<mqqueuename>
-      settings: Option<mqqueuesettings> }
+      queue_name: Option<``mqqueue-name``>
+      settings: Option<``mqqueue-settings``> }
 
 type QueuesPurge_OK =
     { errors: Option<list<QueuesPurge_OKErrors>>
-      messages: Option<mqapiv4message>
+      messages: Option<``mqapi-v4-message``>
       ///Indicates if the API call was successful or not.
       success: Option<bool>
       result: Option<QueuesPurge_OKResult> }

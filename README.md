@@ -370,18 +370,18 @@ The complete toolkit will provide:
 
 ### Core Architecture
 - [Architecture Decisions](docs/00_architecture_decisions.md) - Key design choices and roadmap
-- [Generation Strategy](docs/01_generation_strategy.md) - Glutinum vs Hawaii code generation
-- [Dual Layer Architecture](docs/02_dual_layer_architecture.md) - Runtime vs Management APIs
-- [OpenAPI Generation](docs/03_openapi_generation.md) - Hawaii setup and OpenAPI handling
+- [Dual Layer Architecture](docs/01_dual_layer_architecture.md) - Runtime vs Management APIs
+- [Code-First Deployment](docs/02_code_first_deployment.md) - Code-driven deployment strategies
 
-### Implementation Details
-- [Code-First Deployment](docs/04_code_first_deployment.md) - Code-driven deployment strategies
-- [Gap Analysis](docs/05_gap_analysis.md) - Coverage comparison with workers-sdk
-- [Conversion Patterns](docs/08_conversion_patterns.md) - TypeScript to F# patterns
+### Generation & Status
+- [Gap Analysis](docs/03_gap_analysis.md) - Service maturity and remaining gaps
+- [Tool Status](docs/06_tool_status.md) - Glutinum/Hawaii limitations and mitigations
+- [Generators](generators/README.md) - Generation pipeline usage and configuration
 
-### Tools & Future
-- [Firetower Concept](docs/06_firetower_concept.md) - Monitoring tool design
-- [Pulumi Insights](docs/07_pulumi_insights.md) - Lessons from Pulumi's approach
+### Concepts & Future
+- [Firetower Concept](docs/04_firetower_concept.md) - Monitoring tool design
+- [Pulumi Insights](docs/05_pulumi_insights.md) - Lessons from Pulumi's approach
+- [Pages Direct Upload](docs/07_pages_direct_upload.md) - Pages upload implementation
 
 ### Examples
 - [Samples](samples/) - Working examples demonstrating framework capabilities

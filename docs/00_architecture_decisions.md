@@ -23,9 +23,10 @@ Fidelity.CloudEdge implements a **dual-layer architecture** that separates Runti
 - **Fidelity.CloudEdge.Management.Hyperdrive**: Connection config management (Hawaii-generated)
 - **Fidelity.CloudEdge.Management.DurableObjects**: Namespace management (Hawaii-generated)
 
-### 🔄 In Progress
-- **Fidelity.CloudEdge.Management.KV**: KV namespace management (Hawaii complex schema issues)
-- **Fidelity.CloudEdge.Management.Logs**: Logs API (extraction patterns pending)
+### ✅ Also Completed
+- **Fidelity.CloudEdge.Management.KV**: KV namespace management (Hawaii NullRef resolved via OpenAPI preprocessing)
+- **Fidelity.CloudEdge.Management.Logs**: Logs API
+- **Fidelity.CloudEdge.Management.Pages**: Pages deployment management
 
 ## The Two-Layer Architecture
 
@@ -79,7 +80,7 @@ type D1ManagementClient =
 **Rationale**: Hawaii provides idiomatic F# client generation from OpenAPI specs.
 
 **Implementation**:
-1. Segment massive Cloudflare OpenAPI spec (15.5MB) into service-specific chunks
+1. Segment the Cloudflare OpenAPI spec (~8.3MB) into service-specific chunks
 2. Generate F# clients using Hawaii
 3. Organize in parallel structure to Runtime APIs
 
@@ -138,9 +139,9 @@ type D1ManagementClient =
 
 ### Decision 5: OpenAPI Segmentation Pipeline ✅
 
-**Problem**: Cloudflare's OpenAPI spec is 15.5MB, causing tool failures.
+**Problem**: Cloudflare's OpenAPI spec is ~8.3MB, causing tool failures when processed as a whole.
 
-**Solution**: F# script (`extract-services.fsx`) that:
+**Solution**: `jq`-based extraction (`extract-service.sh`) driven by `services.json` path patterns that:
 1. Parses the full OpenAPI spec
 2. Extracts service-specific paths and schemas
 3. Creates focused specs (45KB - 217KB each)
@@ -158,12 +159,14 @@ npx @glutinum/cli generate
 
 ### Management API Generation (Hawaii)
 ```bash
-# 1. Segment OpenAPI spec
-dotnet fsi generators/hawaii/extract-services.fsx
+cd generators
 
-# 2. Generate F# clients
-hawaii --config generators/hawaii/d1-hawaii.json
-# Output: src/Management/Fidelity.CloudEdge.Management.D1/
+# Generate all active services (extract, preprocess, generate, post-process, deploy, validate)
+bash scripts/generate-management.sh --active-only
+
+# Generate a single service
+bash scripts/generate-management.sh --service d1
+# Output: src/Management/CloudEdge.Management.D1/
 ```
 
 ## Usage Patterns
@@ -224,10 +227,10 @@ Desktop/web monitoring application:
 
 ## Lessons Learned
 
-1. **Hawaii Limitations**: Some complex OpenAPI structures cause null reference exceptions (KV specs remain problematic)
+1. **Hawaii Limitations**: Some OpenAPI structures cause null reference exceptions; resolved via `preprocess-openapi.sh` which ensures all content-type entries have schema fields
 2. **OpenAPI Size**: Large specs need segmentation for tooling compatibility
 3. **Namespace Standardization**: Consistent `Fidelity.CloudEdge.Management.*` naming eliminates confusion and improves discoverability
-4. **Post-Processing Pipeline**: Automated discriminated union generation and System.Text.Json migration are essential for production-ready clients
+4. **Post-Processing Pipeline**: Automated discriminated union generation and serialization fixes are essential for production-ready clients
 5. **Dual Benefits**: Separation enables both infrastructure-as-code AND runtime operations in F#
 6. **Portability Matters**: Avoiding .NET-specific patterns (Task, HttpClient) enables compilation via Fable and Fidelity
 7. **F# Native Patterns**: Using async workflows and Result types maintains compatibility across all F# toolchains
@@ -235,12 +238,10 @@ Desktop/web monitoring application:
 
 ## Next Steps
 
-1. **Fix Hawaii Issues**: Debug null reference exceptions for KV specs
-2. **Complete Management APIs**: Logs extraction and generation
-3. **Expand Management APIs**: DNS, Zero Trust, additional services
-4. **Build CLI Tool**: Implement `cfs` leveraging both API layers
-5. **Create Firetower**: Monitoring tool using Management APIs
-6. **Tool Contributions**: Submit post-processing patterns back to Hawaii for native discriminator support
+1. **Automate Post-Generation Patches**: Encode the 5-service compilation fixes as post-processors
+2. **Build CLI Tool**: Implement `cfs` leveraging both API layers
+3. **Create Firetower**: Monitoring tool using Management APIs
+4. **Tool Contributions**: Submit preprocessing fixes and post-processing patterns upstream to Hawaii
 
 ## Conclusion
 

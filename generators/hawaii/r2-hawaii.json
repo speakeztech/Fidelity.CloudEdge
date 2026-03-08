@@ -1,7 +1,7 @@
 {
   "schema": "./temp/R2-openapi.json",
   "project": "Fidelity.CloudEdge.Management.R2",
-  "output": "../../src/Management/CloudEdge.Management.R2",
+  "output": "./Generated-R2",
   "namespace": "Fidelity.CloudEdge.Management.R2",
   "synchronous": false,
   "target": "fsharp",

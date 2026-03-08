@@ -1,0 +1,10 @@
+{
+  "schema": "./temp/Containers-openapi.json",
+  "project": "Fidelity.CloudEdge.Management.Containers",
+  "output": "./Generated-Containers",
+  "namespace": "Fidelity.CloudEdge.Management.Containers",
+  "synchronous": false,
+  "target": "fsharp",
+  "generateClient": true,
+  "clientName": "ContainersManagementClient"
+}

@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <IsPackable>false</IsPackable>
     <OutputType>Exe</OutputType>
     <AssemblyName>Fidelity.CloudEdge.Tests</AssemblyName>
@@ -13,6 +13,10 @@
     <Compile Include="ManagementTests.fs" />
     <Compile Include="RuntimeTests.fs" />
     <Compile Include="DeploymentTests.fs" />
+    <Compile Include="GenerationTests.fs" />
+    <Compile Include="ClientConstructionTests.fs" />
+    <Compile Include="SerializationTests.fs" />
+    <Compile Include="InfrastructureTests.fs" />
     <Compile Include="Main.fs" />
   </ItemGroup>
 
@@ -22,15 +26,53 @@
     <PackageReference Include="FsCheck" Version="2.16.6" />
     <PackageReference Include="Fable.Mocha" Version="2.17.0" />
     <PackageReference Include="Fable.Core" Version="4.3.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Fable.Remoting.Json" Version="2.18.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <!-- Core -->
     <ProjectReference Include="..\..\src\Core\CloudEdge.Core\CloudEdge.Core.fsproj" />
+
+    <!-- Runtime -->
+    <ProjectReference Include="..\..\src\Runtime\CloudEdge.AI\CloudEdge.AI.fsproj" />
+    <ProjectReference Include="..\..\src\Runtime\CloudEdge.Worker.Context\CloudEdge.Worker.Context.fsproj" />
+
+    <!-- Management: Original 11 -->
     <ProjectReference Include="..\..\src\Management\CloudEdge.Management.D1\CloudEdge.Management.D1.fsproj" />
     <ProjectReference Include="..\..\src\Management\CloudEdge.Management.R2\CloudEdge.Management.R2.fsproj" />
     <ProjectReference Include="..\..\src\Management\CloudEdge.Management.Workers\CloudEdge.Management.Workers.fsproj" />
-    <ProjectReference Include="..\..\src\Runtime\CloudEdge.AI\CloudEdge.AI.fsproj" />
-    <ProjectReference Include="..\..\src\Runtime\CloudEdge.Worker.Context\CloudEdge.Worker.Context.fsproj" />
+    <ProjectReference Include="..\..\src\Management\CloudEdge.Management.KV\CloudEdge.Management.KV.fsproj" />
+    <ProjectReference Include="..\..\src\Management\CloudEdge.Management.Analytics\CloudEdge.Management.Analytics.fsproj" />
+    <ProjectReference Include="..\..\src\Management\CloudEdge.Management.Logs\CloudEdge.Management.Logs.fsproj" />
+    <ProjectReference Include="..\..\src\Management\CloudEdge.Management.Queues\CloudEdge.Management.Queues.fsproj" />
+    <ProjectReference Include="..\..\src\Management\CloudEdge.Management.Vectorize\CloudEdge.Management.Vectorize.fsproj" />
+    <ProjectReference Include="..\..\src\Management\CloudEdge.Management.Hyperdrive\CloudEdge.Management.Hyperdrive.fsproj" />
+    <ProjectReference Include="..\..\src\Management\CloudEdge.Management.DurableObjects\CloudEdge.Management.DurableObjects.fsproj" />
+    <ProjectReference Include="..\..\src\Management\CloudEdge.Management.Pages\CloudEdge.Management.Pages.fsproj" />
+
+    <!-- Management: Expanded surface (21 new services) -->
+    <ProjectReference Include="..\..\src\Management\CloudEdge.Management.AI\CloudEdge.Management.AI.fsproj" />
+    <ProjectReference Include="..\..\src\Management\CloudEdge.Management.AIGateway\CloudEdge.Management.AIGateway.fsproj" />
+    <ProjectReference Include="..\..\src\Management\CloudEdge.Management.AISearch\CloudEdge.Management.AISearch.fsproj" />
+    <ProjectReference Include="..\..\src\Management\CloudEdge.Management.AutoRAG\CloudEdge.Management.AutoRAG.fsproj" />
+    <ProjectReference Include="..\..\src\Management\CloudEdge.Management.Containers\CloudEdge.Management.Containers.fsproj" />
+    <ProjectReference Include="..\..\src\Management\CloudEdge.Management.Workflows\CloudEdge.Management.Workflows.fsproj" />
+    <ProjectReference Include="..\..\src\Management\CloudEdge.Management.Pipelines\CloudEdge.Management.Pipelines.fsproj" />
+    <ProjectReference Include="..\..\src\Management\CloudEdge.Management.BrowserRendering\CloudEdge.Management.BrowserRendering.fsproj" />
+    <ProjectReference Include="..\..\src\Management\CloudEdge.Management.Stream\CloudEdge.Management.Stream.fsproj" />
+    <ProjectReference Include="..\..\src\Management\CloudEdge.Management.Images\CloudEdge.Management.Images.fsproj" />
+    <ProjectReference Include="..\..\src\Management\CloudEdge.Management.R2Catalog\CloudEdge.Management.R2Catalog.fsproj" />
+    <ProjectReference Include="..\..\src\Management\CloudEdge.Management.SecretsStore\CloudEdge.Management.SecretsStore.fsproj" />
+    <ProjectReference Include="..\..\src\Management\CloudEdge.Management.Tunnels\CloudEdge.Management.Tunnels.fsproj" />
+    <ProjectReference Include="..\..\src\Management\CloudEdge.Management.Access\CloudEdge.Management.Access.fsproj" />
+    <ProjectReference Include="..\..\src\Management\CloudEdge.Management.Gateway\CloudEdge.Management.Gateway.fsproj" />
+    <ProjectReference Include="..\..\src\Management\CloudEdge.Management.Email\CloudEdge.Management.Email.fsproj" />
+    <ProjectReference Include="..\..\src\Management\CloudEdge.Management.Calls\CloudEdge.Management.Calls.fsproj" />
+    <ProjectReference Include="..\..\src\Management\CloudEdge.Management.Builds\CloudEdge.Management.Builds.fsproj" />
+    <ProjectReference Include="..\..\src\Management\CloudEdge.Management.LoadBalancers\CloudEdge.Management.LoadBalancers.fsproj" />
+    <ProjectReference Include="..\..\src\Management\CloudEdge.Management.WaitingRooms\CloudEdge.Management.WaitingRooms.fsproj" />
+    <ProjectReference Include="..\..\src\Management\CloudEdge.Management.Magic\CloudEdge.Management.Magic.fsproj" />
   </ItemGroup>
 
 </Project>

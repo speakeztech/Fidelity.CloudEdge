@@ -1,4 +1,4 @@
-namespace rec CloudFlare.Management.DurableObjects.Types
+namespace rec Fidelity.CloudEdge.Management.DurableObjects.Types
 
 ///Opaque token indicating the position from which to continue when requesting the next set of records. A valid value for the cursor can be obtained from the cursors object in the result_info structure.
 type workerscursor = string
@@ -24,7 +24,7 @@ type workersmessagesArrayItem =
 
 type workersmessages = list<workersmessagesArrayItem>
 ///ID of the namespace.
-type workersschemasid = string
+type ``workersschemas-id`` = string
 
 type ErrorsSource =
     { pointer: Option<string> }
@@ -76,77 +76,77 @@ type Resultinfo =
           per_page = None
           total_count = None }
 
-type workersapiresponsecollection =
+type ``workersapi-response-collection`` =
     { errors: Option<list<Errors>>
       messages: Option<list<Messages>>
       ///Whether the API call was successful.
       success: Option<bool>
       result_info: Option<Resultinfo> }
-    ///Creates an instance of workersapiresponsecollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): workersapiresponsecollection =
+    ///Creates an instance of workersapi-response-collection with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``workersapi-response-collection`` =
         { errors = None
           messages = None
           success = None
           result_info = None }
 
-type workersapiresponsecommonErrorsSource =
+type ``workersapi-response-commonErrorsSource`` =
     { pointer: Option<string> }
-    ///Creates an instance of workersapiresponsecommonErrorsSource with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): workersapiresponsecommonErrorsSource = { pointer = None }
+    ///Creates an instance of workersapi-response-commonErrorsSource with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``workersapi-response-commonErrorsSource`` = { pointer = None }
 
-type workersapiresponsecommonErrors =
+type ``workersapi-response-commonErrors`` =
     { code: int
       documentation_url: Option<string>
       message: string
-      source: Option<workersapiresponsecommonErrorsSource> }
-    ///Creates an instance of workersapiresponsecommonErrors with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (code: int, message: string): workersapiresponsecommonErrors =
+      source: Option<``workersapi-response-commonErrorsSource``> }
+    ///Creates an instance of workersapi-response-commonErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``workersapi-response-commonErrors`` =
         { code = code
           documentation_url = None
           message = message
           source = None }
 
-type workersapiresponsecommonMessagesSource =
+type ``workersapi-response-commonMessagesSource`` =
     { pointer: Option<string> }
-    ///Creates an instance of workersapiresponsecommonMessagesSource with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): workersapiresponsecommonMessagesSource = { pointer = None }
+    ///Creates an instance of workersapi-response-commonMessagesSource with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``workersapi-response-commonMessagesSource`` = { pointer = None }
 
-type workersapiresponsecommonMessages =
+type ``workersapi-response-commonMessages`` =
     { code: int
       documentation_url: Option<string>
       message: string
-      source: Option<workersapiresponsecommonMessagesSource> }
-    ///Creates an instance of workersapiresponsecommonMessages with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (code: int, message: string): workersapiresponsecommonMessages =
+      source: Option<``workersapi-response-commonMessagesSource``> }
+    ///Creates an instance of workersapi-response-commonMessages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``workersapi-response-commonMessages`` =
         { code = code
           documentation_url = None
           message = message
           source = None }
 
-type workersapiresponsecommon =
-    { errors: list<workersapiresponsecommonErrors>
-      messages: list<workersapiresponsecommonMessages>
+type ``workersapi-response-common`` =
+    { errors: list<``workersapi-response-commonErrors``>
+      messages: list<``workersapi-response-commonMessages``>
       ///Whether the API call was successful.
       success: bool }
-    ///Creates an instance of workersapiresponsecommon with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: list<workersapiresponsecommonErrors>,
-                          messages: list<workersapiresponsecommonMessages>,
-                          success: bool): workersapiresponsecommon =
+    ///Creates an instance of workersapi-response-common with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``workersapi-response-commonErrors``>,
+                          messages: list<``workersapi-response-commonMessages``>,
+                          success: bool): ``workersapi-response-common`` =
         { errors = errors
           messages = messages
           success = success }
 
-type workersapiresponsecommonfailure =
-    { errors: System.Text.Json.JsonElement
-      messages: System.Text.Json.JsonElement
-      result: System.Text.Json.JsonElement
+type ``workersapi-response-common-failure`` =
+    { errors: Newtonsoft.Json.Linq.JToken
+      messages: Newtonsoft.Json.Linq.JToken
+      result: Newtonsoft.Json.Linq.JObject
       ///Whether the API call was successful.
       success: bool }
-    ///Creates an instance of workersapiresponsecommonfailure with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (errors: System.Text.Json.JsonElement,
-                          messages: System.Text.Json.JsonElement,
-                          result: System.Text.Json.JsonElement,
-                          success: bool): workersapiresponsecommonfailure =
+    ///Creates an instance of workersapi-response-common-failure with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: Newtonsoft.Json.Linq.JToken,
+                          messages: Newtonsoft.Json.Linq.JToken,
+                          result: Newtonsoft.Json.Linq.JObject,
+                          success: bool): ``workersapi-response-common-failure`` =
         { errors = errors
           messages = messages
           result = result
