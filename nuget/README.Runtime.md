@@ -1,6 +1,6 @@
 # Fidelity.CloudEdge.Runtime
 
-**F# and Fable bindings for Cloudflare Workers Runtime APIs**
+**F# and Fable bindings for the full Cloudflare Workers Runtime API surface**
 
 > **Worker-side bindings** — Use this package to write Cloudflare Workers in F#. For managing Cloudflare resources from .NET applications, see [Fidelity.CloudEdge.Management](https://www.nuget.org/packages/Fidelity.CloudEdge.Management).
 
@@ -8,23 +8,74 @@
 
 Fidelity.CloudEdge.Runtime provides F# type bindings for the APIs available *inside* a running Cloudflare Worker. These bindings are designed for use with [Fable](https://fable.io/) to compile F# to JavaScript that runs on Cloudflare's edge network.
 
-Runtime bindings are generated from the official [@cloudflare/workers-types](https://github.com/cloudflare/workerd) TypeScript definitions using [Glutinum](https://github.com/glutinum-org/cli).
+The package includes 727 types generated from the official [@cloudflare/workers-types](https://github.com/cloudflare/workerd) TypeScript definitions using [Glutinum](https://github.com/glutinum-org/cli), plus hand-crafted helper modules for idiomatic F# usage.
 
 ## Supported Services
 
+### Core Worker APIs
+
 | Service | Namespace | Description |
 |---------|-----------|-------------|
-| **Worker.Context** | `Fidelity.CloudEdge.Worker.Context` | Core Worker types: Request, Response, Headers, ExecutionContext, Fetcher |
-| **KV** | `Fidelity.CloudEdge.KV` | Key-value storage read/write from within a Worker |
-| **R2** | `Fidelity.CloudEdge.R2` | Object storage (S3-compatible) operations |
-| **D1** | `Fidelity.CloudEdge.D1` | SQLite database queries and prepared statements |
-| **Durable Objects** | `Fidelity.CloudEdge.DurableObjects` | Stateful serverless compute with storage, alarms, and WebSocket hibernation |
-| **Queues** | `Fidelity.CloudEdge.Queues` | Message queue producers and consumers |
+| **Worker.Context** | `Fidelity.CloudEdge.Worker.Context` | Request, Response, Headers, FetchEvent, ExecutionContext, Fetcher, ServiceWorkerGlobalScope |
+| **Fetch and Networking** | `Fidelity.CloudEdge.Worker.Context` | Fetch API, Socket, SocketAddress, SocketOptions, URL, URLPattern, URLSearchParams |
+| **Streams** | `Fidelity.CloudEdge.Worker.Context` | ReadableStream, WritableStream, TransformStream, FixedLengthStream, CompressionStream, DecompressionStream |
+| **Crypto** | `Fidelity.CloudEdge.Worker.Context` | Web Crypto API: SubtleCrypto, CryptoKey, CryptoKeyPair, DigestStream |
+| **Cache** | `Fidelity.CloudEdge.Worker.Context` | Cache API, CacheStorage, CacheQueryOptions |
+| **HTMLRewriter** | `Fidelity.CloudEdge.Worker.Context` | HTML parsing and transformation on the edge |
+| **Encoding** | `Fidelity.CloudEdge.Worker.Context` | TextEncoderStream, TextDecoderStream |
+| **Forms and Blobs** | `Fidelity.CloudEdge.Worker.Context` | FormData, Blob, BlobOptions |
+
+### Storage and Data
+
+| Service | Namespace | Description |
+|---------|-----------|-------------|
+| **KV** | `Fidelity.CloudEdge.KV` | Key-value storage: get, put, delete, list with expiration and metadata |
+| **R2** | `Fidelity.CloudEdge.R2` | S3-compatible object storage operations |
+| **D1** | `Fidelity.CloudEdge.D1` | SQLite database queries, prepared statements, batch operations, sessions |
+| **Durable Objects** | `Fidelity.CloudEdge.DurableObjects` | Stateful compute with transactional storage, alarms, WebSocket hibernation, and RPC |
+| **Queues** | `Fidelity.CloudEdge.Queues` | Message queue producers and consumers with retry and batching |
 | **Vectorize** | `Fidelity.CloudEdge.Vectorize` | Vector database for embeddings, similarity search, and metadata filtering |
 | **Hyperdrive** | `Fidelity.CloudEdge.Hyperdrive` | Database connection pooling with automatic caching |
-| **AI** | `Fidelity.CloudEdge.AI` | Workers AI inference (text generation, embeddings, image models) |
+| **Analytics Engine** | `Fidelity.CloudEdge.Worker.Context` | AnalyticsEngineDataset, AnalyticsEngineDataPoint |
 
-A shared **Core** library (`Fidelity.CloudEdge.Core`) provides common utilities used across all runtime bindings.
+### AI and ML
+
+| Service | Namespace | Description |
+|---------|-----------|-------------|
+| **Workers AI** | `Fidelity.CloudEdge.AI` | Full inference API with per-model typed inputs and outputs (text generation, embeddings, image generation, speech, translation, classification, object detection, and more) |
+| **AI Gateway** | `Fidelity.CloudEdge.Worker.Context` | AiGateway routing, logging, and provider configuration |
+| **AI Search** | `Fidelity.CloudEdge.Worker.Context` | AiSearchInstance, search requests and responses |
+| **AutoRAG** | `Fidelity.CloudEdge.Worker.Context` | Automated retrieval-augmented generation with search and chat |
+
+### Compute and Orchestration
+
+| Service | Namespace | Description |
+|---------|-----------|-------------|
+| **Containers** | `Fidelity.CloudEdge.Worker.Context` | Container runtime with startup options |
+| **Workflows** | `Fidelity.CloudEdge.Worker.Context` | Durable workflow instances, sleep/retry durations, error handling |
+| **Service Bindings** | `Fidelity.CloudEdge.Worker.Context` | Service-to-service RPC via Fetcher and Service types |
+| **Cron Triggers** | `Fidelity.CloudEdge.Worker.Context` | ExportedHandlerScheduledHandler, SchedulerWaitOptions |
+
+### Media
+
+| Service | Namespace | Description |
+|---------|-----------|-------------|
+| **Images** | `Fidelity.CloudEdge.Worker.Context` | ImagesBinding, ImageTransformer, transformations, draw, metadata, upload |
+| **Media Transforms** | `Fidelity.CloudEdge.Worker.Context` | MediaTransformer, MediaTransformationGenerator for video/audio processing |
+| **Markdown** | `Fidelity.CloudEdge.Worker.Context` | ToMarkdownService for HTML-to-Markdown conversion |
+
+### Email
+
+| Service | Namespace | Description |
+|---------|-----------|-------------|
+| **Email Routing** | `Fidelity.CloudEdge.Worker.Context` | EmailMessage, EmailEvent, ForwardableEmailMessage, SendEmail |
+
+### Observability
+
+| Service | Namespace | Description |
+|---------|-----------|-------------|
+| **Tail and Trace** | `Fidelity.CloudEdge.Worker.Context` | TailEvent, TraceItem, TraceLog, TraceMetrics, TraceDiagnosticChannelEvent |
+| **WebSockets** | `Fidelity.CloudEdge.Worker.Context` | WebSocket, WebSocketEventMap, hibernatable WebSocket events |
 
 ## Installation
 
@@ -64,8 +115,13 @@ fable/                 F# sources for Fable compilation
   Runtime/
     CloudEdge.AI/        Workers AI bindings
     CloudEdge.D1/        D1 database bindings
+    CloudEdge.DurableObjects/  Durable Objects bindings
+    CloudEdge.Hyperdrive/      Hyperdrive bindings
     CloudEdge.KV/        KV storage bindings
-    ...
+    CloudEdge.Queues/    Queue bindings
+    CloudEdge.R2/        R2 object storage bindings
+    CloudEdge.Vectorize/ Vector database bindings
+    CloudEdge.Worker.Context/  Core types + full workers-types surface (727 types)
 ```
 
 ## Requirements
