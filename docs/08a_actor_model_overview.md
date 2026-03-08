@@ -83,6 +83,7 @@ Akka.NET interoperability is planned via a BAREWire serializer plugin and a stat
 | [08b: Actor Core](08b_actor_core.md) | Durable Object substrate, WebSocket transport, BAREWire serialization, actor lifecycle, supervision (Prospero/Olivier), connection topology. |
 | [08c: MailboxProcessor Intercept](08c_mailbox_intercept.md) | Full API surface mapping, push model (TryReceive discouraged), Scan/TryScan unsupported, semantic changes, migration example. |
 | [08d: Persistence and Observability](08d_persistence_observability.md) | Event sourcing model, journals, snapshots, read-side projections, Analytics Engine, Diagnostics Channel, tracing. |
+| [08e: Management Infrastructure](08e_management_infrastructure.md) | Management API mapping, deployment provisioning, elastic scaling infrastructure, dead-letter storage, observability pipeline, security, cross-substrate tunnels. |
 
 ## Implementation Phases
 

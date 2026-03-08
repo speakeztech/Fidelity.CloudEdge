@@ -281,6 +281,7 @@ let deploy env = cloudflare {
   - [Actor Core](docs/08b_actor_core.md) - DO substrate, WebSocket, BAREWire, lifecycle, supervision
   - [MailboxProcessor Intercept](docs/08c_mailbox_intercept.md) - API surface, push model, migration
   - [Persistence & Observability](docs/08d_persistence_observability.md) - Event sourcing, journals, instrumentation
+  - [Management Infrastructure](docs/08e_management_infrastructure.md) - Control plane provisioning, deployment orchestration
 - [Firetower Concept](docs/04_firetower_concept.md) - Monitoring tool design
 - [Pulumi Insights](docs/05_pulumi_insights.md) - Lessons from Pulumi's approach
 - [Pages Direct Upload](docs/07_pages_direct_upload.md) - Pages upload implementation
