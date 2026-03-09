@@ -1,5 +1,16 @@
 namespace rec Fidelity.CloudEdge.Management.LoadBalancers.Types
 
+// Auto-generated type aliases (Hawaii normalization fix)
+type ``load-balancing_origin`` = ``load-balancingorigin``
+
+// Auto-generated stub types (missing from Hawaii output)
+type origin = string
+type regions = string
+type resource = string
+type resources = string
+type results = string
+type traffic = string
+
 ///The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin.
 type ``load-balancingHost`` = list<string>
 ///The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set.
@@ -86,9 +97,6 @@ type ``load-balancingorigins`` = list<``load-balancing_origin``>
 type ``load-balancingpatchpoolsnotificationemail`` = string
 ///The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.
 type ``load-balancingpath`` = string
-
-// Type aliases for Hawaii sanitization compatibility
-type ``load-balancing_origin`` = ``load-balancingorigin``
 type ``load-balancingport`` = int
 ///Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.
 type ``load-balancingprobezone`` = string
@@ -272,17 +280,21 @@ type ``load-balancingcomponents-schemas-singleresponseMessages`` =
         { code = code; message = message }
 
 type ``load-balancingcomponents-schemas-singleresponse`` =
-    { errors: Option<list<``load-balancingcomponents-schemas-singleresponseErrors``>>
-      messages: Option<list<``load-balancingcomponents-schemas-singleresponseMessages``>>
+    { errors: list<``load-balancingcomponents-schemas-singleresponseErrors``>
+      messages: list<``load-balancingcomponents-schemas-singleresponseMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
-      result: Option<Newtonsoft.Json.Linq.JToken> }
+      success: bool
+      ///A list of countries and subdivisions mapped to a region.
+      result: Newtonsoft.Json.Linq.JObject }
     ///Creates an instance of load-balancingcomponents-schemas-singleresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``load-balancingcomponents-schemas-singleresponse`` =
-        { errors = None
-          messages = None
-          success = None
-          result = None }
+    static member Create (errors: list<``load-balancingcomponents-schemas-singleresponseErrors``>,
+                          messages: list<``load-balancingcomponents-schemas-singleresponseMessages``>,
+                          success: bool,
+                          result: Newtonsoft.Json.Linq.JObject): ``load-balancingcomponents-schemas-singleresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
 
 ///Filter options for a particular resource type (pool or origin). Use null to reset.
 type ``load-balancingfilteroptions`` =
@@ -325,17 +337,21 @@ type Result =
     static member Create (): Result = { pool_id = None; pop_health = None }
 
 type ``load-balancinghealthdetails`` =
-    { errors: Option<list<``load-balancinghealthdetailsErrors``>>
-      messages: Option<list<``load-balancinghealthdetailsMessages``>>
+    { errors: list<``load-balancinghealthdetailsErrors``>
+      messages: list<``load-balancinghealthdetailsMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
-      result: Option<Newtonsoft.Json.Linq.JToken> }
+      success: bool
+      ///A list of regions from which to run health checks. Null means every Cloudflare data center.
+      result: Result }
     ///Creates an instance of load-balancinghealthdetails with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``load-balancinghealthdetails`` =
-        { errors = None
-          messages = None
-          success = None
-          result = None }
+    static member Create (errors: list<``load-balancinghealthdetailsErrors``>,
+                          messages: list<``load-balancinghealthdetailsMessages``>,
+                          success: bool,
+                          result: Result): ``load-balancinghealthdetails`` =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
 
 type ``load-balancingidresponseErrors`` =
     { code: int
@@ -357,17 +373,20 @@ type ``load-balancingidresponseResult`` =
     static member Create (): ``load-balancingidresponseResult`` = { id = None }
 
 type ``load-balancingidresponse`` =
-    { errors: Option<list<``load-balancingidresponseErrors``>>
-      messages: Option<list<``load-balancingidresponseMessages``>>
+    { errors: list<``load-balancingidresponseErrors``>
+      messages: list<``load-balancingidresponseMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
-      result: Option<Newtonsoft.Json.Linq.JToken> }
+      success: bool
+      result: ``load-balancingidresponseResult`` }
     ///Creates an instance of load-balancingidresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``load-balancingidresponse`` =
-        { errors = None
-          messages = None
-          success = None
-          result = None }
+    static member Create (errors: list<``load-balancingidresponseErrors``>,
+                          messages: list<``load-balancingidresponseMessages``>,
+                          success: bool,
+                          result: ``load-balancingidresponseResult``): ``load-balancingidresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type Defaultpolicy =
@@ -596,18 +615,21 @@ type ``load-balancingmonitor-group-references-responseResult`` =
           resource_type = None }
 
 type ``load-balancingmonitor-group-references-response`` =
-    { errors: Option<list<``load-balancingmonitor-group-references-responseErrors``>>
-      messages: Option<list<``load-balancingmonitor-group-references-responseMessages``>>
+    { errors: list<``load-balancingmonitor-group-references-responseErrors``>
+      messages: list<``load-balancingmonitor-group-references-responseMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       ///List of resources that reference a given monitor group.
-      result: Option<list<``load-balancingmonitor-group-references-responseResult``>> }
+      result: list<``load-balancingmonitor-group-references-responseResult``> }
     ///Creates an instance of load-balancingmonitor-group-references-response with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``load-balancingmonitor-group-references-response`` =
-        { errors = None
-          messages = None
-          success = None
-          result = None }
+    static member Create (errors: list<``load-balancingmonitor-group-references-responseErrors``>,
+                          messages: list<``load-balancingmonitor-group-references-responseMessages``>,
+                          success: bool,
+                          result: list<``load-balancingmonitor-group-references-responseResult``>): ``load-balancingmonitor-group-references-response`` =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
 
 type ``load-balancingmonitor-group-response-collectionErrors`` =
     { code: int
@@ -624,18 +646,21 @@ type ``load-balancingmonitor-group-response-collectionMessages`` =
         { code = code; message = message }
 
 type ``load-balancingmonitor-group-response-collection`` =
-    { errors: Option<list<``load-balancingmonitor-group-response-collectionErrors``>>
-      messages: Option<list<``load-balancingmonitor-group-response-collectionMessages``>>
+    { errors: list<``load-balancingmonitor-group-response-collectionErrors``>
+      messages: list<``load-balancingmonitor-group-response-collectionMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
-      result: Option<list<``load-balancingmonitor-group``>>
+      success: bool
+      result: list<``load-balancingmonitor-group``>
       result_info: Option<``load-balancingresultinfo``> }
     ///Creates an instance of load-balancingmonitor-group-response-collection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``load-balancingmonitor-group-response-collection`` =
-        { errors = None
-          messages = None
-          success = None
-          result = None
+    static member Create (errors: list<``load-balancingmonitor-group-response-collectionErrors``>,
+                          messages: list<``load-balancingmonitor-group-response-collectionMessages``>,
+                          success: bool,
+                          result: list<``load-balancingmonitor-group``>): ``load-balancingmonitor-group-response-collection`` =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result
           result_info = None }
 
 type ``load-balancingmonitor-group-single-responseErrors`` =
@@ -653,17 +678,20 @@ type ``load-balancingmonitor-group-single-responseMessages`` =
         { code = code; message = message }
 
 type ``load-balancingmonitor-group-single-response`` =
-    { errors: Option<list<``load-balancingmonitor-group-single-responseErrors``>>
-      messages: Option<list<``load-balancingmonitor-group-single-responseMessages``>>
+    { errors: list<``load-balancingmonitor-group-single-responseErrors``>
+      messages: list<``load-balancingmonitor-group-single-responseMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
-      result: Option<``load-balancingmonitor-group``> }
+      success: bool
+      result: ``load-balancingmonitor-group`` }
     ///Creates an instance of load-balancingmonitor-group-single-response with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``load-balancingmonitor-group-single-response`` =
-        { errors = None
-          messages = None
-          success = None
-          result = None }
+    static member Create (errors: list<``load-balancingmonitor-group-single-responseErrors``>,
+                          messages: list<``load-balancingmonitor-group-single-responseMessages``>,
+                          success: bool,
+                          result: ``load-balancingmonitor-group``): ``load-balancingmonitor-group-single-response`` =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
 
 type ``load-balancingmonitor-references-responseErrors`` =
     { code: int
@@ -703,18 +731,21 @@ type ``load-balancingmonitor-references-responseResult`` =
           resource_type = None }
 
 type ``load-balancingmonitor-references-response`` =
-    { errors: Option<list<``load-balancingmonitor-references-responseErrors``>>
-      messages: Option<list<``load-balancingmonitor-references-responseMessages``>>
+    { errors: list<``load-balancingmonitor-references-responseErrors``>
+      messages: list<``load-balancingmonitor-references-responseMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       ///List of resources that reference a given monitor.
-      result: Option<list<``load-balancingmonitor-references-responseResult``>> }
+      result: list<``load-balancingmonitor-references-responseResult``> }
     ///Creates an instance of load-balancingmonitor-references-response with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``load-balancingmonitor-references-response`` =
-        { errors = None
-          messages = None
-          success = None
-          result = None }
+    static member Create (errors: list<``load-balancingmonitor-references-responseErrors``>,
+                          messages: list<``load-balancingmonitor-references-responseMessages``>,
+                          success: bool,
+                          result: list<``load-balancingmonitor-references-responseResult``>): ``load-balancingmonitor-references-response`` =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
 
 type ``load-balancingmonitor-response-collectionErrors`` =
     { code: int
@@ -731,19 +762,22 @@ type ``load-balancingmonitor-response-collectionMessages`` =
         { code = code; message = message }
 
 type ``load-balancingmonitor-response-collection`` =
-    { errors: Option<list<``load-balancingmonitor-response-collectionErrors``>>
-      messages: Option<list<``load-balancingmonitor-response-collectionMessages``>>
+    { errors: list<``load-balancingmonitor-response-collectionErrors``>
+      messages: list<``load-balancingmonitor-response-collectionMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<``load-balancingresultinfo``>
-      result: Option<list<``load-balancingmonitor``>> }
+      result: list<``load-balancingmonitor``> }
     ///Creates an instance of load-balancingmonitor-response-collection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``load-balancingmonitor-response-collection`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``load-balancingmonitor-response-collectionErrors``>,
+                          messages: list<``load-balancingmonitor-response-collectionMessages``>,
+                          success: bool,
+                          result: list<``load-balancingmonitor``>): ``load-balancingmonitor-response-collection`` =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
-          result = None }
+          result = result }
 
 type ``load-balancingmonitor-response-singleErrors`` =
     { code: int
@@ -760,17 +794,20 @@ type ``load-balancingmonitor-response-singleMessages`` =
         { code = code; message = message }
 
 type ``load-balancingmonitor-response-single`` =
-    { errors: Option<list<``load-balancingmonitor-response-singleErrors``>>
-      messages: Option<list<``load-balancingmonitor-response-singleMessages``>>
+    { errors: list<``load-balancingmonitor-response-singleErrors``>
+      messages: list<``load-balancingmonitor-response-singleMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
-      result: Option<Newtonsoft.Json.Linq.JToken> }
+      success: bool
+      result: Newtonsoft.Json.Linq.JToken }
     ///Creates an instance of load-balancingmonitor-response-single with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``load-balancingmonitor-response-single`` =
-        { errors = None
-          messages = None
-          success = None
-          result = None }
+    static member Create (errors: list<``load-balancingmonitor-response-singleErrors``>,
+                          messages: list<``load-balancingmonitor-response-singleMessages``>,
+                          success: bool,
+                          result: Newtonsoft.Json.Linq.JToken): ``load-balancingmonitor-response-single`` =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
 
 ///Filter pool and origin health notifications by resource type or health status. Use null to reset.
 type ``load-balancingnotificationfilter`` =
@@ -998,18 +1035,21 @@ type ``load-balancingpools-references-responseResult`` =
           resource_type = None }
 
 type ``load-balancingpools-references-response`` =
-    { errors: Option<list<``load-balancingpools-references-responseErrors``>>
-      messages: Option<list<``load-balancingpools-references-responseMessages``>>
+    { errors: list<``load-balancingpools-references-responseErrors``>
+      messages: list<``load-balancingpools-references-responseMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       ///List of resources that reference a given pool.
-      result: Option<list<``load-balancingpools-references-responseResult``>> }
+      result: list<``load-balancingpools-references-responseResult``> }
     ///Creates an instance of load-balancingpools-references-response with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``load-balancingpools-references-response`` =
-        { errors = None
-          messages = None
-          success = None
-          result = None }
+    static member Create (errors: list<``load-balancingpools-references-responseErrors``>,
+                          messages: list<``load-balancingpools-references-responseMessages``>,
+                          success: bool,
+                          result: list<``load-balancingpools-references-responseResult``>): ``load-balancingpools-references-response`` =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
 
 type ``load-balancingpreviewresponseErrors`` =
     { code: int
@@ -1033,17 +1073,20 @@ type ``load-balancingpreviewresponseResult`` =
     static member Create (): ``load-balancingpreviewresponseResult`` = { pools = None; preview_id = None }
 
 type ``load-balancingpreviewresponse`` =
-    { errors: Option<list<``load-balancingpreviewresponseErrors``>>
-      messages: Option<list<``load-balancingpreviewresponseMessages``>>
+    { errors: list<``load-balancingpreviewresponseErrors``>
+      messages: list<``load-balancingpreviewresponseMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
-      result: Option<Newtonsoft.Json.Linq.JToken> }
+      success: bool
+      result: ``load-balancingpreviewresponseResult`` }
     ///Creates an instance of load-balancingpreviewresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``load-balancingpreviewresponse`` =
-        { errors = None
-          messages = None
-          success = None
-          result = None }
+    static member Create (errors: list<``load-balancingpreviewresponseErrors``>,
+                          messages: list<``load-balancingpreviewresponseMessages``>,
+                          success: bool,
+                          result: ``load-balancingpreviewresponseResult``): ``load-balancingpreviewresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
 
 type ``load-balancingpreviewresultresponseErrors`` =
     { code: int
@@ -1060,17 +1103,21 @@ type ``load-balancingpreviewresultresponseMessages`` =
         { code = code; message = message }
 
 type ``load-balancingpreviewresultresponse`` =
-    { errors: Option<list<``load-balancingpreviewresultresponseErrors``>>
-      messages: Option<list<``load-balancingpreviewresultresponseMessages``>>
+    { errors: list<``load-balancingpreviewresultresponseErrors``>
+      messages: list<``load-balancingpreviewresultresponseMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
-      result: Option<Newtonsoft.Json.Linq.JToken> }
+      success: bool
+      ///Resulting health data from a preview operation.
+      result: Map<string, string> }
     ///Creates an instance of load-balancingpreviewresultresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``load-balancingpreviewresultresponse`` =
-        { errors = None
-          messages = None
-          success = None
-          result = None }
+    static member Create (errors: list<``load-balancingpreviewresultresponseErrors``>,
+                          messages: list<``load-balancingpreviewresultresponseMessages``>,
+                          success: bool,
+                          result: Map<string, string>): ``load-balancingpreviewresultresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
 
 type ``load-balancingregioncomponents-schemas-responsecollectionErrors`` =
     { code: int
@@ -1087,17 +1134,20 @@ type ``load-balancingregioncomponents-schemas-responsecollectionMessages`` =
         { code = code; message = message }
 
 type ``load-balancingregioncomponents-schemas-responsecollection`` =
-    { errors: Option<list<``load-balancingregioncomponents-schemas-responsecollectionErrors``>>
-      messages: Option<list<``load-balancingregioncomponents-schemas-responsecollectionMessages``>>
+    { errors: list<``load-balancingregioncomponents-schemas-responsecollectionErrors``>
+      messages: list<``load-balancingregioncomponents-schemas-responsecollectionMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
-      result: Option<Newtonsoft.Json.Linq.JToken> }
+      success: bool
+      result: Newtonsoft.Json.Linq.JObject }
     ///Creates an instance of load-balancingregioncomponents-schemas-responsecollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``load-balancingregioncomponents-schemas-responsecollection`` =
-        { errors = None
-          messages = None
-          success = None
-          result = None }
+    static member Create (errors: list<``load-balancingregioncomponents-schemas-responsecollectionErrors``>,
+                          messages: list<``load-balancingregioncomponents-schemas-responsecollectionMessages``>,
+                          success: bool,
+                          result: Newtonsoft.Json.Linq.JObject): ``load-balancingregioncomponents-schemas-responsecollection`` =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type ``load-balancingresourcereferenceReferencetype`` =
@@ -1184,17 +1234,20 @@ type ``load-balancingschemas-idresponseResult`` =
     static member Create (): ``load-balancingschemas-idresponseResult`` = { id = None }
 
 type ``load-balancingschemas-idresponse`` =
-    { errors: Option<list<``load-balancingschemas-idresponseErrors``>>
-      messages: Option<list<``load-balancingschemas-idresponseMessages``>>
+    { errors: list<``load-balancingschemas-idresponseErrors``>
+      messages: list<``load-balancingschemas-idresponseMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
-      result: Option<Newtonsoft.Json.Linq.JToken> }
+      success: bool
+      result: ``load-balancingschemas-idresponseResult`` }
     ///Creates an instance of load-balancingschemas-idresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``load-balancingschemas-idresponse`` =
-        { errors = None
-          messages = None
-          success = None
-          result = None }
+    static member Create (errors: list<``load-balancingschemas-idresponseErrors``>,
+                          messages: list<``load-balancingschemas-idresponseMessages``>,
+                          success: bool,
+                          result: ``load-balancingschemas-idresponseResult``): ``load-balancingschemas-idresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
 
 type ``load-balancingschemas-responsecollectionErrors`` =
     { code: int
@@ -1211,19 +1264,22 @@ type ``load-balancingschemas-responsecollectionMessages`` =
         { code = code; message = message }
 
 type ``load-balancingschemas-responsecollection`` =
-    { errors: Option<list<``load-balancingschemas-responsecollectionErrors``>>
-      messages: Option<list<``load-balancingschemas-responsecollectionMessages``>>
+    { errors: list<``load-balancingschemas-responsecollectionErrors``>
+      messages: list<``load-balancingschemas-responsecollectionMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<``load-balancingresultinfo``>
-      result: Option<list<``load-balancingpool``>> }
+      result: list<``load-balancingpool``> }
     ///Creates an instance of load-balancingschemas-responsecollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``load-balancingschemas-responsecollection`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``load-balancingschemas-responsecollectionErrors``>,
+                          messages: list<``load-balancingschemas-responsecollectionMessages``>,
+                          success: bool,
+                          result: list<``load-balancingpool``>): ``load-balancingschemas-responsecollection`` =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
-          result = None }
+          result = result }
 
 type ``load-balancingschemas-singleresponseErrors`` =
     { code: int
@@ -1240,17 +1296,20 @@ type ``load-balancingschemas-singleresponseMessages`` =
         { code = code; message = message }
 
 type ``load-balancingschemas-singleresponse`` =
-    { errors: Option<list<``load-balancingschemas-singleresponseErrors``>>
-      messages: Option<list<``load-balancingschemas-singleresponseMessages``>>
+    { errors: list<``load-balancingschemas-singleresponseErrors``>
+      messages: list<``load-balancingschemas-singleresponseMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
-      result: Option<Newtonsoft.Json.Linq.JToken> }
+      success: bool
+      result: ``load-balancingpool`` }
     ///Creates an instance of load-balancingschemas-singleresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``load-balancingschemas-singleresponse`` =
-        { errors = None
-          messages = None
-          success = None
-          result = None }
+    static member Create (errors: list<``load-balancingschemas-singleresponseErrors``>,
+                          messages: list<``load-balancingschemas-singleresponseMessages``>,
+                          success: bool,
+                          result: ``load-balancingpool``): ``load-balancingschemas-singleresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
 
 type ``load-balancingsearch`` =
     { ///A list of resources matching the search query.
@@ -1263,90 +1322,156 @@ type ``load-balancingsearchresult`` =
     ///Creates an instance of load-balancingsearchresult with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``load-balancingsearchresult`` = { result = None }
 
+type ``account-load-balancer-search-search-resourcesresponseErrors`` =
+    { code: int
+      message: string }
+    ///Creates an instance of account-load-balancer-search-search-resourcesresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``account-load-balancer-search-search-resourcesresponseErrors`` =
+        { code = code; message = message }
+
+type ``account-load-balancer-search-search-resourcesresponseMessages`` =
+    { code: int
+      message: string }
+    ///Creates an instance of account-load-balancer-search-search-resourcesresponseMessages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``account-load-balancer-search-search-resourcesresponseMessages`` =
+        { code = code; message = message }
+
+type ``account-load-balancer-search-search-resourcesresponse`` =
+    { errors: list<``account-load-balancer-search-search-resourcesresponseErrors``>
+      messages: list<``account-load-balancer-search-search-resourcesresponseMessages``>
+      ///Whether the API call was successful.
+      success: bool
+      result_info: Option<``load-balancingresultinfo``>
+      result: ``load-balancingsearch`` }
+    ///Creates an instance of account-load-balancer-search-search-resourcesresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``account-load-balancer-search-search-resourcesresponseErrors``>,
+                          messages: list<``account-load-balancer-search-search-resourcesresponseMessages``>,
+                          success: bool,
+                          result: ``load-balancingsearch``): ``account-load-balancer-search-search-resourcesresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
+          result_info = None
+          result = result }
+
 [<RequireQualifiedAccess>]
 type AccountLoadBalancerMonitorGroupsListMonitorGroups =
     ///List Monitor Groups response
     | OK of payload: ``load-balancingmonitor-group-response-collection``
+    ///List Monitor Groups response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type AccountLoadBalancerMonitorGroupsCreateMonitorGroup =
     ///Create Monitor Group response
     | OK of payload: ``load-balancingmonitor-group-single-response``
+    ///Create Monitor Group response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type AccountLoadBalancerMonitorGroupsDeleteMonitorGroup =
     ///Delete Monitor Group response
     | OK of payload: ``load-balancingmonitor-group-single-response``
+    ///Delete Monitor Group response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type AccountLoadBalancerMonitorGroupsMonitorGroupDetails =
     ///Monitor Group Details response
     | OK of payload: ``load-balancingmonitor-group-single-response``
+    ///Monitor Group Details response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type AccountLoadBalancerMonitorGroupsPatchMonitorGroup =
     ///Patch Monitor Group response
     | OK of payload: ``load-balancingmonitor-group-single-response``
+    ///Patch Monitor Group response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type AccountLoadBalancerMonitorGroupsUpdateMonitorGroup =
     ///Update Monitor Group response
     | OK of payload: ``load-balancingmonitor-group-single-response``
+    ///Update Monitor Group response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type AccountLoadBalancerMonitorGroupsListMonitorGroupReferences =
     ///List Monitor Group References response.
     | OK of payload: ``load-balancingmonitor-group-references-response``
+    ///List Monitor Group References response failure.
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type AccountLoadBalancerMonitorsListMonitors =
     ///List Monitors response.
     | OK of payload: ``load-balancingmonitor-response-collection``
+    ///List Monitors response failure.
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type AccountLoadBalancerMonitorsCreateMonitor =
     ///Create Monitor response.
     | OK of payload: ``load-balancingmonitor-response-single``
+    ///Create Monitor response failure.
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type AccountLoadBalancerMonitorsDeleteMonitor =
     ///Delete Monitor response.
     | OK of payload: ``load-balancingidresponse``
+    ///Delete Monitor response failure.
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type AccountLoadBalancerMonitorsMonitorDetails =
     ///Monitor Details response.
     | OK of payload: ``load-balancingmonitor-response-single``
+    ///Monitor Details response failure.
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type AccountLoadBalancerMonitorsPatchMonitor =
     ///Patch Monitor response.
     | OK of payload: ``load-balancingmonitor-response-single``
+    ///Patch Monitor response failure.
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type AccountLoadBalancerMonitorsUpdateMonitor =
     ///Update Monitor response.
     | OK of payload: ``load-balancingmonitor-response-single``
+    ///Update Monitor response failure.
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type AccountLoadBalancerMonitorsPreviewMonitor =
     ///Preview Monitor response.
     | OK of payload: ``load-balancingpreviewresponse``
+    ///Preview Monitor response failure.
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type AccountLoadBalancerMonitorsListMonitorReferences =
     ///List Monitor References response.
     | OK of payload: ``load-balancingmonitor-references-response``
+    ///List Monitor References response failure.
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type AccountLoadBalancerPoolsListPools =
     ///List Pools response.
     | OK of payload: ``load-balancingschemas-responsecollection``
+    ///List Pools response failure.
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type AccountLoadBalancerPoolsPatchPools =
     ///Patch Pools response.
     | OK of payload: ``load-balancingschemas-responsecollection``
+    ///Patch Pools response failure.
+    | BadRequest of payload: string
 
 type AccountLoadBalancerPoolsCreatePoolPayload =
     { ///A human-readable description of the pool.
@@ -1395,16 +1520,22 @@ type AccountLoadBalancerPoolsCreatePoolPayload =
 type AccountLoadBalancerPoolsCreatePool =
     ///Create Pool response.
     | OK of payload: ``load-balancingschemas-singleresponse``
+    ///Create Pool response failure.
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type AccountLoadBalancerPoolsDeletePool =
     ///Delete Pool response.
     | OK of payload: ``load-balancingschemas-idresponse``
+    ///Delete Pool response failure.
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type AccountLoadBalancerPoolsPoolDetails =
     ///Pool Details response.
     | OK of payload: ``load-balancingschemas-singleresponse``
+    ///Pool Details response failure.
+    | BadRequest of payload: string
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type AccountLoadBalancerPoolsPatchPoolPayloadCheck_regions =
@@ -1492,6 +1623,8 @@ type AccountLoadBalancerPoolsPatchPoolPayload =
 type AccountLoadBalancerPoolsPatchPool =
     ///Patch Pool response.
     | OK of payload: ``load-balancingschemas-singleresponse``
+    ///Patch Pool response failure.
+    | BadRequest of payload: string
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type AccountLoadBalancerPoolsUpdatePoolPayloadCheck_regions =
@@ -1579,38 +1712,54 @@ type AccountLoadBalancerPoolsUpdatePoolPayload =
 type AccountLoadBalancerPoolsUpdatePool =
     ///Update Pool response.
     | OK of payload: ``load-balancingschemas-singleresponse``
+    ///Update Pool response failure.
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type AccountLoadBalancerPoolsPoolHealthDetails =
     ///Pool Health Details response.
     | OK of payload: ``load-balancinghealthdetails``
+    ///Pool Health Details response failure.
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type AccountLoadBalancerPoolsPreviewPool =
     ///Preview Pool response.
     | OK of payload: ``load-balancingpreviewresponse``
+    ///Preview Pool response failure.
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type AccountLoadBalancerPoolsListPoolReferences =
     ///List Pool References response.
     | OK of payload: ``load-balancingpools-references-response``
+    ///List Pool References response failure.
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type AccountLoadBalancerMonitorsPreviewResult =
     ///Preview Result response.
     | OK of payload: ``load-balancingpreviewresultresponse``
+    ///Preview Result response failure.
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type LoadBalancerRegionsListRegions =
     ///List Regions response.
     | OK of payload: ``load-balancingregioncomponents-schemas-responsecollection``
+    ///List Regions response failure.
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type LoadBalancerRegionsGetRegion =
     ///Get Region response.
     | OK of payload: ``load-balancingcomponents-schemas-singleresponse``
+    ///Get Region response failure.
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type AccountLoadBalancerSearchSearchResources =
     ///Search Resources response.
-    | OK of payload: string
+    | OK of payload: ``account-load-balancer-search-search-resourcesresponse``
+    ///Search Resources response failure.
+    | BadRequest of payload: string

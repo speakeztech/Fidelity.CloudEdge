@@ -57,7 +57,9 @@ type StreamClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.getAsync httpClient "/accounts/{account_id}/stream" requestParts cancellationToken
 
-            return StreamVideosListVideos.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return StreamVideosListVideos.OK(Serializer.deserialize content)
+            | _ -> return StreamVideosListVideos.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -88,7 +90,9 @@ type StreamClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.postAsync httpClient "/accounts/{account_id}/stream" requestParts cancellationToken
 
-            return StreamVideosInitiateVideoUploadsUsingTus.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return StreamVideosInitiateVideoUploadsUsingTus.OK(Serializer.deserialize content)
+            | _ -> return StreamVideosInitiateVideoUploadsUsingTus.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -108,7 +112,9 @@ type StreamClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.postAsync httpClient "/accounts/{account_id}/stream/clip" requestParts cancellationToken
 
-            return StreamVideoClippingClipVideosGivenAStartAndEndTime.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return StreamVideoClippingClipVideosGivenAStartAndEndTime.OK(Serializer.deserialize content)
+            | _ -> return StreamVideoClippingClipVideosGivenAStartAndEndTime.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -131,7 +137,9 @@ type StreamClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.postAsync httpClient "/accounts/{account_id}/stream/copy" requestParts cancellationToken
 
-            return StreamVideosUploadVideosFromAUrl.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return StreamVideosUploadVideosFromAUrl.OK(Serializer.deserialize content)
+            | _ -> return StreamVideosUploadVideosFromAUrl.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -158,7 +166,9 @@ type StreamClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return StreamVideosUploadVideosViaDirectUploadUrLs.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return StreamVideosUploadVideosViaDirectUploadUrLs.OK(Serializer.deserialize content)
+            | _ -> return StreamVideosUploadVideosViaDirectUploadUrLs.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -172,7 +182,9 @@ type StreamClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.getAsync httpClient "/accounts/{account_id}/stream/keys" requestParts cancellationToken
 
-            return StreamSigningKeysListSigningKeys.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return StreamSigningKeysListSigningKeys.OK(Serializer.deserialize content)
+            | _ -> return StreamSigningKeysListSigningKeys.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -186,7 +198,9 @@ type StreamClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.postAsync httpClient "/accounts/{account_id}/stream/keys" requestParts cancellationToken
 
-            return StreamSigningKeysCreateSigningKeys.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return StreamSigningKeysCreateSigningKeys.OK(Serializer.deserialize content)
+            | _ -> return StreamSigningKeysCreateSigningKeys.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -210,7 +224,9 @@ type StreamClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return StreamSigningKeysDeleteSigningKeys.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return StreamSigningKeysDeleteSigningKeys.OK(Serializer.deserialize content)
+            | _ -> return StreamSigningKeysDeleteSigningKeys.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -235,7 +251,9 @@ type StreamClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return StreamLiveInputsListLiveInputs.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return StreamLiveInputsListLiveInputs.OK(Serializer.deserialize content)
+            | _ -> return StreamLiveInputsListLiveInputs.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -259,7 +277,9 @@ type StreamClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return StreamLiveInputsCreateALiveInput.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return StreamLiveInputsCreateALiveInput.OK(Serializer.deserialize content)
+            | _ -> return StreamLiveInputsCreateALiveInput.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -283,7 +303,9 @@ type StreamClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return StreamLiveInputsDeleteALiveInput.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return StreamLiveInputsDeleteALiveInput.OK(Serializer.deserialize content)
+            | _ -> return StreamLiveInputsDeleteALiveInput.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -307,7 +329,9 @@ type StreamClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return StreamLiveInputsRetrieveALiveInput.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return StreamLiveInputsRetrieveALiveInput.OK(Serializer.deserialize content)
+            | _ -> return StreamLiveInputsRetrieveALiveInput.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -333,7 +357,9 @@ type StreamClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return StreamLiveInputsUpdateALiveInput.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return StreamLiveInputsUpdateALiveInput.OK(Serializer.deserialize content)
+            | _ -> return StreamLiveInputsUpdateALiveInput.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -357,7 +383,9 @@ type StreamClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return StreamLiveInputsDisableALiveInput.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return StreamLiveInputsDisableALiveInput.OK(Serializer.deserialize content)
+            | _ -> return StreamLiveInputsDisableALiveInput.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -381,7 +409,9 @@ type StreamClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return StreamLiveInputsEnableALiveInput.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return StreamLiveInputsEnableALiveInput.OK(Serializer.deserialize content)
+            | _ -> return StreamLiveInputsEnableALiveInput.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -405,7 +435,15 @@ type StreamClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return StreamLiveInputsListAllOutputsAssociatedWithASpecifiedLiveInput.OK(Serializer.deserialize content)
+            match int status with
+            | 200 ->
+                return
+                    StreamLiveInputsListAllOutputsAssociatedWithASpecifiedLiveInput.OK(Serializer.deserialize content)
+            | _ ->
+                return
+                    StreamLiveInputsListAllOutputsAssociatedWithASpecifiedLiveInput.BadRequest(
+                        Serializer.deserialize content
+                    )
         }
 
     ///<summary>
@@ -431,7 +469,14 @@ type StreamClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ``StreamLiveInputsCreateANewOutput,ConnectedToALiveInput``.OK(Serializer.deserialize content)
+            match int status with
+            | 200 ->
+                return ``StreamLiveInputsCreateANewOutput,ConnectedToALiveInput``.OK(Serializer.deserialize content)
+            | _ ->
+                return
+                    ``StreamLiveInputsCreateANewOutput,ConnectedToALiveInput``.BadRequest(
+                        Serializer.deserialize content
+                    )
         }
 
     ///<summary>
@@ -457,7 +502,9 @@ type StreamClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return StreamLiveInputsDeleteAnOutput.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return StreamLiveInputsDeleteAnOutput.OK(Serializer.deserialize content)
+            | _ -> return StreamLiveInputsDeleteAnOutput.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -485,7 +532,9 @@ type StreamClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return StreamLiveInputsUpdateAnOutput.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return StreamLiveInputsUpdateAnOutput.OK(Serializer.deserialize content)
+            | _ -> return StreamLiveInputsUpdateAnOutput.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -505,7 +554,9 @@ type StreamClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return StreamVideosStorageUsage.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return StreamVideosStorageUsage.OK(Serializer.deserialize content)
+            | _ -> return StreamVideosStorageUsage.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -523,7 +574,9 @@ type StreamClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return StreamWatermarkProfileListWatermarkProfiles.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return StreamWatermarkProfileListWatermarkProfiles.OK(Serializer.deserialize content)
+            | _ -> return StreamWatermarkProfileListWatermarkProfiles.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -547,7 +600,14 @@ type StreamClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return StreamWatermarkProfileCreateWatermarkProfilesViaBasicUpload.OK(Serializer.deserialize content)
+            match int status with
+            | 200 ->
+                return StreamWatermarkProfileCreateWatermarkProfilesViaBasicUpload.OK(Serializer.deserialize content)
+            | _ ->
+                return
+                    StreamWatermarkProfileCreateWatermarkProfilesViaBasicUpload.BadRequest(
+                        Serializer.deserialize content
+                    )
         }
 
     ///<summary>
@@ -571,7 +631,9 @@ type StreamClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return StreamWatermarkProfileDeleteWatermarkProfiles.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return StreamWatermarkProfileDeleteWatermarkProfiles.OK(Serializer.deserialize content)
+            | _ -> return StreamWatermarkProfileDeleteWatermarkProfiles.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -595,7 +657,9 @@ type StreamClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return StreamWatermarkProfileWatermarkProfileDetails.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return StreamWatermarkProfileWatermarkProfileDetails.OK(Serializer.deserialize content)
+            | _ -> return StreamWatermarkProfileWatermarkProfileDetails.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -613,7 +677,9 @@ type StreamClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return StreamWebhookDeleteWebhooks.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return StreamWebhookDeleteWebhooks.OK(Serializer.deserialize content)
+            | _ -> return StreamWebhookDeleteWebhooks.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -627,7 +693,9 @@ type StreamClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.getAsync httpClient "/accounts/{account_id}/stream/webhook" requestParts cancellationToken
 
-            return StreamWebhookViewWebhooks.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return StreamWebhookViewWebhooks.OK(Serializer.deserialize content)
+            | _ -> return StreamWebhookViewWebhooks.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -647,7 +715,9 @@ type StreamClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.putAsync httpClient "/accounts/{account_id}/stream/webhook" requestParts cancellationToken
 
-            return StreamWebhookCreateWebhooks.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return StreamWebhookCreateWebhooks.OK(Serializer.deserialize content)
+            | _ -> return StreamWebhookCreateWebhooks.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -666,7 +736,9 @@ type StreamClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return StreamVideosDeleteVideo.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return StreamVideosDeleteVideo.OK(Serializer.deserialize content)
+            | _ -> return StreamVideosDeleteVideo.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -690,7 +762,9 @@ type StreamClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return StreamVideosRetrieveVideoDetails.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return StreamVideosRetrieveVideoDetails.OK(Serializer.deserialize content)
+            | _ -> return StreamVideosRetrieveVideoDetails.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -716,7 +790,9 @@ type StreamClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return StreamVideosUpdateVideoDetails.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return StreamVideosUpdateVideoDetails.OK(Serializer.deserialize content)
+            | _ -> return StreamVideosUpdateVideoDetails.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -735,7 +811,9 @@ type StreamClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ListAudioTracks.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ListAudioTracks.OK(Serializer.deserialize content)
+            | _ -> return ListAudioTracks.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -761,7 +839,9 @@ type StreamClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AddAudioTrack.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AddAudioTrack.OK(Serializer.deserialize content)
+            | _ -> return AddAudioTrack.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -787,7 +867,9 @@ type StreamClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return DeleteAudioTracks.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return DeleteAudioTracks.OK(Serializer.deserialize content)
+            | _ -> return DeleteAudioTracks.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -815,7 +897,9 @@ type StreamClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return EditAudioTracks.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return EditAudioTracks.OK(Serializer.deserialize content)
+            | _ -> return EditAudioTracks.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -839,7 +923,9 @@ type StreamClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return StreamSubtitlesCaptionsListCaptionsOrSubtitles.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return StreamSubtitlesCaptionsListCaptionsOrSubtitles.OK(Serializer.deserialize content)
+            | _ -> return StreamSubtitlesCaptionsListCaptionsOrSubtitles.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -865,7 +951,9 @@ type StreamClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return StreamSubtitlesCaptionsDeleteCaptionsOrSubtitles.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return StreamSubtitlesCaptionsDeleteCaptionsOrSubtitles.OK(Serializer.deserialize content)
+            | _ -> return StreamSubtitlesCaptionsDeleteCaptionsOrSubtitles.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -891,7 +979,10 @@ type StreamClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return StreamSubtitlesCaptionsGetCaptionOrSubtitleForLanguage.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return StreamSubtitlesCaptionsGetCaptionOrSubtitleForLanguage.OK(Serializer.deserialize content)
+            | _ ->
+                return StreamSubtitlesCaptionsGetCaptionOrSubtitleForLanguage.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -919,7 +1010,9 @@ type StreamClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return StreamSubtitlesCaptionsUploadCaptionsOrSubtitles.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return StreamSubtitlesCaptionsUploadCaptionsOrSubtitles.OK(Serializer.deserialize content)
+            | _ -> return StreamSubtitlesCaptionsUploadCaptionsOrSubtitles.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -945,7 +1038,14 @@ type StreamClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return StreamSubtitlesCaptionsGenerateCaptionOrSubtitleForLanguage.OK(Serializer.deserialize content)
+            match int status with
+            | 200 ->
+                return StreamSubtitlesCaptionsGenerateCaptionOrSubtitleForLanguage.OK(Serializer.deserialize content)
+            | _ ->
+                return
+                    StreamSubtitlesCaptionsGenerateCaptionOrSubtitleForLanguage.BadRequest(
+                        Serializer.deserialize content
+                    )
         }
 
     ///<summary>
@@ -971,7 +1071,9 @@ type StreamClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return StreamSubtitlesCaptionsGetVttCaptionOrSubtitle.OK content
+            match int status with
+            | 200 -> return StreamSubtitlesCaptionsGetVttCaptionOrSubtitle.OK content
+            | _ -> return StreamSubtitlesCaptionsGetVttCaptionOrSubtitle.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -995,7 +1097,9 @@ type StreamClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return StreamMP4DownloadsDeleteDownloads.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return StreamMP4DownloadsDeleteDownloads.OK(Serializer.deserialize content)
+            | _ -> return StreamMP4DownloadsDeleteDownloads.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1019,7 +1123,9 @@ type StreamClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return StreamMP4DownloadsListDownloads.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return StreamMP4DownloadsListDownloads.OK(Serializer.deserialize content)
+            | _ -> return StreamMP4DownloadsListDownloads.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1043,7 +1149,9 @@ type StreamClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return StreamMP4DownloadsCreateDownloads.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return StreamMP4DownloadsCreateDownloads.OK(Serializer.deserialize content)
+            | _ -> return StreamMP4DownloadsCreateDownloads.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1069,7 +1177,9 @@ type StreamClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return StreamDownloadsDeleteTypeSpecificDownloads.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return StreamDownloadsDeleteTypeSpecificDownloads.OK(Serializer.deserialize content)
+            | _ -> return StreamDownloadsDeleteTypeSpecificDownloads.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1095,7 +1205,9 @@ type StreamClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return StreamDownloadsCreateTypeSpecificDownloads.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return StreamDownloadsCreateTypeSpecificDownloads.OK(Serializer.deserialize content)
+            | _ -> return StreamDownloadsCreateTypeSpecificDownloads.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1119,7 +1231,9 @@ type StreamClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return StreamVideosRetreieveEmbedCodeHtml.OK content
+            match int status with
+            | 200 -> return StreamVideosRetreieveEmbedCodeHtml.OK content
+            | _ -> return StreamVideosRetreieveEmbedCodeHtml.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1145,5 +1259,7 @@ type StreamClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return StreamVideosCreateSignedUrlTokensForVideos.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return StreamVideosCreateSignedUrlTokensForVideos.OK(Serializer.deserialize content)
+            | _ -> return StreamVideosCreateSignedUrlTokensForVideos.BadRequest(Serializer.deserialize content)
         }

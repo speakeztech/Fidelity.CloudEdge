@@ -324,6 +324,60 @@ let private assemblyMetadataTests =
 
 // ─── Test Entry Point ────────────────────────────────────────────
 
+// ─── Postprocessor Cleanliness Tests ─────────────────────────
+
+let private postprocessorCleanlinessTests =
+    testList "Postprocessor Cleanliness" [
+
+        testCase "No F# keyword type stubs in any assembly" <| fun _ ->
+            let fsharpKeywords = set [
+                "when"; "type"; "let"; "in"; "do"; "for"; "while"; "if"; "then"
+                "else"; "match"; "with"; "fun"; "try"; "yield"; "return"; "use"
+                "module"; "namespace"; "open"; "member"; "static"; "abstract"
+                "override"; "default"; "mutable"; "rec"; "and"; "or"; "not"
+                "new"; "null"; "begin"; "end"; "lazy"; "as"; "base"; "of"
+            ]
+            let mutable violations = []
+            for (name, asm, _) in managementAssemblies do
+                let types = getExportedTypes asm
+                for t in types do
+                    // F# keywords are always lowercase; Type (uppercase) is a valid identifier
+                    if fsharpKeywords.Contains t.Name then
+                        violations <- $"{name}: type '{t.Name}'" :: violations
+            if violations.Length > 0 then
+                let details = violations |> List.truncate 10 |> String.concat "\n  "
+                failtest $"Found {violations.Length} type(s) named after F# keywords:\n  {details}"
+
+        testCase "No invalid characters in exported type names" <| fun _ ->
+            let mutable violations = []
+            for (name, asm, _) in managementAssemblies do
+                let types = getExportedTypes asm
+                for t in types do
+                    if t.Name.Contains("$") || t.Name.Contains("+") then
+                        violations <- $"{name}: type '{t.Name}'" :: violations
+            if violations.Length > 0 then
+                let details = violations |> List.truncate 10 |> String.concat "\n  "
+                failtest $"Found {violations.Length} type(s) with invalid characters:\n  {details}"
+
+        testCase "All client methods have correct parameter types" <| fun _ ->
+            let mutable violations = []
+            for (name, asm, _) in managementAssemblies do
+                match findClientType asm with
+                | Some ct ->
+                    let asyncMethods = getAsyncMethods ct
+                    for m in asyncMethods do
+                        for p in m.GetParameters() do
+                            let pt = p.ParameterType
+                            if pt.IsGenericType &&
+                               pt.GetGenericTypeDefinition() = typedefof<list<_>> &&
+                               pt.GetGenericArguments().[0].Name = "JObject" then
+                                violations <- $"{name}.{m.Name}: param '{p.Name}' is list<JObject>" :: violations
+                | None -> ()
+            if violations.Length > 0 then
+                let details = violations |> String.concat "\n  "
+                failtest $"Found JObject list query parameters:\n  {details}"
+    ]
+
 let tests =
     testList "Generation Structure Tests" [
         perServiceStructuralTests
@@ -331,4 +385,5 @@ let tests =
         typeRichnessTests
         runtimeAssemblyTests
         assemblyMetadataTests
+        postprocessorCleanlinessTests
     ]

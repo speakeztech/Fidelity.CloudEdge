@@ -1,5 +1,8 @@
 namespace rec Fidelity.CloudEdge.Management.D1.Types
 
+// Auto-generated stub types (missing from Hawaii output)
+type results = string
+
 ///Account identifier tag.
 type ``d1account-identifier`` = string
 ///Specifies the timestamp the resource was created as an ISO8601 string.
@@ -311,10 +314,274 @@ type ``d1time-travel-restore-response`` =
           message = None
           previous_bookmark = None }
 
+type ``d1-list-databasesresponseErrors`` =
+    { code: int
+      message: string }
+    ///Creates an instance of d1-list-databasesresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``d1-list-databasesresponseErrors`` =
+        { code = code; message = message }
+
+type ``d1-list-databasesresponseMessages`` =
+    { code: int
+      message: string }
+    ///Creates an instance of d1-list-databasesresponseMessages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``d1-list-databasesresponseMessages`` =
+        { code = code; message = message }
+
+type Resultinfo =
+    { ///Total number of results for the requested service
+      count: Option<float>
+      ///Current page within paginated list of results
+      page: Option<float>
+      ///Number of results per page of results
+      per_page: Option<float>
+      ///Total results available without any search parameters
+      total_count: Option<float> }
+    ///Creates an instance of Resultinfo with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): Resultinfo =
+        { count = None
+          page = None
+          per_page = None
+          total_count = None }
+
+type ``d1-list-databasesresponse`` =
+    { errors: list<``d1-list-databasesresponseErrors``>
+      messages: list<``d1-list-databasesresponseMessages``>
+      result: list<``d1database-response``>
+      ///Whether the API call was successful
+      success: bool
+      result_info: Option<Resultinfo> }
+    ///Creates an instance of d1-list-databasesresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``d1-list-databasesresponseErrors``>,
+                          messages: list<``d1-list-databasesresponseMessages``>,
+                          result: list<``d1database-response``>,
+                          success: bool): ``d1-list-databasesresponse`` =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success
+          result_info = None }
+
+type ``d1-create-databaseresponseErrors`` =
+    { code: int
+      message: string }
+    ///Creates an instance of d1-create-databaseresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``d1-create-databaseresponseErrors`` =
+        { code = code; message = message }
+
+type ``d1-create-databaseresponseMessages`` =
+    { code: int
+      message: string }
+    ///Creates an instance of d1-create-databaseresponseMessages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``d1-create-databaseresponseMessages`` =
+        { code = code; message = message }
+
+type ``d1-create-databaseresponse`` =
+    { errors: list<``d1-create-databaseresponseErrors``>
+      messages: list<``d1-create-databaseresponseMessages``>
+      ///The details of the D1 database.
+      result: ``d1database-details-response``
+      ///Whether the API call was successful
+      success: bool }
+    ///Creates an instance of d1-create-databaseresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``d1-create-databaseresponseErrors``>,
+                          messages: list<``d1-create-databaseresponseMessages``>,
+                          result: ``d1database-details-response``,
+                          success: bool): ``d1-create-databaseresponse`` =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
+
+type ``d1-delete-databaseresponseErrors`` =
+    { code: int
+      message: string }
+    ///Creates an instance of d1-delete-databaseresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``d1-delete-databaseresponseErrors`` =
+        { code = code; message = message }
+
+type ``d1-delete-databaseresponseMessages`` =
+    { code: int
+      message: string }
+    ///Creates an instance of d1-delete-databaseresponseMessages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``d1-delete-databaseresponseMessages`` =
+        { code = code; message = message }
+
+type ``d1-delete-databaseresponse`` =
+    { errors: list<``d1-delete-databaseresponseErrors``>
+      messages: list<``d1-delete-databaseresponseMessages``>
+      result: Newtonsoft.Json.Linq.JObject
+      ///Whether the API call was successful
+      success: bool }
+    ///Creates an instance of d1-delete-databaseresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``d1-delete-databaseresponseErrors``>,
+                          messages: list<``d1-delete-databaseresponseMessages``>,
+                          result: Newtonsoft.Json.Linq.JObject,
+                          success: bool): ``d1-delete-databaseresponse`` =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
+
+type ``d1-get-databaseresponseErrors`` =
+    { code: int
+      message: string }
+    ///Creates an instance of d1-get-databaseresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``d1-get-databaseresponseErrors`` =
+        { code = code; message = message }
+
+type ``d1-get-databaseresponseMessages`` =
+    { code: int
+      message: string }
+    ///Creates an instance of d1-get-databaseresponseMessages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``d1-get-databaseresponseMessages`` =
+        { code = code; message = message }
+
+type ``d1-get-databaseresponse`` =
+    { errors: list<``d1-get-databaseresponseErrors``>
+      messages: list<``d1-get-databaseresponseMessages``>
+      ///The details of the D1 database.
+      result: ``d1database-details-response``
+      ///Whether the API call was successful
+      success: bool }
+    ///Creates an instance of d1-get-databaseresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``d1-get-databaseresponseErrors``>,
+                          messages: list<``d1-get-databaseresponseMessages``>,
+                          result: ``d1database-details-response``,
+                          success: bool): ``d1-get-databaseresponse`` =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
+
+type ``d1-update-partial-databaseresponseErrors`` =
+    { code: int
+      message: string }
+    ///Creates an instance of d1-update-partial-databaseresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``d1-update-partial-databaseresponseErrors`` =
+        { code = code; message = message }
+
+type ``d1-update-partial-databaseresponseMessages`` =
+    { code: int
+      message: string }
+    ///Creates an instance of d1-update-partial-databaseresponseMessages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``d1-update-partial-databaseresponseMessages`` =
+        { code = code; message = message }
+
+type ``d1-update-partial-databaseresponse`` =
+    { errors: list<``d1-update-partial-databaseresponseErrors``>
+      messages: list<``d1-update-partial-databaseresponseMessages``>
+      ///The details of the D1 database.
+      result: ``d1database-details-response``
+      ///Whether the API call was successful
+      success: bool }
+    ///Creates an instance of d1-update-partial-databaseresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``d1-update-partial-databaseresponseErrors``>,
+                          messages: list<``d1-update-partial-databaseresponseMessages``>,
+                          result: ``d1database-details-response``,
+                          success: bool): ``d1-update-partial-databaseresponse`` =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
+
+type ``d1-update-databaseresponseErrors`` =
+    { code: int
+      message: string }
+    ///Creates an instance of d1-update-databaseresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``d1-update-databaseresponseErrors`` =
+        { code = code; message = message }
+
+type ``d1-update-databaseresponseMessages`` =
+    { code: int
+      message: string }
+    ///Creates an instance of d1-update-databaseresponseMessages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``d1-update-databaseresponseMessages`` =
+        { code = code; message = message }
+
+type ``d1-update-databaseresponse`` =
+    { errors: list<``d1-update-databaseresponseErrors``>
+      messages: list<``d1-update-databaseresponseMessages``>
+      ///The details of the D1 database.
+      result: ``d1database-details-response``
+      ///Whether the API call was successful
+      success: bool }
+    ///Creates an instance of d1-update-databaseresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``d1-update-databaseresponseErrors``>,
+                          messages: list<``d1-update-databaseresponseMessages``>,
+                          result: ``d1database-details-response``,
+                          success: bool): ``d1-update-databaseresponse`` =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
+
+type ``d1-query-databaseresponseErrors`` =
+    { code: int
+      message: string }
+    ///Creates an instance of d1-query-databaseresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``d1-query-databaseresponseErrors`` =
+        { code = code; message = message }
+
+type ``d1-query-databaseresponseMessages`` =
+    { code: int
+      message: string }
+    ///Creates an instance of d1-query-databaseresponseMessages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``d1-query-databaseresponseMessages`` =
+        { code = code; message = message }
+
+type ``d1-query-databaseresponse`` =
+    { errors: list<``d1-query-databaseresponseErrors``>
+      messages: list<``d1-query-databaseresponseMessages``>
+      result: list<``d1query-result-response``>
+      ///Whether the API call was successful
+      success: bool }
+    ///Creates an instance of d1-query-databaseresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``d1-query-databaseresponseErrors``>,
+                          messages: list<``d1-query-databaseresponseMessages``>,
+                          result: list<``d1query-result-response``>,
+                          success: bool): ``d1-query-databaseresponse`` =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
+
+type ``d1-raw-database-queryresponseErrors`` =
+    { code: int
+      message: string }
+    ///Creates an instance of d1-raw-database-queryresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``d1-raw-database-queryresponseErrors`` =
+        { code = code; message = message }
+
+type ``d1-raw-database-queryresponseMessages`` =
+    { code: int
+      message: string }
+    ///Creates an instance of d1-raw-database-queryresponseMessages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``d1-raw-database-queryresponseMessages`` =
+        { code = code; message = message }
+
+type ``d1-raw-database-queryresponse`` =
+    { errors: list<``d1-raw-database-queryresponseErrors``>
+      messages: list<``d1-raw-database-queryresponseMessages``>
+      result: list<``d1raw-result-response``>
+      ///Whether the API call was successful
+      success: bool }
+    ///Creates an instance of d1-raw-database-queryresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``d1-raw-database-queryresponseErrors``>,
+                          messages: list<``d1-raw-database-queryresponseMessages``>,
+                          result: list<``d1raw-result-response``>,
+                          success: bool): ``d1-raw-database-queryresponse`` =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
+
 [<RequireQualifiedAccess>]
 type D1ListDatabases =
     ///List D1 databases response
-    | OK of payload: string
+    | OK of payload: ``d1-list-databasesresponse``
+    ///List D1 databases response failure
+    | BadRequest of payload: ``d1api-response-common-failure``
 
 type D1CreateDatabasePayload =
     { ///Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
@@ -332,34 +599,48 @@ type D1CreateDatabasePayload =
 [<RequireQualifiedAccess>]
 type D1CreateDatabase =
     ///Returns the created D1 database's metadata
-    | OK of payload: string
+    | OK of payload: ``d1-create-databaseresponse``
+    ///Database details response failure
+    | BadRequest of payload: ``d1api-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type D1DeleteDatabase =
     ///Delete D1 database response
-    | OK of payload: string
+    | OK of payload: ``d1-delete-databaseresponse``
+    ///Delete D1 database response failure
+    | BadRequest of payload: ``d1api-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type D1GetDatabase =
     ///Database details response
-    | OK of payload: string
+    | OK of payload: ``d1-get-databaseresponse``
+    ///Database details response failure
+    | BadRequest of payload: ``d1api-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type D1UpdatePartialDatabase =
     ///Database details response
-    | OK of payload: string
+    | OK of payload: ``d1-update-partial-databaseresponse``
+    ///Update D1 database response failure
+    | BadRequest of payload: ``d1api-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type D1UpdateDatabase =
     ///Database details response
-    | OK of payload: string
+    | OK of payload: ``d1-update-databaseresponse``
+    ///Update D1 database response failure
+    | BadRequest of payload: ``d1api-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type D1QueryDatabase =
     ///Query response
-    | OK of payload: string
+    | OK of payload: ``d1-query-databaseresponse``
+    ///Query response failure
+    | BadRequest of payload: ``d1api-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type D1RawDatabaseQuery =
     ///Raw query response
-    | OK of payload: string
+    | OK of payload: ``d1-raw-database-queryresponse``
+    ///Query response failure
+    | BadRequest of payload: ``d1api-response-common-failure``

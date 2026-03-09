@@ -1,5 +1,11 @@
 namespace rec Fidelity.CloudEdge.Management.Tunnels.Types
 
+// Auto-generated type aliases (Hawaii normalization fix)
+type ``tunnel_schemas-connection`` = ``tunnelschemas-connection``
+
+// Auto-generated stub types (missing from Hawaii output)
+type results = string
+
 ///Cloudflare account ID
 type tunnelaccountid = string
 ///The cloudflared OS architecture used to establish this connection.
@@ -28,9 +34,6 @@ type tunnelconnectionsdeprecated = list<``tunnel_schemas-connection``>
 type tunnelconnsactiveat = System.DateTimeOffset
 ///Timestamp of when the tunnel became inactive (no connections to Cloudflare's edge). If `null`, the tunnel is active.
 type tunnelconnsinactiveat = System.DateTimeOffset
-
-// Type aliases for Hawaii sanitization compatibility
-type ``tunnel_schemas-connection`` = ``tunnelschemas-connection``
 ///Timestamp of when the resource was created.
 type tunnelcreatedat = System.DateTimeOffset
 ///Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
@@ -233,18 +236,21 @@ type ``tunnelcfd-tunnel-response-collectionMessages`` =
         { code = code; message = message }
 
 type ``tunnelcfd-tunnel-response-collection`` =
-    { errors: Option<list<``tunnelcfd-tunnel-response-collectionErrors``>>
-      messages: Option<list<``tunnelcfd-tunnel-response-collectionMessages``>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<``tunnelcfd-tunnel-response-collectionErrors``>
+      messages: list<``tunnelcfd-tunnel-response-collectionMessages``>
+      result: list<tunnelcfdtunnel>
       ///Whether the API call was successful
-      success: Option<bool>
+      success: bool
       result_info: Option<tunnelresultinfo> }
     ///Creates an instance of tunnelcfd-tunnel-response-collection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``tunnelcfd-tunnel-response-collection`` =
-        { errors = None
-          messages = None
-          result = None
-          success = None
+    static member Create (errors: list<``tunnelcfd-tunnel-response-collectionErrors``>,
+                          messages: list<``tunnelcfd-tunnel-response-collectionMessages``>,
+                          result: list<tunnelcfdtunnel>,
+                          success: bool): ``tunnelcfd-tunnel-response-collection`` =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success
           result_info = None }
 
 type ``tunnelcfd-tunnel-response-singleErrors`` =
@@ -262,17 +268,21 @@ type ``tunnelcfd-tunnel-response-singleMessages`` =
         { code = code; message = message }
 
 type ``tunnelcfd-tunnel-response-single`` =
-    { errors: Option<list<``tunnelcfd-tunnel-response-singleErrors``>>
-      messages: Option<list<``tunnelcfd-tunnel-response-singleMessages``>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<``tunnelcfd-tunnel-response-singleErrors``>
+      messages: list<``tunnelcfd-tunnel-response-singleMessages``>
+      ///A Cloudflare Tunnel that connects your origin to Cloudflare's edge.
+      result: tunnelcfdtunnel
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of tunnelcfd-tunnel-response-single with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``tunnelcfd-tunnel-response-single`` =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<``tunnelcfd-tunnel-response-singleErrors``>,
+                          messages: list<``tunnelcfd-tunnel-response-singleMessages``>,
+                          result: tunnelcfdtunnel,
+                          success: bool): ``tunnelcfd-tunnel-response-single`` =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 ///A Cloudflare Tunnel that connects your origin to Cloudflare's edge.
 type tunnelcfdtunnel =
@@ -378,17 +388,19 @@ type tunnelconfigurationresponseMessages =
           source = None }
 
 type tunnelconfigurationresponse =
-    { errors: Option<list<tunnelconfigurationresponseErrors>>
-      messages: Option<list<tunnelconfigurationresponseMessages>>
+    { errors: list<tunnelconfigurationresponseErrors>
+      messages: list<tunnelconfigurationresponseMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       ///Cloudflare Tunnel configuration
       result: Option<tunnelconfiguration> }
     ///Creates an instance of tunnelconfigurationresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): tunnelconfigurationresponse =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<tunnelconfigurationresponseErrors>,
+                          messages: list<tunnelconfigurationresponseMessages>,
+                          success: bool): tunnelconfigurationresponse =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type tunnelemptyresponseErrors =
@@ -404,17 +416,20 @@ type tunnelemptyresponseMessages =
     static member Create (code: int, message: string): tunnelemptyresponseMessages = { code = code; message = message }
 
 type tunnelemptyresponse =
-    { errors: Option<list<tunnelemptyresponseErrors>>
-      messages: Option<list<tunnelemptyresponseMessages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<tunnelemptyresponseErrors>
+      messages: list<tunnelemptyresponseMessages>
+      result: Newtonsoft.Json.Linq.JObject
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of tunnelemptyresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): tunnelemptyresponse =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<tunnelemptyresponseErrors>,
+                          messages: list<tunnelemptyresponseMessages>,
+                          result: Newtonsoft.Json.Linq.JObject,
+                          success: bool): tunnelemptyresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 ///Public hostname
 type tunnelingressRule =
@@ -689,17 +704,21 @@ type tunneltunnelclientresponseMessages =
         { code = code; message = message }
 
 type tunneltunnelclientresponse =
-    { errors: Option<list<tunneltunnelclientresponseErrors>>
-      messages: Option<list<tunneltunnelclientresponseMessages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<tunneltunnelclientresponseErrors>
+      messages: list<tunneltunnelclientresponseMessages>
+      ///A client (typically cloudflared) that maintains connections to a Cloudflare data center.
+      result: tunneltunnelclient
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of tunneltunnelclientresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): tunneltunnelclientresponse =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<tunneltunnelclientresponseErrors>,
+                          messages: list<tunneltunnelclientresponseMessages>,
+                          result: tunneltunnelclient,
+                          success: bool): tunneltunnelclientresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 type tunneltunnelconnectionsresponseErrors =
     { code: int
@@ -716,18 +735,21 @@ type tunneltunnelconnectionsresponseMessages =
         { code = code; message = message }
 
 type tunneltunnelconnectionsresponse =
-    { errors: Option<list<tunneltunnelconnectionsresponseErrors>>
-      messages: Option<list<tunneltunnelconnectionsresponseMessages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<tunneltunnelconnectionsresponseErrors>
+      messages: list<tunneltunnelconnectionsresponseMessages>
+      result: list<tunneltunnelclient>
       ///Whether the API call was successful
-      success: Option<bool>
+      success: bool
       result_info: Option<tunnelresultinfo> }
     ///Creates an instance of tunneltunnelconnectionsresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): tunneltunnelconnectionsresponse =
-        { errors = None
-          messages = None
-          result = None
-          success = None
+    static member Create (errors: list<tunneltunnelconnectionsresponseErrors>,
+                          messages: list<tunneltunnelconnectionsresponseMessages>,
+                          result: list<tunneltunnelclient>,
+                          success: bool): tunneltunnelconnectionsresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success
           result_info = None }
 
 type tunneltunnelresponsetokenErrors =
@@ -745,22 +767,28 @@ type tunneltunnelresponsetokenMessages =
         { code = code; message = message }
 
 type tunneltunnelresponsetoken =
-    { errors: Option<list<tunneltunnelresponsetokenErrors>>
-      messages: Option<list<tunneltunnelresponsetokenMessages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<tunneltunnelresponsetokenErrors>
+      messages: list<tunneltunnelresponsetokenMessages>
+      ///The Tunnel Token is used as a mechanism to authenticate the operation of a tunnel.
+      result: tunneltunneltoken
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of tunneltunnelresponsetoken with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): tunneltunnelresponsetoken =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<tunneltunnelresponsetokenErrors>,
+                          messages: list<tunneltunnelresponsetokenMessages>,
+                          result: tunneltunneltoken,
+                          success: bool): tunneltunnelresponsetoken =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 [<RequireQualifiedAccess>]
 type CloudflareTunnelListCloudflareTunnels =
     ///List Cloudflare Tunnels response
     | OK of payload: ``tunnelcfd-tunnel-response-collection``
+    ///List Cloudflare Tunnels response failure
+    | BadRequest of payload: string
 
 type CloudflareTunnelCreateACloudflareTunnelPayload =
     { ///Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
@@ -779,16 +807,22 @@ type CloudflareTunnelCreateACloudflareTunnelPayload =
 type CloudflareTunnelCreateACloudflareTunnel =
     ///Create a Cloudflare Tunnel response
     | OK of payload: ``tunnelcfd-tunnel-response-single``
+    ///Create a Cloudflare Tunnel response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type CloudflareTunnelDeleteACloudflareTunnel =
     ///Delete a Cloudflare Tunnel response
     | OK of payload: ``tunnelcfd-tunnel-response-single``
+    ///Delete a Cloudflare Tunnel response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type CloudflareTunnelGetACloudflareTunnel =
     ///Get a Cloudflare Tunnel response
     | OK of payload: ``tunnelcfd-tunnel-response-single``
+    ///Get a Cloudflare Tunnel response failure
+    | BadRequest of payload: string
 
 type CloudflareTunnelUpdateACloudflareTunnelPayload =
     { ///A user-friendly name for a tunnel.
@@ -802,11 +836,15 @@ type CloudflareTunnelUpdateACloudflareTunnelPayload =
 type CloudflareTunnelUpdateACloudflareTunnel =
     ///Update a Cloudflare Tunnel response
     | OK of payload: ``tunnelcfd-tunnel-response-single``
+    ///Update a Cloudflare Tunnel response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type CloudflareTunnelConfigurationGetConfiguration =
     ///Get configuration response
     | OK of payload: tunnelconfigurationresponse
+    ///Get configuration response failure
+    | BadRequest of payload: ``tunnelschemas-api-response-common-failure``
 
 type CloudflareTunnelConfigurationPutConfigurationPayload =
     { ///The tunnel configuration and ingress rules.
@@ -818,21 +856,29 @@ type CloudflareTunnelConfigurationPutConfigurationPayload =
 type CloudflareTunnelConfigurationPutConfiguration =
     ///Put configuration response
     | OK of payload: tunnelconfigurationresponse
+    ///Put configuration response failure
+    | BadRequest of payload: ``tunnelschemas-api-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type CloudflareTunnelCleanUpCloudflareTunnelConnections =
     ///Clean up Cloudflare Tunnel connections response
     | OK of payload: tunnelemptyresponse
+    ///Clean up Cloudflare Tunnel connections response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type CloudflareTunnelListCloudflareTunnelConnections =
     ///List Cloudflare Tunnel connections response
     | OK of payload: tunneltunnelconnectionsresponse
+    ///List Cloudflare Tunnel connections response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type CloudflareTunnelGetCloudflareTunnelConnector =
     ///Get Cloudflare Tunnel connector response
     | OK of payload: tunneltunnelclientresponse
+    ///Get Cloudflare Tunnel connector response failure
+    | BadRequest of payload: string
 
 type CloudflareTunnelGetACloudflareTunnelManagementTokenPayload =
     { resources: list<``tunnelmanagement-resources``> }
@@ -844,8 +890,12 @@ type CloudflareTunnelGetACloudflareTunnelManagementTokenPayload =
 type CloudflareTunnelGetACloudflareTunnelManagementToken =
     ///Get a Cloudflare Tunnel management token response
     | OK of payload: tunneltunnelresponsetoken
+    ///Cloudflare API response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type CloudflareTunnelGetACloudflareTunnelToken =
     ///Get a Cloudflare Tunnel token response
     | OK of payload: tunneltunnelresponsetoken
+    ///Get a Cloudflare Tunnel token response failure
+    | BadRequest of payload: string

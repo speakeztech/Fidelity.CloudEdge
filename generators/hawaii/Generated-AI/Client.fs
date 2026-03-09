@@ -400,7 +400,7 @@ type AIClient(httpClient: HttpClient) =
             gatewayId: string,
             ?orderBy: string,
             ?orderByDirection: string,
-            ?filters: list<Newtonsoft.Json.Linq.JObject>,
+            ?filters: string,
             ?limit: int,
             ?cancellationToken: CancellationToken
         ) =
@@ -441,7 +441,7 @@ type AIClient(httpClient: HttpClient) =
             ?perPage: int,
             ?orderBy: string,
             ?orderByDirection: string,
-            ?filters: list<Newtonsoft.Json.Linq.JObject>,
+            ?filters: string,
             ?metaInfo: bool,
             ?direction: string,
             ?startDate: System.DateTimeOffset,

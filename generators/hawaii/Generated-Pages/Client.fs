@@ -36,7 +36,9 @@ type PagesClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.getAsync httpClient "/accounts/{account_id}/pages/projects" requestParts cancellationToken
 
-            return PagesProjectGetProjects.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return PagesProjectGetProjects.OK(Serializer.deserialize content)
+            | _ -> return PagesProjectGetProjects.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -56,7 +58,9 @@ type PagesClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.postAsync httpClient "/accounts/{account_id}/pages/projects" requestParts cancellationToken
 
-            return PagesProjectCreateProject.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return PagesProjectCreateProject.OK(Serializer.deserialize content)
+            | _ -> return PagesProjectCreateProject.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -80,7 +84,9 @@ type PagesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return PagesProjectDeleteProject.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return PagesProjectDeleteProject.OK(Serializer.deserialize content)
+            | _ -> return PagesProjectDeleteProject.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -99,7 +105,9 @@ type PagesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return PagesProjectGetProject.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return PagesProjectGetProject.OK(Serializer.deserialize content)
+            | _ -> return PagesProjectGetProject.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -125,7 +133,9 @@ type PagesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return PagesProjectUpdateProject.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return PagesProjectUpdateProject.OK(Serializer.deserialize content)
+            | _ -> return PagesProjectUpdateProject.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -158,90 +168,26 @@ type PagesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return PagesDeploymentGetDeployments.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return PagesDeploymentGetDeployments.OK(Serializer.deserialize content)
+            | _ -> return PagesDeploymentGetDeployments.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
     ///Start a new deployment from production. The repository and account must have already been authorized on the Cloudflare Pages dashboard.
     ///</summary>
-    ///<param name="projectName"></param>
-    ///<param name="accountId"></param>
-    ///<param name="cancellationToken"></param>
-    ///<param name="wranglerConfigHash">Hash of the Wrangler configuration file used for this deployment.</param>
-    ///<param name="pagesBuildOutputDir">The build output directory path.</param>
-    ///<param name="manifest">
-    ///JSON string containing a manifest of files to deploy. Maps file paths to their content hashes.
-    ///Required for direct upload deployments. Maximum 20,000 entries.
-    ///</param>
-    ///<param name="functionsFilepathRoutingConfigJson">Functions routing configuration file.</param>
-    ///<param name="commitMessage">Git commit message associated with this deployment.</param>
-    ///<param name="commitHash">Git commit SHA associated with this deployment.</param>
-    ///<param name="commitDirty">Boolean string indicating if the working directory has uncommitted changes.</param>
-    ///<param name="branch">The branch to build the new deployment from. The `HEAD` of the branch will be used. If omitted, the production branch will be used by default.</param>
-    ///<param name="workerJs">
-    ///Worker JavaScript file. Mutually exclusive with `_worker.bundle`.
-    ///Cannot specify both `_worker.js` and `_worker.bundle` in the same request.
-    ///</param>
-    ///<param name="workerBundle">
-    ///Worker bundle file in multipart/form-data format. Mutually exclusive with `_worker.js`.
-    ///Cannot specify both `_worker.js` and `_worker.bundle` in the same request.
-    ///Maximum size: 25 MiB.
-    ///</param>
-    ///<param name="routesJson">Routes configuration file defining routing rules.</param>
-    ///<param name="redirects">Redirects configuration file for the deployment.</param>
-    ///<param name="headers">Headers configuration file for the deployment.</param>
     member this.PagesDeploymentCreateDeployment
         (
             projectName: string,
             accountId: string,
-            ?cancellationToken: CancellationToken,
-            ?wranglerConfigHash: string,
-            ?pagesBuildOutputDir: string,
-            ?manifest: string,
-            ?functionsFilepathRoutingConfigJson: string,
-            ?commitMessage: string,
-            ?commitHash: string,
-            ?commitDirty: string,
-            ?branch: string,
-            ?workerJs: string,
-            ?workerBundle: string,
-            ?routesJson: string,
-            ?redirects: string,
-            ?headers: string
+            body: PagesDeploymentCreateDeploymentPayload,
+            ?cancellationToken: CancellationToken
         ) =
         async {
             let requestParts =
                 [ RequestPart.path ("project_name", projectName)
                   RequestPart.path ("account_id", accountId)
-                  if wranglerConfigHash.IsSome then
-                      RequestPart.multipartFormData ("wrangler_config_hash", wranglerConfigHash.Value)
-                  if pagesBuildOutputDir.IsSome then
-                      RequestPart.multipartFormData ("pages_build_output_dir", pagesBuildOutputDir.Value)
-                  if manifest.IsSome then
-                      RequestPart.multipartFormData ("manifest", manifest.Value)
-                  if functionsFilepathRoutingConfigJson.IsSome then
-                      RequestPart.multipartFormData (
-                          "functions-filepath-routing-config.json",
-                          functionsFilepathRoutingConfigJson.Value
-                      )
-                  if commitMessage.IsSome then
-                      RequestPart.multipartFormData ("commit_message", commitMessage.Value)
-                  if commitHash.IsSome then
-                      RequestPart.multipartFormData ("commit_hash", commitHash.Value)
-                  if commitDirty.IsSome then
-                      RequestPart.multipartFormData ("commit_dirty", commitDirty.Value)
-                  if branch.IsSome then
-                      RequestPart.multipartFormData ("branch", branch.Value)
-                  if workerJs.IsSome then
-                      RequestPart.multipartFormData ("_worker.js", workerJs.Value)
-                  if workerBundle.IsSome then
-                      RequestPart.multipartFormData ("_worker.bundle", workerBundle.Value)
-                  if routesJson.IsSome then
-                      RequestPart.multipartFormData ("_routes.json", routesJson.Value)
-                  if redirects.IsSome then
-                      RequestPart.multipartFormData ("_redirects", redirects.Value)
-                  if headers.IsSome then
-                      RequestPart.multipartFormData ("_headers", headers.Value) ]
+                  RequestPart.jsonContent body ]
 
             let! (status, content) =
                 OpenApiHttp.postAsync
@@ -250,7 +196,9 @@ type PagesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return PagesDeploymentCreateDeployment.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return PagesDeploymentCreateDeployment.OK(Serializer.deserialize content)
+            | _ -> return PagesDeploymentCreateDeployment.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -276,7 +224,9 @@ type PagesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return PagesDeploymentDeleteDeployment.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return PagesDeploymentDeleteDeployment.OK(Serializer.deserialize content)
+            | _ -> return PagesDeploymentDeleteDeployment.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -302,7 +252,9 @@ type PagesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return PagesDeploymentGetDeploymentInfo.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return PagesDeploymentGetDeploymentInfo.OK(Serializer.deserialize content)
+            | _ -> return PagesDeploymentGetDeploymentInfo.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -328,7 +280,9 @@ type PagesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return PagesDeploymentGetDeploymentLogs.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return PagesDeploymentGetDeploymentLogs.OK(Serializer.deserialize content)
+            | _ -> return PagesDeploymentGetDeploymentLogs.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -354,7 +308,9 @@ type PagesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return PagesDeploymentRetryDeployment.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return PagesDeploymentRetryDeployment.OK(Serializer.deserialize content)
+            | _ -> return PagesDeploymentRetryDeployment.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -380,7 +336,9 @@ type PagesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return PagesDeploymentRollbackDeployment.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return PagesDeploymentRollbackDeployment.OK(Serializer.deserialize content)
+            | _ -> return PagesDeploymentRollbackDeployment.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -399,7 +357,9 @@ type PagesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return PagesDomainsGetDomains.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return PagesDomainsGetDomains.OK(Serializer.deserialize content)
+            | _ -> return PagesDomainsGetDomains.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -425,7 +385,9 @@ type PagesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return PagesDomainsAddDomain.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return PagesDomainsAddDomain.OK(Serializer.deserialize content)
+            | _ -> return PagesDomainsAddDomain.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -451,7 +413,9 @@ type PagesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return PagesDomainsDeleteDomain.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return PagesDomainsDeleteDomain.OK(Serializer.deserialize content)
+            | _ -> return PagesDomainsDeleteDomain.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -477,7 +441,9 @@ type PagesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return PagesDomainsGetDomain.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return PagesDomainsGetDomain.OK(Serializer.deserialize content)
+            | _ -> return PagesDomainsGetDomain.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -503,7 +469,9 @@ type PagesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return PagesDomainsPatchDomain.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return PagesDomainsPatchDomain.OK(Serializer.deserialize content)
+            | _ -> return PagesDomainsPatchDomain.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -522,5 +490,7 @@ type PagesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return PagesPurgeBuildCache.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return PagesPurgeBuildCache.OK(Serializer.deserialize content)
+            | _ -> return PagesPurgeBuildCache.BadRequest(Serializer.deserialize content)
         }

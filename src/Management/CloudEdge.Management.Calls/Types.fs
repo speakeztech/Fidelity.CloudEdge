@@ -199,16 +199,18 @@ type callsappresponsecollectionMessages =
           source = None }
 
 type callsappresponsecollection =
-    { errors: Option<list<callsappresponsecollectionErrors>>
-      messages: Option<list<callsappresponsecollectionMessages>>
+    { errors: list<callsappresponsecollectionErrors>
+      messages: list<callsappresponsecollectionMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<list<callsapp>> }
     ///Creates an instance of callsappresponsecollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): callsappresponsecollection =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<callsappresponsecollectionErrors>,
+                          messages: list<callsappresponsecollectionMessages>,
+                          success: bool): callsappresponsecollection =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type callsappresponsesingleErrorsSource =
@@ -246,16 +248,18 @@ type callsappresponsesingleMessages =
           source = None }
 
 type callsappresponsesingle =
-    { errors: Option<list<callsappresponsesingleErrors>>
-      messages: Option<list<callsappresponsesingleMessages>>
+    { errors: list<callsappresponsesingleErrors>
+      messages: list<callsappresponsesingleMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<callsapp> }
     ///Creates an instance of callsappresponsesingle with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): callsappresponsesingle =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<callsappresponsesingleErrors>,
+                          messages: list<callsappresponsesingleMessages>,
+                          success: bool): callsappresponsesingle =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type callsappresponsesinglewithsecretErrorsSource =
@@ -293,16 +297,18 @@ type callsappresponsesinglewithsecretMessages =
           source = None }
 
 type callsappresponsesinglewithsecret =
-    { errors: Option<list<callsappresponsesinglewithsecretErrors>>
-      messages: Option<list<callsappresponsesinglewithsecretMessages>>
+    { errors: list<callsappresponsesinglewithsecretErrors>
+      messages: list<callsappresponsesinglewithsecretMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<callsappwithsecret> }
     ///Creates an instance of callsappresponsesinglewithsecret with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): callsappresponsesinglewithsecret =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<callsappresponsesinglewithsecretErrors>,
+                          messages: list<callsappresponsesinglewithsecretMessages>,
+                          success: bool): callsappresponsesinglewithsecret =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type callsappwithsecret =
@@ -359,16 +365,18 @@ type callsturnkeycollectionMessages =
           source = None }
 
 type callsturnkeycollection =
-    { errors: Option<list<callsturnkeycollectionErrors>>
-      messages: Option<list<callsturnkeycollectionMessages>>
+    { errors: list<callsturnkeycollectionErrors>
+      messages: list<callsturnkeycollectionMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<list<callsturnkeyobject>> }
     ///Creates an instance of callsturnkeycollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): callsturnkeycollection =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<callsturnkeycollectionErrors>,
+                          messages: list<callsturnkeycollectionMessages>,
+                          success: bool): callsturnkeycollection =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type callsturnkeyeditablefields =
@@ -475,16 +483,18 @@ type callsturnkeyresponsesingleMessages =
           source = None }
 
 type callsturnkeyresponsesingle =
-    { errors: Option<list<callsturnkeyresponsesingleErrors>>
-      messages: Option<list<callsturnkeyresponsesingleMessages>>
+    { errors: list<callsturnkeyresponsesingleErrors>
+      messages: list<callsturnkeyresponsesingleMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<callsturnkeyobject> }
     ///Creates an instance of callsturnkeyresponsesingle with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): callsturnkeyresponsesingle =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<callsturnkeyresponsesingleErrors>,
+                          messages: list<callsturnkeyresponsesingleMessages>,
+                          success: bool): callsturnkeyresponsesingle =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type callsturnkeysinglewithsecretErrorsSource =
@@ -522,16 +532,18 @@ type callsturnkeysinglewithsecretMessages =
           source = None }
 
 type callsturnkeysinglewithsecret =
-    { errors: Option<list<callsturnkeysinglewithsecretErrors>>
-      messages: Option<list<callsturnkeysinglewithsecretMessages>>
+    { errors: list<callsturnkeysinglewithsecretErrors>
+      messages: list<callsturnkeysinglewithsecretMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<callsturnkeywithkey> }
     ///Creates an instance of callsturnkeysinglewithsecret with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): callsturnkeysinglewithsecret =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<callsturnkeysinglewithsecretErrors>,
+                          messages: list<callsturnkeysinglewithsecretMessages>,
+                          success: bool): callsturnkeysinglewithsecret =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type callsturnkeywithkey =
@@ -557,6 +569,8 @@ type callsturnkeywithkey =
 type CallsAppsList =
     ///List apps response
     | OK of payload: callsappresponsecollection
+    ///List apps response failure
+    | BadRequest of payload: ``callsapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type CallsAppsCreateANewApp =
@@ -567,21 +581,29 @@ type CallsAppsCreateANewApp =
 type CallsAppsDeleteApp =
     ///Delete app response
     | OK of payload: callsappresponsesingle
+    ///Delete app response failure
+    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<RequireQualifiedAccess>]
 type CallsAppsRetrieveAppDetails =
     ///Retrieve app details response
     | OK of payload: callsappresponsesingle
+    ///Retrieve app details response failure
+    | BadRequest of payload: ``callsapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type CallsAppsUpdateAppDetails =
     ///Edit app details response
     | OK of payload: callsappresponsesingle
+    ///Edit app details response failure
+    | BadRequest of payload: ``callsapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type CallsTurnKeyList =
     ///List TURN key response
     | OK of payload: callsturnkeycollection
+    ///List TURN key response failure
+    | BadRequest of payload: ``callsapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type CallsTurnKeyCreate =
@@ -592,13 +614,19 @@ type CallsTurnKeyCreate =
 type CallsDeleteTurnKey =
     ///Delete TURN key response
     | OK of payload: callsturnkeyresponsesingle
+    ///Delete TURN key response failure
+    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<RequireQualifiedAccess>]
 type CallsRetrieveTurnKeyDetails =
     ///Retrieve TURN key details response
     | OK of payload: callsturnkeyresponsesingle
+    ///Retrieve TURN key details failure
+    | BadRequest of payload: ``callsapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type CallsUpdateTurnKey =
     ///Edit TURN key details response
     | OK of payload: callsturnkeyresponsesingle
+    ///Edit TURN key details response failure
+    | BadRequest of payload: ``callsapi-response-common-failure``

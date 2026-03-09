@@ -31,7 +31,9 @@ type WorkersClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.getAsync httpClient "/accounts/{account_id}/workers/scripts" requestParts cancellationToken
 
-            return WorkerScriptListWorkers.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WorkerScriptListWorkers.OK(Serializer.deserialize content)
+            | _ -> return WorkerScriptListWorkers.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -62,7 +64,9 @@ type WorkersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WorkerScriptDeleteWorker.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WorkerScriptDeleteWorker.OK(Serializer.deserialize content)
+            | _ -> return WorkerScriptDeleteWorker.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -86,7 +90,9 @@ type WorkersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WorkerScriptDownloadWorker.OK content
+            match int status with
+            | 200 -> return WorkerScriptDownloadWorker.OK content
+            | _ -> return WorkerScriptDownloadWorker.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -117,7 +123,9 @@ type WorkersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WorkerScriptUploadWorkerModule.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WorkerScriptUploadWorkerModule.OK(Serializer.deserialize content)
+            | _ -> return WorkerScriptUploadWorkerModule.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -155,7 +163,9 @@ type WorkersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WorkerScriptPutContent.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WorkerScriptPutContent.OK(Serializer.deserialize content)
+            | _ -> return WorkerScriptPutContent.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -179,7 +189,9 @@ type WorkersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WorkerCronTriggerGetCronTriggers.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WorkerCronTriggerGetCronTriggers.OK(Serializer.deserialize content)
+            | _ -> return WorkerCronTriggerGetCronTriggers.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -205,7 +217,9 @@ type WorkersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WorkerCronTriggerUpdateCronTriggers.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WorkerCronTriggerUpdateCronTriggers.OK(Serializer.deserialize content)
+            | _ -> return WorkerCronTriggerUpdateCronTriggers.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -224,7 +238,9 @@ type WorkersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WorkerListScriptSecrets.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WorkerListScriptSecrets.OK(Serializer.deserialize content)
+            | _ -> return WorkerListScriptSecrets.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -244,13 +260,15 @@ type WorkersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WorkerPutScriptSecret.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WorkerPutScriptSecret.OK(Serializer.deserialize content)
+            | _ -> return WorkerPutScriptSecret.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
     ///Get list of tails currently deployed on a Worker.
     ///</summary>
-    member this.GetAccountsWorkersScriptsTailsByAccountIdAndScriptName
+    member this.GetAccountsWorkersScriptsTails
         (
             accountId: string,
             scriptName: string,
@@ -268,7 +286,9 @@ type WorkersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return GetAccountsWorkersScriptsTailsByAccountIdAndScriptName.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return GetAccountsWorkersScriptsTails.OK(Serializer.deserialize content)
+            | _ -> return GetAccountsWorkersScriptsTails.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -287,7 +307,9 @@ type WorkersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WorkerTailLogsStartTail.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WorkerTailLogsStartTail.OK(Serializer.deserialize content)
+            | _ -> return WorkerTailLogsStartTail.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -311,7 +333,9 @@ type WorkersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WorkerScriptFetchUsageModel.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WorkerScriptFetchUsageModel.OK(Serializer.deserialize content)
+            | _ -> return WorkerScriptFetchUsageModel.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -337,7 +361,9 @@ type WorkersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WorkerScriptUpdateUsageModel.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WorkerScriptUpdateUsageModel.OK(Serializer.deserialize content)
+            | _ -> return WorkerScriptUpdateUsageModel.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -376,7 +402,9 @@ type WorkersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WorkerVersionsListVersions.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WorkerVersionsListVersions.OK(Serializer.deserialize content)
+            | _ -> return WorkerVersionsListVersions.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -407,7 +435,9 @@ type WorkersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WorkerVersionsUploadVersion.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WorkerVersionsUploadVersion.OK(Serializer.deserialize content)
+            | _ -> return WorkerVersionsUploadVersion.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -433,7 +463,9 @@ type WorkersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WorkerVersionsGetVersionDetail.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WorkerVersionsGetVersionDetail.OK(Serializer.deserialize content)
+            | _ -> return WorkerVersionsGetVersionDetail.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -451,7 +483,9 @@ type WorkersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WorkerSubdomainDeleteSubdomain.NoContent(Serializer.deserialize content)
+            match int status with
+            | 204 -> return WorkerSubdomainDeleteSubdomain.NoContent(Serializer.deserialize content)
+            | _ -> return WorkerSubdomainDeleteSubdomain.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -469,7 +503,9 @@ type WorkersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WorkerSubdomainGetSubdomain.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WorkerSubdomainGetSubdomain.OK(Serializer.deserialize content)
+            | _ -> return WorkerSubdomainGetSubdomain.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -493,5 +529,7 @@ type WorkersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WorkerSubdomainCreateSubdomain.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WorkerSubdomainCreateSubdomain.OK(Serializer.deserialize content)
+            | _ -> return WorkerSubdomainCreateSubdomain.BadRequest(Serializer.deserialize content)
         }

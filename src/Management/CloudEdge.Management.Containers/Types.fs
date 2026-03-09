@@ -1,5 +1,8 @@
 namespace rec Fidelity.CloudEdge.Management.Containers.Types
 
+// Auto-generated stub types (missing from Hawaii output)
+type minutes = string
+
 ///Specifies what permissions the credentials will have.
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type ccImageRegistryPermissions =

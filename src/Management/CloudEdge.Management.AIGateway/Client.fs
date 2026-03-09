@@ -400,7 +400,7 @@ type AIGatewayClient(httpClient: HttpClient) =
             gatewayId: string,
             ?orderBy: string,
             ?orderByDirection: string,
-            ?filters: list<Newtonsoft.Json.Linq.JObject>,
+            ?filters: string,
             ?limit: int,
             ?cancellationToken: CancellationToken
         ) =
@@ -413,7 +413,7 @@ type AIGatewayClient(httpClient: HttpClient) =
                   if orderByDirection.IsSome then
                       RequestPart.query ("order_by_direction", orderByDirection.Value)
                   if filters.IsSome then
-                      RequestPart.query ("filters", Newtonsoft.Json.JsonConvert.SerializeObject(filters.Value))
+                      RequestPart.query ("filters", filters.Value)
                   if limit.IsSome then
                       RequestPart.query ("limit", limit.Value) ]
 
@@ -441,7 +441,7 @@ type AIGatewayClient(httpClient: HttpClient) =
             ?perPage: int,
             ?orderBy: string,
             ?orderByDirection: string,
-            ?filters: list<Newtonsoft.Json.Linq.JObject>,
+            ?filters: string,
             ?metaInfo: bool,
             ?direction: string,
             ?startDate: System.DateTimeOffset,
@@ -481,7 +481,7 @@ type AIGatewayClient(httpClient: HttpClient) =
                   if orderByDirection.IsSome then
                       RequestPart.query ("order_by_direction", orderByDirection.Value)
                   if filters.IsSome then
-                      RequestPart.query ("filters", Newtonsoft.Json.JsonConvert.SerializeObject(filters.Value))
+                      RequestPart.query ("filters", filters.Value)
                   if metaInfo.IsSome then
                       RequestPart.query ("meta_info", metaInfo.Value)
                   if direction.IsSome then

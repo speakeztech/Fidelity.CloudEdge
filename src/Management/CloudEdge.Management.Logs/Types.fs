@@ -1,5 +1,11 @@
 namespace rec Fidelity.CloudEdge.Management.Logs.Types
 
+// Auto-generated stub types (missing from Hawaii output)
+type logshareend = string
+type logsharelogsresponsejsonlines = string
+type logsharestart = string
+type region = string
+
 type logcontrolallowoutofregionaccess = bool
 type logcontrolflag = bool
 ///Identifier.
@@ -64,13 +70,6 @@ type logsharetimestamps =
         | Unix -> "unix"
         | Unixnano -> "unixnano"
         | Rfc3339 -> "rfc3339"
-
-///JSON lines response from logs endpoint
-type logsharelogsresponsejsonlines = string
-///Start time for logs query
-type logsharestart = System.DateTimeOffset
-///End time for logs query
-type logshareend = System.DateTimeOffset
 
 type ErrorsSource =
     { pointer: Option<string> }
@@ -223,16 +222,18 @@ type logcontrolcmbconfigresponsesingleMessages =
           source = None }
 
 type logcontrolcmbconfigresponsesingle =
-    { errors: Option<list<logcontrolcmbconfigresponsesingleErrors>>
-      messages: Option<list<logcontrolcmbconfigresponsesingleMessages>>
+    { errors: list<logcontrolcmbconfigresponsesingleErrors>
+      messages: list<logcontrolcmbconfigresponsesingleMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<logcontrolcmbconfig> }
     ///Creates an instance of logcontrolcmbconfigresponsesingle with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): logcontrolcmbconfigresponsesingle =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<logcontrolcmbconfigresponsesingleErrors>,
+                          messages: list<logcontrolcmbconfigresponsesingleMessages>,
+                          success: bool): logcontrolcmbconfigresponsesingle =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type logcontrolretentionflag =
@@ -276,16 +277,18 @@ type logcontrolretentionflagresponsesingleMessages =
           source = None }
 
 type logcontrolretentionflagresponsesingle =
-    { errors: Option<list<logcontrolretentionflagresponsesingleErrors>>
-      messages: Option<list<logcontrolretentionflagresponsesingleMessages>>
+    { errors: list<logcontrolretentionflagresponsesingleErrors>
+      messages: list<logcontrolretentionflagresponsesingleMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<logcontrolretentionflag> }
     ///Creates an instance of logcontrolretentionflagresponsesingle with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): logcontrolretentionflagresponsesingle =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<logcontrolretentionflagresponsesingleErrors>,
+                          messages: list<logcontrolretentionflagresponsesingleMessages>,
+                          success: bool): logcontrolretentionflagresponsesingle =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type ``logshareapi-response-common-failure`` =
@@ -309,42 +312,109 @@ type logsharefieldsresponse =
     ///Creates an instance of logsharefieldsresponse with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): logsharefieldsresponse = { key = None }
 
+type ``delete-accounts-accountid-logs-control-cmb-configresponseErrorsSource`` =
+    { pointer: Option<string> }
+    ///Creates an instance of delete-accounts-accountid-logs-control-cmb-configresponseErrorsSource with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``delete-accounts-accountid-logs-control-cmb-configresponseErrorsSource`` =
+        { pointer = None }
+
+type ``delete-accounts-accountid-logs-control-cmb-configresponseErrors`` =
+    { code: int
+      documentation_url: Option<string>
+      message: string
+      source: Option<``delete-accounts-accountid-logs-control-cmb-configresponseErrorsSource``> }
+    ///Creates an instance of delete-accounts-accountid-logs-control-cmb-configresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``delete-accounts-accountid-logs-control-cmb-configresponseErrors`` =
+        { code = code
+          documentation_url = None
+          message = message
+          source = None }
+
+type ``delete-accounts-accountid-logs-control-cmb-configresponseMessagesSource`` =
+    { pointer: Option<string> }
+    ///Creates an instance of delete-accounts-accountid-logs-control-cmb-configresponseMessagesSource with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``delete-accounts-accountid-logs-control-cmb-configresponseMessagesSource`` =
+        { pointer = None }
+
+type ``delete-accounts-accountid-logs-control-cmb-configresponseMessages`` =
+    { code: int
+      documentation_url: Option<string>
+      message: string
+      source: Option<``delete-accounts-accountid-logs-control-cmb-configresponseMessagesSource``> }
+    ///Creates an instance of delete-accounts-accountid-logs-control-cmb-configresponseMessages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``delete-accounts-accountid-logs-control-cmb-configresponseMessages`` =
+        { code = code
+          documentation_url = None
+          message = message
+          source = None }
+
+type ``delete-accounts-accountid-logs-control-cmb-configresponse`` =
+    { errors: list<``delete-accounts-accountid-logs-control-cmb-configresponseErrors``>
+      messages: list<``delete-accounts-accountid-logs-control-cmb-configresponseMessages``>
+      ///Whether the API call was successful.
+      success: bool
+      result: Option<Newtonsoft.Json.Linq.JObject> }
+    ///Creates an instance of delete-accounts-accountid-logs-control-cmb-configresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``delete-accounts-accountid-logs-control-cmb-configresponseErrors``>,
+                          messages: list<``delete-accounts-accountid-logs-control-cmb-configresponseMessages``>,
+                          success: bool): ``delete-accounts-accountid-logs-control-cmb-configresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
+          result = None }
+
 [<RequireQualifiedAccess>]
 type DeleteAccountsAccountIdLogsControlCmbConfig =
     ///Delete CMB config response
-    | OK of payload: string
+    | OK of payload: ``delete-accounts-accountid-logs-control-cmb-configresponse``
+    ///Delete CMB config response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type GetAccountsAccountIdLogsControlCmbConfig =
     ///Get CMB config response
     | OK of payload: logcontrolcmbconfigresponsesingle
+    ///Get CMB config response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type PostAccountsAccountIdLogsControlCmbConfig =
     ///Update CMB config response
     | OK of payload: logcontrolcmbconfigresponsesingle
+    ///Update CMB config response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type GetZonesZoneIdLogsControlRetentionFlag =
     ///Get log retention flag response
     | OK of payload: logcontrolretentionflagresponsesingle
+    ///Get log retention flag response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type PostZonesZoneIdLogsControlRetentionFlag =
     ///Update log retention flag response
     | OK of payload: logcontrolretentionflagresponsesingle
+    ///Update log retention flag response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type GetZonesZoneIdLogsRayidsRayId =
     ///Get logs RayIDs response
     | OK of payload: logsharelogsresponsejsonlines
+    ///Get logs RayIDs response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type GetZonesZoneIdLogsReceived =
     ///Get logs received response
     | OK of payload: logsharelogsresponsejsonlines
+    ///Get logs received response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type GetZonesZoneIdLogsReceivedFields =
     ///List fields response
     | OK of payload: logsharefieldsresponse
+    ///List fields response failure
+    | BadRequest of payload: string

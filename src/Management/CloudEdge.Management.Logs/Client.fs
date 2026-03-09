@@ -30,7 +30,9 @@ type LogsClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return DeleteAccountsAccountIdLogsControlCmbConfig.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return DeleteAccountsAccountIdLogsControlCmbConfig.OK(Serializer.deserialize content)
+            | _ -> return DeleteAccountsAccountIdLogsControlCmbConfig.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -48,7 +50,9 @@ type LogsClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return GetAccountsAccountIdLogsControlCmbConfig.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return GetAccountsAccountIdLogsControlCmbConfig.OK(Serializer.deserialize content)
+            | _ -> return GetAccountsAccountIdLogsControlCmbConfig.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -72,7 +76,9 @@ type LogsClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return PostAccountsAccountIdLogsControlCmbConfig.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return PostAccountsAccountIdLogsControlCmbConfig.OK(Serializer.deserialize content)
+            | _ -> return PostAccountsAccountIdLogsControlCmbConfig.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -89,7 +95,9 @@ type LogsClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return GetZonesZoneIdLogsControlRetentionFlag.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return GetZonesZoneIdLogsControlRetentionFlag.OK(Serializer.deserialize content)
+            | _ -> return GetZonesZoneIdLogsControlRetentionFlag.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -113,7 +121,9 @@ type LogsClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return PostZonesZoneIdLogsControlRetentionFlag.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return PostZonesZoneIdLogsControlRetentionFlag.OK(Serializer.deserialize content)
+            | _ -> return PostZonesZoneIdLogsControlRetentionFlag.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -139,7 +149,9 @@ type LogsClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.getAsync httpClient "/zones/{zone_id}/logs/rayids/{ray_id}" requestParts cancellationToken
 
-            return GetZonesZoneIdLogsRayidsRayId.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return GetZonesZoneIdLogsRayidsRayId.OK(Serializer.deserialize content)
+            | _ -> return GetZonesZoneIdLogsRayidsRayId.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -174,7 +186,9 @@ type LogsClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.getAsync httpClient "/zones/{zone_id}/logs/received" requestParts cancellationToken
 
-            return GetZonesZoneIdLogsReceived.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return GetZonesZoneIdLogsReceived.OK(Serializer.deserialize content)
+            | _ -> return GetZonesZoneIdLogsReceived.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -187,5 +201,7 @@ type LogsClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.getAsync httpClient "/zones/{zone_id}/logs/received/fields" requestParts cancellationToken
 
-            return GetZonesZoneIdLogsReceivedFields.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return GetZonesZoneIdLogsReceivedFields.OK(Serializer.deserialize content)
+            | _ -> return GetZonesZoneIdLogsReceivedFields.BadRequest(Serializer.deserialize content)
         }

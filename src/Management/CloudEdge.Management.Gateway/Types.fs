@@ -1,5 +1,18 @@
 namespace rec Fidelity.CloudEdge.Management.Gateway.Types
 
+// Auto-generated type aliases (Hawaii normalization fix)
+type ``zero-trust-gateway_ip_network`` = ``zero-trust-gatewayipnetwork``
+type ``zero-trust-gateway_ipv4_network`` = ``zero-trust-gatewayipv4network``
+type ``zero-trust-gateway_ipv6_network`` = ``zero-trust-gatewayipv6network``
+
+// Auto-generated stub types (missing from Hawaii output)
+type client = string
+type files = string
+type results = string
+type user = string
+type ``zero-trust-gatewayapp-types`` = string
+type ``zero-trust-gatewayproxy-endpoints`` = string
+
 ///Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type ``zero-trust-gatewayaction`` =
@@ -143,13 +156,6 @@ type ``zero-trust-gatewayipnetworks`` = list<``zero-trust-gateway_ip_network``>
 type ``zero-trust-gatewayips`` = list<string>
 type ``zero-trust-gatewayipv4networks`` = list<``zero-trust-gateway_ipv4_network``>
 type ``zero-trust-gatewayipv6networks`` = list<``zero-trust-gateway_ipv6_network``>
-
-// Type aliases for underscore variants (Hawaii sanitization compatibility)
-type ``zero-trust-gateway_ip_network`` = ``zero-trust-gatewayipnetwork``
-type ``zero-trust-gateway_ipv4_network`` = ``zero-trust-gatewayipv4network``
-type ``zero-trust-gateway_ipv6_network`` = ``zero-trust-gatewayipv6network``
-type ``zero-trust-gatewayapp-types`` = ``zero-trust-gatewayapplicationtype``
-type ``zero-trust-gatewayproxy-endpoints`` = ``zero-trust-gatewayproxy-endpoint-ip``
 
 type ``zero-trust-gatewayitemsArrayItem`` =
     { created_at: Option<``zero-trust-gatewayreadonlytimestamp``>
@@ -405,17 +411,19 @@ type ``zero-trust-gatewayapp-typescomponents-schemas-responsecollectionMessages`
         { code = code; message = message }
 
 type ``zero-trust-gatewayapp-typescomponents-schemas-responsecollection`` =
-    { errors: Option<list<``zero-trust-gatewayapp-typescomponents-schemas-responsecollectionErrors``>>
-      messages: Option<list<``zero-trust-gatewayapp-typescomponents-schemas-responsecollectionMessages``>>
+    { errors: list<``zero-trust-gatewayapp-typescomponents-schemas-responsecollectionErrors``>
+      messages: list<``zero-trust-gatewayapp-typescomponents-schemas-responsecollectionMessages``>
       ///Indicate whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<``zero-trust-gatewayresultinfo``>
       result: Option<list<``zero-trust-gatewayapp-types``>> }
     ///Creates an instance of zero-trust-gatewayapp-typescomponents-schemas-responsecollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``zero-trust-gatewayapp-typescomponents-schemas-responsecollection`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``zero-trust-gatewayapp-typescomponents-schemas-responsecollectionErrors``>,
+                          messages: list<``zero-trust-gatewayapp-typescomponents-schemas-responsecollectionMessages``>,
+                          success: bool): ``zero-trust-gatewayapp-typescomponents-schemas-responsecollection`` =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
           result = None }
 
@@ -464,16 +472,18 @@ type ``zero-trust-gatewayapplicationsreviewstatusresponseMessages`` =
         { code = code; message = message }
 
 type ``zero-trust-gatewayapplicationsreviewstatusresponse`` =
-    { errors: Option<list<``zero-trust-gatewayapplicationsreviewstatusresponseErrors``>>
-      messages: Option<list<``zero-trust-gatewayapplicationsreviewstatusresponseMessages``>>
+    { errors: list<``zero-trust-gatewayapplicationsreviewstatusresponseErrors``>
+      messages: list<``zero-trust-gatewayapplicationsreviewstatusresponseMessages``>
       ///Indicate whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<``zero-trust-gatewayapplicationsreviewstatusresponsecontent``> }
     ///Creates an instance of zero-trust-gatewayapplicationsreviewstatusresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``zero-trust-gatewayapplicationsreviewstatusresponse`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``zero-trust-gatewayapplicationsreviewstatusresponseErrors``>,
+                          messages: list<``zero-trust-gatewayapplicationsreviewstatusresponseMessages``>,
+                          success: bool): ``zero-trust-gatewayapplicationsreviewstatusresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type ``zero-trust-gatewayapplicationsreviewstatusresponsecontent`` =
@@ -508,16 +518,18 @@ type ``zero-trust-gatewayauditsshsettingscomponents-schemas-singleresponseMessag
         { code = code; message = message }
 
 type ``zero-trust-gatewayauditsshsettingscomponents-schemas-singleresponse`` =
-    { errors: Option<list<``zero-trust-gatewayauditsshsettingscomponents-schemas-singleresponseErrors``>>
-      messages: Option<list<``zero-trust-gatewayauditsshsettingscomponents-schemas-singleresponseMessages``>>
+    { errors: list<``zero-trust-gatewayauditsshsettingscomponents-schemas-singleresponseErrors``>
+      messages: list<``zero-trust-gatewayauditsshsettingscomponents-schemas-singleresponseMessages``>
       ///Indicate whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<``zero-trust-gatewaysettings``> }
     ///Creates an instance of zero-trust-gatewayauditsshsettingscomponents-schemas-singleresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``zero-trust-gatewayauditsshsettingscomponents-schemas-singleresponse`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``zero-trust-gatewayauditsshsettingscomponents-schemas-singleresponseErrors``>,
+                          messages: list<``zero-trust-gatewayauditsshsettingscomponents-schemas-singleresponseMessages``>,
+                          success: bool): ``zero-trust-gatewayauditsshsettingscomponents-schemas-singleresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
@@ -645,17 +657,19 @@ type ``zero-trust-gatewaycategoriescomponents-schemas-responsecollectionMessages
         { code = code; message = message }
 
 type ``zero-trust-gatewaycategoriescomponents-schemas-responsecollection`` =
-    { errors: Option<list<``zero-trust-gatewaycategoriescomponents-schemas-responsecollectionErrors``>>
-      messages: Option<list<``zero-trust-gatewaycategoriescomponents-schemas-responsecollectionMessages``>>
+    { errors: list<``zero-trust-gatewaycategoriescomponents-schemas-responsecollectionErrors``>
+      messages: list<``zero-trust-gatewaycategoriescomponents-schemas-responsecollectionMessages``>
       ///Indicate whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<``zero-trust-gatewayresultinfo``>
       result: Option<list<``zero-trust-gatewaycategories``>> }
     ///Creates an instance of zero-trust-gatewaycategoriescomponents-schemas-responsecollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``zero-trust-gatewaycategoriescomponents-schemas-responsecollection`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``zero-trust-gatewaycategoriescomponents-schemas-responsecollectionErrors``>,
+                          messages: list<``zero-trust-gatewaycategoriescomponents-schemas-responsecollectionMessages``>,
+                          success: bool): ``zero-trust-gatewaycategoriescomponents-schemas-responsecollection`` =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
           result = None }
 
@@ -717,17 +731,19 @@ type ``zero-trust-gatewaycomponents-schemas-responsecollectionMessages`` =
         { code = code; message = message }
 
 type ``zero-trust-gatewaycomponents-schemas-responsecollection`` =
-    { errors: Option<list<``zero-trust-gatewaycomponents-schemas-responsecollectionErrors``>>
-      messages: Option<list<``zero-trust-gatewaycomponents-schemas-responsecollectionMessages``>>
+    { errors: list<``zero-trust-gatewaycomponents-schemas-responsecollectionErrors``>
+      messages: list<``zero-trust-gatewaycomponents-schemas-responsecollectionMessages``>
       ///Indicate whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<``zero-trust-gatewayresultinfo``>
       result: Option<list<``zero-trust-gatewaylocations``>> }
     ///Creates an instance of zero-trust-gatewaycomponents-schemas-responsecollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``zero-trust-gatewaycomponents-schemas-responsecollection`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``zero-trust-gatewaycomponents-schemas-responsecollectionErrors``>,
+                          messages: list<``zero-trust-gatewaycomponents-schemas-responsecollectionMessages``>,
+                          success: bool): ``zero-trust-gatewaycomponents-schemas-responsecollection`` =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
           result = None }
 
@@ -746,16 +762,18 @@ type ``zero-trust-gatewaycomponents-schemas-singleresponseMessages`` =
         { code = code; message = message }
 
 type ``zero-trust-gatewaycomponents-schemas-singleresponse`` =
-    { errors: Option<list<``zero-trust-gatewaycomponents-schemas-singleresponseErrors``>>
-      messages: Option<list<``zero-trust-gatewaycomponents-schemas-singleresponseMessages``>>
+    { errors: list<``zero-trust-gatewaycomponents-schemas-singleresponseErrors``>
+      messages: list<``zero-trust-gatewaycomponents-schemas-singleresponseMessages``>
       ///Indicate whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<``zero-trust-gatewayrules``> }
     ///Creates an instance of zero-trust-gatewaycomponents-schemas-singleresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``zero-trust-gatewaycomponents-schemas-singleresponse`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``zero-trust-gatewaycomponents-schemas-singleresponseErrors``>,
+                          messages: list<``zero-trust-gatewaycomponents-schemas-singleresponseMessages``>,
+                          success: bool): ``zero-trust-gatewaycomponents-schemas-singleresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 ///Specify custom certificate settings for BYO-PKI. This field is deprecated; use `certificate` instead.
@@ -842,16 +860,18 @@ type ``zero-trust-gatewayemptyresponseMessages`` =
         { code = code; message = message }
 
 type ``zero-trust-gatewayemptyresponse`` =
-    { errors: Option<list<``zero-trust-gatewayemptyresponseErrors``>>
-      messages: Option<list<``zero-trust-gatewayemptyresponseMessages``>>
+    { errors: list<``zero-trust-gatewayemptyresponseErrors``>
+      messages: list<``zero-trust-gatewayemptyresponseMessages``>
       ///Indicate whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<Newtonsoft.Json.Linq.JObject> }
     ///Creates an instance of zero-trust-gatewayemptyresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``zero-trust-gatewayemptyresponse`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``zero-trust-gatewayemptyresponseErrors``>,
+                          messages: list<``zero-trust-gatewayemptyresponseMessages``>,
+                          success: bool): ``zero-trust-gatewayemptyresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 ///Configure the destination endpoints for this location.
@@ -943,16 +963,18 @@ type ``zero-trust-gatewaygateway-account-logging-settings-responseMessages`` =
         { code = code; message = message }
 
 type ``zero-trust-gatewaygateway-account-logging-settings-response`` =
-    { errors: Option<list<``zero-trust-gatewaygateway-account-logging-settings-responseErrors``>>
-      messages: Option<list<``zero-trust-gatewaygateway-account-logging-settings-responseMessages``>>
+    { errors: list<``zero-trust-gatewaygateway-account-logging-settings-responseErrors``>
+      messages: list<``zero-trust-gatewaygateway-account-logging-settings-responseMessages``>
       ///Indicate whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<``zero-trust-gatewaygateway-account-logging-settings``> }
     ///Creates an instance of zero-trust-gatewaygateway-account-logging-settings-response with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``zero-trust-gatewaygateway-account-logging-settings-response`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``zero-trust-gatewaygateway-account-logging-settings-responseErrors``>,
+                          messages: list<``zero-trust-gatewaygateway-account-logging-settings-responseMessages``>,
+                          success: bool): ``zero-trust-gatewaygateway-account-logging-settings-response`` =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 ///Specify account settings.
@@ -1034,16 +1056,18 @@ type Result =
           provider_name = None }
 
 type ``zero-trust-gatewaygatewayaccount`` =
-    { errors: Option<list<``zero-trust-gatewaygatewayaccountErrors``>>
-      messages: Option<list<``zero-trust-gatewaygatewayaccountMessages``>>
+    { errors: list<``zero-trust-gatewaygatewayaccountErrors``>
+      messages: list<``zero-trust-gatewaygatewayaccountMessages``>
       ///Indicate whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<Result> }
     ///Creates an instance of zero-trust-gatewaygatewayaccount with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``zero-trust-gatewaygatewayaccount`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``zero-trust-gatewaygatewayaccountErrors``>,
+                          messages: list<``zero-trust-gatewaygatewayaccountMessages``>,
+                          success: bool): ``zero-trust-gatewaygatewayaccount`` =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type ``zero-trust-gatewaygatewayaccountconfigErrors`` =
@@ -1116,16 +1140,18 @@ type ``zero-trust-gatewaygatewayaccountconfigResult`` =
           updated_at = None }
 
 type ``zero-trust-gatewaygatewayaccountconfig`` =
-    { errors: Option<list<``zero-trust-gatewaygatewayaccountconfigErrors``>>
-      messages: Option<list<``zero-trust-gatewaygatewayaccountconfigMessages``>>
+    { errors: list<``zero-trust-gatewaygatewayaccountconfigErrors``>
+      messages: list<``zero-trust-gatewaygatewayaccountconfigMessages``>
       ///Indicate whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<``zero-trust-gatewaygatewayaccountconfigResult``> }
     ///Creates an instance of zero-trust-gatewaygatewayaccountconfig with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``zero-trust-gatewaygatewayaccountconfig`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``zero-trust-gatewaygatewayaccountconfigErrors``>,
+                          messages: list<``zero-trust-gatewaygatewayaccountconfigMessages``>,
+                          success: bool): ``zero-trust-gatewaygatewayaccountconfig`` =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type ``zero-trust-gatewaygenerate-cert-request`` =
@@ -1220,17 +1246,19 @@ type Resultinfo =
           total_count = None }
 
 type ``zero-trust-gatewaylistitemresponsecollection`` =
-    { errors: Option<list<``zero-trust-gatewaylistitemresponsecollectionErrors``>>
-      messages: Option<list<``zero-trust-gatewaylistitemresponsecollectionMessages``>>
+    { errors: list<``zero-trust-gatewaylistitemresponsecollectionErrors``>
+      messages: list<``zero-trust-gatewaylistitemresponsecollectionMessages``>
       ///Indicate whether the API call was successful.
-      success: Option<bool>
-      result_info: Option<``zero-trust-gatewayresultinfo``>
+      success: bool
+      result_info: Option<Resultinfo>
       result: Option<list<``zero-trust-gatewayitems``>> }
     ///Creates an instance of zero-trust-gatewaylistitemresponsecollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``zero-trust-gatewaylistitemresponsecollection`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``zero-trust-gatewaylistitemresponsecollectionErrors``>,
+                          messages: list<``zero-trust-gatewaylistitemresponsecollectionMessages``>,
+                          success: bool): ``zero-trust-gatewaylistitemresponsecollection`` =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
           result = None }
 
@@ -1249,16 +1277,18 @@ type ``zero-trust-gatewaylistsingleresponseMessages`` =
         { code = code; message = message }
 
 type ``zero-trust-gatewaylistsingleresponse`` =
-    { errors: Option<list<``zero-trust-gatewaylistsingleresponseErrors``>>
-      messages: Option<list<``zero-trust-gatewaylistsingleresponseMessages``>>
+    { errors: list<``zero-trust-gatewaylistsingleresponseErrors``>
+      messages: list<``zero-trust-gatewaylistsingleresponseMessages``>
       ///Indicate whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<``zero-trust-gatewaylists``> }
     ///Creates an instance of zero-trust-gatewaylistsingleresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``zero-trust-gatewaylistsingleresponse`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``zero-trust-gatewaylistsingleresponseErrors``>,
+                          messages: list<``zero-trust-gatewaylistsingleresponseMessages``>,
+                          success: bool): ``zero-trust-gatewaylistsingleresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type Items =
@@ -1421,17 +1451,19 @@ type ``zero-trust-gatewaypacfilescomponents-schemas-responsecollectionResult`` =
           url = None }
 
 type ``zero-trust-gatewaypacfilescomponents-schemas-responsecollection`` =
-    { errors: Option<list<``zero-trust-gatewaypacfilescomponents-schemas-responsecollectionErrors``>>
-      messages: Option<list<``zero-trust-gatewaypacfilescomponents-schemas-responsecollectionMessages``>>
+    { errors: list<``zero-trust-gatewaypacfilescomponents-schemas-responsecollectionErrors``>
+      messages: list<``zero-trust-gatewaypacfilescomponents-schemas-responsecollectionMessages``>
       ///Indicate whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<``zero-trust-gatewayresultinfo``>
       result: Option<list<``zero-trust-gatewaypacfilescomponents-schemas-responsecollectionResult``>> }
     ///Creates an instance of zero-trust-gatewaypacfilescomponents-schemas-responsecollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``zero-trust-gatewaypacfilescomponents-schemas-responsecollection`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``zero-trust-gatewaypacfilescomponents-schemas-responsecollectionErrors``>,
+                          messages: list<``zero-trust-gatewaypacfilescomponents-schemas-responsecollectionMessages``>,
+                          success: bool): ``zero-trust-gatewaypacfilescomponents-schemas-responsecollection`` =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
           result = None }
 
@@ -1450,16 +1482,18 @@ type ``zero-trust-gatewaypacfilescomponents-schemas-singleresponseMessages`` =
         { code = code; message = message }
 
 type ``zero-trust-gatewaypacfilescomponents-schemas-singleresponse`` =
-    { errors: Option<list<``zero-trust-gatewaypacfilescomponents-schemas-singleresponseErrors``>>
-      messages: Option<list<``zero-trust-gatewaypacfilescomponents-schemas-singleresponseMessages``>>
+    { errors: list<``zero-trust-gatewaypacfilescomponents-schemas-singleresponseErrors``>
+      messages: list<``zero-trust-gatewaypacfilescomponents-schemas-singleresponseMessages``>
       ///Indicate whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<``zero-trust-gatewaypacfile``> }
     ///Creates an instance of zero-trust-gatewaypacfilescomponents-schemas-singleresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``zero-trust-gatewaypacfilescomponents-schemas-singleresponse`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``zero-trust-gatewaypacfilescomponents-schemas-singleresponseErrors``>,
+                          messages: list<``zero-trust-gatewaypacfilescomponents-schemas-singleresponseMessages``>,
+                          success: bool): ``zero-trust-gatewaypacfilescomponents-schemas-singleresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 ///Specify whether to detect protocols from the initial bytes of client traffic.
@@ -1573,17 +1607,19 @@ type ``zero-trust-gatewayproxy-endpointscomponents-schemas-responsecollectionMes
         { code = code; message = message }
 
 type ``zero-trust-gatewayproxy-endpointscomponents-schemas-responsecollection`` =
-    { errors: Option<list<``zero-trust-gatewayproxy-endpointscomponents-schemas-responsecollectionErrors``>>
-      messages: Option<list<``zero-trust-gatewayproxy-endpointscomponents-schemas-responsecollectionMessages``>>
+    { errors: list<``zero-trust-gatewayproxy-endpointscomponents-schemas-responsecollectionErrors``>
+      messages: list<``zero-trust-gatewayproxy-endpointscomponents-schemas-responsecollectionMessages``>
       ///Indicate whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<``zero-trust-gatewayresultinfo``>
       result: Option<list<``zero-trust-gatewayproxy-endpoints``>> }
     ///Creates an instance of zero-trust-gatewayproxy-endpointscomponents-schemas-responsecollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``zero-trust-gatewayproxy-endpointscomponents-schemas-responsecollection`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``zero-trust-gatewayproxy-endpointscomponents-schemas-responsecollectionErrors``>,
+                          messages: list<``zero-trust-gatewayproxy-endpointscomponents-schemas-responsecollectionMessages``>,
+                          success: bool): ``zero-trust-gatewayproxy-endpointscomponents-schemas-responsecollection`` =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
           result = None }
 
@@ -1602,16 +1638,18 @@ type ``zero-trust-gatewayproxy-endpointscomponents-schemas-singleresponseMessage
         { code = code; message = message }
 
 type ``zero-trust-gatewayproxy-endpointscomponents-schemas-singleresponse`` =
-    { errors: Option<list<``zero-trust-gatewayproxy-endpointscomponents-schemas-singleresponseErrors``>>
-      messages: Option<list<``zero-trust-gatewayproxy-endpointscomponents-schemas-singleresponseMessages``>>
+    { errors: list<``zero-trust-gatewayproxy-endpointscomponents-schemas-singleresponseErrors``>
+      messages: list<``zero-trust-gatewayproxy-endpointscomponents-schemas-singleresponseMessages``>
       ///Indicate whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<Newtonsoft.Json.Linq.JToken> }
     ///Creates an instance of zero-trust-gatewayproxy-endpointscomponents-schemas-singleresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``zero-trust-gatewayproxy-endpointscomponents-schemas-singleresponse`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``zero-trust-gatewayproxy-endpointscomponents-schemas-singleresponseErrors``>,
+                          messages: list<``zero-trust-gatewayproxy-endpointscomponents-schemas-singleresponseMessages``>,
+                          success: bool): ``zero-trust-gatewayproxy-endpointscomponents-schemas-singleresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type ``zero-trust-gatewayresponsecollectionErrors`` =
@@ -1629,17 +1667,19 @@ type ``zero-trust-gatewayresponsecollectionMessages`` =
         { code = code; message = message }
 
 type ``zero-trust-gatewayresponsecollection`` =
-    { errors: Option<list<``zero-trust-gatewayresponsecollectionErrors``>>
-      messages: Option<list<``zero-trust-gatewayresponsecollectionMessages``>>
+    { errors: list<``zero-trust-gatewayresponsecollectionErrors``>
+      messages: list<``zero-trust-gatewayresponsecollectionMessages``>
       ///Indicate whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<``zero-trust-gatewayresultinfo``>
       result: Option<list<``zero-trust-gatewaycertificates``>> }
     ///Creates an instance of zero-trust-gatewayresponsecollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``zero-trust-gatewayresponsecollection`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``zero-trust-gatewayresponsecollectionErrors``>,
+                          messages: list<``zero-trust-gatewayresponsecollectionMessages``>,
+                          success: bool): ``zero-trust-gatewayresponsecollection`` =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
           result = None }
 
@@ -2128,17 +2168,19 @@ type ``zero-trust-gatewayrulescomponents-schemas-responsecollectionMessages`` =
         { code = code; message = message }
 
 type ``zero-trust-gatewayrulescomponents-schemas-responsecollection`` =
-    { errors: Option<list<``zero-trust-gatewayrulescomponents-schemas-responsecollectionErrors``>>
-      messages: Option<list<``zero-trust-gatewayrulescomponents-schemas-responsecollectionMessages``>>
+    { errors: list<``zero-trust-gatewayrulescomponents-schemas-responsecollectionErrors``>
+      messages: list<``zero-trust-gatewayrulescomponents-schemas-responsecollectionMessages``>
       ///Indicate whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<``zero-trust-gatewayresultinfo``>
       result: Option<list<``zero-trust-gatewayrules``>> }
     ///Creates an instance of zero-trust-gatewayrulescomponents-schemas-responsecollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``zero-trust-gatewayrulescomponents-schemas-responsecollection`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``zero-trust-gatewayrulescomponents-schemas-responsecollectionErrors``>,
+                          messages: list<``zero-trust-gatewayrulescomponents-schemas-responsecollectionMessages``>,
+                          success: bool): ``zero-trust-gatewayrulescomponents-schemas-responsecollection`` =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
           result = None }
 
@@ -2206,17 +2248,19 @@ type ``zero-trust-gatewayschemas-responsecollectionMessages`` =
         { code = code; message = message }
 
 type ``zero-trust-gatewayschemas-responsecollection`` =
-    { errors: Option<list<``zero-trust-gatewayschemas-responsecollectionErrors``>>
-      messages: Option<list<``zero-trust-gatewayschemas-responsecollectionMessages``>>
+    { errors: list<``zero-trust-gatewayschemas-responsecollectionErrors``>
+      messages: list<``zero-trust-gatewayschemas-responsecollectionMessages``>
       ///Indicate whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<``zero-trust-gatewayresultinfo``>
       result: Option<list<``zero-trust-gatewaylists``>> }
     ///Creates an instance of zero-trust-gatewayschemas-responsecollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``zero-trust-gatewayschemas-responsecollection`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``zero-trust-gatewayschemas-responsecollectionErrors``>,
+                          messages: list<``zero-trust-gatewayschemas-responsecollectionMessages``>,
+                          success: bool): ``zero-trust-gatewayschemas-responsecollection`` =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
           result = None }
 
@@ -2235,16 +2279,18 @@ type ``zero-trust-gatewayschemas-singleresponseMessages`` =
         { code = code; message = message }
 
 type ``zero-trust-gatewayschemas-singleresponse`` =
-    { errors: Option<list<``zero-trust-gatewayschemas-singleresponseErrors``>>
-      messages: Option<list<``zero-trust-gatewayschemas-singleresponseMessages``>>
+    { errors: list<``zero-trust-gatewayschemas-singleresponseErrors``>
+      messages: list<``zero-trust-gatewayschemas-singleresponseMessages``>
       ///Indicate whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<``zero-trust-gatewaylocations``> }
     ///Creates an instance of zero-trust-gatewayschemas-singleresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``zero-trust-gatewayschemas-singleresponse`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``zero-trust-gatewayschemas-singleresponseErrors``>,
+                          messages: list<``zero-trust-gatewayschemas-singleresponseMessages``>,
+                          success: bool): ``zero-trust-gatewayschemas-singleresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type ``zero-trust-gatewaysettings`` =
@@ -2276,16 +2322,18 @@ type ``zero-trust-gatewaysingleresponseMessages`` =
         { code = code; message = message }
 
 type ``zero-trust-gatewaysingleresponse`` =
-    { errors: Option<list<``zero-trust-gatewaysingleresponseErrors``>>
-      messages: Option<list<``zero-trust-gatewaysingleresponseMessages``>>
+    { errors: list<``zero-trust-gatewaysingleresponseErrors``>
+      messages: list<``zero-trust-gatewaysingleresponseMessages``>
       ///Indicate whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<``zero-trust-gatewaycertificates``> }
     ///Creates an instance of zero-trust-gatewaysingleresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``zero-trust-gatewaysingleresponse`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``zero-trust-gatewaysingleresponseErrors``>,
+                          messages: list<``zero-trust-gatewaysingleresponseMessages``>,
+                          success: bool): ``zero-trust-gatewaysingleresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type ``zero-trust-gatewaysingleresponsewithlistitemsErrors`` =
@@ -2338,16 +2386,18 @@ type ``zero-trust-gatewaysingleresponsewithlistitemsResult`` =
           updated_at = None }
 
 type ``zero-trust-gatewaysingleresponsewithlistitems`` =
-    { errors: Option<list<``zero-trust-gatewaysingleresponsewithlistitemsErrors``>>
-      messages: Option<list<``zero-trust-gatewaysingleresponsewithlistitemsMessages``>>
+    { errors: list<``zero-trust-gatewaysingleresponsewithlistitemsErrors``>
+      messages: list<``zero-trust-gatewaysingleresponsewithlistitemsMessages``>
       ///Indicate whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<``zero-trust-gatewaysingleresponsewithlistitemsResult``> }
     ///Creates an instance of zero-trust-gatewaysingleresponsewithlistitems with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``zero-trust-gatewaysingleresponsewithlistitems`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``zero-trust-gatewaysingleresponsewithlistitemsErrors``>,
+                          messages: list<``zero-trust-gatewaysingleresponsewithlistitemsMessages``>,
+                          success: bool): ``zero-trust-gatewaysingleresponsewithlistitems`` =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type ``zero-trust-gatewaysubcategory`` =
@@ -2380,21 +2430,41 @@ type ``zero-trust-gatewaytls-settings`` =
 type ZeroTrustAccountsGetZeroTrustAccountInformation =
     ///Zero Trust account information response.
     | OK of payload: ``zero-trust-gatewaygatewayaccount``
+    ///Zero Trust account information response failure.
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type ZeroTrustAccountsCreateZeroTrustAccount =
     ///Create Zero Trust account response.
     | OK of payload: ``zero-trust-gatewaygatewayaccount``
+    ///Create Zero Trust account response failure.
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type ZeroTrustGatewayApplicationAndApplicationTypeMappingsListApplicationAndApplicationTypeMappings =
     ///List application and application type mappings response.
     | OK of payload: ``zero-trust-gatewayapp-typescomponents-schemas-responsecollection``
+    ///List application and application type mappings response failure.
+    | BadRequest of payload: string
+
+type ZeroTrustApplicationsReviewStatusList_BadRequestErrors = { code: int; message: string }
+type ZeroTrustApplicationsReviewStatusList_BadRequestMessages = { code: int; message: string }
+type ErrorsFromZeroTrustApplicationsReviewStatusListBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type MessagesFromZeroTrustApplicationsReviewStatusListBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+
+type ZeroTrustApplicationsReviewStatusList_BadRequest =
+    { errors: Option<list<ZeroTrustApplicationsReviewStatusList_BadRequestErrors>>
+      messages: Option<list<ZeroTrustApplicationsReviewStatusList_BadRequestMessages>>
+      ///Indicate whether the API call was successful.
+      success: Option<bool>
+      result: Option<``zero-trust-gatewayapplicationsreviewstatusresponsecontent``> }
 
 [<RequireQualifiedAccess>]
 type ZeroTrustApplicationsReviewStatusList =
     ///List applications review status response.
     | OK of payload: ``zero-trust-gatewayapplicationsreviewstatusresponse``
+    ///List applications review status failure response.
+    | BadRequest of payload: ZeroTrustApplicationsReviewStatusList_BadRequest
 
 type ZeroTrustApplicationsReviewStatusUpdatePayload =
     { ///Contains the ids of the approved applications.
@@ -2411,15 +2481,43 @@ type ZeroTrustApplicationsReviewStatusUpdatePayload =
           in_review_apps = in_review_apps
           unapproved_apps = unapproved_apps }
 
+type ZeroTrustApplicationsReviewStatusUpdate_BadRequestErrors = { code: int; message: string }
+type ZeroTrustApplicationsReviewStatusUpdate_BadRequestMessages = { code: int; message: string }
+type ErrorsFromZeroTrustApplicationsReviewStatusUpdateBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type MessagesFromZeroTrustApplicationsReviewStatusUpdateBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+
+type ZeroTrustApplicationsReviewStatusUpdate_BadRequest =
+    { errors: Option<list<ZeroTrustApplicationsReviewStatusUpdate_BadRequestErrors>>
+      messages: Option<list<ZeroTrustApplicationsReviewStatusUpdate_BadRequestMessages>>
+      ///Indicate whether the API call was successful.
+      success: Option<bool>
+      result: Option<``zero-trust-gatewayapplicationsreviewstatusresponsecontent``> }
+
 [<RequireQualifiedAccess>]
 type ZeroTrustApplicationsReviewStatusUpdate =
     ///Update applications review status response.
     | OK of payload: ``zero-trust-gatewayapplicationsreviewstatusresponse``
+    ///Update applications review status failure response.
+    | BadRequest of payload: ZeroTrustApplicationsReviewStatusUpdate_BadRequest
+
+type ZeroTrustGetAuditSshSettings_BadRequestErrors = { code: int; message: string }
+type ZeroTrustGetAuditSshSettings_BadRequestMessages = { code: int; message: string }
+type ErrorsFromZeroTrustGetAuditSshSettingsBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type MessagesFromZeroTrustGetAuditSshSettingsBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+
+type ZeroTrustGetAuditSshSettings_BadRequest =
+    { errors: Option<list<ZeroTrustGetAuditSshSettings_BadRequestErrors>>
+      messages: Option<list<ZeroTrustGetAuditSshSettings_BadRequestMessages>>
+      ///Indicate whether the API call was successful.
+      success: Option<bool>
+      result: Option<``zero-trust-gatewaysettings``> }
 
 [<RequireQualifiedAccess>]
 type ZeroTrustGetAuditSshSettings =
     ///Get Zero Trust SSH settings response.
     | OK of payload: ``zero-trust-gatewayauditsshsettingscomponents-schemas-singleresponse``
+    ///Get Zero Trust SSH settings response failure.
+    | BadRequest of payload: ZeroTrustGetAuditSshSettings_BadRequest
 
 type ZeroTrustUpdateAuditSshSettingsPayload =
     { ///Provide the Base64-encoded HPKE public key that encrypts SSH session logs. See https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/use-cases/ssh/ssh-infrastructure-access/#enable-ssh-command-logging.
@@ -2428,75 +2526,204 @@ type ZeroTrustUpdateAuditSshSettingsPayload =
     static member Create (public_key: ``zero-trust-gatewaypublickey``): ZeroTrustUpdateAuditSshSettingsPayload =
         { public_key = public_key }
 
+type ZeroTrustUpdateAuditSshSettings_BadRequestErrors = { code: int; message: string }
+type ZeroTrustUpdateAuditSshSettings_BadRequestMessages = { code: int; message: string }
+type ErrorsFromZeroTrustUpdateAuditSshSettingsBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type MessagesFromZeroTrustUpdateAuditSshSettingsBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+
+type ZeroTrustUpdateAuditSshSettings_BadRequest =
+    { errors: Option<list<ZeroTrustUpdateAuditSshSettings_BadRequestErrors>>
+      messages: Option<list<ZeroTrustUpdateAuditSshSettings_BadRequestMessages>>
+      ///Indicate whether the API call was successful.
+      success: Option<bool>
+      result: Option<``zero-trust-gatewaysettings``> }
+
 [<RequireQualifiedAccess>]
 type ZeroTrustUpdateAuditSshSettings =
     ///Update Zero Trust SSH settings response.
     | OK of payload: ``zero-trust-gatewayauditsshsettingscomponents-schemas-singleresponse``
+    ///Update Zero Trust SSH settings response failure.
+    | BadRequest of payload: ZeroTrustUpdateAuditSshSettings_BadRequest
+
+type ZeroTrustRotateSshAccountSeed_BadRequestErrors = { code: int; message: string }
+type ZeroTrustRotateSshAccountSeed_BadRequestMessages = { code: int; message: string }
+type ErrorsFromZeroTrustRotateSshAccountSeedBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type MessagesFromZeroTrustRotateSshAccountSeedBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+
+type ZeroTrustRotateSshAccountSeed_BadRequest =
+    { errors: Option<list<ZeroTrustRotateSshAccountSeed_BadRequestErrors>>
+      messages: Option<list<ZeroTrustRotateSshAccountSeed_BadRequestMessages>>
+      ///Indicate whether the API call was successful.
+      success: Option<bool>
+      result: Option<``zero-trust-gatewaysettings``> }
 
 [<RequireQualifiedAccess>]
 type ZeroTrustRotateSshAccountSeed =
     ///Rotate Zero Trust SSH account seed response.
     | OK of payload: ``zero-trust-gatewayauditsshsettingscomponents-schemas-singleresponse``
+    ///Rotate Zero Trust SSH account seed response failure.
+    | BadRequest of payload: ZeroTrustRotateSshAccountSeed_BadRequest
+
+type ZeroTrustGatewayCategoriesListCategories_BadRequestErrors = { code: int; message: string }
+type ZeroTrustGatewayCategoriesListCategories_BadRequestMessages = { code: int; message: string }
+type ErrorsFromZeroTrustGatewayCategoriesListCategoriesBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type MessagesFromZeroTrustGatewayCategoriesListCategoriesBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+
+type ZeroTrustGatewayCategoriesListCategories_BadRequest =
+    { errors: Option<list<ZeroTrustGatewayCategoriesListCategories_BadRequestErrors>>
+      messages: Option<list<ZeroTrustGatewayCategoriesListCategories_BadRequestMessages>>
+      ///Indicate whether the API call was successful.
+      success: Option<bool>
+      result_info: Option<``zero-trust-gatewayresultinfo``>
+      result: Option<list<``zero-trust-gatewaycategories``>> }
 
 [<RequireQualifiedAccess>]
 type ZeroTrustGatewayCategoriesListCategories =
     ///List categories response.
     | OK of payload: ``zero-trust-gatewaycategoriescomponents-schemas-responsecollection``
+    ///List categories response failure.
+    | BadRequest of payload: ZeroTrustGatewayCategoriesListCategories_BadRequest
+
+type ZeroTrustCertificatesListZeroTrustCertificates_BadRequestErrors = { code: int; message: string }
+type ZeroTrustCertificatesListZeroTrustCertificates_BadRequestMessages = { code: int; message: string }
+type ErrorsFromZeroTrustCertificatesListZeroTrustCertificatesBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type MessagesFromZeroTrustCertificatesListZeroTrustCertificatesBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+
+type ZeroTrustCertificatesListZeroTrustCertificates_BadRequest =
+    { errors: Option<list<ZeroTrustCertificatesListZeroTrustCertificates_BadRequestErrors>>
+      messages: Option<list<ZeroTrustCertificatesListZeroTrustCertificates_BadRequestMessages>>
+      ///Indicate whether the API call was successful.
+      success: Option<bool>
+      result_info: Option<``zero-trust-gatewayresultinfo``>
+      result: Option<list<``zero-trust-gatewaycertificates``>> }
 
 [<RequireQualifiedAccess>]
 type ZeroTrustCertificatesListZeroTrustCertificates =
     ///Lists Zero Trust certificates response.
     | OK of payload: ``zero-trust-gatewayresponsecollection``
+    ///Lists Zero Trust certificates response failure.
+    | BadRequest of payload: ZeroTrustCertificatesListZeroTrustCertificates_BadRequest
+
+type ZeroTrustCertificatesCreateZeroTrustCertificate_BadRequestErrors = { code: int; message: string }
+type ZeroTrustCertificatesCreateZeroTrustCertificate_BadRequestMessages = { code: int; message: string }
+type ErrorsFromZeroTrustCertificatesCreateZeroTrustCertificateBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type MessagesFromZeroTrustCertificatesCreateZeroTrustCertificateBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+
+type ZeroTrustCertificatesCreateZeroTrustCertificate_BadRequest =
+    { errors: Option<list<ZeroTrustCertificatesCreateZeroTrustCertificate_BadRequestErrors>>
+      messages: Option<list<ZeroTrustCertificatesCreateZeroTrustCertificate_BadRequestMessages>>
+      ///Indicate whether the API call was successful.
+      success: Option<bool>
+      result: Option<``zero-trust-gatewaycertificates``> }
 
 [<RequireQualifiedAccess>]
 type ZeroTrustCertificatesCreateZeroTrustCertificate =
     ///Creates Zero Trust certificate response.
     | OK of payload: ``zero-trust-gatewaysingleresponse``
+    ///Creates Zero Trust certificate response failure.
+    | BadRequest of payload: ZeroTrustCertificatesCreateZeroTrustCertificate_BadRequest
 
 [<RequireQualifiedAccess>]
 type ZeroTrustCertificatesDeleteZeroTrustCertificate =
     ///Deletes Zero Trust certificate response.
     | OK of payload: ``zero-trust-gatewaysingleresponse``
+    ///Deletes Zero Trust certificate response failure.
+    | BadRequest of payload: string
+
+type ZeroTrustCertificatesZeroTrustCertificateDetails_BadRequestErrors = { code: int; message: string }
+type ZeroTrustCertificatesZeroTrustCertificateDetails_BadRequestMessages = { code: int; message: string }
+type ErrorsFromZeroTrustCertificatesZeroTrustCertificateDetailsBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type MessagesFromZeroTrustCertificatesZeroTrustCertificateDetailsBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+
+type ZeroTrustCertificatesZeroTrustCertificateDetails_BadRequest =
+    { errors: Option<list<ZeroTrustCertificatesZeroTrustCertificateDetails_BadRequestErrors>>
+      messages: Option<list<ZeroTrustCertificatesZeroTrustCertificateDetails_BadRequestMessages>>
+      ///Indicate whether the API call was successful.
+      success: Option<bool>
+      result: Option<``zero-trust-gatewaycertificates``> }
 
 [<RequireQualifiedAccess>]
 type ZeroTrustCertificatesZeroTrustCertificateDetails =
     ///Gets Zero Trust certificate details response.
     | OK of payload: ``zero-trust-gatewaysingleresponse``
+    ///Gets Zero Trust certificate details response failure.
+    | BadRequest of payload: ZeroTrustCertificatesZeroTrustCertificateDetails_BadRequest
 
 [<RequireQualifiedAccess>]
 type ZeroTrustCertificatesActivateZeroTrustCertificate =
     ///Activates Zero Trust certificate details response.
     | Accepted of payload: ``zero-trust-gatewaysingleresponse``
+    ///Activates Zero Trust certificate details response failure.
+    | BadRequest of payload: string
+
+type ZeroTrustCertificatesDeactivateZeroTrustCertificate_BadRequestErrors = { code: int; message: string }
+type ZeroTrustCertificatesDeactivateZeroTrustCertificate_BadRequestMessages = { code: int; message: string }
+type ErrorsFromZeroTrustCertificatesDeactivateZeroTrustCertificateBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+
+type MessagesFromZeroTrustCertificatesDeactivateZeroTrustCertificateBadRequest =
+    Map<string, Newtonsoft.Json.Linq.JToken>
+
+type ZeroTrustCertificatesDeactivateZeroTrustCertificate_BadRequest =
+    { errors: Option<list<ZeroTrustCertificatesDeactivateZeroTrustCertificate_BadRequestErrors>>
+      messages: Option<list<ZeroTrustCertificatesDeactivateZeroTrustCertificate_BadRequestMessages>>
+      ///Indicate whether the API call was successful.
+      success: Option<bool>
+      result: Option<``zero-trust-gatewaycertificates``> }
 
 [<RequireQualifiedAccess>]
 type ZeroTrustCertificatesDeactivateZeroTrustCertificate =
     ///Deactivate Zero Trust certificate details response.
     | Created of payload: ``zero-trust-gatewaysingleresponse``
+    ///Deactivate Zero Trust certificate details response failure.
+    | BadRequest of payload: ZeroTrustCertificatesDeactivateZeroTrustCertificate_BadRequest
 
 [<RequireQualifiedAccess>]
 type ZeroTrustAccountsGetZeroTrustAccountConfiguration =
     ///Zero Trust account configuration response.
     | OK of payload: ``zero-trust-gatewaygatewayaccountconfig``
+    ///Zero Trust account configuration response failure.
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type ZeroTrustAccountsPatchZeroTrustAccountConfiguration =
     ///Zero Trust account configuration response.
     | OK of payload: ``zero-trust-gatewaygatewayaccountconfig``
+    ///Zero Trust account configuration response failure.
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type ZeroTrustAccountsUpdateZeroTrustAccountConfiguration =
     ///Zero Trust account configuration response.
     | OK of payload: ``zero-trust-gatewaygatewayaccountconfig``
+    ///Zero Trust account configuration response failure.
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type ZeroTrustAccountsGetZeroTrustCertificateConfiguration =
     ///Zero Trust account configuration response.
     | OK of payload: ``zero-trust-gatewaycustom-certificate-settings``
+    ///Zero Trust account configuration response failure.
+    | BadRequest of payload: string
+
+type ZeroTrustListsListZeroTrustLists_BadRequestErrors = { code: int; message: string }
+type ZeroTrustListsListZeroTrustLists_BadRequestMessages = { code: int; message: string }
+type ErrorsFromZeroTrustListsListZeroTrustListsBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type MessagesFromZeroTrustListsListZeroTrustListsBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+
+type ZeroTrustListsListZeroTrustLists_BadRequest =
+    { errors: Option<list<ZeroTrustListsListZeroTrustLists_BadRequestErrors>>
+      messages: Option<list<ZeroTrustListsListZeroTrustLists_BadRequestMessages>>
+      ///Indicate whether the API call was successful.
+      success: Option<bool>
+      result_info: Option<``zero-trust-gatewayresultinfo``>
+      result: Option<list<``zero-trust-gatewaylists``>> }
 
 [<RequireQualifiedAccess>]
 type ZeroTrustListsListZeroTrustLists =
     ///List Zero Trust lists response.
     | OK of payload: ``zero-trust-gatewayschemas-responsecollection``
+    ///List Zero Trust lists response failure.
+    | BadRequest of payload: ZeroTrustListsListZeroTrustLists_BadRequest
 
 type ZeroTrustListsCreateZeroTrustListPayloadItems =
     { ///Provide the list item description (optional).
@@ -2522,20 +2749,84 @@ type ZeroTrustListsCreateZeroTrustListPayload =
           name = name
           ``type`` = ``type`` }
 
+type ZeroTrustListsCreateZeroTrustList_BadRequestErrors = { code: int; message: string }
+type ZeroTrustListsCreateZeroTrustList_BadRequestMessages = { code: int; message: string }
+
+type ZeroTrustListsCreateZeroTrustList_BadRequestResultItems =
+    { created_at: Option<``zero-trust-gatewayreadonlytimestamp``>
+      ///Provide the list item description (optional).
+      description: Option<``zero-trust-gatewaydescriptionitem``>
+      ///Specify the item value.
+      value: Option<``zero-trust-gatewayvalue``> }
+
+type ZeroTrustListsCreateZeroTrustList_BadRequestResult =
+    { created_at: Option<``zero-trust-gatewayreadonlytimestamp``>
+      ///Provide the list description.
+      description: Option<``zero-trust-gatewaydescription``>
+      ///Identify the API resource with a UUID.
+      id: Option<``zero-trust-gatewayschemas-uuid``>
+      ///Provide the list items.
+      items: Option<list<ZeroTrustListsCreateZeroTrustList_BadRequestResultItems>>
+      ///Specify the list name.
+      name: Option<``zero-trust-gatewayname``>
+      ///Specify the list type.
+      ``type``: Option<``zero-trust-gatewayschemas-type``>
+      updated_at: Option<``zero-trust-gatewayreadonlytimestamp``> }
+
+type ErrorsFromZeroTrustListsCreateZeroTrustListBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type MessagesFromZeroTrustListsCreateZeroTrustListBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+
+type ZeroTrustListsCreateZeroTrustList_BadRequest =
+    { errors: Option<list<ZeroTrustListsCreateZeroTrustList_BadRequestErrors>>
+      messages: Option<list<ZeroTrustListsCreateZeroTrustList_BadRequestMessages>>
+      ///Indicate whether the API call was successful.
+      success: Option<bool>
+      result: Option<ZeroTrustListsCreateZeroTrustList_BadRequestResult> }
+
 [<RequireQualifiedAccess>]
 type ZeroTrustListsCreateZeroTrustList =
     ///Create Zero Trust list response.
     | OK of payload: ``zero-trust-gatewaysingleresponsewithlistitems``
+    ///Create Zero Trust list response failure.
+    | BadRequest of payload: ZeroTrustListsCreateZeroTrustList_BadRequest
+
+type ZeroTrustListsDeleteZeroTrustList_BadRequestErrors = { code: int; message: string }
+type ZeroTrustListsDeleteZeroTrustList_BadRequestMessages = { code: int; message: string }
+type ErrorsFromZeroTrustListsDeleteZeroTrustListBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type MessagesFromZeroTrustListsDeleteZeroTrustListBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+
+type ZeroTrustListsDeleteZeroTrustList_BadRequest =
+    { errors: Option<list<ZeroTrustListsDeleteZeroTrustList_BadRequestErrors>>
+      messages: Option<list<ZeroTrustListsDeleteZeroTrustList_BadRequestMessages>>
+      ///Indicate whether the API call was successful.
+      success: Option<bool>
+      result: Option<Newtonsoft.Json.Linq.JObject> }
 
 [<RequireQualifiedAccess>]
 type ZeroTrustListsDeleteZeroTrustList =
     ///Delete Zero Trust list response.
     | OK of payload: ``zero-trust-gatewayemptyresponse``
+    ///Delete Zero Trust list response failure.
+    | BadRequest of payload: ZeroTrustListsDeleteZeroTrustList_BadRequest
+
+type ZeroTrustListsZeroTrustListDetails_BadRequestErrors = { code: int; message: string }
+type ZeroTrustListsZeroTrustListDetails_BadRequestMessages = { code: int; message: string }
+type ErrorsFromZeroTrustListsZeroTrustListDetailsBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type MessagesFromZeroTrustListsZeroTrustListDetailsBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+
+type ZeroTrustListsZeroTrustListDetails_BadRequest =
+    { errors: Option<list<ZeroTrustListsZeroTrustListDetails_BadRequestErrors>>
+      messages: Option<list<ZeroTrustListsZeroTrustListDetails_BadRequestMessages>>
+      ///Indicate whether the API call was successful.
+      success: Option<bool>
+      result: Option<``zero-trust-gatewaylists``> }
 
 [<RequireQualifiedAccess>]
 type ZeroTrustListsZeroTrustListDetails =
     ///Get Zero Trust list details response.
     | OK of payload: ``zero-trust-gatewaylistsingleresponse``
+    ///Get Zero Trust list details response failure.
+    | BadRequest of payload: ZeroTrustListsZeroTrustListDetails_BadRequest
 
 type Append =
     { ///Provide the list item description (optional).
@@ -2553,10 +2844,24 @@ type ZeroTrustListsPatchZeroTrustListPayload =
     ///Creates an instance of ZeroTrustListsPatchZeroTrustListPayload with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ZeroTrustListsPatchZeroTrustListPayload = { append = None; remove = None }
 
+type ZeroTrustListsPatchZeroTrustList_BadRequestErrors = { code: int; message: string }
+type ZeroTrustListsPatchZeroTrustList_BadRequestMessages = { code: int; message: string }
+type ErrorsFromZeroTrustListsPatchZeroTrustListBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type MessagesFromZeroTrustListsPatchZeroTrustListBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+
+type ZeroTrustListsPatchZeroTrustList_BadRequest =
+    { errors: Option<list<ZeroTrustListsPatchZeroTrustList_BadRequestErrors>>
+      messages: Option<list<ZeroTrustListsPatchZeroTrustList_BadRequestMessages>>
+      ///Indicate whether the API call was successful.
+      success: Option<bool>
+      result: Option<``zero-trust-gatewaylists``> }
+
 [<RequireQualifiedAccess>]
 type ZeroTrustListsPatchZeroTrustList =
     ///Patch Zero Trust list response.
     | OK of payload: ``zero-trust-gatewaylistsingleresponse``
+    ///Patch Zero Trust list response failure.
+    | BadRequest of payload: ZeroTrustListsPatchZeroTrustList_BadRequest
 
 type ZeroTrustListsUpdateZeroTrustListPayloadItems =
     { ///Provide the list item description (optional).
@@ -2579,20 +2884,79 @@ type ZeroTrustListsUpdateZeroTrustListPayload =
           items = None
           name = name }
 
+type ZeroTrustListsUpdateZeroTrustList_BadRequestErrors = { code: int; message: string }
+type ZeroTrustListsUpdateZeroTrustList_BadRequestMessages = { code: int; message: string }
+type ErrorsFromZeroTrustListsUpdateZeroTrustListBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type MessagesFromZeroTrustListsUpdateZeroTrustListBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+
+type ZeroTrustListsUpdateZeroTrustList_BadRequest =
+    { errors: Option<list<ZeroTrustListsUpdateZeroTrustList_BadRequestErrors>>
+      messages: Option<list<ZeroTrustListsUpdateZeroTrustList_BadRequestMessages>>
+      ///Indicate whether the API call was successful.
+      success: Option<bool>
+      result: Option<``zero-trust-gatewaylists``> }
+
 [<RequireQualifiedAccess>]
 type ZeroTrustListsUpdateZeroTrustList =
     ///Update Zero Trust list response.
     | OK of payload: ``zero-trust-gatewaylistsingleresponse``
+    ///Update Zero Trust list response failure.
+    | BadRequest of payload: ZeroTrustListsUpdateZeroTrustList_BadRequest
+
+type ZeroTrustListsZeroTrustListItems_BadRequestErrors = { code: int; message: string }
+type ZeroTrustListsZeroTrustListItems_BadRequestMessages = { code: int; message: string }
+
+type ZeroTrustListsZeroTrustListItems_BadRequestResultinfo =
+    { ///Shows the total results returned based on your search parameters.
+      count: Option<float>
+      ///Show the current page within paginated list of results.
+      page: Option<float>
+      ///Show the number of results per page of results.
+      per_page: Option<float>
+      ///Show the total results available without any search parameters.
+      total_count: Option<float> }
+
+type ErrorsFromZeroTrustListsZeroTrustListItemsBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type MessagesFromZeroTrustListsZeroTrustListItemsBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+
+type ZeroTrustListsZeroTrustListItems_BadRequest =
+    { errors: Option<list<ZeroTrustListsZeroTrustListItems_BadRequestErrors>>
+      messages: Option<list<ZeroTrustListsZeroTrustListItems_BadRequestMessages>>
+      ///Indicate whether the API call was successful.
+      success: Option<bool>
+      result_info: Option<ZeroTrustListsZeroTrustListItems_BadRequestResultinfo>
+      result: Option<list<``zero-trust-gatewayitems``>> }
 
 [<RequireQualifiedAccess>]
 type ZeroTrustListsZeroTrustListItems =
     ///Get Zero Trust list items response.
     | OK of payload: ``zero-trust-gatewaylistitemresponsecollection``
+    ///Get Zero Trust list items response failure.
+    | BadRequest of payload: ZeroTrustListsZeroTrustListItems_BadRequest
+
+type ZeroTrustGatewayLocationsListZeroTrustGatewayLocations_BadRequestErrors = { code: int; message: string }
+type ZeroTrustGatewayLocationsListZeroTrustGatewayLocations_BadRequestMessages = { code: int; message: string }
+
+type ErrorsFromZeroTrustGatewayLocationsListZeroTrustGatewayLocationsBadRequest =
+    Map<string, Newtonsoft.Json.Linq.JToken>
+
+type MessagesFromZeroTrustGatewayLocationsListZeroTrustGatewayLocationsBadRequest =
+    Map<string, Newtonsoft.Json.Linq.JToken>
+
+type ZeroTrustGatewayLocationsListZeroTrustGatewayLocations_BadRequest =
+    { errors: Option<list<ZeroTrustGatewayLocationsListZeroTrustGatewayLocations_BadRequestErrors>>
+      messages: Option<list<ZeroTrustGatewayLocationsListZeroTrustGatewayLocations_BadRequestMessages>>
+      ///Indicate whether the API call was successful.
+      success: Option<bool>
+      result_info: Option<``zero-trust-gatewayresultinfo``>
+      result: Option<list<``zero-trust-gatewaylocations``>> }
 
 [<RequireQualifiedAccess>]
 type ZeroTrustGatewayLocationsListZeroTrustGatewayLocations =
     ///Lists Zero Trust Gateway locations response.
     | OK of payload: ``zero-trust-gatewaycomponents-schemas-responsecollection``
+    ///Lists Zero Trust Gateway locations response failure.
+    | BadRequest of payload: ZeroTrustGatewayLocationsListZeroTrustGatewayLocations_BadRequest
 
 type ZeroTrustGatewayLocationsCreateZeroTrustGatewayLocationPayload =
     { ///Indicate whether this location is the default location.
@@ -2616,20 +2980,74 @@ type ZeroTrustGatewayLocationsCreateZeroTrustGatewayLocationPayload =
           name = name
           networks = None }
 
+type ZeroTrustGatewayLocationsCreateZeroTrustGatewayLocation_BadRequestErrors = { code: int; message: string }
+type ZeroTrustGatewayLocationsCreateZeroTrustGatewayLocation_BadRequestMessages = { code: int; message: string }
+
+type ErrorsFromZeroTrustGatewayLocationsCreateZeroTrustGatewayLocationBadRequest =
+    Map<string, Newtonsoft.Json.Linq.JToken>
+
+type MessagesFromZeroTrustGatewayLocationsCreateZeroTrustGatewayLocationBadRequest =
+    Map<string, Newtonsoft.Json.Linq.JToken>
+
+type ZeroTrustGatewayLocationsCreateZeroTrustGatewayLocation_BadRequest =
+    { errors: Option<list<ZeroTrustGatewayLocationsCreateZeroTrustGatewayLocation_BadRequestErrors>>
+      messages: Option<list<ZeroTrustGatewayLocationsCreateZeroTrustGatewayLocation_BadRequestMessages>>
+      ///Indicate whether the API call was successful.
+      success: Option<bool>
+      result: Option<``zero-trust-gatewaylocations``> }
+
 [<RequireQualifiedAccess>]
 type ZeroTrustGatewayLocationsCreateZeroTrustGatewayLocation =
     ///Creates a Zero Trust Gateway location response.
     | OK of payload: ``zero-trust-gatewayschemas-singleresponse``
+    ///Creates a Zero Trust Gateway location response failure.
+    | BadRequest of payload: ZeroTrustGatewayLocationsCreateZeroTrustGatewayLocation_BadRequest
+
+type ZeroTrustGatewayLocationsDeleteZeroTrustGatewayLocation_BadRequestErrors = { code: int; message: string }
+type ZeroTrustGatewayLocationsDeleteZeroTrustGatewayLocation_BadRequestMessages = { code: int; message: string }
+
+type ErrorsFromZeroTrustGatewayLocationsDeleteZeroTrustGatewayLocationBadRequest =
+    Map<string, Newtonsoft.Json.Linq.JToken>
+
+type MessagesFromZeroTrustGatewayLocationsDeleteZeroTrustGatewayLocationBadRequest =
+    Map<string, Newtonsoft.Json.Linq.JToken>
+
+type ZeroTrustGatewayLocationsDeleteZeroTrustGatewayLocation_BadRequest =
+    { errors: Option<list<ZeroTrustGatewayLocationsDeleteZeroTrustGatewayLocation_BadRequestErrors>>
+      messages: Option<list<ZeroTrustGatewayLocationsDeleteZeroTrustGatewayLocation_BadRequestMessages>>
+      ///Indicate whether the API call was successful.
+      success: Option<bool>
+      result: Option<Newtonsoft.Json.Linq.JObject> }
 
 [<RequireQualifiedAccess>]
 type ZeroTrustGatewayLocationsDeleteZeroTrustGatewayLocation =
     ///Deletes a Zero Trust Gateway location response.
     | OK of payload: ``zero-trust-gatewayemptyresponse``
+    ///Deletes a Zero Trust Gateway location response failure.
+    | BadRequest of payload: ZeroTrustGatewayLocationsDeleteZeroTrustGatewayLocation_BadRequest
+
+type ZeroTrustGatewayLocationsZeroTrustGatewayLocationDetails_BadRequestErrors = { code: int; message: string }
+type ZeroTrustGatewayLocationsZeroTrustGatewayLocationDetails_BadRequestMessages = { code: int; message: string }
+
+type ErrorsFromZeroTrustGatewayLocationsZeroTrustGatewayLocationDetailsBadRequest =
+    Map<string, Newtonsoft.Json.Linq.JToken>
+
+type MessagesFromZeroTrustGatewayLocationsZeroTrustGatewayLocationDetailsBadRequest =
+    Map<string, Newtonsoft.Json.Linq.JToken>
+
+type ZeroTrustGatewayLocationsZeroTrustGatewayLocationDetails_BadRequest =
+    { errors: Option<list<ZeroTrustGatewayLocationsZeroTrustGatewayLocationDetails_BadRequestErrors>>
+      messages: Option<list<ZeroTrustGatewayLocationsZeroTrustGatewayLocationDetails_BadRequestMessages>>
+      ///Indicate whether the API call was successful.
+      success: Option<bool>
+      result: Option<``zero-trust-gatewaylocations``> }
 
 [<RequireQualifiedAccess>]
 type ZeroTrustGatewayLocationsZeroTrustGatewayLocationDetails =
     ///Gets Zero Trust Gateway location details response.
     | OK of payload: ``zero-trust-gatewayschemas-singleresponse``
+    ///Gets Zero Trust Gateway location details response failure.
+    | BadRequest of payload: ZeroTrustGatewayLocationsZeroTrustGatewayLocationDetails_BadRequest
 
 type ZeroTrustGatewayLocationsUpdateZeroTrustGatewayLocationPayload =
     { ///Indicate whether this location is the default location.
@@ -2653,25 +3071,76 @@ type ZeroTrustGatewayLocationsUpdateZeroTrustGatewayLocationPayload =
           name = name
           networks = None }
 
+type ZeroTrustGatewayLocationsUpdateZeroTrustGatewayLocation_BadRequestErrors = { code: int; message: string }
+type ZeroTrustGatewayLocationsUpdateZeroTrustGatewayLocation_BadRequestMessages = { code: int; message: string }
+
+type ErrorsFromZeroTrustGatewayLocationsUpdateZeroTrustGatewayLocationBadRequest =
+    Map<string, Newtonsoft.Json.Linq.JToken>
+
+type MessagesFromZeroTrustGatewayLocationsUpdateZeroTrustGatewayLocationBadRequest =
+    Map<string, Newtonsoft.Json.Linq.JToken>
+
+type ZeroTrustGatewayLocationsUpdateZeroTrustGatewayLocation_BadRequest =
+    { errors: Option<list<ZeroTrustGatewayLocationsUpdateZeroTrustGatewayLocation_BadRequestErrors>>
+      messages: Option<list<ZeroTrustGatewayLocationsUpdateZeroTrustGatewayLocation_BadRequestMessages>>
+      ///Indicate whether the API call was successful.
+      success: Option<bool>
+      result: Option<``zero-trust-gatewaylocations``> }
+
 [<RequireQualifiedAccess>]
 type ZeroTrustGatewayLocationsUpdateZeroTrustGatewayLocation =
     ///Updates a Zero Trust Gateway location response.
     | OK of payload: ``zero-trust-gatewayschemas-singleresponse``
+    ///Updates a Zero Trust Gateway location response failure.
+    | BadRequest of payload: ZeroTrustGatewayLocationsUpdateZeroTrustGatewayLocation_BadRequest
 
 [<RequireQualifiedAccess>]
 type ZeroTrustAccountsGetLoggingSettingsForTheZeroTrustAccount =
     ///Logging settings retrieval response.
     | OK of payload: ``zero-trust-gatewaygateway-account-logging-settings-response``
+    ///Logging settings retrieval response failure.
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type ZeroTrustAccountsUpdateLoggingSettingsForTheZeroTrustAccount =
     ///Logging settings update response.
     | OK of payload: ``zero-trust-gatewaygateway-account-logging-settings-response``
+    ///Logging settings update response failure.
+    | BadRequest of payload: string
+
+type ZeroTrustGatewayPacfilesList_BadRequestErrors = { code: int; message: string }
+type ZeroTrustGatewayPacfilesList_BadRequestMessages = { code: int; message: string }
+
+type ZeroTrustGatewayPacfilesList_BadRequestResult =
+    { created_at: Option<``zero-trust-gatewayreadonlytimestamp``>
+      ///Detailed description of the PAC file.
+      description: Option<``zero-trust-gatewaypacfilescomponents-schemas-description``>
+      id: Option<``zero-trust-gatewaycomponents-schemas-uuid``>
+      ///Name of the PAC file.
+      name: Option<``zero-trust-gatewaypacfilescomponents-schemas-name``>
+      ///URL-friendly version of the PAC file name.
+      slug: Option<``zero-trust-gatewayslug``>
+      updated_at: Option<``zero-trust-gatewayreadonlytimestamp``>
+      ///Unique URL to download the PAC file.
+      url: Option<``zero-trust-gatewayurl``> }
+
+type ErrorsFromZeroTrustGatewayPacfilesListBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type MessagesFromZeroTrustGatewayPacfilesListBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+
+type ZeroTrustGatewayPacfilesList_BadRequest =
+    { errors: Option<list<ZeroTrustGatewayPacfilesList_BadRequestErrors>>
+      messages: Option<list<ZeroTrustGatewayPacfilesList_BadRequestMessages>>
+      ///Indicate whether the API call was successful.
+      success: Option<bool>
+      result_info: Option<``zero-trust-gatewayresultinfo``>
+      result: Option<list<ZeroTrustGatewayPacfilesList_BadRequestResult>> }
 
 [<RequireQualifiedAccess>]
 type ZeroTrustGatewayPacfilesList =
     ///Returns a list of PAC files response.
     | OK of payload: ``zero-trust-gatewaypacfilescomponents-schemas-responsecollection``
+    ///Returns a list of PAC files response failure.
+    | BadRequest of payload: ZeroTrustGatewayPacfilesList_BadRequest
 
 type ZeroTrustGatewayPacfilesCreatePacfilePayload =
     { ///Actual contents of the PAC file
@@ -2690,20 +3159,62 @@ type ZeroTrustGatewayPacfilesCreatePacfilePayload =
           name = name
           slug = None }
 
+type ZeroTrustGatewayPacfilesCreatePacfile_BadRequestErrors = { code: int; message: string }
+type ZeroTrustGatewayPacfilesCreatePacfile_BadRequestMessages = { code: int; message: string }
+type ErrorsFromZeroTrustGatewayPacfilesCreatePacfileBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type MessagesFromZeroTrustGatewayPacfilesCreatePacfileBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+
+type ZeroTrustGatewayPacfilesCreatePacfile_BadRequest =
+    { errors: Option<list<ZeroTrustGatewayPacfilesCreatePacfile_BadRequestErrors>>
+      messages: Option<list<ZeroTrustGatewayPacfilesCreatePacfile_BadRequestMessages>>
+      ///Indicate whether the API call was successful.
+      success: Option<bool>
+      result: Option<``zero-trust-gatewaypacfile``> }
+
 [<RequireQualifiedAccess>]
 type ZeroTrustGatewayPacfilesCreatePacfile =
     ///Returns a created PAC file response.
     | OK of payload: ``zero-trust-gatewaypacfilescomponents-schemas-singleresponse``
+    ///Returns a created PAC file response failure.
+    | BadRequest of payload: ZeroTrustGatewayPacfilesCreatePacfile_BadRequest
+
+type ZeroTrustGatewayPacfilesDelete_BadRequestErrors = { code: int; message: string }
+type ZeroTrustGatewayPacfilesDelete_BadRequestMessages = { code: int; message: string }
+type ErrorsFromZeroTrustGatewayPacfilesDeleteBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type MessagesFromZeroTrustGatewayPacfilesDeleteBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+
+type ZeroTrustGatewayPacfilesDelete_BadRequest =
+    { errors: Option<list<ZeroTrustGatewayPacfilesDelete_BadRequestErrors>>
+      messages: Option<list<ZeroTrustGatewayPacfilesDelete_BadRequestMessages>>
+      ///Indicate whether the API call was successful.
+      success: Option<bool>
+      result: Option<Newtonsoft.Json.Linq.JObject> }
 
 [<RequireQualifiedAccess>]
 type ZeroTrustGatewayPacfilesDelete =
     ///Returns a deleted PAC file response.
     | OK of payload: ``zero-trust-gatewayemptyresponse``
+    ///Returns a deleted PAC file response failure.
+    | BadRequest of payload: ZeroTrustGatewayPacfilesDelete_BadRequest
+
+type ZeroTrustGatewayPacfilesDetails_BadRequestErrors = { code: int; message: string }
+type ZeroTrustGatewayPacfilesDetails_BadRequestMessages = { code: int; message: string }
+type ErrorsFromZeroTrustGatewayPacfilesDetailsBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type MessagesFromZeroTrustGatewayPacfilesDetailsBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+
+type ZeroTrustGatewayPacfilesDetails_BadRequest =
+    { errors: Option<list<ZeroTrustGatewayPacfilesDetails_BadRequestErrors>>
+      messages: Option<list<ZeroTrustGatewayPacfilesDetails_BadRequestMessages>>
+      ///Indicate whether the API call was successful.
+      success: Option<bool>
+      result: Option<``zero-trust-gatewaypacfile``> }
 
 [<RequireQualifiedAccess>]
 type ZeroTrustGatewayPacfilesDetails =
     ///Returns a PAC file response.
     | OK of payload: ``zero-trust-gatewaypacfilescomponents-schemas-singleresponse``
+    ///Returns a PAC file response failure.
+    | BadRequest of payload: ZeroTrustGatewayPacfilesDetails_BadRequest
 
 type ZeroTrustGatewayPacfilesUpdatePayload =
     { ///Actual contents of the PAC file
@@ -2720,30 +3231,101 @@ type ZeroTrustGatewayPacfilesUpdatePayload =
           description = description
           name = name }
 
+type ZeroTrustGatewayPacfilesUpdate_BadRequestErrors = { code: int; message: string }
+type ZeroTrustGatewayPacfilesUpdate_BadRequestMessages = { code: int; message: string }
+type ErrorsFromZeroTrustGatewayPacfilesUpdateBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type MessagesFromZeroTrustGatewayPacfilesUpdateBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+
+type ZeroTrustGatewayPacfilesUpdate_BadRequest =
+    { errors: Option<list<ZeroTrustGatewayPacfilesUpdate_BadRequestErrors>>
+      messages: Option<list<ZeroTrustGatewayPacfilesUpdate_BadRequestMessages>>
+      ///Indicate whether the API call was successful.
+      success: Option<bool>
+      result: Option<``zero-trust-gatewaypacfile``> }
+
 [<RequireQualifiedAccess>]
 type ZeroTrustGatewayPacfilesUpdate =
     ///Update a Zero Trust Gateway PAC file response.
     | OK of payload: ``zero-trust-gatewaypacfilescomponents-schemas-singleresponse``
+    ///Update a Zero Trust Gateway PAC file response failure.
+    | BadRequest of payload: ZeroTrustGatewayPacfilesUpdate_BadRequest
+
+type ZeroTrustGatewayProxyEndpointsListProxyEndpoints_BadRequestErrors = { code: int; message: string }
+type ZeroTrustGatewayProxyEndpointsListProxyEndpoints_BadRequestMessages = { code: int; message: string }
+type ErrorsFromZeroTrustGatewayProxyEndpointsListProxyEndpointsBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type MessagesFromZeroTrustGatewayProxyEndpointsListProxyEndpointsBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+
+type ZeroTrustGatewayProxyEndpointsListProxyEndpoints_BadRequest =
+    { errors: Option<list<ZeroTrustGatewayProxyEndpointsListProxyEndpoints_BadRequestErrors>>
+      messages: Option<list<ZeroTrustGatewayProxyEndpointsListProxyEndpoints_BadRequestMessages>>
+      ///Indicate whether the API call was successful.
+      success: Option<bool>
+      result_info: Option<``zero-trust-gatewayresultinfo``>
+      result: Option<list<``zero-trust-gatewayproxy-endpoints``>> }
 
 [<RequireQualifiedAccess>]
 type ZeroTrustGatewayProxyEndpointsListProxyEndpoints =
     ///Returns a list of proxy endpoints response.
     | OK of payload: ``zero-trust-gatewayproxy-endpointscomponents-schemas-responsecollection``
+    ///Returns a list of proxy endpoints response failure.
+    | BadRequest of payload: ZeroTrustGatewayProxyEndpointsListProxyEndpoints_BadRequest
+
+type ZeroTrustGatewayProxyEndpointsCreateProxyEndpoint_BadRequestErrors = { code: int; message: string }
+type ZeroTrustGatewayProxyEndpointsCreateProxyEndpoint_BadRequestMessages = { code: int; message: string }
+type ErrorsFromZeroTrustGatewayProxyEndpointsCreateProxyEndpointBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type MessagesFromZeroTrustGatewayProxyEndpointsCreateProxyEndpointBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+
+type ZeroTrustGatewayProxyEndpointsCreateProxyEndpoint_BadRequest =
+    { errors: Option<list<ZeroTrustGatewayProxyEndpointsCreateProxyEndpoint_BadRequestErrors>>
+      messages: Option<list<ZeroTrustGatewayProxyEndpointsCreateProxyEndpoint_BadRequestMessages>>
+      ///Indicate whether the API call was successful.
+      success: Option<bool>
+      result: Option<Newtonsoft.Json.Linq.JToken> }
 
 [<RequireQualifiedAccess>]
 type ZeroTrustGatewayProxyEndpointsCreateProxyEndpoint =
     ///Returns a created proxy endpoint response.
     | OK of payload: ``zero-trust-gatewayproxy-endpointscomponents-schemas-singleresponse``
+    ///Returns a created proxy endpoint response failure.
+    | BadRequest of payload: ZeroTrustGatewayProxyEndpointsCreateProxyEndpoint_BadRequest
+
+type ZeroTrustGatewayProxyEndpointsDeleteProxyEndpoint_BadRequestErrors = { code: int; message: string }
+type ZeroTrustGatewayProxyEndpointsDeleteProxyEndpoint_BadRequestMessages = { code: int; message: string }
+type ErrorsFromZeroTrustGatewayProxyEndpointsDeleteProxyEndpointBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type MessagesFromZeroTrustGatewayProxyEndpointsDeleteProxyEndpointBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+
+type ZeroTrustGatewayProxyEndpointsDeleteProxyEndpoint_BadRequest =
+    { errors: Option<list<ZeroTrustGatewayProxyEndpointsDeleteProxyEndpoint_BadRequestErrors>>
+      messages: Option<list<ZeroTrustGatewayProxyEndpointsDeleteProxyEndpoint_BadRequestMessages>>
+      ///Indicate whether the API call was successful.
+      success: Option<bool>
+      result: Option<Newtonsoft.Json.Linq.JObject> }
 
 [<RequireQualifiedAccess>]
 type ZeroTrustGatewayProxyEndpointsDeleteProxyEndpoint =
     ///Returns a deleted proxy endpoint response.
     | OK of payload: ``zero-trust-gatewayemptyresponse``
+    ///Returns a deleted proxy endpoint response failure.
+    | BadRequest of payload: ZeroTrustGatewayProxyEndpointsDeleteProxyEndpoint_BadRequest
+
+type ZeroTrustGatewayProxyEndpointsProxyEndpointDetails_BadRequestErrors = { code: int; message: string }
+type ZeroTrustGatewayProxyEndpointsProxyEndpointDetails_BadRequestMessages = { code: int; message: string }
+type ErrorsFromZeroTrustGatewayProxyEndpointsProxyEndpointDetailsBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type MessagesFromZeroTrustGatewayProxyEndpointsProxyEndpointDetailsBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+
+type ZeroTrustGatewayProxyEndpointsProxyEndpointDetails_BadRequest =
+    { errors: Option<list<ZeroTrustGatewayProxyEndpointsProxyEndpointDetails_BadRequestErrors>>
+      messages: Option<list<ZeroTrustGatewayProxyEndpointsProxyEndpointDetails_BadRequestMessages>>
+      ///Indicate whether the API call was successful.
+      success: Option<bool>
+      result: Option<Newtonsoft.Json.Linq.JToken> }
 
 [<RequireQualifiedAccess>]
 type ZeroTrustGatewayProxyEndpointsProxyEndpointDetails =
     ///Returns a proxy endpoint response.
     | OK of payload: ``zero-trust-gatewayproxy-endpointscomponents-schemas-singleresponse``
+    ///Returns a proxy endpoint response failure.
+    | BadRequest of payload: ZeroTrustGatewayProxyEndpointsProxyEndpointDetails_BadRequest
 
 type ZeroTrustGatewayProxyEndpointsUpdateProxyEndpointPayload =
     { ///Specify the list of CIDRs to restrict ingress connections.
@@ -2753,15 +3335,44 @@ type ZeroTrustGatewayProxyEndpointsUpdateProxyEndpointPayload =
     ///Creates an instance of ZeroTrustGatewayProxyEndpointsUpdateProxyEndpointPayload with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ZeroTrustGatewayProxyEndpointsUpdateProxyEndpointPayload = { ips = None; name = None }
 
+type ZeroTrustGatewayProxyEndpointsUpdateProxyEndpoint_BadRequestErrors = { code: int; message: string }
+type ZeroTrustGatewayProxyEndpointsUpdateProxyEndpoint_BadRequestMessages = { code: int; message: string }
+type ErrorsFromZeroTrustGatewayProxyEndpointsUpdateProxyEndpointBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type MessagesFromZeroTrustGatewayProxyEndpointsUpdateProxyEndpointBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+
+type ZeroTrustGatewayProxyEndpointsUpdateProxyEndpoint_BadRequest =
+    { errors: Option<list<ZeroTrustGatewayProxyEndpointsUpdateProxyEndpoint_BadRequestErrors>>
+      messages: Option<list<ZeroTrustGatewayProxyEndpointsUpdateProxyEndpoint_BadRequestMessages>>
+      ///Indicate whether the API call was successful.
+      success: Option<bool>
+      result: Option<Newtonsoft.Json.Linq.JToken> }
+
 [<RequireQualifiedAccess>]
 type ZeroTrustGatewayProxyEndpointsUpdateProxyEndpoint =
     ///Returns an updated proxy endpoint response.
     | OK of payload: ``zero-trust-gatewayproxy-endpointscomponents-schemas-singleresponse``
+    ///Returns an updated proxy endpoint response failure.
+    | BadRequest of payload: ZeroTrustGatewayProxyEndpointsUpdateProxyEndpoint_BadRequest
+
+type ZeroTrustGatewayRulesListZeroTrustGatewayRules_BadRequestErrors = { code: int; message: string }
+type ZeroTrustGatewayRulesListZeroTrustGatewayRules_BadRequestMessages = { code: int; message: string }
+type ErrorsFromZeroTrustGatewayRulesListZeroTrustGatewayRulesBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type MessagesFromZeroTrustGatewayRulesListZeroTrustGatewayRulesBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+
+type ZeroTrustGatewayRulesListZeroTrustGatewayRules_BadRequest =
+    { errors: Option<list<ZeroTrustGatewayRulesListZeroTrustGatewayRules_BadRequestErrors>>
+      messages: Option<list<ZeroTrustGatewayRulesListZeroTrustGatewayRules_BadRequestMessages>>
+      ///Indicate whether the API call was successful.
+      success: Option<bool>
+      result_info: Option<``zero-trust-gatewayresultinfo``>
+      result: Option<list<``zero-trust-gatewayrules``>> }
 
 [<RequireQualifiedAccess>]
 type ZeroTrustGatewayRulesListZeroTrustGatewayRules =
     ///List Zero Trust Gateway rules response.
     | OK of payload: ``zero-trust-gatewayrulescomponents-schemas-responsecollection``
+    ///List Zero Trust Gateway rules response failure.
+    | BadRequest of payload: ZeroTrustGatewayRulesListZeroTrustGatewayRules_BadRequest
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type ZeroTrustGatewayRulesCreateZeroTrustGatewayRulePayloadFilters =
@@ -2818,25 +3429,72 @@ type ZeroTrustGatewayRulesCreateZeroTrustGatewayRulePayload =
           schedule = None
           traffic = None }
 
+type ZeroTrustGatewayRulesCreateZeroTrustGatewayRule_BadRequestErrors = { code: int; message: string }
+type ZeroTrustGatewayRulesCreateZeroTrustGatewayRule_BadRequestMessages = { code: int; message: string }
+type ErrorsFromZeroTrustGatewayRulesCreateZeroTrustGatewayRuleBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type MessagesFromZeroTrustGatewayRulesCreateZeroTrustGatewayRuleBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+
+type ZeroTrustGatewayRulesCreateZeroTrustGatewayRule_BadRequest =
+    { errors: Option<list<ZeroTrustGatewayRulesCreateZeroTrustGatewayRule_BadRequestErrors>>
+      messages: Option<list<ZeroTrustGatewayRulesCreateZeroTrustGatewayRule_BadRequestMessages>>
+      ///Indicate whether the API call was successful.
+      success: Option<bool>
+      result: Option<``zero-trust-gatewayrules``> }
+
 [<RequireQualifiedAccess>]
 type ZeroTrustGatewayRulesCreateZeroTrustGatewayRule =
     ///Create a Zero Trust Gateway rule response.
     | OK of payload: ``zero-trust-gatewaycomponents-schemas-singleresponse``
+    ///Create a Zero Trust Gateway rule response failure.
+    | BadRequest of payload: ZeroTrustGatewayRulesCreateZeroTrustGatewayRule_BadRequest
+
+type ZeroTrustGatewayRulesListZeroTrustGatewayRulesTenant_BadRequestErrors = { code: int; message: string }
+type ZeroTrustGatewayRulesListZeroTrustGatewayRulesTenant_BadRequestMessages = { code: int; message: string }
+type ErrorsFromZeroTrustGatewayRulesListZeroTrustGatewayRulesTenantBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+
+type MessagesFromZeroTrustGatewayRulesListZeroTrustGatewayRulesTenantBadRequest =
+    Map<string, Newtonsoft.Json.Linq.JToken>
+
+type ZeroTrustGatewayRulesListZeroTrustGatewayRulesTenant_BadRequest =
+    { errors: Option<list<ZeroTrustGatewayRulesListZeroTrustGatewayRulesTenant_BadRequestErrors>>
+      messages: Option<list<ZeroTrustGatewayRulesListZeroTrustGatewayRulesTenant_BadRequestMessages>>
+      ///Indicate whether the API call was successful.
+      success: Option<bool>
+      result_info: Option<``zero-trust-gatewayresultinfo``>
+      result: Option<list<``zero-trust-gatewayrules``>> }
 
 [<RequireQualifiedAccess>]
 type ZeroTrustGatewayRulesListZeroTrustGatewayRulesTenant =
     ///List Zero Trust Gateway rules response.
     | OK of payload: ``zero-trust-gatewayrulescomponents-schemas-responsecollection``
+    ///List Zero Trust Gateway rules response failure.
+    | BadRequest of payload: ZeroTrustGatewayRulesListZeroTrustGatewayRulesTenant_BadRequest
+
+type ZeroTrustGatewayRulesDeleteZeroTrustGatewayRule_BadRequestErrors = { code: int; message: string }
+type ZeroTrustGatewayRulesDeleteZeroTrustGatewayRule_BadRequestMessages = { code: int; message: string }
+type ErrorsFromZeroTrustGatewayRulesDeleteZeroTrustGatewayRuleBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+type MessagesFromZeroTrustGatewayRulesDeleteZeroTrustGatewayRuleBadRequest = Map<string, Newtonsoft.Json.Linq.JToken>
+
+type ZeroTrustGatewayRulesDeleteZeroTrustGatewayRule_BadRequest =
+    { errors: Option<list<ZeroTrustGatewayRulesDeleteZeroTrustGatewayRule_BadRequestErrors>>
+      messages: Option<list<ZeroTrustGatewayRulesDeleteZeroTrustGatewayRule_BadRequestMessages>>
+      ///Indicate whether the API call was successful.
+      success: Option<bool>
+      result: Option<Newtonsoft.Json.Linq.JObject> }
 
 [<RequireQualifiedAccess>]
 type ZeroTrustGatewayRulesDeleteZeroTrustGatewayRule =
     ///Delete a Zero Trust Gateway rule response.
     | OK of payload: ``zero-trust-gatewayemptyresponse``
+    ///Delete a Zero Trust Gateway rule response failure.
+    | BadRequest of payload: ZeroTrustGatewayRulesDeleteZeroTrustGatewayRule_BadRequest
 
 [<RequireQualifiedAccess>]
 type ZeroTrustGatewayRulesZeroTrustGatewayRuleDetails =
     ///Get Zero Trust Gateway rule details response.
     | OK of payload: ``zero-trust-gatewaycomponents-schemas-singleresponse``
+    ///Get Zero Trust Gateway rule details response failure.
+    | BadRequest of payload: string
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type ZeroTrustGatewayRulesUpdateZeroTrustGatewayRulePayloadFilters =
@@ -2897,8 +3555,28 @@ type ZeroTrustGatewayRulesUpdateZeroTrustGatewayRulePayload =
 type ZeroTrustGatewayRulesUpdateZeroTrustGatewayRule =
     ///Update a Zero Trust Gateway rule response.
     | OK of payload: ``zero-trust-gatewaycomponents-schemas-singleresponse``
+    ///Update a Zero Trust Gateway rule response failure.
+    | BadRequest of payload: string
+
+type ZeroTrustGatewayRulesResetExpirationZeroTrustGatewayRule_BadRequestErrors = { code: int; message: string }
+type ZeroTrustGatewayRulesResetExpirationZeroTrustGatewayRule_BadRequestMessages = { code: int; message: string }
+
+type ErrorsFromZeroTrustGatewayRulesResetExpirationZeroTrustGatewayRuleBadRequest =
+    Map<string, Newtonsoft.Json.Linq.JToken>
+
+type MessagesFromZeroTrustGatewayRulesResetExpirationZeroTrustGatewayRuleBadRequest =
+    Map<string, Newtonsoft.Json.Linq.JToken>
+
+type ZeroTrustGatewayRulesResetExpirationZeroTrustGatewayRule_BadRequest =
+    { errors: Option<list<ZeroTrustGatewayRulesResetExpirationZeroTrustGatewayRule_BadRequestErrors>>
+      messages: Option<list<ZeroTrustGatewayRulesResetExpirationZeroTrustGatewayRule_BadRequestMessages>>
+      ///Indicate whether the API call was successful.
+      success: Option<bool>
+      result: Option<``zero-trust-gatewayrules``> }
 
 [<RequireQualifiedAccess>]
 type ZeroTrustGatewayRulesResetExpirationZeroTrustGatewayRule =
     ///Reset the expiration of a Zero Trust Gateway rule response.
     | OK of payload: ``zero-trust-gatewaycomponents-schemas-singleresponse``
+    ///Reset the expiration of a Zero Trust Gateway rule response failure.
+    | BadRequest of payload: ZeroTrustGatewayRulesResetExpirationZeroTrustGatewayRule_BadRequest

@@ -34,7 +34,9 @@ type LoadBalancersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccountLoadBalancerMonitorGroupsListMonitorGroups.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccountLoadBalancerMonitorGroupsListMonitorGroups.OK(Serializer.deserialize content)
+            | _ -> return AccountLoadBalancerMonitorGroupsListMonitorGroups.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -58,7 +60,9 @@ type LoadBalancersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccountLoadBalancerMonitorGroupsCreateMonitorGroup.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccountLoadBalancerMonitorGroupsCreateMonitorGroup.OK(Serializer.deserialize content)
+            | _ -> return AccountLoadBalancerMonitorGroupsCreateMonitorGroup.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -82,7 +86,9 @@ type LoadBalancersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccountLoadBalancerMonitorGroupsDeleteMonitorGroup.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccountLoadBalancerMonitorGroupsDeleteMonitorGroup.OK(Serializer.deserialize content)
+            | _ -> return AccountLoadBalancerMonitorGroupsDeleteMonitorGroup.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -106,7 +112,9 @@ type LoadBalancersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccountLoadBalancerMonitorGroupsMonitorGroupDetails.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccountLoadBalancerMonitorGroupsMonitorGroupDetails.OK(Serializer.deserialize content)
+            | _ -> return AccountLoadBalancerMonitorGroupsMonitorGroupDetails.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -132,7 +140,9 @@ type LoadBalancersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccountLoadBalancerMonitorGroupsPatchMonitorGroup.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccountLoadBalancerMonitorGroupsPatchMonitorGroup.OK(Serializer.deserialize content)
+            | _ -> return AccountLoadBalancerMonitorGroupsPatchMonitorGroup.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -158,7 +168,9 @@ type LoadBalancersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccountLoadBalancerMonitorGroupsUpdateMonitorGroup.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccountLoadBalancerMonitorGroupsUpdateMonitorGroup.OK(Serializer.deserialize content)
+            | _ -> return AccountLoadBalancerMonitorGroupsUpdateMonitorGroup.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -182,7 +194,14 @@ type LoadBalancersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccountLoadBalancerMonitorGroupsListMonitorGroupReferences.OK(Serializer.deserialize content)
+            match int status with
+            | 200 ->
+                return AccountLoadBalancerMonitorGroupsListMonitorGroupReferences.OK(Serializer.deserialize content)
+            | _ ->
+                return
+                    AccountLoadBalancerMonitorGroupsListMonitorGroupReferences.BadRequest(
+                        Serializer.deserialize content
+                    )
         }
 
     ///<summary>
@@ -200,7 +219,9 @@ type LoadBalancersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccountLoadBalancerMonitorsListMonitors.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccountLoadBalancerMonitorsListMonitors.OK(Serializer.deserialize content)
+            | _ -> return AccountLoadBalancerMonitorsListMonitors.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -224,7 +245,9 @@ type LoadBalancersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccountLoadBalancerMonitorsCreateMonitor.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccountLoadBalancerMonitorsCreateMonitor.OK(Serializer.deserialize content)
+            | _ -> return AccountLoadBalancerMonitorsCreateMonitor.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -248,7 +271,9 @@ type LoadBalancersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccountLoadBalancerMonitorsDeleteMonitor.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccountLoadBalancerMonitorsDeleteMonitor.OK(Serializer.deserialize content)
+            | _ -> return AccountLoadBalancerMonitorsDeleteMonitor.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -272,7 +297,9 @@ type LoadBalancersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccountLoadBalancerMonitorsMonitorDetails.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccountLoadBalancerMonitorsMonitorDetails.OK(Serializer.deserialize content)
+            | _ -> return AccountLoadBalancerMonitorsMonitorDetails.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -298,7 +325,9 @@ type LoadBalancersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccountLoadBalancerMonitorsPatchMonitor.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccountLoadBalancerMonitorsPatchMonitor.OK(Serializer.deserialize content)
+            | _ -> return AccountLoadBalancerMonitorsPatchMonitor.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -324,7 +353,9 @@ type LoadBalancersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccountLoadBalancerMonitorsUpdateMonitor.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccountLoadBalancerMonitorsUpdateMonitor.OK(Serializer.deserialize content)
+            | _ -> return AccountLoadBalancerMonitorsUpdateMonitor.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -350,7 +381,9 @@ type LoadBalancersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccountLoadBalancerMonitorsPreviewMonitor.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccountLoadBalancerMonitorsPreviewMonitor.OK(Serializer.deserialize content)
+            | _ -> return AccountLoadBalancerMonitorsPreviewMonitor.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -374,7 +407,9 @@ type LoadBalancersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccountLoadBalancerMonitorsListMonitorReferences.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccountLoadBalancerMonitorsListMonitorReferences.OK(Serializer.deserialize content)
+            | _ -> return AccountLoadBalancerMonitorsListMonitorReferences.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -399,7 +434,9 @@ type LoadBalancersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccountLoadBalancerPoolsListPools.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccountLoadBalancerPoolsListPools.OK(Serializer.deserialize content)
+            | _ -> return AccountLoadBalancerPoolsListPools.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -423,7 +460,9 @@ type LoadBalancersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccountLoadBalancerPoolsPatchPools.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccountLoadBalancerPoolsPatchPools.OK(Serializer.deserialize content)
+            | _ -> return AccountLoadBalancerPoolsPatchPools.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -447,7 +486,9 @@ type LoadBalancersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccountLoadBalancerPoolsCreatePool.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccountLoadBalancerPoolsCreatePool.OK(Serializer.deserialize content)
+            | _ -> return AccountLoadBalancerPoolsCreatePool.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -471,7 +512,9 @@ type LoadBalancersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccountLoadBalancerPoolsDeletePool.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccountLoadBalancerPoolsDeletePool.OK(Serializer.deserialize content)
+            | _ -> return AccountLoadBalancerPoolsDeletePool.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -495,7 +538,9 @@ type LoadBalancersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccountLoadBalancerPoolsPoolDetails.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccountLoadBalancerPoolsPoolDetails.OK(Serializer.deserialize content)
+            | _ -> return AccountLoadBalancerPoolsPoolDetails.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -521,7 +566,9 @@ type LoadBalancersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccountLoadBalancerPoolsPatchPool.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccountLoadBalancerPoolsPatchPool.OK(Serializer.deserialize content)
+            | _ -> return AccountLoadBalancerPoolsPatchPool.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -547,7 +594,9 @@ type LoadBalancersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccountLoadBalancerPoolsUpdatePool.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccountLoadBalancerPoolsUpdatePool.OK(Serializer.deserialize content)
+            | _ -> return AccountLoadBalancerPoolsUpdatePool.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -571,7 +620,9 @@ type LoadBalancersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccountLoadBalancerPoolsPoolHealthDetails.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccountLoadBalancerPoolsPoolHealthDetails.OK(Serializer.deserialize content)
+            | _ -> return AccountLoadBalancerPoolsPoolHealthDetails.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -597,7 +648,9 @@ type LoadBalancersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccountLoadBalancerPoolsPreviewPool.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccountLoadBalancerPoolsPreviewPool.OK(Serializer.deserialize content)
+            | _ -> return AccountLoadBalancerPoolsPreviewPool.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -621,7 +674,9 @@ type LoadBalancersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccountLoadBalancerPoolsListPoolReferences.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccountLoadBalancerPoolsListPoolReferences.OK(Serializer.deserialize content)
+            | _ -> return AccountLoadBalancerPoolsListPoolReferences.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -645,7 +700,9 @@ type LoadBalancersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccountLoadBalancerMonitorsPreviewResult.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccountLoadBalancerMonitorsPreviewResult.OK(Serializer.deserialize content)
+            | _ -> return AccountLoadBalancerMonitorsPreviewResult.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -676,7 +733,9 @@ type LoadBalancersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return LoadBalancerRegionsListRegions.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return LoadBalancerRegionsListRegions.OK(Serializer.deserialize content)
+            | _ -> return LoadBalancerRegionsListRegions.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -700,7 +759,9 @@ type LoadBalancersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return LoadBalancerRegionsGetRegion.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return LoadBalancerRegionsGetRegion.OK(Serializer.deserialize content)
+            | _ -> return LoadBalancerRegionsGetRegion.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -734,5 +795,7 @@ type LoadBalancersClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccountLoadBalancerSearchSearchResources.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccountLoadBalancerSearchSearchResources.OK(Serializer.deserialize content)
+            | _ -> return AccountLoadBalancerSearchSearchResources.BadRequest(Serializer.deserialize content)
         }

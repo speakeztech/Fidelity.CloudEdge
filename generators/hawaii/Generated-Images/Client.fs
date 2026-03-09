@@ -33,7 +33,9 @@ type ImagesClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.postAsync httpClient "/accounts/{account_id}/images/v1" requestParts cancellationToken
 
-            return CloudflareImagesUploadAnImageViaUrl.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return CloudflareImagesUploadAnImageViaUrl.OK(Serializer.deserialize content)
+            | _ -> return CloudflareImagesUploadAnImageViaUrl.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -47,7 +49,9 @@ type ImagesClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.getAsync httpClient "/accounts/{account_id}/images/v1/keys" requestParts cancellationToken
 
-            return CloudflareImagesKeysListSigningKeys.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return CloudflareImagesKeysListSigningKeys.OK(Serializer.deserialize content)
+            | _ -> return CloudflareImagesKeysListSigningKeys.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -72,7 +76,9 @@ type ImagesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return CloudflareImagesKeysDeleteSigningKey.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return CloudflareImagesKeysDeleteSigningKey.OK(Serializer.deserialize content)
+            | _ -> return CloudflareImagesKeysDeleteSigningKey.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -96,7 +102,9 @@ type ImagesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return CloudflareImagesKeysAddSigningKey.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return CloudflareImagesKeysAddSigningKey.OK(Serializer.deserialize content)
+            | _ -> return CloudflareImagesKeysAddSigningKey.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -110,7 +118,9 @@ type ImagesClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.getAsync httpClient "/accounts/{account_id}/images/v1/stats" requestParts cancellationToken
 
-            return CloudflareImagesImagesUsageStatistics.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return CloudflareImagesImagesUsageStatistics.OK(Serializer.deserialize content)
+            | _ -> return CloudflareImagesImagesUsageStatistics.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -128,7 +138,9 @@ type ImagesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return CloudflareImagesVariantsListVariants.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return CloudflareImagesVariantsListVariants.OK(Serializer.deserialize content)
+            | _ -> return CloudflareImagesVariantsListVariants.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -152,7 +164,9 @@ type ImagesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return CloudflareImagesVariantsCreateAVariant.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return CloudflareImagesVariantsCreateAVariant.OK(Serializer.deserialize content)
+            | _ -> return CloudflareImagesVariantsCreateAVariant.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -176,7 +190,9 @@ type ImagesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return CloudflareImagesVariantsDeleteAVariant.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return CloudflareImagesVariantsDeleteAVariant.OK(Serializer.deserialize content)
+            | _ -> return CloudflareImagesVariantsDeleteAVariant.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -200,7 +216,9 @@ type ImagesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return CloudflareImagesVariantsVariantDetails.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return CloudflareImagesVariantsVariantDetails.OK(Serializer.deserialize content)
+            | _ -> return CloudflareImagesVariantsVariantDetails.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -226,7 +244,9 @@ type ImagesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return CloudflareImagesVariantsUpdateAVariant.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return CloudflareImagesVariantsUpdateAVariant.OK(Serializer.deserialize content)
+            | _ -> return CloudflareImagesVariantsUpdateAVariant.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -245,7 +265,9 @@ type ImagesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return CloudflareImagesDeleteImage.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return CloudflareImagesDeleteImage.OK(Serializer.deserialize content)
+            | _ -> return CloudflareImagesDeleteImage.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -269,7 +291,9 @@ type ImagesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return CloudflareImagesImageDetails.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return CloudflareImagesImageDetails.OK(Serializer.deserialize content)
+            | _ -> return CloudflareImagesImageDetails.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -295,7 +319,9 @@ type ImagesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return CloudflareImagesUpdateImage.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return CloudflareImagesUpdateImage.OK(Serializer.deserialize content)
+            | _ -> return CloudflareImagesUpdateImage.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -314,7 +340,9 @@ type ImagesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return CloudflareImagesBaseImage.OK content
+            match int status with
+            | 200 -> return CloudflareImagesBaseImage.OK content
+            | _ -> return CloudflareImagesBaseImage.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -418,5 +446,8 @@ type ImagesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return CloudflareImagesCreateAuthenticatedDirectUploadUrlV2.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return CloudflareImagesCreateAuthenticatedDirectUploadUrlV2.OK(Serializer.deserialize content)
+            | _ ->
+                return CloudflareImagesCreateAuthenticatedDirectUploadUrlV2.BadRequest(Serializer.deserialize content)
         }

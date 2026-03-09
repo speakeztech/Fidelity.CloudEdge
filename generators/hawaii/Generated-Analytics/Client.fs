@@ -33,5 +33,7 @@ type AnalyticsClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.getAsync httpClient "/zones/{zone_id}/analytics/latency" requestParts cancellationToken
 
-            return ArgoAnalyticsForZoneArgoAnalyticsForAZone.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ArgoAnalyticsForZoneArgoAnalyticsForAZone.OK(Serializer.deserialize content)
+            | _ -> return ArgoAnalyticsForZoneArgoAnalyticsForAZone.BadRequest(Serializer.deserialize content)
         }

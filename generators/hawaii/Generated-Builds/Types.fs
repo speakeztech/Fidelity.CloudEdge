@@ -582,43 +582,434 @@ type buildsUpsertRepoConnectionResponse =
           repo_id = None
           repo_name = None }
 
+type getAccountLimitsresponseErrors =
+    { code: Option<int>
+      message: Option<string> }
+    ///Creates an instance of getAccountLimitsresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): getAccountLimitsresponseErrors = { code = None; message = None }
+
+type getAccountLimitsresponse =
+    { errors: list<getAccountLimitsresponseErrors>
+      messages: list<string>
+      result: buildsGetAccountLimitResponse
+      result_info: Option<buildsPaginationInfo>
+      success: bool }
+    ///Creates an instance of getAccountLimitsresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<getAccountLimitsresponseErrors>,
+                          messages: list<string>,
+                          result: buildsGetAccountLimitResponse,
+                          success: bool): getAccountLimitsresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          result_info = None
+          success = success }
+
+type getBuildsByVersionIdsresponseErrors =
+    { code: Option<int>
+      message: Option<string> }
+    ///Creates an instance of getBuildsByVersionIdsresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): getBuildsByVersionIdsresponseErrors = { code = None; message = None }
+
+type getBuildsByVersionIdsresponse =
+    { errors: list<getBuildsByVersionIdsresponseErrors>
+      messages: list<string>
+      result: buildsBuildsByVersionResponse
+      result_info: Option<buildsPaginationInfo>
+      success: bool }
+    ///Creates an instance of getBuildsByVersionIdsresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<getBuildsByVersionIdsresponseErrors>,
+                          messages: list<string>,
+                          result: buildsBuildsByVersionResponse,
+                          success: bool): getBuildsByVersionIdsresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          result_info = None
+          success = success }
+
+type getLatestBuildsByScriptsresponseErrors =
+    { code: Option<int>
+      message: Option<string> }
+    ///Creates an instance of getLatestBuildsByScriptsresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): getLatestBuildsByScriptsresponseErrors = { code = None; message = None }
+
+type getLatestBuildsByScriptsresponse =
+    { errors: list<getLatestBuildsByScriptsresponseErrors>
+      messages: list<string>
+      result: buildsLatestBuildsResponse
+      result_info: Option<buildsPaginationInfo>
+      success: bool }
+    ///Creates an instance of getLatestBuildsByScriptsresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<getLatestBuildsByScriptsresponseErrors>,
+                          messages: list<string>,
+                          result: buildsLatestBuildsResponse,
+                          success: bool): getLatestBuildsByScriptsresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          result_info = None
+          success = success }
+
+type getBuildByUuidresponseErrors =
+    { code: Option<int>
+      message: Option<string> }
+    ///Creates an instance of getBuildByUuidresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): getBuildByUuidresponseErrors = { code = None; message = None }
+
+type getBuildByUuidresponse =
+    { errors: list<getBuildByUuidresponseErrors>
+      messages: list<string>
+      result: buildsBuildResponse
+      result_info: Option<buildsPaginationInfo>
+      success: bool }
+    ///Creates an instance of getBuildByUuidresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<getBuildByUuidresponseErrors>,
+                          messages: list<string>,
+                          result: buildsBuildResponse,
+                          success: bool): getBuildByUuidresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          result_info = None
+          success = success }
+
+type cancelBuildByUuidresponseErrors =
+    { code: Option<int>
+      message: Option<string> }
+    ///Creates an instance of cancelBuildByUuidresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): cancelBuildByUuidresponseErrors = { code = None; message = None }
+
+type cancelBuildByUuidresponse =
+    { errors: list<cancelBuildByUuidresponseErrors>
+      messages: list<string>
+      result: buildsCanceledBuildResponse
+      result_info: Option<buildsPaginationInfo>
+      success: bool }
+    ///Creates an instance of cancelBuildByUuidresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<cancelBuildByUuidresponseErrors>,
+                          messages: list<string>,
+                          result: buildsCanceledBuildResponse,
+                          success: bool): cancelBuildByUuidresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          result_info = None
+          success = success }
+
+type getBuildLogsresponseErrors =
+    { code: Option<int>
+      message: Option<string> }
+    ///Creates an instance of getBuildLogsresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): getBuildLogsresponseErrors = { code = None; message = None }
+
+type getBuildLogsresponse =
+    { errors: list<getBuildLogsresponseErrors>
+      messages: list<string>
+      result: buildsBuildLogsResponse
+      result_info: Option<buildsPaginationInfo>
+      success: bool }
+    ///Creates an instance of getBuildLogsresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<getBuildLogsresponseErrors>,
+                          messages: list<string>,
+                          result: buildsBuildLogsResponse,
+                          success: bool): getBuildLogsresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          result_info = None
+          success = success }
+
+type upsertRepoConnectionresponseErrors =
+    { code: Option<int>
+      message: Option<string> }
+    ///Creates an instance of upsertRepoConnectionresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): upsertRepoConnectionresponseErrors = { code = None; message = None }
+
+type upsertRepoConnectionresponse =
+    { errors: list<upsertRepoConnectionresponseErrors>
+      messages: list<string>
+      result: buildsUpsertRepoConnectionResponse
+      result_info: Option<buildsPaginationInfo>
+      success: bool }
+    ///Creates an instance of upsertRepoConnectionresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<upsertRepoConnectionresponseErrors>,
+                          messages: list<string>,
+                          result: buildsUpsertRepoConnectionResponse,
+                          success: bool): upsertRepoConnectionresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          result_info = None
+          success = success }
+
+type getWorkerConfigAutofillresponseErrors =
+    { code: Option<int>
+      message: Option<string> }
+    ///Creates an instance of getWorkerConfigAutofillresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): getWorkerConfigAutofillresponseErrors = { code = None; message = None }
+
+type getWorkerConfigAutofillresponse =
+    { errors: list<getWorkerConfigAutofillresponseErrors>
+      messages: list<string>
+      result: buildsConfigAutofillResponse
+      result_info: Option<buildsPaginationInfo>
+      success: bool }
+    ///Creates an instance of getWorkerConfigAutofillresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<getWorkerConfigAutofillresponseErrors>,
+                          messages: list<string>,
+                          result: buildsConfigAutofillResponse,
+                          success: bool): getWorkerConfigAutofillresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          result_info = None
+          success = success }
+
+type listBuildTokensresponseErrors =
+    { code: Option<int>
+      message: Option<string> }
+    ///Creates an instance of listBuildTokensresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): listBuildTokensresponseErrors = { code = None; message = None }
+
+type listBuildTokensresponse =
+    { errors: list<listBuildTokensresponseErrors>
+      messages: list<string>
+      result: list<buildsListTokensResponse>
+      result_info: Option<buildsPaginationInfo>
+      success: bool }
+    ///Creates an instance of listBuildTokensresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<listBuildTokensresponseErrors>,
+                          messages: list<string>,
+                          result: list<buildsListTokensResponse>,
+                          success: bool): listBuildTokensresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          result_info = None
+          success = success }
+
+type createBuildTokenresponseErrors =
+    { code: Option<int>
+      message: Option<string> }
+    ///Creates an instance of createBuildTokenresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): createBuildTokenresponseErrors = { code = None; message = None }
+
+type createBuildTokenresponse =
+    { errors: list<createBuildTokenresponseErrors>
+      messages: list<string>
+      result: buildsCreateBuildTokenResponse
+      result_info: Option<buildsPaginationInfo>
+      success: bool }
+    ///Creates an instance of createBuildTokenresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<createBuildTokenresponseErrors>,
+                          messages: list<string>,
+                          result: buildsCreateBuildTokenResponse,
+                          success: bool): createBuildTokenresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          result_info = None
+          success = success }
+
+type createTriggerresponseErrors =
+    { code: Option<int>
+      message: Option<string> }
+    ///Creates an instance of createTriggerresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): createTriggerresponseErrors = { code = None; message = None }
+
+type createTriggerresponse =
+    { errors: list<createTriggerresponseErrors>
+      messages: list<string>
+      result: buildsTriggerResponse
+      result_info: Option<buildsPaginationInfo>
+      success: bool }
+    ///Creates an instance of createTriggerresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<createTriggerresponseErrors>,
+                          messages: list<string>,
+                          result: buildsTriggerResponse,
+                          success: bool): createTriggerresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          result_info = None
+          success = success }
+
+type updateTriggerresponseErrors =
+    { code: Option<int>
+      message: Option<string> }
+    ///Creates an instance of updateTriggerresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): updateTriggerresponseErrors = { code = None; message = None }
+
+type updateTriggerresponse =
+    { errors: list<updateTriggerresponseErrors>
+      messages: list<string>
+      result: buildsTriggerResponse
+      result_info: Option<buildsPaginationInfo>
+      success: bool }
+    ///Creates an instance of updateTriggerresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<updateTriggerresponseErrors>,
+                          messages: list<string>,
+                          result: buildsTriggerResponse,
+                          success: bool): updateTriggerresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          result_info = None
+          success = success }
+
+type createManualBuildresponseErrors =
+    { code: Option<int>
+      message: Option<string> }
+    ///Creates an instance of createManualBuildresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): createManualBuildresponseErrors = { code = None; message = None }
+
+type createManualBuildresponse =
+    { errors: list<createManualBuildresponseErrors>
+      messages: list<string>
+      result: buildsInsertBuildResponse
+      result_info: Option<buildsPaginationInfo>
+      success: bool }
+    ///Creates an instance of createManualBuildresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<createManualBuildresponseErrors>,
+                          messages: list<string>,
+                          result: buildsInsertBuildResponse,
+                          success: bool): createManualBuildresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          result_info = None
+          success = success }
+
+type listEnvironmentVariablesresponseErrors =
+    { code: Option<int>
+      message: Option<string> }
+    ///Creates an instance of listEnvironmentVariablesresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): listEnvironmentVariablesresponseErrors = { code = None; message = None }
+
+type listEnvironmentVariablesresponse =
+    { errors: list<listEnvironmentVariablesresponseErrors>
+      messages: list<string>
+      result: Map<string, string>
+      result_info: Option<buildsPaginationInfo>
+      success: bool }
+    ///Creates an instance of listEnvironmentVariablesresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<listEnvironmentVariablesresponseErrors>,
+                          messages: list<string>,
+                          result: Map<string, string>,
+                          success: bool): listEnvironmentVariablesresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          result_info = None
+          success = success }
+
+type upsertEnvironmentVariablesresponseErrors =
+    { code: Option<int>
+      message: Option<string> }
+    ///Creates an instance of upsertEnvironmentVariablesresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): upsertEnvironmentVariablesresponseErrors = { code = None; message = None }
+
+type upsertEnvironmentVariablesresponse =
+    { errors: list<upsertEnvironmentVariablesresponseErrors>
+      messages: list<string>
+      result: Map<string, string>
+      result_info: Option<buildsPaginationInfo>
+      success: bool }
+    ///Creates an instance of upsertEnvironmentVariablesresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<upsertEnvironmentVariablesresponseErrors>,
+                          messages: list<string>,
+                          result: Map<string, string>,
+                          success: bool): upsertEnvironmentVariablesresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          result_info = None
+          success = success }
+
+type listBuildsByScriptresponseErrors =
+    { code: Option<int>
+      message: Option<string> }
+    ///Creates an instance of listBuildsByScriptresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): listBuildsByScriptresponseErrors = { code = None; message = None }
+
+type listBuildsByScriptresponse =
+    { errors: list<listBuildsByScriptresponseErrors>
+      messages: list<string>
+      result: list<buildsBuildResponse>
+      result_info: Option<buildsPaginationInfo>
+      success: bool }
+    ///Creates an instance of listBuildsByScriptresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<listBuildsByScriptresponseErrors>,
+                          messages: list<string>,
+                          result: list<buildsBuildResponse>,
+                          success: bool): listBuildsByScriptresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          result_info = None
+          success = success }
+
+type listTriggersByScriptresponseErrors =
+    { code: Option<int>
+      message: Option<string> }
+    ///Creates an instance of listTriggersByScriptresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): listTriggersByScriptresponseErrors = { code = None; message = None }
+
+type listTriggersByScriptresponse =
+    { errors: list<listTriggersByScriptresponseErrors>
+      messages: list<string>
+      result: list<buildsTriggerResponse>
+      result_info: Option<buildsPaginationInfo>
+      success: bool }
+    ///Creates an instance of listTriggersByScriptresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<listTriggersByScriptresponseErrors>,
+                          messages: list<string>,
+                          result: list<buildsTriggerResponse>,
+                          success: bool): listTriggersByScriptresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          result_info = None
+          success = success }
+
 [<RequireQualifiedAccess>]
 type GetAccountLimits =
     ///Account limits retrieved successfully
-    | OK of payload: string
+    | OK of payload: getAccountLimitsresponse
 
 [<RequireQualifiedAccess>]
 type GetBuildsByVersionIds =
     ///Builds retrieved successfully
-    | OK of payload: string
+    | OK of payload: getBuildsByVersionIdsresponse
 
 [<RequireQualifiedAccess>]
 type GetLatestBuildsByScripts =
     ///Latest builds retrieved successfully
-    | OK of payload: string
+    | OK of payload: getLatestBuildsByScriptsresponse
 
 [<RequireQualifiedAccess>]
 type GetBuildByUuid =
     ///Build retrieved successfully
-    | OK of payload: string
+    | OK of payload: getBuildByUuidresponse
     | NotFound of payload: Newtonsoft.Json.Linq.JToken
 
 [<RequireQualifiedAccess>]
 type CancelBuildByUuid =
     ///Build canceled successfully
-    | OK of payload: string
+    | OK of payload: cancelBuildByUuidresponse
     | NotFound of payload: Newtonsoft.Json.Linq.JToken
 
 [<RequireQualifiedAccess>]
 type GetBuildLogs =
     ///Build logs retrieved successfully
-    | OK of payload: string
+    | OK of payload: getBuildLogsresponse
     | NotFound of payload: Newtonsoft.Json.Linq.JToken
 
 [<RequireQualifiedAccess>]
 type UpsertRepoConnection =
     ///Repository connection upserted successfully
-    | OK of payload: string
+    | OK of payload: upsertRepoConnectionresponse
 
 [<RequireQualifiedAccess>]
 type DeleteRepoConnection =
@@ -628,17 +1019,17 @@ type DeleteRepoConnection =
 [<RequireQualifiedAccess>]
 type GetWorkerConfigAutofill =
     ///Configuration autofill data retrieved successfully
-    | OK of payload: string
+    | OK of payload: getWorkerConfigAutofillresponse
 
 [<RequireQualifiedAccess>]
 type ListBuildTokens =
     ///Build tokens retrieved successfully
-    | OK of payload: string
+    | OK of payload: listBuildTokensresponse
 
 [<RequireQualifiedAccess>]
 type CreateBuildToken =
     ///Build token created successfully
-    | OK of payload: string
+    | OK of payload: createBuildTokenresponse
 
 [<RequireQualifiedAccess>]
 type DeleteBuildToken =
@@ -648,7 +1039,7 @@ type DeleteBuildToken =
 [<RequireQualifiedAccess>]
 type CreateTrigger =
     ///Trigger created successfully
-    | OK of payload: string
+    | OK of payload: createTriggerresponse
 
 [<RequireQualifiedAccess>]
 type DeleteTrigger =
@@ -658,23 +1049,23 @@ type DeleteTrigger =
 [<RequireQualifiedAccess>]
 type UpdateTrigger =
     ///Trigger updated successfully
-    | OK of payload: string
+    | OK of payload: updateTriggerresponse
     | NotFound of payload: Newtonsoft.Json.Linq.JToken
 
 [<RequireQualifiedAccess>]
 type CreateManualBuild =
     ///Build created successfully
-    | OK of payload: string
+    | OK of payload: createManualBuildresponse
 
 [<RequireQualifiedAccess>]
 type ListEnvironmentVariables =
     ///Environment variables retrieved successfully
-    | OK of payload: string
+    | OK of payload: listEnvironmentVariablesresponse
 
 [<RequireQualifiedAccess>]
 type UpsertEnvironmentVariables =
     ///Environment variables updated successfully
-    | OK of payload: string
+    | OK of payload: upsertEnvironmentVariablesresponse
     | NotFound of payload: Newtonsoft.Json.Linq.JToken
 
 [<RequireQualifiedAccess>]
@@ -690,9 +1081,9 @@ type PurgeBuildCache =
 [<RequireQualifiedAccess>]
 type ListBuildsByScript =
     ///Builds retrieved successfully
-    | OK of payload: string
+    | OK of payload: listBuildsByScriptresponse
 
 [<RequireQualifiedAccess>]
 type ListTriggersByScript =
     ///Triggers retrieved successfully
-    | OK of payload: string
+    | OK of payload: listTriggersByScriptresponse

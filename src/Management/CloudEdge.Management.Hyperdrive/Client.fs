@@ -32,7 +32,9 @@ type HyperdriveClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ListHyperdrive.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ListHyperdrive.OK(Serializer.deserialize content)
+            | _ -> return ListHyperdrive.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -59,7 +61,9 @@ type HyperdriveClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return CreateHyperdrive.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return CreateHyperdrive.OK(Serializer.deserialize content)
+            | _ -> return CreateHyperdrive.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -81,7 +85,9 @@ type HyperdriveClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return DeleteHyperdrive.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return DeleteHyperdrive.OK(Serializer.deserialize content)
+            | _ -> return DeleteHyperdrive.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -103,7 +109,9 @@ type HyperdriveClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return GetHyperdrive.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return GetHyperdrive.OK(Serializer.deserialize content)
+            | _ -> return GetHyperdrive.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -133,7 +141,9 @@ type HyperdriveClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return PatchHyperdrive.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return PatchHyperdrive.OK(Serializer.deserialize content)
+            | _ -> return PatchHyperdrive.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -163,5 +173,7 @@ type HyperdriveClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return UpdateHyperdrive.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return UpdateHyperdrive.OK(Serializer.deserialize content)
+            | _ -> return UpdateHyperdrive.BadRequest(Serializer.deserialize content)
         }

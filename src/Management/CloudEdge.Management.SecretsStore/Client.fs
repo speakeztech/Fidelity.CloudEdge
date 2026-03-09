@@ -30,7 +30,9 @@ type SecretsStoreClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return SecretsStoreQuota.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return SecretsStoreQuota.OK(Serializer.deserialize content)
+            | _ -> return SecretsStoreQuota.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -48,7 +50,9 @@ type SecretsStoreClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return SecretsStoreList.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return SecretsStoreList.OK(Serializer.deserialize content)
+            | _ -> return SecretsStoreList.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -72,7 +76,9 @@ type SecretsStoreClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return SecretsStoreCreate.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return SecretsStoreCreate.OK(Serializer.deserialize content)
+            | _ -> return SecretsStoreCreate.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -91,7 +97,9 @@ type SecretsStoreClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return SecretsStoreDeleteById.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return SecretsStoreDeleteById.OK(Serializer.deserialize content)
+            | _ -> return SecretsStoreDeleteById.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -110,7 +118,9 @@ type SecretsStoreClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return SecretsStoreGetStoreById.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return SecretsStoreGetStoreById.OK(Serializer.deserialize content)
+            | _ -> return SecretsStoreGetStoreById.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -136,7 +146,9 @@ type SecretsStoreClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return SecretsStoreDeleteBulk.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return SecretsStoreDeleteBulk.OK(Serializer.deserialize content)
+            | _ -> return SecretsStoreDeleteBulk.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -155,7 +167,9 @@ type SecretsStoreClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return SecretsStoreSecretsList.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return SecretsStoreSecretsList.OK(Serializer.deserialize content)
+            | _ -> return SecretsStoreSecretsList.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -181,7 +195,9 @@ type SecretsStoreClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return SecretsStoreSecretCreate.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return SecretsStoreSecretCreate.OK(Serializer.deserialize content)
+            | _ -> return SecretsStoreSecretCreate.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -207,7 +223,9 @@ type SecretsStoreClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return SecretsStoreSecretDeleteById.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return SecretsStoreSecretDeleteById.OK(Serializer.deserialize content)
+            | _ -> return SecretsStoreSecretDeleteById.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -233,7 +251,9 @@ type SecretsStoreClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return SecretsStoreGetById.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return SecretsStoreGetById.OK(Serializer.deserialize content)
+            | _ -> return SecretsStoreGetById.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -261,7 +281,9 @@ type SecretsStoreClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return SecretsStorePatchById.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return SecretsStorePatchById.OK(Serializer.deserialize content)
+            | _ -> return SecretsStorePatchById.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -289,5 +311,7 @@ type SecretsStoreClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return SecretsStoreDuplicateById.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return SecretsStoreDuplicateById.OK(Serializer.deserialize content)
+            | _ -> return SecretsStoreDuplicateById.BadRequest(Serializer.deserialize content)
         }

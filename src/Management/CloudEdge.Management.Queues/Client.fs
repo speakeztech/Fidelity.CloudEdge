@@ -26,7 +26,9 @@ type QueuesClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.getAsync httpClient "/accounts/{account_id}/queues" requestParts cancellationToken
 
-            return QueuesList.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return QueuesList.OK(Serializer.deserialize content)
+            | _ -> return QueuesList.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -41,7 +43,9 @@ type QueuesClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.postAsync httpClient "/accounts/{account_id}/queues" requestParts cancellationToken
 
-            return QueuesCreate.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return QueuesCreate.OK(Serializer.deserialize content)
+            | _ -> return QueuesCreate.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -60,7 +64,9 @@ type QueuesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return QueuesDelete.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return QueuesDelete.OK(Serializer.deserialize content)
+            | _ -> return QueuesDelete.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -79,7 +85,9 @@ type QueuesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return QueuesGet.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return QueuesGet.OK(Serializer.deserialize content)
+            | _ -> return QueuesGet.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -105,7 +113,9 @@ type QueuesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return QueuesUpdatePartial.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return QueuesUpdatePartial.OK(Serializer.deserialize content)
+            | _ -> return QueuesUpdatePartial.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -125,7 +135,9 @@ type QueuesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return QueuesUpdate.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return QueuesUpdate.OK(Serializer.deserialize content)
+            | _ -> return QueuesUpdate.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -144,7 +156,9 @@ type QueuesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return QueuesListConsumers.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return QueuesListConsumers.OK(Serializer.deserialize content)
+            | _ -> return QueuesListConsumers.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -163,7 +177,9 @@ type QueuesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return QueuesCreateConsumer.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return QueuesCreateConsumer.OK(Serializer.deserialize content)
+            | _ -> return QueuesCreateConsumer.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -189,7 +205,9 @@ type QueuesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return QueuesDeleteConsumer.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return QueuesDeleteConsumer.OK(Serializer.deserialize content)
+            | _ -> return QueuesDeleteConsumer.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -215,7 +233,9 @@ type QueuesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return QueuesGetConsumer.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return QueuesGetConsumer.OK(Serializer.deserialize content)
+            | _ -> return QueuesGetConsumer.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -241,7 +261,9 @@ type QueuesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return QueuesUpdateConsumer.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return QueuesUpdateConsumer.OK(Serializer.deserialize content)
+            | _ -> return QueuesUpdateConsumer.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -267,7 +289,9 @@ type QueuesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return QueuesPushMessage.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return QueuesPushMessage.OK(Serializer.deserialize content)
+            | _ -> return QueuesPushMessage.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -293,7 +317,9 @@ type QueuesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return QueuesAckMessages.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return QueuesAckMessages.OK(Serializer.deserialize content)
+            | _ -> return QueuesAckMessages.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -319,7 +345,9 @@ type QueuesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return QueuesPushMessages.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return QueuesPushMessages.OK(Serializer.deserialize content)
+            | _ -> return QueuesPushMessages.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -345,7 +373,9 @@ type QueuesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return QueuesPullMessages.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return QueuesPullMessages.OK(Serializer.deserialize content)
+            | _ -> return QueuesPullMessages.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -364,7 +394,9 @@ type QueuesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return QueuesPurgeGet.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return QueuesPurgeGet.OK(Serializer.deserialize content)
+            | _ -> return QueuesPurgeGet.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -390,5 +422,7 @@ type QueuesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return QueuesPurge.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return QueuesPurge.OK(Serializer.deserialize content)
+            | _ -> return QueuesPurge.BadRequest(Serializer.deserialize content)
         }

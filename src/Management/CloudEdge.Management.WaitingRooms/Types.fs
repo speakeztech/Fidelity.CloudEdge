@@ -1,5 +1,11 @@
 namespace rec Fidelity.CloudEdge.Management.WaitingRooms.Types
 
+// Auto-generated type aliases (Hawaii normalization fix)
+type waitingroom_create_rule = waitingroomcreaterule
+
+// Auto-generated stub types (missing from Hawaii output)
+type results = string
+
 type waitingroomadditionalroutesArrayItem =
     { ///The hostname to which this waiting room will be applied (no wildcards). The hostname must be the primary domain, subdomain, or custom hostname (if using SSL for SaaS) of this zone. Please do not include the scheme (http:// or https://).
       host: Option<string>
@@ -305,14 +311,9 @@ type waitingroomturnstilemode =
 type waitingroomupdaterules = list<waitingroom_create_rule>
 type waitingroomwaitingroomid = string
 
-
-// Type aliases for Hawaii sanitization compatibility
-type ``waitingroom_create_rule`` = ``waitingroomcreaterule``
-
 type ErrorsSource =
     { pointer: Option<string> }
     ///Creates an instance of ErrorsSource with all optional fields initialized to None. The required fields are parameters of this function
-
     static member Create (): ErrorsSource = { pointer = None }
 
 type Errors =
@@ -444,9 +445,9 @@ type waitingroomcreaterule =
           expression = expression }
 
 type waitingroomeventdetailsresponse =
-    { result: Option<Newtonsoft.Json.Linq.JObject> }
+    { result: waitingroomeventdetailsresult }
     ///Creates an instance of waitingroomeventdetailsresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): waitingroomeventdetailsresponse = { result = None }
+    static member Create (result: waitingroomeventdetailsresult): waitingroomeventdetailsresponse = { result = result }
 
 type waitingroomeventdetailsresult =
     { created_on: Option<waitingroomtimestamp>
@@ -497,14 +498,14 @@ type Result =
     static member Create (): Result = { id = None }
 
 type waitingroomeventidresponse =
-    { result: Option<Newtonsoft.Json.Linq.JObject> }
+    { result: Result }
     ///Creates an instance of waitingroomeventidresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): waitingroomeventidresponse = { result = None }
+    static member Create (result: Result): waitingroomeventidresponse = { result = result }
 
 type waitingroomeventresponse =
-    { result: Option<Newtonsoft.Json.Linq.JObject> }
+    { result: waitingroomeventresult }
     ///Creates an instance of waitingroomeventresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): waitingroomeventresponse = { result = None }
+    static member Create (result: waitingroomeventresult): waitingroomeventresponse = { result = result }
 
 type waitingroomeventresponsecollectionErrorsSource =
     { pointer: Option<string> }
@@ -557,17 +558,19 @@ type waitingroomeventresponsecollectionResultinfo =
           total_count = None }
 
 type waitingroomeventresponsecollection =
-    { errors: Option<list<waitingroomeventresponsecollectionErrors>>
-      messages: Option<list<waitingroomeventresponsecollectionMessages>>
+    { errors: list<waitingroomeventresponsecollectionErrors>
+      messages: list<waitingroomeventresponsecollectionMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<waitingroomeventresponsecollectionResultinfo>
       result: Option<list<waitingroomeventresult>> }
     ///Creates an instance of waitingroomeventresponsecollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): waitingroomeventresponsecollection =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<waitingroomeventresponsecollectionErrors>,
+                          messages: list<waitingroomeventresponsecollectionMessages>,
+                          success: bool): waitingroomeventresponsecollection =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
           result = None }
 
@@ -652,9 +655,9 @@ type waitingroompreviewresponseResult =
     static member Create (): waitingroompreviewresponseResult = { preview_url = None }
 
 type waitingroompreviewresponse =
-    { result: Option<Newtonsoft.Json.Linq.JObject> }
+    { result: waitingroompreviewresponseResult }
     ///Creates an instance of waitingroompreviewresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): waitingroompreviewresponse = { result = None }
+    static member Create (result: waitingroompreviewresponseResult): waitingroompreviewresponse = { result = result }
 
 type waitingroomqueryevent =
     { ///If set, the event will override the waiting room's `custom_page_html` property while it is active. If null, the event will inherit it.
@@ -960,17 +963,19 @@ type waitingroomresponsecollectionResultinfo =
           total_count = None }
 
 type waitingroomresponsecollection =
-    { errors: Option<list<waitingroomresponsecollectionErrors>>
-      messages: Option<list<waitingroomresponsecollectionMessages>>
+    { errors: list<waitingroomresponsecollectionErrors>
+      messages: list<waitingroomresponsecollectionMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<waitingroomresponsecollectionResultinfo>
       result: Option<list<waitingroomwaitingroom>> }
     ///Creates an instance of waitingroomresponsecollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): waitingroomresponsecollection =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<waitingroomresponsecollectionErrors>,
+                          messages: list<waitingroomresponsecollectionMessages>,
+                          success: bool): waitingroomresponsecollection =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
           result = None }
 
@@ -1049,17 +1054,19 @@ type waitingroomrulesresponsecollectionResultinfo =
           total_count = None }
 
 type waitingroomrulesresponsecollection =
-    { errors: Option<list<waitingroomrulesresponsecollectionErrors>>
-      messages: Option<list<waitingroomrulesresponsecollectionMessages>>
+    { errors: list<waitingroomrulesresponsecollectionErrors>
+      messages: list<waitingroomrulesresponsecollectionMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<waitingroomrulesresponsecollectionResultinfo>
       result: Option<list<waitingroomruleresult>> }
     ///Creates an instance of waitingroomrulesresponsecollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): waitingroomrulesresponsecollection =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<waitingroomrulesresponsecollectionErrors>,
+                          messages: list<waitingroomrulesresponsecollectionMessages>,
+                          success: bool): waitingroomrulesresponsecollection =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
           result = None }
 
@@ -1111,9 +1118,9 @@ type ``waitingroomschemas-api-response-common`` =
           success = success }
 
 type waitingroomsingleresponse =
-    { result: Option<Newtonsoft.Json.Linq.JObject> }
+    { result: waitingroomwaitingroom }
     ///Creates an instance of waitingroomsingleresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): waitingroomsingleresponse = { result = None }
+    static member Create (result: waitingroomwaitingroom): waitingroomsingleresponse = { result = result }
 
 type waitingroomstatusresponseResult =
     { estimated_queued_users: Option<waitingroomestimatedqueuedusers>
@@ -1130,9 +1137,9 @@ type waitingroomstatusresponseResult =
           status = None }
 
 type waitingroomstatusresponse =
-    { result: Option<Newtonsoft.Json.Linq.JObject> }
+    { result: waitingroomstatusresponseResult }
     ///Creates an instance of waitingroomstatusresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): waitingroomstatusresponse = { result = None }
+    static member Create (result: waitingroomstatusresponseResult): waitingroomstatusresponse = { result = result }
 
 type waitingroomwaitingroomidresponseResult =
     { id: Option<waitingroomwaitingroomid> }
@@ -1140,9 +1147,10 @@ type waitingroomwaitingroomidresponseResult =
     static member Create (): waitingroomwaitingroomidresponseResult = { id = None }
 
 type waitingroomwaitingroomidresponse =
-    { result: Option<Newtonsoft.Json.Linq.JObject> }
+    { result: waitingroomwaitingroomidresponseResult }
     ///Creates an instance of waitingroomwaitingroomidresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): waitingroomwaitingroomidresponse = { result = None }
+    static member Create (result: waitingroomwaitingroomidresponseResult): waitingroomwaitingroomidresponse =
+        { result = result }
 
 type waitingroomwaitingroomAdditionalroutes =
     { ///The hostname to which this waiting room will be applied (no wildcards). The hostname must be the primary domain, subdomain, or custom hostname (if using SSL for SaaS) of this zone. Please do not include the scheme (http:// or https://).
@@ -1359,121 +1367,552 @@ type waitingroomzonesettingsresponseResult =
         { search_engine_crawler_bypass = search_engine_crawler_bypass }
 
 type waitingroomzonesettingsresponse =
-    { result: Option<Newtonsoft.Json.Linq.JObject> }
+    { result: waitingroomzonesettingsresponseResult }
     ///Creates an instance of waitingroomzonesettingsresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): waitingroomzonesettingsresponse = { result = None }
+    static member Create (result: waitingroomzonesettingsresponseResult): waitingroomzonesettingsresponse =
+        { result = result }
+
+type WaitingRoomListWaitingRooms_BadRequestErrorsSource = { pointer: Option<string> }
+
+type WaitingRoomListWaitingRooms_BadRequestErrors =
+    { code: int
+      documentation_url: Option<string>
+      message: string
+      source: Option<WaitingRoomListWaitingRooms_BadRequestErrorsSource> }
+
+type WaitingRoomListWaitingRooms_BadRequestMessagesSource = { pointer: Option<string> }
+
+type WaitingRoomListWaitingRooms_BadRequestMessages =
+    { code: int
+      documentation_url: Option<string>
+      message: string
+      source: Option<WaitingRoomListWaitingRooms_BadRequestMessagesSource> }
+
+type WaitingRoomListWaitingRooms_BadRequestResultinfo =
+    { ///Total number of results for the requested service.
+      count: Option<float>
+      ///Current page within paginated list of results.
+      page: Option<float>
+      ///Number of results per page of results.
+      per_page: Option<float>
+      ///Total results available without any search parameters.
+      total_count: Option<float> }
+
+type WaitingRoomListWaitingRooms_BadRequest =
+    { errors: Option<list<WaitingRoomListWaitingRooms_BadRequestErrors>>
+      messages: Option<list<WaitingRoomListWaitingRooms_BadRequestMessages>>
+      ///Whether the API call was successful.
+      success: Option<bool>
+      result_info: Option<WaitingRoomListWaitingRooms_BadRequestResultinfo>
+      result: Option<list<waitingroomwaitingroom>> }
 
 [<RequireQualifiedAccess>]
 type WaitingRoomListWaitingRooms =
     ///List waiting rooms for zone response
     | OK of payload: waitingroomresponsecollection
+    ///List waiting rooms for zone response failure
+    | BadRequest of payload: WaitingRoomListWaitingRooms_BadRequest
+
+type WaitingRoomCreateWaitingRoom_BadRequest =
+    { result: Option<waitingroomwaitingroom>
+      errors: Option<Newtonsoft.Json.Linq.JToken>
+      messages: Option<Newtonsoft.Json.Linq.JToken>
+      ///Whether the API call was successful.
+      success: Option<bool> }
 
 [<RequireQualifiedAccess>]
 type WaitingRoomCreateWaitingRoom =
     ///Create waiting room response
     | OK of payload: waitingroomsingleresponse
+    ///Create waiting room response failure
+    | BadRequest of payload: WaitingRoomCreateWaitingRoom_BadRequest
+
+type WaitingRoomCreateACustomWaitingRoomPagePreview_BadRequestResult =
+    { ///URL where the custom waiting room page can temporarily be previewed.
+      preview_url: Option<waitingroompreviewurl> }
+
+type WaitingRoomCreateACustomWaitingRoomPagePreview_BadRequest =
+    { result: Option<WaitingRoomCreateACustomWaitingRoomPagePreview_BadRequestResult>
+      errors: Option<Newtonsoft.Json.Linq.JToken>
+      messages: Option<Newtonsoft.Json.Linq.JToken>
+      ///Whether the API call was successful.
+      success: Option<bool> }
 
 [<RequireQualifiedAccess>]
 type WaitingRoomCreateACustomWaitingRoomPagePreview =
     ///Create a custom waiting room page preview response
     | OK of payload: waitingroompreviewresponse
+    ///Create a custom waiting room page preview response failure
+    | BadRequest of payload: WaitingRoomCreateACustomWaitingRoomPagePreview_BadRequest
+
+type WaitingRoomGetZoneSettings_BadRequestResult =
+    { ///Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone.
+      ///Verified search engine crawlers will not be tracked or counted by the waiting room system,
+      ///and will not appear in waiting room analytics.
+      search_engine_crawler_bypass: waitingroomsearchenginecrawlerbypass }
+
+type WaitingRoomGetZoneSettings_BadRequest =
+    { result: Option<WaitingRoomGetZoneSettings_BadRequestResult>
+      errors: Option<Newtonsoft.Json.Linq.JToken>
+      messages: Option<Newtonsoft.Json.Linq.JToken>
+      ///Whether the API call was successful.
+      success: Option<bool> }
 
 [<RequireQualifiedAccess>]
 type WaitingRoomGetZoneSettings =
     ///The current zone-level Waiting Room settings
     | OK of payload: waitingroomzonesettingsresponse
+    ///The current zone-level Waiting Room settings response failure
+    | BadRequest of payload: WaitingRoomGetZoneSettings_BadRequest
+
+type WaitingRoomPatchZoneSettings_BadRequestResult =
+    { ///Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone.
+      ///Verified search engine crawlers will not be tracked or counted by the waiting room system,
+      ///and will not appear in waiting room analytics.
+      search_engine_crawler_bypass: waitingroomsearchenginecrawlerbypass }
+
+type WaitingRoomPatchZoneSettings_BadRequest =
+    { result: Option<WaitingRoomPatchZoneSettings_BadRequestResult>
+      errors: Option<Newtonsoft.Json.Linq.JToken>
+      messages: Option<Newtonsoft.Json.Linq.JToken>
+      ///Whether the API call was successful.
+      success: Option<bool> }
 
 [<RequireQualifiedAccess>]
 type WaitingRoomPatchZoneSettings =
     ///The updated zone-level Waiting Room settings
     | OK of payload: waitingroomzonesettingsresponse
+    ///The zone-level Waiting Room settings response failure
+    | BadRequest of payload: WaitingRoomPatchZoneSettings_BadRequest
+
+type WaitingRoomUpdateZoneSettings_BadRequestResult =
+    { ///Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone.
+      ///Verified search engine crawlers will not be tracked or counted by the waiting room system,
+      ///and will not appear in waiting room analytics.
+      search_engine_crawler_bypass: waitingroomsearchenginecrawlerbypass }
+
+type WaitingRoomUpdateZoneSettings_BadRequest =
+    { result: Option<WaitingRoomUpdateZoneSettings_BadRequestResult>
+      errors: Option<Newtonsoft.Json.Linq.JToken>
+      messages: Option<Newtonsoft.Json.Linq.JToken>
+      ///Whether the API call was successful.
+      success: Option<bool> }
 
 [<RequireQualifiedAccess>]
 type WaitingRoomUpdateZoneSettings =
     ///The updated zone-level Waiting Room settings
     | OK of payload: waitingroomzonesettingsresponse
+    ///The zone-level Waiting Room settings response failure
+    | BadRequest of payload: WaitingRoomUpdateZoneSettings_BadRequest
+
+type WaitingRoomDeleteWaitingRoom_BadRequestResult =
+    { id: Option<waitingroomwaitingroomid> }
+
+type WaitingRoomDeleteWaitingRoom_BadRequest =
+    { result: Option<WaitingRoomDeleteWaitingRoom_BadRequestResult>
+      errors: Option<Newtonsoft.Json.Linq.JToken>
+      messages: Option<Newtonsoft.Json.Linq.JToken>
+      ///Whether the API call was successful.
+      success: Option<bool> }
 
 [<RequireQualifiedAccess>]
 type WaitingRoomDeleteWaitingRoom =
     ///Delete waiting room response
     | OK of payload: waitingroomwaitingroomidresponse
+    ///Delete waiting room response failure
+    | BadRequest of payload: WaitingRoomDeleteWaitingRoom_BadRequest
+
+type WaitingRoomWaitingRoomDetails_BadRequest =
+    { result: Option<waitingroomwaitingroom>
+      errors: Option<Newtonsoft.Json.Linq.JToken>
+      messages: Option<Newtonsoft.Json.Linq.JToken>
+      ///Whether the API call was successful.
+      success: Option<bool> }
 
 [<RequireQualifiedAccess>]
 type WaitingRoomWaitingRoomDetails =
     ///Waiting room details response
     | OK of payload: waitingroomsingleresponse
+    ///Waiting room details response failure
+    | BadRequest of payload: WaitingRoomWaitingRoomDetails_BadRequest
+
+type WaitingRoomPatchWaitingRoom_BadRequest =
+    { result: Option<waitingroomwaitingroom>
+      errors: Option<Newtonsoft.Json.Linq.JToken>
+      messages: Option<Newtonsoft.Json.Linq.JToken>
+      ///Whether the API call was successful.
+      success: Option<bool> }
 
 [<RequireQualifiedAccess>]
 type WaitingRoomPatchWaitingRoom =
     ///Patch waiting room response
     | OK of payload: waitingroomsingleresponse
+    ///Patch waiting room response failure
+    | BadRequest of payload: WaitingRoomPatchWaitingRoom_BadRequest
+
+type WaitingRoomUpdateWaitingRoom_BadRequest =
+    { result: Option<waitingroomwaitingroom>
+      errors: Option<Newtonsoft.Json.Linq.JToken>
+      messages: Option<Newtonsoft.Json.Linq.JToken>
+      ///Whether the API call was successful.
+      success: Option<bool> }
 
 [<RequireQualifiedAccess>]
 type WaitingRoomUpdateWaitingRoom =
     ///Update waiting room response
     | OK of payload: waitingroomsingleresponse
+    ///Update waiting room response failure
+    | BadRequest of payload: WaitingRoomUpdateWaitingRoom_BadRequest
+
+type WaitingRoomListEvents_BadRequestErrorsSource = { pointer: Option<string> }
+
+type WaitingRoomListEvents_BadRequestErrors =
+    { code: int
+      documentation_url: Option<string>
+      message: string
+      source: Option<WaitingRoomListEvents_BadRequestErrorsSource> }
+
+type WaitingRoomListEvents_BadRequestMessagesSource = { pointer: Option<string> }
+
+type WaitingRoomListEvents_BadRequestMessages =
+    { code: int
+      documentation_url: Option<string>
+      message: string
+      source: Option<WaitingRoomListEvents_BadRequestMessagesSource> }
+
+type WaitingRoomListEvents_BadRequestResultinfo =
+    { ///Total number of results for the requested service.
+      count: Option<float>
+      ///Current page within paginated list of results.
+      page: Option<float>
+      ///Number of results per page of results.
+      per_page: Option<float>
+      ///Total results available without any search parameters.
+      total_count: Option<float> }
+
+type WaitingRoomListEvents_BadRequest =
+    { errors: Option<list<WaitingRoomListEvents_BadRequestErrors>>
+      messages: Option<list<WaitingRoomListEvents_BadRequestMessages>>
+      ///Whether the API call was successful.
+      success: Option<bool>
+      result_info: Option<WaitingRoomListEvents_BadRequestResultinfo>
+      result: Option<list<waitingroomeventresult>> }
 
 [<RequireQualifiedAccess>]
 type WaitingRoomListEvents =
     ///List events response
     | OK of payload: waitingroomeventresponsecollection
+    ///List events response failure
+    | BadRequest of payload: WaitingRoomListEvents_BadRequest
+
+type WaitingRoomCreateEvent_BadRequest =
+    { result: Option<waitingroomeventresult>
+      errors: Option<Newtonsoft.Json.Linq.JToken>
+      messages: Option<Newtonsoft.Json.Linq.JToken>
+      ///Whether the API call was successful.
+      success: Option<bool> }
 
 [<RequireQualifiedAccess>]
 type WaitingRoomCreateEvent =
     ///Create event response
     | OK of payload: waitingroomeventresponse
+    ///Create event response failure
+    | BadRequest of payload: WaitingRoomCreateEvent_BadRequest
+
+type WaitingRoomDeleteEvent_BadRequestResult = { id: Option<waitingroomeventid> }
+
+type WaitingRoomDeleteEvent_BadRequest =
+    { result: Option<WaitingRoomDeleteEvent_BadRequestResult>
+      errors: Option<Newtonsoft.Json.Linq.JToken>
+      messages: Option<Newtonsoft.Json.Linq.JToken>
+      ///Whether the API call was successful.
+      success: Option<bool> }
 
 [<RequireQualifiedAccess>]
 type WaitingRoomDeleteEvent =
     ///Delete event response
     | OK of payload: waitingroomeventidresponse
+    ///Delete event response failure
+    | BadRequest of payload: WaitingRoomDeleteEvent_BadRequest
+
+type WaitingRoomEventDetails_BadRequest =
+    { result: Option<waitingroomeventresult>
+      errors: Option<Newtonsoft.Json.Linq.JToken>
+      messages: Option<Newtonsoft.Json.Linq.JToken>
+      ///Whether the API call was successful.
+      success: Option<bool> }
 
 [<RequireQualifiedAccess>]
 type WaitingRoomEventDetails =
     ///Event details response
     | OK of payload: waitingroomeventresponse
+    ///Event details response failure
+    | BadRequest of payload: WaitingRoomEventDetails_BadRequest
+
+type WaitingRoomPatchEvent_BadRequest =
+    { result: Option<waitingroomeventresult>
+      errors: Option<Newtonsoft.Json.Linq.JToken>
+      messages: Option<Newtonsoft.Json.Linq.JToken>
+      ///Whether the API call was successful.
+      success: Option<bool> }
 
 [<RequireQualifiedAccess>]
 type WaitingRoomPatchEvent =
     ///Patch event response
     | OK of payload: waitingroomeventresponse
+    ///Patch event response failure
+    | BadRequest of payload: WaitingRoomPatchEvent_BadRequest
+
+type WaitingRoomUpdateEvent_BadRequest =
+    { result: Option<waitingroomeventresult>
+      errors: Option<Newtonsoft.Json.Linq.JToken>
+      messages: Option<Newtonsoft.Json.Linq.JToken>
+      ///Whether the API call was successful.
+      success: Option<bool> }
 
 [<RequireQualifiedAccess>]
 type WaitingRoomUpdateEvent =
     ///Update event response
     | OK of payload: waitingroomeventresponse
+    ///Update event response failure
+    | BadRequest of payload: WaitingRoomUpdateEvent_BadRequest
+
+type WaitingRoomPreviewActiveEventDetails_BadRequest =
+    { result: Option<waitingroomeventdetailsresult>
+      errors: Option<Newtonsoft.Json.Linq.JToken>
+      messages: Option<Newtonsoft.Json.Linq.JToken>
+      ///Whether the API call was successful.
+      success: Option<bool> }
 
 [<RequireQualifiedAccess>]
 type WaitingRoomPreviewActiveEventDetails =
     ///Preview active event details response
     | OK of payload: waitingroomeventdetailsresponse
+    ///Preview active event details response failure
+    | BadRequest of payload: WaitingRoomPreviewActiveEventDetails_BadRequest
+
+type WaitingRoomListWaitingRoomRules_BadRequestErrorsSource = { pointer: Option<string> }
+
+type WaitingRoomListWaitingRoomRules_BadRequestErrors =
+    { code: int
+      documentation_url: Option<string>
+      message: string
+      source: Option<WaitingRoomListWaitingRoomRules_BadRequestErrorsSource> }
+
+type WaitingRoomListWaitingRoomRules_BadRequestMessagesSource = { pointer: Option<string> }
+
+type WaitingRoomListWaitingRoomRules_BadRequestMessages =
+    { code: int
+      documentation_url: Option<string>
+      message: string
+      source: Option<WaitingRoomListWaitingRoomRules_BadRequestMessagesSource> }
+
+type WaitingRoomListWaitingRoomRules_BadRequestResultinfo =
+    { ///Total number of results for the requested service.
+      count: Option<float>
+      ///Current page within paginated list of results.
+      page: Option<float>
+      ///Number of results per page of results.
+      per_page: Option<float>
+      ///Total results available without any search parameters.
+      total_count: Option<float> }
+
+type WaitingRoomListWaitingRoomRules_BadRequest =
+    { errors: Option<list<WaitingRoomListWaitingRoomRules_BadRequestErrors>>
+      messages: Option<list<WaitingRoomListWaitingRoomRules_BadRequestMessages>>
+      ///Whether the API call was successful.
+      success: Option<bool>
+      result_info: Option<WaitingRoomListWaitingRoomRules_BadRequestResultinfo>
+      result: Option<list<waitingroomruleresult>> }
 
 [<RequireQualifiedAccess>]
 type WaitingRoomListWaitingRoomRules =
     ///List Waiting Room Rules response
     | OK of payload: waitingroomrulesresponsecollection
+    ///List Waiting Room Rules response failure
+    | BadRequest of payload: WaitingRoomListWaitingRoomRules_BadRequest
+
+type WaitingRoomCreateWaitingRoomRule_BadRequestErrorsSource = { pointer: Option<string> }
+
+type WaitingRoomCreateWaitingRoomRule_BadRequestErrors =
+    { code: int
+      documentation_url: Option<string>
+      message: string
+      source: Option<WaitingRoomCreateWaitingRoomRule_BadRequestErrorsSource> }
+
+type WaitingRoomCreateWaitingRoomRule_BadRequestMessagesSource = { pointer: Option<string> }
+
+type WaitingRoomCreateWaitingRoomRule_BadRequestMessages =
+    { code: int
+      documentation_url: Option<string>
+      message: string
+      source: Option<WaitingRoomCreateWaitingRoomRule_BadRequestMessagesSource> }
+
+type WaitingRoomCreateWaitingRoomRule_BadRequestResultinfo =
+    { ///Total number of results for the requested service.
+      count: Option<float>
+      ///Current page within paginated list of results.
+      page: Option<float>
+      ///Number of results per page of results.
+      per_page: Option<float>
+      ///Total results available without any search parameters.
+      total_count: Option<float> }
+
+type WaitingRoomCreateWaitingRoomRule_BadRequest =
+    { errors: Option<list<WaitingRoomCreateWaitingRoomRule_BadRequestErrors>>
+      messages: Option<list<WaitingRoomCreateWaitingRoomRule_BadRequestMessages>>
+      ///Whether the API call was successful.
+      success: Option<bool>
+      result_info: Option<WaitingRoomCreateWaitingRoomRule_BadRequestResultinfo>
+      result: Option<list<waitingroomruleresult>> }
 
 [<RequireQualifiedAccess>]
 type WaitingRoomCreateWaitingRoomRule =
     ///Create Waiting Room Rule response
     | OK of payload: waitingroomrulesresponsecollection
+    ///Create Waiting Room Rule response failure
+    | BadRequest of payload: WaitingRoomCreateWaitingRoomRule_BadRequest
+
+type WaitingRoomReplaceWaitingRoomRules_BadRequestErrorsSource = { pointer: Option<string> }
+
+type WaitingRoomReplaceWaitingRoomRules_BadRequestErrors =
+    { code: int
+      documentation_url: Option<string>
+      message: string
+      source: Option<WaitingRoomReplaceWaitingRoomRules_BadRequestErrorsSource> }
+
+type WaitingRoomReplaceWaitingRoomRules_BadRequestMessagesSource = { pointer: Option<string> }
+
+type WaitingRoomReplaceWaitingRoomRules_BadRequestMessages =
+    { code: int
+      documentation_url: Option<string>
+      message: string
+      source: Option<WaitingRoomReplaceWaitingRoomRules_BadRequestMessagesSource> }
+
+type WaitingRoomReplaceWaitingRoomRules_BadRequestResultinfo =
+    { ///Total number of results for the requested service.
+      count: Option<float>
+      ///Current page within paginated list of results.
+      page: Option<float>
+      ///Number of results per page of results.
+      per_page: Option<float>
+      ///Total results available without any search parameters.
+      total_count: Option<float> }
+
+type WaitingRoomReplaceWaitingRoomRules_BadRequest =
+    { errors: Option<list<WaitingRoomReplaceWaitingRoomRules_BadRequestErrors>>
+      messages: Option<list<WaitingRoomReplaceWaitingRoomRules_BadRequestMessages>>
+      ///Whether the API call was successful.
+      success: Option<bool>
+      result_info: Option<WaitingRoomReplaceWaitingRoomRules_BadRequestResultinfo>
+      result: Option<list<waitingroomruleresult>> }
 
 [<RequireQualifiedAccess>]
 type WaitingRoomReplaceWaitingRoomRules =
     ///Replace Waiting Room Rules response
     | OK of payload: waitingroomrulesresponsecollection
+    ///Replace Waiting Room Rules response failure
+    | BadRequest of payload: WaitingRoomReplaceWaitingRoomRules_BadRequest
+
+type WaitingRoomDeleteWaitingRoomRule_BadRequestErrorsSource = { pointer: Option<string> }
+
+type WaitingRoomDeleteWaitingRoomRule_BadRequestErrors =
+    { code: int
+      documentation_url: Option<string>
+      message: string
+      source: Option<WaitingRoomDeleteWaitingRoomRule_BadRequestErrorsSource> }
+
+type WaitingRoomDeleteWaitingRoomRule_BadRequestMessagesSource = { pointer: Option<string> }
+
+type WaitingRoomDeleteWaitingRoomRule_BadRequestMessages =
+    { code: int
+      documentation_url: Option<string>
+      message: string
+      source: Option<WaitingRoomDeleteWaitingRoomRule_BadRequestMessagesSource> }
+
+type WaitingRoomDeleteWaitingRoomRule_BadRequestResultinfo =
+    { ///Total number of results for the requested service.
+      count: Option<float>
+      ///Current page within paginated list of results.
+      page: Option<float>
+      ///Number of results per page of results.
+      per_page: Option<float>
+      ///Total results available without any search parameters.
+      total_count: Option<float> }
+
+type WaitingRoomDeleteWaitingRoomRule_BadRequest =
+    { errors: Option<list<WaitingRoomDeleteWaitingRoomRule_BadRequestErrors>>
+      messages: Option<list<WaitingRoomDeleteWaitingRoomRule_BadRequestMessages>>
+      ///Whether the API call was successful.
+      success: Option<bool>
+      result_info: Option<WaitingRoomDeleteWaitingRoomRule_BadRequestResultinfo>
+      result: Option<list<waitingroomruleresult>> }
 
 [<RequireQualifiedAccess>]
 type WaitingRoomDeleteWaitingRoomRule =
     ///Delete Waiting Room Rule response
     | OK of payload: waitingroomrulesresponsecollection
+    ///Delete Waiting Room Rule response failure
+    | BadRequest of payload: WaitingRoomDeleteWaitingRoomRule_BadRequest
+
+type WaitingRoomPatchWaitingRoomRule_BadRequestErrorsSource = { pointer: Option<string> }
+
+type WaitingRoomPatchWaitingRoomRule_BadRequestErrors =
+    { code: int
+      documentation_url: Option<string>
+      message: string
+      source: Option<WaitingRoomPatchWaitingRoomRule_BadRequestErrorsSource> }
+
+type WaitingRoomPatchWaitingRoomRule_BadRequestMessagesSource = { pointer: Option<string> }
+
+type WaitingRoomPatchWaitingRoomRule_BadRequestMessages =
+    { code: int
+      documentation_url: Option<string>
+      message: string
+      source: Option<WaitingRoomPatchWaitingRoomRule_BadRequestMessagesSource> }
+
+type WaitingRoomPatchWaitingRoomRule_BadRequestResultinfo =
+    { ///Total number of results for the requested service.
+      count: Option<float>
+      ///Current page within paginated list of results.
+      page: Option<float>
+      ///Number of results per page of results.
+      per_page: Option<float>
+      ///Total results available without any search parameters.
+      total_count: Option<float> }
+
+type WaitingRoomPatchWaitingRoomRule_BadRequest =
+    { errors: Option<list<WaitingRoomPatchWaitingRoomRule_BadRequestErrors>>
+      messages: Option<list<WaitingRoomPatchWaitingRoomRule_BadRequestMessages>>
+      ///Whether the API call was successful.
+      success: Option<bool>
+      result_info: Option<WaitingRoomPatchWaitingRoomRule_BadRequestResultinfo>
+      result: Option<list<waitingroomruleresult>> }
 
 [<RequireQualifiedAccess>]
 type WaitingRoomPatchWaitingRoomRule =
     ///Patch Waiting Room Rule response
     | OK of payload: waitingroomrulesresponsecollection
+    ///Patch Waiting Room Rule response failure
+    | BadRequest of payload: WaitingRoomPatchWaitingRoomRule_BadRequest
+
+type WaitingRoomGetWaitingRoomStatus_BadRequestResult =
+    { estimated_queued_users: Option<waitingroomestimatedqueuedusers>
+      estimated_total_active_users: Option<waitingroomestimatedtotalactiveusers>
+      event_id: Option<waitingroomstatuseventid>
+      max_estimated_time_minutes: Option<waitingroommaxestimatedtimeminutes>
+      status: Option<waitingroomstatus> }
+
+type WaitingRoomGetWaitingRoomStatus_BadRequest =
+    { result: Option<WaitingRoomGetWaitingRoomStatus_BadRequestResult>
+      errors: Option<Newtonsoft.Json.Linq.JToken>
+      messages: Option<Newtonsoft.Json.Linq.JToken>
+      ///Whether the API call was successful.
+      success: Option<bool> }
 
 [<RequireQualifiedAccess>]
 type WaitingRoomGetWaitingRoomStatus =
     ///Get waiting room status response
     | OK of payload: waitingroomstatusresponse
+    ///Get waiting room status response failure
+    | BadRequest of payload: WaitingRoomGetWaitingRoomStatus_BadRequest

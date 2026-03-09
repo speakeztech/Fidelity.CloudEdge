@@ -13,6 +13,9 @@
 
 source "$(dirname "${BASH_SOURCE[0]}")/lib.sh"
 
+# Ensure dotnet global tools are on PATH
+export PATH="$HOME/.dotnet/tools:$PATH"
+
 # ─── Arguments ─────────────────────────────────────────────────────
 
 SINGLE_SERVICE=""
@@ -101,6 +104,14 @@ for service_key in $SERVICES; do
         continue
     fi
 
+    # Step 1b: Preprocess OpenAPI spec (fix allOf, missing operationIds, etc.)
+    print_info "Preprocessing OpenAPI spec..."
+    if ! bash "$SCRIPTS_DIR/preprocess-openapi.sh" "$SPEC_FILE"; then
+        print_error "Preprocessing failed for $SERVICE_NAME"
+        FAIL=$((FAIL + 1))
+        continue
+    fi
+
     # Step 2: Run Hawaii code generation
     CONFIG_FILE="$HAWAII_DIR/$HAWAII_CONFIG"
     if [[ ! -f "$CONFIG_FILE" ]]; then
@@ -126,6 +137,21 @@ for service_key in $SERVICES; do
 
     # Step 3: Run post-processors
     POSTPROCESSORS_DIR="$HAWAII_DIR/postprocessors"
+
+    # Universal: auto-fix Hawaii type compatibility issues (runs on all services)
+    print_info "Post-processing: auto-fix types..."
+    CLIENT_FS="$GENERATED_DIR/Client.fs"
+    if [[ -f "$CLIENT_FS" ]]; then
+        dotnet fsi "$POSTPROCESSORS_DIR/auto-fix-types.fsx" "$GENERATED_DIR/Types.fs" "$CLIENT_FS"
+    else
+        dotnet fsi "$POSTPROCESSORS_DIR/auto-fix-types.fsx" "$GENERATED_DIR/Types.fs"
+    fi
+
+    # Universal: fix incompatible query parameter types in Client.fs
+    if [[ -f "$CLIENT_FS" ]]; then
+        print_info "Post-processing: fix query param types..."
+        dotnet fsi "$POSTPROCESSORS_DIR/fix-jobject-query.fsx" "$CLIENT_FS" "$GENERATED_DIR/Types.fs"
+    fi
 
     if has_post_processor "$service_key" "discriminators"; then
         DISC_ARGS=$(get_post_processor_args "$service_key" "discriminators")
@@ -161,6 +187,31 @@ for service_key in $SERVICES; do
                 --method-name "$METHOD_NAME" \
                 --body-type "$BODY_TYPE"
         fi
+    fi
+
+    if has_post_processor "$service_key" "fix-dollar-identifiers"; then
+        print_info "Post-processing: fix dollar-prefixed identifiers..."
+        dotnet fsi "$POSTPROCESSORS_DIR/fix-dollar-identifiers.fsx" \
+            "$GENERATED_DIR/Types.fs"
+    fi
+
+    if has_post_processor "$service_key" "fix-type-aliases"; then
+        FTA_ARGS=$(get_post_processor_args "$service_key" "fix-type-aliases")
+        ALIASES=$(echo "$FTA_ARGS" | jq -r '.aliases // empty')
+
+        if [[ -n "$ALIASES" ]]; then
+            print_info "Post-processing: fix type aliases..."
+            dotnet fsi "$POSTPROCESSORS_DIR/fix-type-aliases.fsx" \
+                "$GENERATED_DIR/Types.fs" \
+                --aliases "$ALIASES"
+        fi
+    fi
+
+    # Universal (last): fix missing list separators in Client.fs (Hawaii formatting bug)
+    # Runs last because other postprocessors (e.g. missing-body-params) may introduce new entries
+    if [[ -f "$CLIENT_FS" ]]; then
+        print_info "Post-processing: fix list separators..."
+        dotnet fsi "$POSTPROCESSORS_DIR/fix-list-separators.fsx" "$CLIENT_FS"
     fi
 
     # Step 4: Deploy to src/Management/

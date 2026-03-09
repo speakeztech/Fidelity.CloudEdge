@@ -1,5 +1,9 @@
 namespace rec Fidelity.CloudEdge.Management.Hyperdrive.Types
 
+// Auto-generated stub types (missing from Hawaii output)
+type results = string
+type your = string
+
 ///The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
 type ``hyperdrivehyperdrive-name`` = string
 type ``hyperdrivehyperdrive-origin-connection-limit`` = int
@@ -40,18 +44,21 @@ type Messages =
     static member Create (code: int, message: string): Messages = { code = code; message = message }
 
 type ``hyperdriveapi-response-collection`` =
-    { errors: Option<list<Errors>>
-      messages: Option<list<Messages>>
-      result: Option<Newtonsoft.Json.Linq.JObject>
+    { errors: list<Errors>
+      messages: list<Messages>
+      result: Newtonsoft.Json.Linq.JObject
       ///Return the status of the API call success.
-      success: Option<bool>
+      success: bool
       result_info: Option<hyperdriveresultinfo> }
     ///Creates an instance of hyperdriveapi-response-collection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``hyperdriveapi-response-collection`` =
-        { errors = None
-          messages = None
-          result = None
-          success = None
+    static member Create (errors: list<Errors>,
+                          messages: list<Messages>,
+                          result: Newtonsoft.Json.Linq.JObject,
+                          success: bool): ``hyperdriveapi-response-collection`` =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success
           result_info = None }
 
 type ``hyperdriveapi-response-commonErrors`` =
@@ -320,32 +327,226 @@ type hyperdriveresultinfo =
           per_page = None
           total_count = None }
 
+type ``list-hyperdriveresponseErrors`` =
+    { code: int
+      message: string }
+    ///Creates an instance of list-hyperdriveresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``list-hyperdriveresponseErrors`` =
+        { code = code; message = message }
+
+type ``list-hyperdriveresponseMessages`` =
+    { code: int
+      message: string }
+    ///Creates an instance of list-hyperdriveresponseMessages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``list-hyperdriveresponseMessages`` =
+        { code = code; message = message }
+
+type ``list-hyperdriveresponse`` =
+    { errors: list<``list-hyperdriveresponseErrors``>
+      messages: list<``list-hyperdriveresponseMessages``>
+      result: list<``hyperdrivehyperdrive-config-response``>
+      ///Return the status of the API call success.
+      success: bool
+      result_info: Option<hyperdriveresultinfo> }
+    ///Creates an instance of list-hyperdriveresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``list-hyperdriveresponseErrors``>,
+                          messages: list<``list-hyperdriveresponseMessages``>,
+                          result: list<``hyperdrivehyperdrive-config-response``>,
+                          success: bool): ``list-hyperdriveresponse`` =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success
+          result_info = None }
+
+type ``create-hyperdriveresponseErrors`` =
+    { code: int
+      message: string }
+    ///Creates an instance of create-hyperdriveresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``create-hyperdriveresponseErrors`` =
+        { code = code; message = message }
+
+type ``create-hyperdriveresponseMessages`` =
+    { code: int
+      message: string }
+    ///Creates an instance of create-hyperdriveresponseMessages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``create-hyperdriveresponseMessages`` =
+        { code = code; message = message }
+
+type ``create-hyperdriveresponse`` =
+    { errors: list<``create-hyperdriveresponseErrors``>
+      messages: list<``create-hyperdriveresponseMessages``>
+      result: ``hyperdrivehyperdrive-config-response``
+      ///Return the status of the API call success.
+      success: bool }
+    ///Creates an instance of create-hyperdriveresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``create-hyperdriveresponseErrors``>,
+                          messages: list<``create-hyperdriveresponseMessages``>,
+                          result: ``hyperdrivehyperdrive-config-response``,
+                          success: bool): ``create-hyperdriveresponse`` =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
+
+type ``delete-hyperdriveresponseErrors`` =
+    { code: int
+      message: string }
+    ///Creates an instance of delete-hyperdriveresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``delete-hyperdriveresponseErrors`` =
+        { code = code; message = message }
+
+type ``delete-hyperdriveresponseMessages`` =
+    { code: int
+      message: string }
+    ///Creates an instance of delete-hyperdriveresponseMessages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``delete-hyperdriveresponseMessages`` =
+        { code = code; message = message }
+
+type ``delete-hyperdriveresponse`` =
+    { errors: list<``delete-hyperdriveresponseErrors``>
+      messages: list<``delete-hyperdriveresponseMessages``>
+      result: Newtonsoft.Json.Linq.JObject
+      ///Return the status of the API call success.
+      success: bool }
+    ///Creates an instance of delete-hyperdriveresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``delete-hyperdriveresponseErrors``>,
+                          messages: list<``delete-hyperdriveresponseMessages``>,
+                          result: Newtonsoft.Json.Linq.JObject,
+                          success: bool): ``delete-hyperdriveresponse`` =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
+
+type ``get-hyperdriveresponseErrors`` =
+    { code: int
+      message: string }
+    ///Creates an instance of get-hyperdriveresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``get-hyperdriveresponseErrors`` =
+        { code = code; message = message }
+
+type ``get-hyperdriveresponseMessages`` =
+    { code: int
+      message: string }
+    ///Creates an instance of get-hyperdriveresponseMessages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``get-hyperdriveresponseMessages`` =
+        { code = code; message = message }
+
+type ``get-hyperdriveresponse`` =
+    { errors: list<``get-hyperdriveresponseErrors``>
+      messages: list<``get-hyperdriveresponseMessages``>
+      result: ``hyperdrivehyperdrive-config-response``
+      ///Return the status of the API call success.
+      success: bool }
+    ///Creates an instance of get-hyperdriveresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``get-hyperdriveresponseErrors``>,
+                          messages: list<``get-hyperdriveresponseMessages``>,
+                          result: ``hyperdrivehyperdrive-config-response``,
+                          success: bool): ``get-hyperdriveresponse`` =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
+
+type ``patch-hyperdriveresponseErrors`` =
+    { code: int
+      message: string }
+    ///Creates an instance of patch-hyperdriveresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``patch-hyperdriveresponseErrors`` =
+        { code = code; message = message }
+
+type ``patch-hyperdriveresponseMessages`` =
+    { code: int
+      message: string }
+    ///Creates an instance of patch-hyperdriveresponseMessages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``patch-hyperdriveresponseMessages`` =
+        { code = code; message = message }
+
+type ``patch-hyperdriveresponse`` =
+    { errors: list<``patch-hyperdriveresponseErrors``>
+      messages: list<``patch-hyperdriveresponseMessages``>
+      result: ``hyperdrivehyperdrive-config-response``
+      ///Return the status of the API call success.
+      success: bool }
+    ///Creates an instance of patch-hyperdriveresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``patch-hyperdriveresponseErrors``>,
+                          messages: list<``patch-hyperdriveresponseMessages``>,
+                          result: ``hyperdrivehyperdrive-config-response``,
+                          success: bool): ``patch-hyperdriveresponse`` =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
+
+type ``update-hyperdriveresponseErrors`` =
+    { code: int
+      message: string }
+    ///Creates an instance of update-hyperdriveresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``update-hyperdriveresponseErrors`` =
+        { code = code; message = message }
+
+type ``update-hyperdriveresponseMessages`` =
+    { code: int
+      message: string }
+    ///Creates an instance of update-hyperdriveresponseMessages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``update-hyperdriveresponseMessages`` =
+        { code = code; message = message }
+
+type ``update-hyperdriveresponse`` =
+    { errors: list<``update-hyperdriveresponseErrors``>
+      messages: list<``update-hyperdriveresponseMessages``>
+      result: ``hyperdrivehyperdrive-config-response``
+      ///Return the status of the API call success.
+      success: bool }
+    ///Creates an instance of update-hyperdriveresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``update-hyperdriveresponseErrors``>,
+                          messages: list<``update-hyperdriveresponseMessages``>,
+                          result: ``hyperdrivehyperdrive-config-response``,
+                          success: bool): ``update-hyperdriveresponse`` =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
+
 [<RequireQualifiedAccess>]
 type ListHyperdrive =
     ///List Hyperdrives Response.
-    | OK of payload: string
+    | OK of payload: ``list-hyperdriveresponse``
+    ///List Hyperdrives Failure Response.
+    | BadRequest of payload: ``hyperdriveapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type CreateHyperdrive =
     ///Create Hyperdrive Response.
-    | OK of payload: string
+    | OK of payload: ``create-hyperdriveresponse``
+    ///Create Hyperdrive Failure Response.
+    | BadRequest of payload: ``hyperdriveapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type DeleteHyperdrive =
     ///Delete Hyperdrive Response.
-    | OK of payload: string
+    | OK of payload: ``delete-hyperdriveresponse``
+    ///Delete Hyperdrive Failure.
+    | BadRequest of payload: ``hyperdriveapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type GetHyperdrive =
     ///Get Hyperdrive Response.
-    | OK of payload: string
+    | OK of payload: ``get-hyperdriveresponse``
+    ///Get Hyperdrive Failure.
+    | BadRequest of payload: ``hyperdriveapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type PatchHyperdrive =
     ///Patch Hyperdrive Response.
-    | OK of payload: string
+    | OK of payload: ``patch-hyperdriveresponse``
+    ///Patch Hyperdrive Failure Response.
+    | BadRequest of payload: ``hyperdriveapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type UpdateHyperdrive =
     ///Update Hyperdrive Response.
-    | OK of payload: string
+    | OK of payload: ``update-hyperdriveresponse``
+    ///Update Hyperdrive Failure Response.
+    | BadRequest of payload: ``hyperdriveapi-response-common-failure``

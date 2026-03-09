@@ -18,7 +18,7 @@ module Environment =
         env = "production" || env = "prod"
 
 module Version =
-    let current = "0.1.0"
+    let current = "0.1.7"
 
 module Configuration =
     let private config = System.Collections.Generic.Dictionary<string, string>()

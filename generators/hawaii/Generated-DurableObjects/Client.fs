@@ -44,7 +44,9 @@ type DurableObjectsClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return DurableObjectsNamespaceListNamespaces.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return DurableObjectsNamespaceListNamespaces.OK(Serializer.deserialize content)
+            | _ -> return DurableObjectsNamespaceListNamespaces.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -74,5 +76,7 @@ type DurableObjectsClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return DurableObjectsNamespaceListObjects.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return DurableObjectsNamespaceListObjects.OK(Serializer.deserialize content)
+            | _ -> return DurableObjectsNamespaceListObjects.BadRequest(Serializer.deserialize content)
         }

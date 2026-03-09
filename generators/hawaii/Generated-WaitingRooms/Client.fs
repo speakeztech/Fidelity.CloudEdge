@@ -25,7 +25,9 @@ type WaitingRoomsClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.getAsync httpClient "/zones/{zone_id}/waiting_rooms" requestParts cancellationToken
 
-            return WaitingRoomListWaitingRooms.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WaitingRoomListWaitingRooms.OK(Serializer.deserialize content)
+            | _ -> return WaitingRoomListWaitingRooms.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -45,7 +47,9 @@ type WaitingRoomsClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.postAsync httpClient "/zones/{zone_id}/waiting_rooms" requestParts cancellationToken
 
-            return WaitingRoomCreateWaitingRoom.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WaitingRoomCreateWaitingRoom.OK(Serializer.deserialize content)
+            | _ -> return WaitingRoomCreateWaitingRoom.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -80,7 +84,9 @@ type WaitingRoomsClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.postAsync httpClient "/zones/{zone_id}/waiting_rooms/preview" requestParts cancellationToken
 
-            return WaitingRoomCreateACustomWaitingRoomPagePreview.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WaitingRoomCreateACustomWaitingRoomPagePreview.OK(Serializer.deserialize content)
+            | _ -> return WaitingRoomCreateACustomWaitingRoomPagePreview.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -93,7 +99,9 @@ type WaitingRoomsClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.getAsync httpClient "/zones/{zone_id}/waiting_rooms/settings" requestParts cancellationToken
 
-            return WaitingRoomGetZoneSettings.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WaitingRoomGetZoneSettings.OK(Serializer.deserialize content)
+            | _ -> return WaitingRoomGetZoneSettings.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -117,7 +125,9 @@ type WaitingRoomsClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WaitingRoomPatchZoneSettings.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WaitingRoomPatchZoneSettings.OK(Serializer.deserialize content)
+            | _ -> return WaitingRoomPatchZoneSettings.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -137,7 +147,9 @@ type WaitingRoomsClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.putAsync httpClient "/zones/{zone_id}/waiting_rooms/settings" requestParts cancellationToken
 
-            return WaitingRoomUpdateZoneSettings.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WaitingRoomUpdateZoneSettings.OK(Serializer.deserialize content)
+            | _ -> return WaitingRoomUpdateZoneSettings.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -161,7 +173,9 @@ type WaitingRoomsClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WaitingRoomDeleteWaitingRoom.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WaitingRoomDeleteWaitingRoom.OK(Serializer.deserialize content)
+            | _ -> return WaitingRoomDeleteWaitingRoom.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -185,7 +199,9 @@ type WaitingRoomsClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WaitingRoomWaitingRoomDetails.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WaitingRoomWaitingRoomDetails.OK(Serializer.deserialize content)
+            | _ -> return WaitingRoomWaitingRoomDetails.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -211,7 +227,9 @@ type WaitingRoomsClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WaitingRoomPatchWaitingRoom.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WaitingRoomPatchWaitingRoom.OK(Serializer.deserialize content)
+            | _ -> return WaitingRoomPatchWaitingRoom.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -237,7 +255,9 @@ type WaitingRoomsClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WaitingRoomUpdateWaitingRoom.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WaitingRoomUpdateWaitingRoom.OK(Serializer.deserialize content)
+            | _ -> return WaitingRoomUpdateWaitingRoom.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -256,7 +276,9 @@ type WaitingRoomsClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WaitingRoomListEvents.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WaitingRoomListEvents.OK(Serializer.deserialize content)
+            | _ -> return WaitingRoomListEvents.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -282,7 +304,9 @@ type WaitingRoomsClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WaitingRoomCreateEvent.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WaitingRoomCreateEvent.OK(Serializer.deserialize content)
+            | _ -> return WaitingRoomCreateEvent.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -308,7 +332,9 @@ type WaitingRoomsClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WaitingRoomDeleteEvent.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WaitingRoomDeleteEvent.OK(Serializer.deserialize content)
+            | _ -> return WaitingRoomDeleteEvent.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -334,7 +360,9 @@ type WaitingRoomsClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WaitingRoomEventDetails.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WaitingRoomEventDetails.OK(Serializer.deserialize content)
+            | _ -> return WaitingRoomEventDetails.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -362,7 +390,9 @@ type WaitingRoomsClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WaitingRoomPatchEvent.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WaitingRoomPatchEvent.OK(Serializer.deserialize content)
+            | _ -> return WaitingRoomPatchEvent.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -390,7 +420,9 @@ type WaitingRoomsClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WaitingRoomUpdateEvent.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WaitingRoomUpdateEvent.OK(Serializer.deserialize content)
+            | _ -> return WaitingRoomUpdateEvent.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -416,7 +448,9 @@ type WaitingRoomsClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WaitingRoomPreviewActiveEventDetails.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WaitingRoomPreviewActiveEventDetails.OK(Serializer.deserialize content)
+            | _ -> return WaitingRoomPreviewActiveEventDetails.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -440,7 +474,9 @@ type WaitingRoomsClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WaitingRoomListWaitingRoomRules.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WaitingRoomListWaitingRoomRules.OK(Serializer.deserialize content)
+            | _ -> return WaitingRoomListWaitingRoomRules.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -466,7 +502,9 @@ type WaitingRoomsClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WaitingRoomCreateWaitingRoomRule.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WaitingRoomCreateWaitingRoomRule.OK(Serializer.deserialize content)
+            | _ -> return WaitingRoomCreateWaitingRoomRule.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -492,7 +530,9 @@ type WaitingRoomsClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WaitingRoomReplaceWaitingRoomRules.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WaitingRoomReplaceWaitingRoomRules.OK(Serializer.deserialize content)
+            | _ -> return WaitingRoomReplaceWaitingRoomRules.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -518,7 +558,9 @@ type WaitingRoomsClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WaitingRoomDeleteWaitingRoomRule.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WaitingRoomDeleteWaitingRoomRule.OK(Serializer.deserialize content)
+            | _ -> return WaitingRoomDeleteWaitingRoomRule.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -546,7 +588,9 @@ type WaitingRoomsClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WaitingRoomPatchWaitingRoomRule.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WaitingRoomPatchWaitingRoomRule.OK(Serializer.deserialize content)
+            | _ -> return WaitingRoomPatchWaitingRoomRule.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -579,5 +623,7 @@ type WaitingRoomsClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WaitingRoomGetWaitingRoomStatus.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WaitingRoomGetWaitingRoomStatus.OK(Serializer.deserialize content)
+            | _ -> return WaitingRoomGetWaitingRoomStatus.BadRequest(Serializer.deserialize content)
         }

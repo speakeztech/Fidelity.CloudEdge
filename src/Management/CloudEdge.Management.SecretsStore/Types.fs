@@ -1,5 +1,9 @@
 namespace rec Fidelity.CloudEdge.Management.SecretsStore.Types
 
+// Auto-generated stub types (missing from Hawaii output)
+type results = string
+type secrets = string
+
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type ``secrets-storeSecretStatus`` =
     | [<CompiledName "pending">] Pending
@@ -281,17 +285,19 @@ type ``secrets-storequotaresponseResultinfo`` =
           total_count = None }
 
 type ``secrets-storequotaresponse`` =
-    { errors: Option<list<``secrets-storequotaresponseErrors``>>
-      messages: Option<list<``secrets-storequotaresponseMessages``>>
+    { errors: list<``secrets-storequotaresponseErrors``>
+      messages: list<``secrets-storequotaresponseMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<``secrets-storequotaresponseResultinfo``>
       result: Option<Newtonsoft.Json.Linq.JToken> }
     ///Creates an instance of secrets-storequotaresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``secrets-storequotaresponse`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``secrets-storequotaresponseErrors``>,
+                          messages: list<``secrets-storequotaresponseMessages``>,
+                          success: bool): ``secrets-storequotaresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
           result = None }
 
@@ -375,17 +381,19 @@ type ``secrets-storesecretresponseResultinfo`` =
           total_count = None }
 
 type ``secrets-storesecretresponse`` =
-    { errors: Option<list<``secrets-storesecretresponseErrors``>>
-      messages: Option<list<``secrets-storesecretresponseMessages``>>
+    { errors: list<``secrets-storesecretresponseErrors``>
+      messages: list<``secrets-storesecretresponseMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<``secrets-storesecretresponseResultinfo``>
       result: Option<Newtonsoft.Json.Linq.JToken> }
     ///Creates an instance of secrets-storesecretresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``secrets-storesecretresponse`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``secrets-storesecretresponseErrors``>,
+                          messages: list<``secrets-storesecretresponseMessages``>,
+                          success: bool): ``secrets-storesecretresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
           result = None }
 
@@ -446,17 +454,19 @@ type ``secrets-storesecretsresponsecollectionResultinfo`` =
           total_count = None }
 
 type ``secrets-storesecretsresponsecollection`` =
-    { errors: Option<list<``secrets-storesecretsresponsecollectionErrors``>>
-      messages: Option<list<``secrets-storesecretsresponsecollectionMessages``>>
+    { errors: list<``secrets-storesecretsresponsecollectionErrors``>
+      messages: list<``secrets-storesecretsresponsecollectionMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<``secrets-storesecretsresponsecollectionResultinfo``>
       result: Option<list<``secrets-storesecretObject``>> }
     ///Creates an instance of secrets-storesecretsresponsecollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``secrets-storesecretsresponsecollection`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``secrets-storesecretsresponsecollectionErrors``>,
+                          messages: list<``secrets-storesecretsresponsecollectionMessages``>,
+                          success: bool): ``secrets-storesecretsresponsecollection`` =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
           result = None }
 
@@ -530,17 +540,19 @@ type ``secrets-storestoreresponseResultinfo`` =
           total_count = None }
 
 type ``secrets-storestoreresponse`` =
-    { errors: Option<list<``secrets-storestoreresponseErrors``>>
-      messages: Option<list<``secrets-storestoreresponseMessages``>>
+    { errors: list<``secrets-storestoreresponseErrors``>
+      messages: list<``secrets-storestoreresponseMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<``secrets-storestoreresponseResultinfo``>
       result: Option<Newtonsoft.Json.Linq.JToken> }
     ///Creates an instance of secrets-storestoreresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``secrets-storestoreresponse`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``secrets-storestoreresponseErrors``>,
+                          messages: list<``secrets-storestoreresponseMessages``>,
+                          success: bool): ``secrets-storestoreresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
           result = None }
 
@@ -595,17 +607,19 @@ type ``secrets-storestoresresponsecollectionResultinfo`` =
           total_count = None }
 
 type ``secrets-storestoresresponsecollection`` =
-    { errors: Option<list<``secrets-storestoresresponsecollectionErrors``>>
-      messages: Option<list<``secrets-storestoresresponsecollectionMessages``>>
+    { errors: list<``secrets-storestoresresponsecollectionErrors``>
+      messages: list<``secrets-storestoresresponsecollectionMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<``secrets-storestoresresponsecollectionResultinfo``>
       result: Option<list<``secrets-storestoreObject``>> }
     ///Creates an instance of secrets-storestoresresponsecollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``secrets-storestoresresponsecollection`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``secrets-storestoresresponsecollectionErrors``>,
+                          messages: list<``secrets-storestoresresponsecollectionMessages``>,
+                          success: bool): ``secrets-storestoresresponsecollection`` =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
           result = None }
 
@@ -622,58 +636,82 @@ type ``secrets-storeusageQuotaObject`` =
 type SecretsStoreQuota =
     ///Usage and quota
     | OK of payload: ``secrets-storequotaresponse``
+    ///List store secrets response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type SecretsStoreList =
     ///List account stores response
     | OK of payload: ``secrets-storestoresresponsecollection``
+    ///List account stores response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type SecretsStoreCreate =
     ///store details
     | OK of payload: ``secrets-storestoresresponsecollection``
+    ///List store secrets response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type SecretsStoreDeleteById =
     ///store details
     | OK of payload: ``secrets-storestoreresponse``
+    ///failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type SecretsStoreGetStoreById =
     ///store details
     | OK of payload: ``secrets-storestoreresponse``
+    ///failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type SecretsStoreDeleteBulk =
     ///secret detail
     | OK of payload: ``secrets-storesecretsresponsecollection``
+    ///List store secrets response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type SecretsStoreSecretsList =
     ///List store secrets response
     | OK of payload: ``secrets-storesecretsresponsecollection``
+    ///List store secrets response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type SecretsStoreSecretCreate =
     ///secret detail
     | OK of payload: ``secrets-storesecretsresponsecollection``
+    ///List store secrets response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type SecretsStoreSecretDeleteById =
     ///secret detail
     | OK of payload: ``secrets-storesecretresponse``
+    ///failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type SecretsStoreGetById =
     ///secret detail
     | OK of payload: ``secrets-storesecretresponse``
+    ///failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type SecretsStorePatchById =
     ///secret detail
     | OK of payload: ``secrets-storesecretresponse``
+    ///failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type SecretsStoreDuplicateById =
     ///secret detail
     | OK of payload: ``secrets-storesecretresponse``
+    ///failure
+    | BadRequest of payload: string

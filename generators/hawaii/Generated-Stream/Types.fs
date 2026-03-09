@@ -1,5 +1,8 @@
 namespace rec Fidelity.CloudEdge.Management.Stream.Types
 
+// Auto-generated stub types (missing from Hawaii output)
+type access = string
+
 ///The account identifier tag.
 type streamaccountidentifier = string
 ///Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
@@ -352,16 +355,16 @@ type Messages =
           source = None }
 
 type streamaddAudioTrackResponse =
-    { errors: Option<list<Errors>>
-      messages: Option<list<Messages>>
+    { errors: list<Errors>
+      messages: list<Messages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<streamadditionalAudio> }
     ///Creates an instance of streamaddAudioTrackResponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): streamaddAudioTrackResponse =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<Errors>, messages: list<Messages>, success: bool): streamaddAudioTrackResponse =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type streamadditionalAudio =
@@ -545,16 +548,18 @@ type streamclipResponseSingleMessages =
           source = None }
 
 type streamclipResponseSingle =
-    { errors: Option<list<streamclipResponseSingleErrors>>
-      messages: Option<list<streamclipResponseSingleMessages>>
+    { errors: list<streamclipResponseSingleErrors>
+      messages: list<streamclipResponseSingleMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<Newtonsoft.Json.Linq.JToken> }
     ///Creates an instance of streamclipResponseSingle with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): streamclipResponseSingle =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<streamclipResponseSingleErrors>,
+                          messages: list<streamclipResponseSingleMessages>,
+                          success: bool): streamclipResponseSingle =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type streamclipping =
@@ -679,16 +684,18 @@ type streamdeletedresponseMessages =
           source = None }
 
 type streamdeletedresponse =
-    { errors: Option<list<streamdeletedresponseErrors>>
-      messages: Option<list<streamdeletedresponseMessages>>
+    { errors: list<streamdeletedresponseErrors>
+      messages: list<streamdeletedresponseMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<string> }
     ///Creates an instance of streamdeletedresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): streamdeletedresponse =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<streamdeletedresponseErrors>,
+                          messages: list<streamdeletedresponseMessages>,
+                          success: bool): streamdeletedresponse =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type streamdirectuploadrequest =
@@ -771,16 +778,18 @@ type Result =
           watermark = None }
 
 type streamdirectuploadresponse =
-    { errors: Option<list<streamdirectuploadresponseErrors>>
-      messages: Option<list<streamdirectuploadresponseMessages>>
+    { errors: list<streamdirectuploadresponseErrors>
+      messages: list<streamdirectuploadresponseMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<Result> }
     ///Creates an instance of streamdirectuploadresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): streamdirectuploadresponse =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<streamdirectuploadresponseErrors>,
+                          messages: list<streamdirectuploadresponseMessages>,
+                          success: bool): streamdirectuploadresponse =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type streamdownloads =
@@ -840,17 +849,19 @@ type streamdownloadsresponseResult =
     static member Create (): streamdownloadsresponseResult = { audio = None; ``default`` = None }
 
 type streamdownloadsresponse =
-    { errors: Option<list<streamdownloadsresponseErrors>>
-      messages: Option<list<streamdownloadsresponseMessages>>
+    { errors: list<streamdownloadsresponseErrors>
+      messages: list<streamdownloadsresponseMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       ///An object with download type keys. Each key is optional and only present if that download type has been created.
       result: Option<streamdownloadsresponseResult> }
     ///Creates an instance of streamdownloadsresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): streamdownloadsresponse =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<streamdownloadsresponseErrors>,
+                          messages: list<streamdownloadsresponseMessages>,
+                          success: bool): streamdownloadsresponse =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type streamdownloadsresponsesingleErrorsSource =
@@ -888,16 +899,18 @@ type streamdownloadsresponsesingleMessages =
           source = None }
 
 type streamdownloadsresponsesingle =
-    { errors: Option<list<streamdownloadsresponsesingleErrors>>
-      messages: Option<list<streamdownloadsresponsesingleMessages>>
+    { errors: list<streamdownloadsresponsesingleErrors>
+      messages: list<streamdownloadsresponsesingleMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<streamdownloads> }
     ///Creates an instance of streamdownloadsresponsesingle with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): streamdownloadsresponsesingle =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<streamdownloadsresponsesingleErrors>,
+                          messages: list<streamdownloadsresponsesingleMessages>,
+                          success: bool): streamdownloadsresponsesingle =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type streameditAudioTrack =
@@ -981,16 +994,18 @@ type streamkeygenerationresponseMessages =
           source = None }
 
 type streamkeygenerationresponse =
-    { errors: Option<list<streamkeygenerationresponseErrors>>
-      messages: Option<list<streamkeygenerationresponseMessages>>
+    { errors: list<streamkeygenerationresponseErrors>
+      messages: list<streamkeygenerationresponseMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<streamkeys> }
     ///Creates an instance of streamkeygenerationresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): streamkeygenerationresponse =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<streamkeygenerationresponseErrors>,
+                          messages: list<streamkeygenerationresponseMessages>,
+                          success: bool): streamkeygenerationresponse =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type streamkeyresponsecollectionErrorsSource =
@@ -1036,16 +1051,18 @@ type streamkeyresponsecollectionResult =
     static member Create (): streamkeyresponsecollectionResult = { created = None; id = None }
 
 type streamkeyresponsecollection =
-    { errors: Option<list<streamkeyresponsecollectionErrors>>
-      messages: Option<list<streamkeyresponsecollectionMessages>>
+    { errors: list<streamkeyresponsecollectionErrors>
+      messages: list<streamkeyresponsecollectionMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<list<streamkeyresponsecollectionResult>> }
     ///Creates an instance of streamkeyresponsecollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): streamkeyresponsecollection =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<streamkeyresponsecollectionErrors>,
+                          messages: list<streamkeyresponsecollectionMessages>,
+                          success: bool): streamkeyresponsecollection =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type streamkeys =
@@ -1099,16 +1116,18 @@ type streamlanguageresponsecollectionMessages =
           source = None }
 
 type streamlanguageresponsecollection =
-    { errors: Option<list<streamlanguageresponsecollectionErrors>>
-      messages: Option<list<streamlanguageresponsecollectionMessages>>
+    { errors: list<streamlanguageresponsecollectionErrors>
+      messages: list<streamlanguageresponsecollectionMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<list<streamcaptions>> }
     ///Creates an instance of streamlanguageresponsecollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): streamlanguageresponsecollection =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<streamlanguageresponsecollectionErrors>,
+                          messages: list<streamlanguageresponsecollectionMessages>,
+                          success: bool): streamlanguageresponsecollection =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type streamlanguageresponsesingleErrorsSource =
@@ -1146,16 +1165,18 @@ type streamlanguageresponsesingleMessages =
           source = None }
 
 type streamlanguageresponsesingle =
-    { errors: Option<list<streamlanguageresponsesingleErrors>>
-      messages: Option<list<streamlanguageresponsesingleMessages>>
+    { errors: list<streamlanguageresponsesingleErrors>
+      messages: list<streamlanguageresponsesingleMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<streamcaptions> }
     ///Creates an instance of streamlanguageresponsesingle with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): streamlanguageresponsesingle =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<streamlanguageresponsesingleErrors>,
+                          messages: list<streamlanguageresponsesingleMessages>,
+                          success: bool): streamlanguageresponsesingle =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type streamlistAudioTrackResponseErrorsSource =
@@ -1193,16 +1214,18 @@ type streamlistAudioTrackResponseMessages =
           source = None }
 
 type streamlistAudioTrackResponse =
-    { errors: Option<list<streamlistAudioTrackResponseErrors>>
-      messages: Option<list<streamlistAudioTrackResponseMessages>>
+    { errors: list<streamlistAudioTrackResponseErrors>
+      messages: list<streamlistAudioTrackResponseMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<list<streamadditionalAudio>> }
     ///Creates an instance of streamlistAudioTrackResponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): streamlistAudioTrackResponse =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<streamlistAudioTrackResponseErrors>,
+                          messages: list<streamlistAudioTrackResponseMessages>,
+                          success: bool): streamlistAudioTrackResponse =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 ///Details about a live input.
@@ -1341,16 +1364,18 @@ type streamliveinputresponsecollectionResult =
           total = None }
 
 type streamliveinputresponsecollection =
-    { errors: Option<list<streamliveinputresponsecollectionErrors>>
-      messages: Option<list<streamliveinputresponsecollectionMessages>>
+    { errors: list<streamliveinputresponsecollectionErrors>
+      messages: list<streamliveinputresponsecollectionMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<streamliveinputresponsecollectionResult> }
     ///Creates an instance of streamliveinputresponsecollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): streamliveinputresponsecollection =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<streamliveinputresponsecollectionErrors>,
+                          messages: list<streamliveinputresponsecollectionMessages>,
+                          success: bool): streamliveinputresponsecollection =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type streamliveinputresponsesingleErrorsSource =
@@ -1388,17 +1413,19 @@ type streamliveinputresponsesingleMessages =
           source = None }
 
 type streamliveinputresponsesingle =
-    { errors: Option<list<streamliveinputresponsesingleErrors>>
-      messages: Option<list<streamliveinputresponsesingleMessages>>
+    { errors: list<streamliveinputresponsesingleErrors>
+      messages: list<streamliveinputresponsesingleMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       ///Details about a live input.
       result: Option<streamliveinput> }
     ///Creates an instance of streamliveinputresponsesingle with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): streamliveinputresponsesingle =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<streamliveinputresponsesingleErrors>,
+                          messages: list<streamliveinputresponsesingleMessages>,
+                          success: bool): streamliveinputresponsesingle =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 ///Specifies a detailed status for a video. If the `state` is `inprogress` or `error`, the `step` field returns `encoding` or `manifest`. If the `state` is `inprogress`, `pctComplete` returns a number between 0 and 100 to indicate the approximate percent of completion. If the `state` is `error`, `errorReasonCode` and `errorReasonText` provide additional details.
@@ -1469,16 +1496,18 @@ type streamoutputresponsecollectionMessages =
           source = None }
 
 type streamoutputresponsecollection =
-    { errors: Option<list<streamoutputresponsecollectionErrors>>
-      messages: Option<list<streamoutputresponsecollectionMessages>>
+    { errors: list<streamoutputresponsecollectionErrors>
+      messages: list<streamoutputresponsecollectionMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<list<streamoutput>> }
     ///Creates an instance of streamoutputresponsecollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): streamoutputresponsecollection =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<streamoutputresponsecollectionErrors>,
+                          messages: list<streamoutputresponsecollectionMessages>,
+                          success: bool): streamoutputresponsecollection =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type streamoutputresponsesingleErrorsSource =
@@ -1516,16 +1545,18 @@ type streamoutputresponsesingleMessages =
           source = None }
 
 type streamoutputresponsesingle =
-    { errors: Option<list<streamoutputresponsesingleErrors>>
-      messages: Option<list<streamoutputresponsesingleMessages>>
+    { errors: list<streamoutputresponsesingleErrors>
+      messages: list<streamoutputresponsesingleMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<Newtonsoft.Json.Linq.JToken> }
     ///Creates an instance of streamoutputresponsesingle with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): streamoutputresponsesingle =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<streamoutputresponsesingleErrors>,
+                          messages: list<streamoutputresponsesingleMessages>,
+                          success: bool): streamoutputresponsesingle =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type streamplayback =
@@ -1629,16 +1660,18 @@ type streamsignedtokenresponseResult =
     static member Create (): streamsignedtokenresponseResult = { token = None }
 
 type streamsignedtokenresponse =
-    { errors: Option<list<streamsignedtokenresponseErrors>>
-      messages: Option<list<streamsignedtokenresponseMessages>>
+    { errors: list<streamsignedtokenresponseErrors>
+      messages: list<streamsignedtokenresponseMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<streamsignedtokenresponseResult> }
     ///Creates an instance of streamsignedtokenresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): streamsignedtokenresponse =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<streamsignedtokenresponseErrors>,
+                          messages: list<streamsignedtokenresponseMessages>,
+                          success: bool): streamsignedtokenresponse =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type streamstorageuseresponseErrorsSource =
@@ -1692,16 +1725,18 @@ type streamstorageuseresponseResult =
           videoCount = None }
 
 type streamstorageuseresponse =
-    { errors: Option<list<streamstorageuseresponseErrors>>
-      messages: Option<list<streamstorageuseresponseMessages>>
+    { errors: list<streamstorageuseresponseErrors>
+      messages: list<streamstorageuseresponseMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<streamstorageuseresponseResult> }
     ///Creates an instance of streamstorageuseresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): streamstorageuseresponse =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<streamstorageuseresponseErrors>,
+                          messages: list<streamstorageuseresponseMessages>,
+                          success: bool): streamstorageuseresponse =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type streamupdateinputrequest =
@@ -1823,20 +1858,22 @@ type streamvideoresponsecollectionMessages =
           source = None }
 
 type streamvideoresponsecollection =
-    { errors: Option<list<streamvideoresponsecollectionErrors>>
-      messages: Option<list<streamvideoresponsecollectionMessages>>
+    { errors: list<streamvideoresponsecollectionErrors>
+      messages: list<streamvideoresponsecollectionMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<list<streamvideos>>
       ///The total number of remaining videos based on cursor position.
       range: Option<int>
       ///The total number of videos that match the provided filters.
       total: Option<int> }
     ///Creates an instance of streamvideoresponsecollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): streamvideoresponsecollection =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<streamvideoresponsecollectionErrors>,
+                          messages: list<streamvideoresponsecollectionMessages>,
+                          success: bool): streamvideoresponsecollection =
+        { errors = errors
+          messages = messages
+          success = success
           result = None
           range = None
           total = None }
@@ -1876,16 +1913,18 @@ type streamvideoresponsesingleMessages =
           source = None }
 
 type streamvideoresponsesingle =
-    { errors: Option<list<streamvideoresponsesingleErrors>>
-      messages: Option<list<streamvideoresponsesingleMessages>>
+    { errors: list<streamvideoresponsesingleErrors>
+      messages: list<streamvideoresponsesingleMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<streamvideos> }
     ///Creates an instance of streamvideoresponsesingle with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): streamvideoresponsesingle =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<streamvideoresponsesingleErrors>,
+                          messages: list<streamvideoresponsesingleMessages>,
+                          success: bool): streamvideoresponsesingle =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type streamvideoupdate =
@@ -2055,16 +2094,18 @@ type streamwatermarkresponsecollectionMessages =
           source = None }
 
 type streamwatermarkresponsecollection =
-    { errors: Option<list<streamwatermarkresponsecollectionErrors>>
-      messages: Option<list<streamwatermarkresponsecollectionMessages>>
+    { errors: list<streamwatermarkresponsecollectionErrors>
+      messages: list<streamwatermarkresponsecollectionMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<list<streamwatermarks>> }
     ///Creates an instance of streamwatermarkresponsecollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): streamwatermarkresponsecollection =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<streamwatermarkresponsecollectionErrors>,
+                          messages: list<streamwatermarkresponsecollectionMessages>,
+                          success: bool): streamwatermarkresponsecollection =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type streamwatermarkresponsesingleErrorsSource =
@@ -2102,16 +2143,18 @@ type streamwatermarkresponsesingleMessages =
           source = None }
 
 type streamwatermarkresponsesingle =
-    { errors: Option<list<streamwatermarkresponsesingleErrors>>
-      messages: Option<list<streamwatermarkresponsesingleMessages>>
+    { errors: list<streamwatermarkresponsesingleErrors>
+      messages: list<streamwatermarkresponsesingleMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<streamwatermarks> }
     ///Creates an instance of streamwatermarkresponsesingle with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): streamwatermarkresponsesingle =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<streamwatermarkresponsesingleErrors>,
+                          messages: list<streamwatermarkresponsesingleMessages>,
+                          success: bool): streamwatermarkresponsesingle =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type streamwatermarks =
@@ -2193,249 +2236,447 @@ type streamwebhookresponsesingleMessages =
           source = None }
 
 type streamwebhookresponsesingle =
-    { errors: Option<list<streamwebhookresponsesingleErrors>>
-      messages: Option<list<streamwebhookresponsesingleMessages>>
+    { errors: list<streamwebhookresponsesingleErrors>
+      messages: list<streamwebhookresponsesingleMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<Newtonsoft.Json.Linq.JObject> }
     ///Creates an instance of streamwebhookresponsesingle with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): streamwebhookresponsesingle =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<streamwebhookresponsesingleErrors>,
+                          messages: list<streamwebhookresponsesingleMessages>,
+                          success: bool): streamwebhookresponsesingle =
+        { errors = errors
+          messages = messages
+          success = success
+          result = None }
+
+type ``stream-watermark-profile-delete-watermark-profilesresponseErrorsSource`` =
+    { pointer: Option<string> }
+    ///Creates an instance of stream-watermark-profile-delete-watermark-profilesresponseErrorsSource with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``stream-watermark-profile-delete-watermark-profilesresponseErrorsSource`` =
+        { pointer = None }
+
+type ``stream-watermark-profile-delete-watermark-profilesresponseErrors`` =
+    { code: int
+      documentation_url: Option<string>
+      message: string
+      source: Option<``stream-watermark-profile-delete-watermark-profilesresponseErrorsSource``> }
+    ///Creates an instance of stream-watermark-profile-delete-watermark-profilesresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``stream-watermark-profile-delete-watermark-profilesresponseErrors`` =
+        { code = code
+          documentation_url = None
+          message = message
+          source = None }
+
+type ``stream-watermark-profile-delete-watermark-profilesresponseMessagesSource`` =
+    { pointer: Option<string> }
+    ///Creates an instance of stream-watermark-profile-delete-watermark-profilesresponseMessagesSource with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``stream-watermark-profile-delete-watermark-profilesresponseMessagesSource`` =
+        { pointer = None }
+
+type ``stream-watermark-profile-delete-watermark-profilesresponseMessages`` =
+    { code: int
+      documentation_url: Option<string>
+      message: string
+      source: Option<``stream-watermark-profile-delete-watermark-profilesresponseMessagesSource``> }
+    ///Creates an instance of stream-watermark-profile-delete-watermark-profilesresponseMessages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``stream-watermark-profile-delete-watermark-profilesresponseMessages`` =
+        { code = code
+          documentation_url = None
+          message = message
+          source = None }
+
+type ``stream-watermark-profile-delete-watermark-profilesresponse`` =
+    { errors: list<``stream-watermark-profile-delete-watermark-profilesresponseErrors``>
+      messages: list<``stream-watermark-profile-delete-watermark-profilesresponseMessages``>
+      ///Whether the API call was successful.
+      success: bool
+      result: Option<string> }
+    ///Creates an instance of stream-watermark-profile-delete-watermark-profilesresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``stream-watermark-profile-delete-watermark-profilesresponseErrors``>,
+                          messages: list<``stream-watermark-profile-delete-watermark-profilesresponseMessages``>,
+                          success: bool): ``stream-watermark-profile-delete-watermark-profilesresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
+          result = None }
+
+type ``stream-subtitles-captions-delete-captions-or-subtitlesresponseErrorsSource`` =
+    { pointer: Option<string> }
+    ///Creates an instance of stream-subtitles-captions-delete-captions-or-subtitlesresponseErrorsSource with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``stream-subtitles-captions-delete-captions-or-subtitlesresponseErrorsSource`` =
+        { pointer = None }
+
+type ``stream-subtitles-captions-delete-captions-or-subtitlesresponseErrors`` =
+    { code: int
+      documentation_url: Option<string>
+      message: string
+      source: Option<``stream-subtitles-captions-delete-captions-or-subtitlesresponseErrorsSource``> }
+    ///Creates an instance of stream-subtitles-captions-delete-captions-or-subtitlesresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``stream-subtitles-captions-delete-captions-or-subtitlesresponseErrors`` =
+        { code = code
+          documentation_url = None
+          message = message
+          source = None }
+
+type ``stream-subtitles-captions-delete-captions-or-subtitlesresponseMessagesSource`` =
+    { pointer: Option<string> }
+    ///Creates an instance of stream-subtitles-captions-delete-captions-or-subtitlesresponseMessagesSource with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``stream-subtitles-captions-delete-captions-or-subtitlesresponseMessagesSource`` =
+        { pointer = None }
+
+type ``stream-subtitles-captions-delete-captions-or-subtitlesresponseMessages`` =
+    { code: int
+      documentation_url: Option<string>
+      message: string
+      source: Option<``stream-subtitles-captions-delete-captions-or-subtitlesresponseMessagesSource``> }
+    ///Creates an instance of stream-subtitles-captions-delete-captions-or-subtitlesresponseMessages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``stream-subtitles-captions-delete-captions-or-subtitlesresponseMessages`` =
+        { code = code
+          documentation_url = None
+          message = message
+          source = None }
+
+type ``stream-subtitles-captions-delete-captions-or-subtitlesresponse`` =
+    { errors: list<``stream-subtitles-captions-delete-captions-or-subtitlesresponseErrors``>
+      messages: list<``stream-subtitles-captions-delete-captions-or-subtitlesresponseMessages``>
+      ///Whether the API call was successful.
+      success: bool
+      result: Option<string> }
+    ///Creates an instance of stream-subtitles-captions-delete-captions-or-subtitlesresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``stream-subtitles-captions-delete-captions-or-subtitlesresponseErrors``>,
+                          messages: list<``stream-subtitles-captions-delete-captions-or-subtitlesresponseMessages``>,
+                          success: bool): ``stream-subtitles-captions-delete-captions-or-subtitlesresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 [<RequireQualifiedAccess>]
 type StreamVideosListVideos =
     ///List videos response.
     | OK of payload: streamvideoresponsecollection
+    ///List videos response failure.
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type StreamVideosInitiateVideoUploadsUsingTus =
     ///Initiate video uploads using TUS response.
     | OK of payload: Newtonsoft.Json.Linq.JToken
+    ///Initiate video uploads using TUS response failure.
+    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<RequireQualifiedAccess>]
 type StreamVideoClippingClipVideosGivenAStartAndEndTime =
     ///Clip videos given a start and end time response.
     | OK of payload: streamclipResponseSingle
+    ///Clip videos given a start and end time response failure.
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type StreamVideosUploadVideosFromAUrl =
     ///Upload videos from a URL response.
     | OK of payload: streamvideoresponsesingle
+    ///Upload videos from a URL response failure.
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type StreamVideosUploadVideosViaDirectUploadUrLs =
     ///Upload videos via direct upload URLs response.
     | OK of payload: streamdirectuploadresponse
+    ///Upload videos via direct upload URLs response failure.
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type StreamSigningKeysListSigningKeys =
     ///List signing keys response.
     | OK of payload: streamkeyresponsecollection
+    ///List signing keys response failure.
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type StreamSigningKeysCreateSigningKeys =
     ///Create signing keys response.
     | OK of payload: streamkeygenerationresponse
+    ///Create signing keys response failure.
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type StreamSigningKeysDeleteSigningKeys =
     ///Delete signing keys response.
     | OK of payload: streamdeletedresponse
+    ///Delete signing keys response failure.
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type StreamLiveInputsListLiveInputs =
     ///List live inputs response.
     | OK of payload: streamliveinputresponsecollection
+    ///List live inputs response failure.
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type StreamLiveInputsCreateALiveInput =
     ///Create a live input response.
     | OK of payload: streamliveinputresponsesingle
+    ///Create a live input response failure.
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type StreamLiveInputsDeleteALiveInput =
     ///Delete a live input response.
     | OK of payload: Newtonsoft.Json.Linq.JToken
+    ///Delete a live input response failure.
+    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<RequireQualifiedAccess>]
 type StreamLiveInputsRetrieveALiveInput =
     ///Retrieve a live input response.
     | OK of payload: streamliveinputresponsesingle
+    ///Retrieve a live input response failure.
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type StreamLiveInputsUpdateALiveInput =
     ///Update a live input response.
     | OK of payload: streamliveinputresponsesingle
+    ///Update a live input response failure.
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type StreamLiveInputsDisableALiveInput =
     ///Disable a live input response.
     | OK of payload: streamliveinputresponsesingle
+    ///Disable a live input response failure.
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type StreamLiveInputsEnableALiveInput =
     ///Enable a live input response.
     | OK of payload: streamliveinputresponsesingle
+    ///Enable a live input response failure.
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type StreamLiveInputsListAllOutputsAssociatedWithASpecifiedLiveInput =
     ///List all outputs associated with a specified live input response.
     | OK of payload: streamoutputresponsecollection
+    ///List all outputs associated with a specified live input response failure.
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type ``StreamLiveInputsCreateANewOutput,ConnectedToALiveInput`` =
     ///Create a new output, connected to a live input response.
     | OK of payload: streamoutputresponsesingle
+    ///Create a new output, connected to a live input response failure.
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type StreamLiveInputsDeleteAnOutput =
     ///Delete an output response.
     | OK of payload: Newtonsoft.Json.Linq.JToken
+    ///Delete an output response failure.
+    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<RequireQualifiedAccess>]
 type StreamLiveInputsUpdateAnOutput =
     ///Update an output response.
     | OK of payload: streamoutputresponsesingle
+    ///Update an output response failure.
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type StreamVideosStorageUsage =
     ///Returns information about an account's storage use response.
     | OK of payload: streamstorageuseresponse
+    ///Returns information about an account's storage use response failure.
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type StreamWatermarkProfileListWatermarkProfiles =
     ///List watermark profiles response.
     | OK of payload: streamwatermarkresponsecollection
+    ///List watermark profiles response failure.
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type StreamWatermarkProfileCreateWatermarkProfilesViaBasicUpload =
     ///Create watermark profiles via basic upload response.
     | OK of payload: streamwatermarkresponsesingle
+    ///Create watermark profiles via basic upload response failure.
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type StreamWatermarkProfileDeleteWatermarkProfiles =
     ///Delete watermark profiles response.
-    | OK of payload: string
+    | OK of payload: ``stream-watermark-profile-delete-watermark-profilesresponse``
+    ///Delete watermark profiles response failure.
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type StreamWatermarkProfileWatermarkProfileDetails =
     ///Watermark profile details response.
     | OK of payload: streamwatermarkresponsesingle
+    ///Watermark profile details response failure.
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type StreamWebhookDeleteWebhooks =
     ///Delete webhooks response.
     | OK of payload: streamdeletedresponse
+    ///Delete webhooks response failure.
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type StreamWebhookViewWebhooks =
     ///View webhooks response.
     | OK of payload: streamwebhookresponsesingle
+    ///View webhooks response failure.
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type StreamWebhookCreateWebhooks =
     ///Create webhooks response.
     | OK of payload: streamwebhookresponsesingle
+    ///Create webhooks response failure.
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type StreamVideosDeleteVideo =
     ///Delete video response.
     | OK of payload: Newtonsoft.Json.Linq.JToken
+    ///Delete video response failure.
+    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<RequireQualifiedAccess>]
 type StreamVideosRetrieveVideoDetails =
     ///Retrieve video details response.
     | OK of payload: streamvideoresponsesingle
+    ///Retrieve video details response failure.
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type StreamVideosUpdateVideoDetails =
     ///Edit video details response.
     | OK of payload: streamvideoresponsesingle
+    ///Edit video details response failure.
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type ListAudioTracks =
     ///Lists additional audio tracks on a video.
     | OK of payload: streamlistAudioTrackResponse
+    ///Lists additional audio tracks on a video response failure.
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AddAudioTrack =
     ///Add audio tracks to a video.
     | OK of payload: streamaddAudioTrackResponse
+    ///Add audio tracks to a video response failure.
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type DeleteAudioTracks =
     ///Deletes additional audio tracks on a video.
     | OK of payload: streamdeletedresponse
+    ///Deletes additional audio tracks on a video response failure.
+    | BadRequest of payload: streamdeletedresponse
 
 [<RequireQualifiedAccess>]
 type EditAudioTracks =
     ///Edits additional audio tracks on a video.
     | OK of payload: streamaddAudioTrackResponse
+    ///Edits additional audio tracks on a video response failure.
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type StreamSubtitlesCaptionsListCaptionsOrSubtitles =
     ///List captions or subtitles response.
     | OK of payload: streamlanguageresponsecollection
+    ///List captions or subtitles response failure.
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type StreamSubtitlesCaptionsDeleteCaptionsOrSubtitles =
     ///Delete captions or subtitles response.
-    | OK of payload: string
+    | OK of payload: ``stream-subtitles-captions-delete-captions-or-subtitlesresponse``
+    ///Delete captions or subtitles response failure.
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type StreamSubtitlesCaptionsGetCaptionOrSubtitleForLanguage =
     ///List captions or subtitles response for a provided language.
     | OK of payload: streamlanguageresponsesingle
+    ///List captions or subtitles response for a provided language.
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type StreamSubtitlesCaptionsUploadCaptionsOrSubtitles =
     ///Upload captions or subtitles response.
     | OK of payload: streamlanguageresponsesingle
+    ///Upload captions or subtitles response failure.
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type StreamSubtitlesCaptionsGenerateCaptionOrSubtitleForLanguage =
     ///Generate captions or subtitles response for a provided language.
     | OK of payload: streamlanguageresponsesingle
+    ///Generate captions or subtitles response for a provided language.
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type StreamSubtitlesCaptionsGetVttCaptionOrSubtitle =
     ///Return WebVTT caption or subtitle response.
     | OK of payload: string
+    ///Return WebVTT caption or subtitle response failure.
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type StreamMP4DownloadsDeleteDownloads =
     ///Delete downloads response.
     | OK of payload: streamdeletedresponse
+    ///Delete downloads response failure.
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type StreamMP4DownloadsListDownloads =
     ///List downloads response.
     | OK of payload: streamdownloadsresponse
+    ///List downloads response failure.
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type StreamMP4DownloadsCreateDownloads =
     ///Create downloads response.
     | OK of payload: streamdownloadsresponsesingle
+    ///Create downloads response failure.
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type StreamDownloadsDeleteTypeSpecificDownloads =
     ///Delete downloads response.
     | OK of payload: streamdeletedresponse
+    ///Delete downloads response failure.
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type StreamDownloadsCreateTypeSpecificDownloads =
     ///Create download of specified type response.
     | OK of payload: streamdownloadsresponse
+    ///Create downloads of specified type response failure.
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type StreamVideosRetreieveEmbedCodeHtml =
     ///Retreieve embed Code HTML response.
     | OK of payload: string
+    ///Retreieve embed Code HTML response failure.
+    | BadRequest of payload: ``streamapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type StreamVideosCreateSignedUrlTokensForVideos =
     ///Create signed URL tokens for videos response.
     | OK of payload: streamsignedtokenresponse
+    ///Create signed URL tokens for videos response failure.
+    | BadRequest of payload: ``streamapi-response-common-failure``

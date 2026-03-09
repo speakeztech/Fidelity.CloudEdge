@@ -30,7 +30,9 @@ type GatewayClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.getAsync httpClient "/accounts/{account_id}/gateway" requestParts cancellationToken
 
-            return ZeroTrustAccountsGetZeroTrustAccountInformation.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustAccountsGetZeroTrustAccountInformation.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustAccountsGetZeroTrustAccountInformation.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -44,7 +46,9 @@ type GatewayClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.postAsync httpClient "/accounts/{account_id}/gateway" requestParts cancellationToken
 
-            return ZeroTrustAccountsCreateZeroTrustAccount.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustAccountsCreateZeroTrustAccount.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustAccountsCreateZeroTrustAccount.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -66,10 +70,17 @@ type GatewayClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return
-                ZeroTrustGatewayApplicationAndApplicationTypeMappingsListApplicationAndApplicationTypeMappings.OK(
-                    Serializer.deserialize content
-                )
+            match int status with
+            | 200 ->
+                return
+                    ZeroTrustGatewayApplicationAndApplicationTypeMappingsListApplicationAndApplicationTypeMappings.OK(
+                        Serializer.deserialize content
+                    )
+            | _ ->
+                return
+                    ZeroTrustGatewayApplicationAndApplicationTypeMappingsListApplicationAndApplicationTypeMappings.BadRequest(
+                        Serializer.deserialize content
+                    )
         }
 
     ///<summary>
@@ -87,7 +98,9 @@ type GatewayClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustApplicationsReviewStatusList.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustApplicationsReviewStatusList.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustApplicationsReviewStatusList.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -111,7 +124,9 @@ type GatewayClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustApplicationsReviewStatusUpdate.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustApplicationsReviewStatusUpdate.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustApplicationsReviewStatusUpdate.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -129,7 +144,9 @@ type GatewayClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustGetAuditSshSettings.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustGetAuditSshSettings.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustGetAuditSshSettings.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -153,7 +170,9 @@ type GatewayClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustUpdateAuditSshSettings.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustUpdateAuditSshSettings.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustUpdateAuditSshSettings.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -171,7 +190,9 @@ type GatewayClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustRotateSshAccountSeed.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustRotateSshAccountSeed.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustRotateSshAccountSeed.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -189,7 +210,9 @@ type GatewayClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustGatewayCategoriesListCategories.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustGatewayCategoriesListCategories.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustGatewayCategoriesListCategories.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -211,7 +234,9 @@ type GatewayClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustCertificatesListZeroTrustCertificates.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustCertificatesListZeroTrustCertificates.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustCertificatesListZeroTrustCertificates.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -235,7 +260,9 @@ type GatewayClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustCertificatesCreateZeroTrustCertificate.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustCertificatesCreateZeroTrustCertificate.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustCertificatesCreateZeroTrustCertificate.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -259,7 +286,9 @@ type GatewayClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustCertificatesDeleteZeroTrustCertificate.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustCertificatesDeleteZeroTrustCertificate.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustCertificatesDeleteZeroTrustCertificate.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -283,7 +312,9 @@ type GatewayClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustCertificatesZeroTrustCertificateDetails.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustCertificatesZeroTrustCertificateDetails.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustCertificatesZeroTrustCertificateDetails.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -307,7 +338,9 @@ type GatewayClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustCertificatesActivateZeroTrustCertificate.Accepted(Serializer.deserialize content)
+            match int status with
+            | 202 -> return ZeroTrustCertificatesActivateZeroTrustCertificate.Accepted(Serializer.deserialize content)
+            | _ -> return ZeroTrustCertificatesActivateZeroTrustCertificate.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -331,7 +364,9 @@ type GatewayClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustCertificatesDeactivateZeroTrustCertificate.Created(Serializer.deserialize content)
+            match int status with
+            | 201 -> return ZeroTrustCertificatesDeactivateZeroTrustCertificate.Created(Serializer.deserialize content)
+            | _ -> return ZeroTrustCertificatesDeactivateZeroTrustCertificate.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -353,7 +388,9 @@ type GatewayClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustAccountsGetZeroTrustAccountConfiguration.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustAccountsGetZeroTrustAccountConfiguration.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustAccountsGetZeroTrustAccountConfiguration.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -380,7 +417,9 @@ type GatewayClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustAccountsPatchZeroTrustAccountConfiguration.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustAccountsPatchZeroTrustAccountConfiguration.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustAccountsPatchZeroTrustAccountConfiguration.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -407,7 +446,10 @@ type GatewayClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustAccountsUpdateZeroTrustAccountConfiguration.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustAccountsUpdateZeroTrustAccountConfiguration.OK(Serializer.deserialize content)
+            | _ ->
+                return ZeroTrustAccountsUpdateZeroTrustAccountConfiguration.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -428,7 +470,9 @@ type GatewayClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.getAsync httpClient "/accounts/{account_id}/gateway/lists" requestParts cancellationToken
 
-            return ZeroTrustListsListZeroTrustLists.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustListsListZeroTrustLists.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustListsListZeroTrustLists.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -448,7 +492,9 @@ type GatewayClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.postAsync httpClient "/accounts/{account_id}/gateway/lists" requestParts cancellationToken
 
-            return ZeroTrustListsCreateZeroTrustList.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustListsCreateZeroTrustList.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustListsCreateZeroTrustList.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -472,7 +518,9 @@ type GatewayClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustListsDeleteZeroTrustList.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustListsDeleteZeroTrustList.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustListsDeleteZeroTrustList.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -496,7 +544,9 @@ type GatewayClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustListsZeroTrustListDetails.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustListsZeroTrustListDetails.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustListsZeroTrustListDetails.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -522,7 +572,9 @@ type GatewayClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustListsPatchZeroTrustList.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustListsPatchZeroTrustList.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustListsPatchZeroTrustList.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -548,7 +600,9 @@ type GatewayClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustListsUpdateZeroTrustList.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustListsUpdateZeroTrustList.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustListsUpdateZeroTrustList.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -572,7 +626,9 @@ type GatewayClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustListsZeroTrustListItems.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustListsZeroTrustListItems.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustListsZeroTrustListItems.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -594,7 +650,10 @@ type GatewayClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustGatewayLocationsListZeroTrustGatewayLocations.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustGatewayLocationsListZeroTrustGatewayLocations.OK(Serializer.deserialize content)
+            | _ ->
+                return ZeroTrustGatewayLocationsListZeroTrustGatewayLocations.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -618,7 +677,11 @@ type GatewayClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustGatewayLocationsCreateZeroTrustGatewayLocation.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustGatewayLocationsCreateZeroTrustGatewayLocation.OK(Serializer.deserialize content)
+            | _ ->
+                return
+                    ZeroTrustGatewayLocationsCreateZeroTrustGatewayLocation.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -642,7 +705,11 @@ type GatewayClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustGatewayLocationsDeleteZeroTrustGatewayLocation.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustGatewayLocationsDeleteZeroTrustGatewayLocation.OK(Serializer.deserialize content)
+            | _ ->
+                return
+                    ZeroTrustGatewayLocationsDeleteZeroTrustGatewayLocation.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -666,7 +733,11 @@ type GatewayClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustGatewayLocationsZeroTrustGatewayLocationDetails.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustGatewayLocationsZeroTrustGatewayLocationDetails.OK(Serializer.deserialize content)
+            | _ ->
+                return
+                    ZeroTrustGatewayLocationsZeroTrustGatewayLocationDetails.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -692,7 +763,11 @@ type GatewayClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustGatewayLocationsUpdateZeroTrustGatewayLocation.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustGatewayLocationsUpdateZeroTrustGatewayLocation.OK(Serializer.deserialize content)
+            | _ ->
+                return
+                    ZeroTrustGatewayLocationsUpdateZeroTrustGatewayLocation.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -710,7 +785,11 @@ type GatewayClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.getAsync httpClient "/accounts/{account_id}/gateway/logging" requestParts cancellationToken
 
-            return ZeroTrustAccountsGetLoggingSettingsForTheZeroTrustAccount.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustAccountsGetLoggingSettingsForTheZeroTrustAccount.OK(Serializer.deserialize content)
+            | _ ->
+                return
+                    ZeroTrustAccountsGetLoggingSettingsForTheZeroTrustAccount.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -730,7 +809,14 @@ type GatewayClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.putAsync httpClient "/accounts/{account_id}/gateway/logging" requestParts cancellationToken
 
-            return ZeroTrustAccountsUpdateLoggingSettingsForTheZeroTrustAccount.OK(Serializer.deserialize content)
+            match int status with
+            | 200 ->
+                return ZeroTrustAccountsUpdateLoggingSettingsForTheZeroTrustAccount.OK(Serializer.deserialize content)
+            | _ ->
+                return
+                    ZeroTrustAccountsUpdateLoggingSettingsForTheZeroTrustAccount.BadRequest(
+                        Serializer.deserialize content
+                    )
         }
 
     ///<summary>
@@ -744,7 +830,9 @@ type GatewayClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.getAsync httpClient "/accounts/{account_id}/gateway/pacfiles" requestParts cancellationToken
 
-            return ZeroTrustGatewayPacfilesList.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustGatewayPacfilesList.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustGatewayPacfilesList.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -768,7 +856,9 @@ type GatewayClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustGatewayPacfilesCreatePacfile.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustGatewayPacfilesCreatePacfile.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustGatewayPacfilesCreatePacfile.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -792,7 +882,9 @@ type GatewayClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustGatewayPacfilesDelete.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustGatewayPacfilesDelete.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustGatewayPacfilesDelete.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -816,7 +908,9 @@ type GatewayClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustGatewayPacfilesDetails.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustGatewayPacfilesDetails.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustGatewayPacfilesDetails.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -842,7 +936,9 @@ type GatewayClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustGatewayPacfilesUpdate.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustGatewayPacfilesUpdate.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustGatewayPacfilesUpdate.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -864,7 +960,9 @@ type GatewayClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustGatewayProxyEndpointsListProxyEndpoints.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustGatewayProxyEndpointsListProxyEndpoints.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustGatewayProxyEndpointsListProxyEndpoints.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -888,7 +986,9 @@ type GatewayClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustGatewayProxyEndpointsCreateProxyEndpoint.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustGatewayProxyEndpointsCreateProxyEndpoint.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustGatewayProxyEndpointsCreateProxyEndpoint.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -912,7 +1012,9 @@ type GatewayClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustGatewayProxyEndpointsDeleteProxyEndpoint.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustGatewayProxyEndpointsDeleteProxyEndpoint.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustGatewayProxyEndpointsDeleteProxyEndpoint.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -936,7 +1038,9 @@ type GatewayClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustGatewayProxyEndpointsProxyEndpointDetails.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustGatewayProxyEndpointsProxyEndpointDetails.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustGatewayProxyEndpointsProxyEndpointDetails.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -962,7 +1066,9 @@ type GatewayClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustGatewayProxyEndpointsUpdateProxyEndpoint.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustGatewayProxyEndpointsUpdateProxyEndpoint.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustGatewayProxyEndpointsUpdateProxyEndpoint.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -980,7 +1086,9 @@ type GatewayClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.getAsync httpClient "/accounts/{account_id}/gateway/rules" requestParts cancellationToken
 
-            return ZeroTrustGatewayRulesListZeroTrustGatewayRules.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustGatewayRulesListZeroTrustGatewayRules.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustGatewayRulesListZeroTrustGatewayRules.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1000,7 +1108,9 @@ type GatewayClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.postAsync httpClient "/accounts/{account_id}/gateway/rules" requestParts cancellationToken
 
-            return ZeroTrustGatewayRulesCreateZeroTrustGatewayRule.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustGatewayRulesCreateZeroTrustGatewayRule.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustGatewayRulesCreateZeroTrustGatewayRule.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1022,7 +1132,10 @@ type GatewayClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustGatewayRulesListZeroTrustGatewayRulesTenant.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustGatewayRulesListZeroTrustGatewayRulesTenant.OK(Serializer.deserialize content)
+            | _ ->
+                return ZeroTrustGatewayRulesListZeroTrustGatewayRulesTenant.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1046,7 +1159,9 @@ type GatewayClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustGatewayRulesDeleteZeroTrustGatewayRule.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustGatewayRulesDeleteZeroTrustGatewayRule.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustGatewayRulesDeleteZeroTrustGatewayRule.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1070,7 +1185,9 @@ type GatewayClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustGatewayRulesZeroTrustGatewayRuleDetails.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustGatewayRulesZeroTrustGatewayRuleDetails.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustGatewayRulesZeroTrustGatewayRuleDetails.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1096,7 +1213,9 @@ type GatewayClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustGatewayRulesUpdateZeroTrustGatewayRule.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustGatewayRulesUpdateZeroTrustGatewayRule.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustGatewayRulesUpdateZeroTrustGatewayRule.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1120,5 +1239,9 @@ type GatewayClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustGatewayRulesResetExpirationZeroTrustGatewayRule.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustGatewayRulesResetExpirationZeroTrustGatewayRule.OK(Serializer.deserialize content)
+            | _ ->
+                return
+                    ZeroTrustGatewayRulesResetExpirationZeroTrustGatewayRule.BadRequest(Serializer.deserialize content)
         }

@@ -1,5 +1,8 @@
 namespace rec Fidelity.CloudEdge.Management.R2Catalog.Types
 
+// Auto-generated stub types (missing from Hawaii output)
+type maintenance = string
+
 ///Use this to identify the account.
 type ``r2-data-catalogaccount-id`` = string
 
@@ -406,10 +409,369 @@ type ``r2-data-catalogtable-maintenance-update-request`` =
         { compaction = None
           snapshot_expiration = None }
 
+type ``list-catalogsresponseErrors`` =
+    { ///Specifies the error code.
+      code: int
+      ///Describes the error.
+      message: string }
+    ///Creates an instance of list-catalogsresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``list-catalogsresponseErrors`` =
+        { code = code; message = message }
+
+type ``list-catalogsresponseMessages`` =
+    { ///Specifies the message code.
+      code: int
+      ///Contains the message text.
+      message: string }
+    ///Creates an instance of list-catalogsresponseMessages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``list-catalogsresponseMessages`` =
+        { code = code; message = message }
+
+type ``list-catalogsresponse`` =
+    { ///Contains errors if the API call was unsuccessful.
+      errors: list<``list-catalogsresponseErrors``>
+      ///Contains informational messages.
+      messages: list<``list-catalogsresponseMessages``>
+      ///Indicates whether the API call was successful.
+      success: ``r2-data-catalogapi-response-success``
+      ///Contains the list of catalogs.
+      result: Option<``r2-data-catalogcatalog-list``> }
+    ///Creates an instance of list-catalogsresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``list-catalogsresponseErrors``>,
+                          messages: list<``list-catalogsresponseMessages``>,
+                          success: ``r2-data-catalogapi-response-success``): ``list-catalogsresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
+          result = None }
+
+type ``get-catalog-detailsresponseErrors`` =
+    { ///Specifies the error code.
+      code: int
+      ///Describes the error.
+      message: string }
+    ///Creates an instance of get-catalog-detailsresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``get-catalog-detailsresponseErrors`` =
+        { code = code; message = message }
+
+type ``get-catalog-detailsresponseMessages`` =
+    { ///Specifies the message code.
+      code: int
+      ///Contains the message text.
+      message: string }
+    ///Creates an instance of get-catalog-detailsresponseMessages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``get-catalog-detailsresponseMessages`` =
+        { code = code; message = message }
+
+type ``get-catalog-detailsresponse`` =
+    { ///Contains errors if the API call was unsuccessful.
+      errors: list<``get-catalog-detailsresponseErrors``>
+      ///Contains informational messages.
+      messages: list<``get-catalog-detailsresponseMessages``>
+      ///Indicates whether the API call was successful.
+      success: ``r2-data-catalogapi-response-success``
+      ///Contains R2 Data Catalog information.
+      result: Option<``r2-data-catalogcatalog``> }
+    ///Creates an instance of get-catalog-detailsresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``get-catalog-detailsresponseErrors``>,
+                          messages: list<``get-catalog-detailsresponseMessages``>,
+                          success: ``r2-data-catalogapi-response-success``): ``get-catalog-detailsresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
+          result = None }
+
+type ``store-credentialsresponseErrors`` =
+    { ///Specifies the error code.
+      code: int
+      ///Describes the error.
+      message: string }
+    ///Creates an instance of store-credentialsresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``store-credentialsresponseErrors`` =
+        { code = code; message = message }
+
+type ``store-credentialsresponseMessages`` =
+    { ///Specifies the message code.
+      code: int
+      ///Contains the message text.
+      message: string }
+    ///Creates an instance of store-credentialsresponseMessages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``store-credentialsresponseMessages`` =
+        { code = code; message = message }
+
+type ``store-credentialsresponse`` =
+    { ///Contains errors if the API call was unsuccessful.
+      errors: list<``store-credentialsresponseErrors``>
+      ///Contains informational messages.
+      messages: list<``store-credentialsresponseMessages``>
+      ///Indicates whether the API call was successful.
+      success: ``r2-data-catalogapi-response-success``
+      result: Option<Newtonsoft.Json.Linq.JObject> }
+    ///Creates an instance of store-credentialsresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``store-credentialsresponseErrors``>,
+                          messages: list<``store-credentialsresponseMessages``>,
+                          success: ``r2-data-catalogapi-response-success``): ``store-credentialsresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
+          result = None }
+
+type ``enable-catalogresponseErrors`` =
+    { ///Specifies the error code.
+      code: int
+      ///Describes the error.
+      message: string }
+    ///Creates an instance of enable-catalogresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``enable-catalogresponseErrors`` =
+        { code = code; message = message }
+
+type ``enable-catalogresponseMessages`` =
+    { ///Specifies the message code.
+      code: int
+      ///Contains the message text.
+      message: string }
+    ///Creates an instance of enable-catalogresponseMessages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``enable-catalogresponseMessages`` =
+        { code = code; message = message }
+
+type ``enable-catalogresponse`` =
+    { ///Contains errors if the API call was unsuccessful.
+      errors: list<``enable-catalogresponseErrors``>
+      ///Contains informational messages.
+      messages: list<``enable-catalogresponseMessages``>
+      ///Indicates whether the API call was successful.
+      success: ``r2-data-catalogapi-response-success``
+      ///Contains response from activating an R2 bucket as a catalog.
+      result: Option<``r2-data-catalogcatalog-activation-response``> }
+    ///Creates an instance of enable-catalogresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``enable-catalogresponseErrors``>,
+                          messages: list<``enable-catalogresponseMessages``>,
+                          success: ``r2-data-catalogapi-response-success``): ``enable-catalogresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
+          result = None }
+
+type ``get-maintenance-configresponseErrors`` =
+    { ///Specifies the error code.
+      code: int
+      ///Describes the error.
+      message: string }
+    ///Creates an instance of get-maintenance-configresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``get-maintenance-configresponseErrors`` =
+        { code = code; message = message }
+
+type ``get-maintenance-configresponseMessages`` =
+    { ///Specifies the message code.
+      code: int
+      ///Contains the message text.
+      message: string }
+    ///Creates an instance of get-maintenance-configresponseMessages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``get-maintenance-configresponseMessages`` =
+        { code = code; message = message }
+
+type ``get-maintenance-configresponse`` =
+    { ///Contains errors if the API call was unsuccessful.
+      errors: list<``get-maintenance-configresponseErrors``>
+      ///Contains informational messages.
+      messages: list<``get-maintenance-configresponseMessages``>
+      ///Indicates whether the API call was successful.
+      success: ``r2-data-catalogapi-response-success``
+      ///Contains maintenance configuration and credential status.
+      result: Option<``r2-data-catalogcatalog-maintenance-config-response``> }
+    ///Creates an instance of get-maintenance-configresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``get-maintenance-configresponseErrors``>,
+                          messages: list<``get-maintenance-configresponseMessages``>,
+                          success: ``r2-data-catalogapi-response-success``): ``get-maintenance-configresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
+          result = None }
+
+type ``update-maintenance-configresponseErrors`` =
+    { ///Specifies the error code.
+      code: int
+      ///Describes the error.
+      message: string }
+    ///Creates an instance of update-maintenance-configresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``update-maintenance-configresponseErrors`` =
+        { code = code; message = message }
+
+type ``update-maintenance-configresponseMessages`` =
+    { ///Specifies the message code.
+      code: int
+      ///Contains the message text.
+      message: string }
+    ///Creates an instance of update-maintenance-configresponseMessages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``update-maintenance-configresponseMessages`` =
+        { code = code; message = message }
+
+type ``update-maintenance-configresponse`` =
+    { ///Contains errors if the API call was unsuccessful.
+      errors: list<``update-maintenance-configresponseErrors``>
+      ///Contains informational messages.
+      messages: list<``update-maintenance-configresponseMessages``>
+      ///Indicates whether the API call was successful.
+      success: ``r2-data-catalogapi-response-success``
+      ///Configures maintenance for the catalog.
+      result: Option<``r2-data-catalogcatalog-maintenance-config``> }
+    ///Creates an instance of update-maintenance-configresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``update-maintenance-configresponseErrors``>,
+                          messages: list<``update-maintenance-configresponseMessages``>,
+                          success: ``r2-data-catalogapi-response-success``): ``update-maintenance-configresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
+          result = None }
+
+type ``list-namespacesresponseErrors`` =
+    { ///Specifies the error code.
+      code: int
+      ///Describes the error.
+      message: string }
+    ///Creates an instance of list-namespacesresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``list-namespacesresponseErrors`` =
+        { code = code; message = message }
+
+type ``list-namespacesresponseMessages`` =
+    { ///Specifies the message code.
+      code: int
+      ///Contains the message text.
+      message: string }
+    ///Creates an instance of list-namespacesresponseMessages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``list-namespacesresponseMessages`` =
+        { code = code; message = message }
+
+type ``list-namespacesresponse`` =
+    { ///Contains errors if the API call was unsuccessful.
+      errors: list<``list-namespacesresponseErrors``>
+      ///Contains informational messages.
+      messages: list<``list-namespacesresponseMessages``>
+      ///Indicates whether the API call was successful.
+      success: ``r2-data-catalogapi-response-success``
+      ///Contains the list of namespaces with optional pagination.
+      result: Option<``r2-data-catalognamespace-list-response``> }
+    ///Creates an instance of list-namespacesresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``list-namespacesresponseErrors``>,
+                          messages: list<``list-namespacesresponseMessages``>,
+                          success: ``r2-data-catalogapi-response-success``): ``list-namespacesresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
+          result = None }
+
+type ``list-tablesresponseErrors`` =
+    { ///Specifies the error code.
+      code: int
+      ///Describes the error.
+      message: string }
+    ///Creates an instance of list-tablesresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``list-tablesresponseErrors`` =
+        { code = code; message = message }
+
+type ``list-tablesresponseMessages`` =
+    { ///Specifies the message code.
+      code: int
+      ///Contains the message text.
+      message: string }
+    ///Creates an instance of list-tablesresponseMessages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``list-tablesresponseMessages`` =
+        { code = code; message = message }
+
+type ``list-tablesresponse`` =
+    { ///Contains errors if the API call was unsuccessful.
+      errors: list<``list-tablesresponseErrors``>
+      ///Contains informational messages.
+      messages: list<``list-tablesresponseMessages``>
+      ///Indicates whether the API call was successful.
+      success: ``r2-data-catalogapi-response-success``
+      ///Contains the list of tables with optional pagination.
+      result: Option<``r2-data-catalogtable-list-response``> }
+    ///Creates an instance of list-tablesresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``list-tablesresponseErrors``>,
+                          messages: list<``list-tablesresponseMessages``>,
+                          success: ``r2-data-catalogapi-response-success``): ``list-tablesresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
+          result = None }
+
+type ``get-table-maintenance-configresponseErrors`` =
+    { ///Specifies the error code.
+      code: int
+      ///Describes the error.
+      message: string }
+    ///Creates an instance of get-table-maintenance-configresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``get-table-maintenance-configresponseErrors`` =
+        { code = code; message = message }
+
+type ``get-table-maintenance-configresponseMessages`` =
+    { ///Specifies the message code.
+      code: int
+      ///Contains the message text.
+      message: string }
+    ///Creates an instance of get-table-maintenance-configresponseMessages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``get-table-maintenance-configresponseMessages`` =
+        { code = code; message = message }
+
+type ``get-table-maintenance-configresponse`` =
+    { ///Contains errors if the API call was unsuccessful.
+      errors: list<``get-table-maintenance-configresponseErrors``>
+      ///Contains informational messages.
+      messages: list<``get-table-maintenance-configresponseMessages``>
+      ///Indicates whether the API call was successful.
+      success: ``r2-data-catalogapi-response-success``
+      ///Contains table maintenance configuration.
+      result: Option<``r2-data-catalogtable-maintenance-config-response``> }
+    ///Creates an instance of get-table-maintenance-configresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``get-table-maintenance-configresponseErrors``>,
+                          messages: list<``get-table-maintenance-configresponseMessages``>,
+                          success: ``r2-data-catalogapi-response-success``): ``get-table-maintenance-configresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
+          result = None }
+
+type ``update-table-maintenance-configresponseErrors`` =
+    { ///Specifies the error code.
+      code: int
+      ///Describes the error.
+      message: string }
+    ///Creates an instance of update-table-maintenance-configresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``update-table-maintenance-configresponseErrors`` =
+        { code = code; message = message }
+
+type ``update-table-maintenance-configresponseMessages`` =
+    { ///Specifies the message code.
+      code: int
+      ///Contains the message text.
+      message: string }
+    ///Creates an instance of update-table-maintenance-configresponseMessages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``update-table-maintenance-configresponseMessages`` =
+        { code = code; message = message }
+
+type ``update-table-maintenance-configresponse`` =
+    { ///Contains errors if the API call was unsuccessful.
+      errors: list<``update-table-maintenance-configresponseErrors``>
+      ///Contains informational messages.
+      messages: list<``update-table-maintenance-configresponseMessages``>
+      ///Indicates whether the API call was successful.
+      success: ``r2-data-catalogapi-response-success``
+      ///Configures maintenance for the table.
+      result: Option<``r2-data-catalogtable-maintenance-config``> }
+    ///Creates an instance of update-table-maintenance-configresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``update-table-maintenance-configresponseErrors``>,
+                          messages: list<``update-table-maintenance-configresponseMessages``>,
+                          success: ``r2-data-catalogapi-response-success``): ``update-table-maintenance-configresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
+          result = None }
+
 [<RequireQualifiedAccess>]
 type ListCatalogs =
     ///List of R2 catalogs.
-    | OK of payload: string
+    | OK of payload: ``list-catalogsresponse``
     ///Bad request.
     | BadRequest of payload: ``r2-data-catalogapi-response-common-failure``
     ///Authentication failed.
@@ -422,7 +784,7 @@ type ListCatalogs =
 [<RequireQualifiedAccess>]
 type GetCatalogDetails =
     ///R2 catalog details.
-    | OK of payload: string
+    | OK of payload: ``get-catalog-detailsresponse``
     ///Bad request.
     | BadRequest of payload: ``r2-data-catalogapi-response-common-failure``
     ///Authentication failed.
@@ -437,7 +799,7 @@ type GetCatalogDetails =
 [<RequireQualifiedAccess>]
 type StoreCredentials =
     ///Credentials stored successfully.
-    | OK of payload: string
+    | OK of payload: ``store-credentialsresponse``
     ///Bad request.
     | BadRequest of payload: ``r2-data-catalogapi-response-common-failure``
     ///Authentication failed.
@@ -467,7 +829,7 @@ type DisableCatalog =
 [<RequireQualifiedAccess>]
 type EnableCatalog =
     ///Catalog enabled successfully.
-    | OK of payload: string
+    | OK of payload: ``enable-catalogresponse``
     ///Bad request.
     | BadRequest of payload: ``r2-data-catalogapi-response-common-failure``
     ///Authentication failed.
@@ -482,7 +844,7 @@ type EnableCatalog =
 [<RequireQualifiedAccess>]
 type GetMaintenanceConfig =
     ///Maintenance configuration retrieved successfully.
-    | OK of payload: string
+    | OK of payload: ``get-maintenance-configresponse``
     ///Bad request.
     | BadRequest of payload: ``r2-data-catalogapi-response-common-failure``
     ///Authentication failed.
@@ -497,7 +859,7 @@ type GetMaintenanceConfig =
 [<RequireQualifiedAccess>]
 type UpdateMaintenanceConfig =
     ///Maintenance configuration updated successfully.
-    | OK of payload: string
+    | OK of payload: ``update-maintenance-configresponse``
     ///Bad request.
     | BadRequest of payload: ``r2-data-catalogapi-response-common-failure``
     ///Authentication failed.
@@ -512,7 +874,7 @@ type UpdateMaintenanceConfig =
 [<RequireQualifiedAccess>]
 type ListNamespaces =
     ///List of namespaces retrieved successfully.
-    | OK of payload: string
+    | OK of payload: ``list-namespacesresponse``
     ///Bad request (e.g., invalid page_size, malformed parent namespace).
     | BadRequest of payload: ``r2-data-catalogapi-response-common-failure``
     ///Authentication failed.
@@ -527,7 +889,7 @@ type ListNamespaces =
 [<RequireQualifiedAccess>]
 type ListTables =
     ///List of tables retrieved successfully.
-    | OK of payload: string
+    | OK of payload: ``list-tablesresponse``
     ///Bad request (e.g., invalid page_size, malformed namespace).
     | BadRequest of payload: ``r2-data-catalogapi-response-common-failure``
     ///Authentication failed.
@@ -542,7 +904,7 @@ type ListTables =
 [<RequireQualifiedAccess>]
 type GetTableMaintenanceConfig =
     ///Table maintenance configuration retrieved successfully.
-    | OK of payload: string
+    | OK of payload: ``get-table-maintenance-configresponse``
     ///Bad request.
     | BadRequest of payload: ``r2-data-catalogapi-response-common-failure``
     ///Authentication failed.
@@ -557,7 +919,7 @@ type GetTableMaintenanceConfig =
 [<RequireQualifiedAccess>]
 type UpdateTableMaintenanceConfig =
     ///Table maintenance configuration updated successfully.
-    | OK of payload: string
+    | OK of payload: ``update-table-maintenance-configresponse``
     ///Bad request.
     | BadRequest of payload: ``r2-data-catalogapi-response-common-failure``
     ///Authentication failed.

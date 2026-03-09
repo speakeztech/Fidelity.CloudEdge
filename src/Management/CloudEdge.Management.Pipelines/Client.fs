@@ -40,7 +40,9 @@ type PipelinesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return GetV4AccountsByAccountIdPipelinesV1Pipelines.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return GetV4AccountsByAccountIdPipelinesV1Pipelines.OK(Serializer.deserialize content)
+            | _ -> return GetV4AccountsByAccountIdPipelinesV1Pipelines.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -64,7 +66,9 @@ type PipelinesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return PostV4AccountsByAccountIdPipelinesV1Pipelines.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return PostV4AccountsByAccountIdPipelinesV1Pipelines.OK(Serializer.deserialize content)
+            | _ -> return PostV4AccountsByAccountIdPipelinesV1Pipelines.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -88,7 +92,14 @@ type PipelinesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return DeleteV4AccountsByAccountIdPipelinesV1PipelinesByPipelineId.OK(Serializer.deserialize content)
+            match int status with
+            | 200 ->
+                return DeleteV4AccountsByAccountIdPipelinesV1PipelinesByPipelineId.OK(Serializer.deserialize content)
+            | _ ->
+                return
+                    DeleteV4AccountsByAccountIdPipelinesV1PipelinesByPipelineId.BadRequest(
+                        Serializer.deserialize content
+                    )
         }
 
     ///<summary>
@@ -112,7 +123,11 @@ type PipelinesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return GetV4AccountsByAccountIdPipelinesV1PipelinesByPipelineId.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return GetV4AccountsByAccountIdPipelinesV1PipelinesByPipelineId.OK(Serializer.deserialize content)
+            | _ ->
+                return
+                    GetV4AccountsByAccountIdPipelinesV1PipelinesByPipelineId.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -143,7 +158,9 @@ type PipelinesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return GetV4AccountsByAccountIdPipelinesV1Sinks.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return GetV4AccountsByAccountIdPipelinesV1Sinks.OK(Serializer.deserialize content)
+            | _ -> return GetV4AccountsByAccountIdPipelinesV1Sinks.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -167,7 +184,9 @@ type PipelinesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return PostV4AccountsByAccountIdPipelinesV1Sinks.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return PostV4AccountsByAccountIdPipelinesV1Sinks.OK(Serializer.deserialize content)
+            | _ -> return PostV4AccountsByAccountIdPipelinesV1Sinks.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -194,7 +213,9 @@ type PipelinesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return DeleteV4AccountsByAccountIdPipelinesV1SinksBySinkId.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return DeleteV4AccountsByAccountIdPipelinesV1SinksBySinkId.OK(Serializer.deserialize content)
+            | _ -> return DeleteV4AccountsByAccountIdPipelinesV1SinksBySinkId.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -218,7 +239,9 @@ type PipelinesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return GetV4AccountsByAccountIdPipelinesV1SinksBySinkId.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return GetV4AccountsByAccountIdPipelinesV1SinksBySinkId.OK(Serializer.deserialize content)
+            | _ -> return GetV4AccountsByAccountIdPipelinesV1SinksBySinkId.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -249,7 +272,9 @@ type PipelinesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return GetV4AccountsByAccountIdPipelinesV1Streams.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return GetV4AccountsByAccountIdPipelinesV1Streams.OK(Serializer.deserialize content)
+            | _ -> return GetV4AccountsByAccountIdPipelinesV1Streams.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -273,7 +298,9 @@ type PipelinesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return PostV4AccountsByAccountIdPipelinesV1Streams.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return PostV4AccountsByAccountIdPipelinesV1Streams.OK(Serializer.deserialize content)
+            | _ -> return PostV4AccountsByAccountIdPipelinesV1Streams.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -300,7 +327,11 @@ type PipelinesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return DeleteV4AccountsByAccountIdPipelinesV1StreamsByStreamId.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return DeleteV4AccountsByAccountIdPipelinesV1StreamsByStreamId.OK(Serializer.deserialize content)
+            | _ ->
+                return
+                    DeleteV4AccountsByAccountIdPipelinesV1StreamsByStreamId.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -324,7 +355,10 @@ type PipelinesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return GetV4AccountsByAccountIdPipelinesV1StreamsByStreamId.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return GetV4AccountsByAccountIdPipelinesV1StreamsByStreamId.OK(Serializer.deserialize content)
+            | _ ->
+                return GetV4AccountsByAccountIdPipelinesV1StreamsByStreamId.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -350,7 +384,10 @@ type PipelinesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return PatchV4AccountsByAccountIdPipelinesV1StreamsByStreamId.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return PatchV4AccountsByAccountIdPipelinesV1StreamsByStreamId.OK(Serializer.deserialize content)
+            | _ ->
+                return PatchV4AccountsByAccountIdPipelinesV1StreamsByStreamId.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -374,5 +411,7 @@ type PipelinesClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return PostV4AccountsByAccountIdPipelinesV1ValidateSql.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return PostV4AccountsByAccountIdPipelinesV1ValidateSql.OK(Serializer.deserialize content)
+            | _ -> return PostV4AccountsByAccountIdPipelinesV1ValidateSql.BadRequest(Serializer.deserialize content)
         }

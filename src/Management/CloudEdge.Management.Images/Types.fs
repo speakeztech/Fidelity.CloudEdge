@@ -1,5 +1,11 @@
 namespace rec Fidelity.CloudEdge.Management.Images.Types
 
+// Auto-generated stub types (missing from Hawaii output)
+type field = string
+type image = string
+type imagesimagevariants = string
+type operator = string
+
 ///Account identifier tag.
 type imagesaccountidentifier = string
 ///Can set the creator field with an internal user ID.
@@ -58,9 +64,6 @@ type imagesimagevariantwidth = float
 ///Continuation token to fetch next page. Passed as a query param when requesting List V2 api endpoint.
 type imagesimageslistcontinuationtoken = string
 type imagesimagesstatsallowed = float
-
-// Type aliases for Hawaii sanitization compatibility
-type imagesimagevariants = imagesimagevariantsresponse
 type imagesimagesstatscurrent = float
 
 type imagesmessagesArrayItem =
@@ -190,17 +193,20 @@ type imagesdeletedresponseMessages =
         { code = code; message = message }
 
 type imagesdeletedresponse =
-    { errors: Option<list<imagesdeletedresponseErrors>>
-      messages: Option<list<imagesdeletedresponseMessages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<imagesdeletedresponseErrors>
+      messages: list<imagesdeletedresponseMessages>
+      result: Newtonsoft.Json.Linq.JObject
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of imagesdeletedresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): imagesdeletedresponse =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<imagesdeletedresponseErrors>,
+                          messages: list<imagesdeletedresponseMessages>,
+                          result: Newtonsoft.Json.Linq.JObject,
+                          success: bool): imagesdeletedresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 type imagesimage =
     { ///Can set the creator field with an internal user ID.
@@ -283,17 +289,20 @@ type imagesimagedirectuploadresponsev2Messages =
         { code = code; message = message }
 
 type imagesimagedirectuploadresponsev2 =
-    { errors: Option<list<imagesimagedirectuploadresponsev2Errors>>
-      messages: Option<list<imagesimagedirectuploadresponsev2Messages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<imagesimagedirectuploadresponsev2Errors>
+      messages: list<imagesimagedirectuploadresponsev2Messages>
+      result: Newtonsoft.Json.Linq.JToken
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of imagesimagedirectuploadresponsev2 with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): imagesimagedirectuploadresponsev2 =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<imagesimagedirectuploadresponsev2Errors>,
+                          messages: list<imagesimagedirectuploadresponsev2Messages>,
+                          result: Newtonsoft.Json.Linq.JToken,
+                          success: bool): imagesimagedirectuploadresponsev2 =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 type imagesimagekeyresponsecollectionErrors =
     { code: int
@@ -310,17 +319,20 @@ type imagesimagekeyresponsecollectionMessages =
         { code = code; message = message }
 
 type imagesimagekeyresponsecollection =
-    { errors: Option<list<imagesimagekeyresponsecollectionErrors>>
-      messages: Option<list<imagesimagekeyresponsecollectionMessages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<imagesimagekeyresponsecollectionErrors>
+      messages: list<imagesimagekeyresponsecollectionMessages>
+      result: imagesimagekeysresponse
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of imagesimagekeyresponsecollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): imagesimagekeyresponsecollection =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<imagesimagekeyresponsecollectionErrors>,
+                          messages: list<imagesimagekeyresponsecollectionMessages>,
+                          result: imagesimagekeysresponse,
+                          success: bool): imagesimagekeyresponsecollection =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 type imagesimagekeys =
     { ///Key name.
@@ -363,17 +375,20 @@ type imagesimageresponsesingleMessages =
         { code = code; message = message }
 
 type imagesimageresponsesingle =
-    { errors: Option<list<imagesimageresponsesingleErrors>>
-      messages: Option<list<imagesimageresponsesingleMessages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<imagesimageresponsesingleErrors>
+      messages: list<imagesimageresponsesingleMessages>
+      result: imagesimage
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of imagesimageresponsesingle with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): imagesimageresponsesingle =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<imagesimageresponsesingleErrors>,
+                          messages: list<imagesimageresponsesingleMessages>,
+                          result: imagesimage,
+                          success: bool): imagesimageresponsesingle =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 type imagesimagevariantdefinition =
     { id: imagesimagevariantidentifier
@@ -402,17 +417,20 @@ type imagesimagevariantlistresponseMessages =
         { code = code; message = message }
 
 type imagesimagevariantlistresponse =
-    { errors: Option<list<imagesimagevariantlistresponseErrors>>
-      messages: Option<list<imagesimagevariantlistresponseMessages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<imagesimagevariantlistresponseErrors>
+      messages: list<imagesimagevariantlistresponseMessages>
+      result: imagesimagevariantsresponse
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of imagesimagevariantlistresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): imagesimagevariantlistresponse =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<imagesimagevariantlistresponseErrors>,
+                          messages: list<imagesimagevariantlistresponseMessages>,
+                          result: imagesimagevariantsresponse,
+                          success: bool): imagesimagevariantlistresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 ///Allows you to define image resizing sizes for different use cases.
 type imagesimagevariantoptions =
@@ -481,17 +499,20 @@ type imagesimagevariantsimpleresponseMessages =
         { code = code; message = message }
 
 type imagesimagevariantsimpleresponse =
-    { errors: Option<list<imagesimagevariantsimpleresponseErrors>>
-      messages: Option<list<imagesimagevariantsimpleresponseMessages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<imagesimagevariantsimpleresponseErrors>
+      messages: list<imagesimagevariantsimpleresponseMessages>
+      result: imagesimagevariantresponse
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of imagesimagevariantsimpleresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): imagesimagevariantsimpleresponse =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<imagesimagevariantsimpleresponseErrors>,
+                          messages: list<imagesimagevariantsimpleresponseMessages>,
+                          result: imagesimagevariantresponse,
+                          success: bool): imagesimagevariantsimpleresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 type imagesimagevariantsresponse =
     { variants: Option<imagesimagevariantpublicrequest> }
@@ -518,17 +539,20 @@ type imagesimageslistresponseResult =
     static member Create (): imagesimageslistresponseResult = { images = None }
 
 type imagesimageslistresponse =
-    { errors: Option<list<imagesimageslistresponseErrors>>
-      messages: Option<list<imagesimageslistresponseMessages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<imagesimageslistresponseErrors>
+      messages: list<imagesimageslistresponseMessages>
+      result: imagesimageslistresponseResult
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of imagesimageslistresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): imagesimageslistresponse =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<imagesimageslistresponseErrors>,
+                          messages: list<imagesimageslistresponseMessages>,
+                          result: imagesimageslistresponseResult,
+                          success: bool): imagesimageslistresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 type imagesimageslistresponsev2Errors =
     { code: int
@@ -545,28 +569,25 @@ type imagesimageslistresponsev2Messages =
         { code = code; message = message }
 
 type imagesimageslistresponsev2Result =
-    { ///Continuation token to fetch next page. Passed as a query param when requesting List V2 api endpoint.
-      continuation_token: Option<imagesimageslistcontinuationtoken> }
-    ///Creates an instance of imagesimageslistresponsev2Result with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): imagesimageslistresponsev2Result = { continuation_token = None }
-
-type ResultFromimagesimageslistresponsev2 =
     { images: Option<list<imagesimage>> }
-    ///Creates an instance of ResultFromimagesimageslistresponsev2 with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ResultFromimagesimageslistresponsev2 = { images = None }
+    ///Creates an instance of imagesimageslistresponsev2Result with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): imagesimageslistresponsev2Result = { images = None }
 
 type imagesimageslistresponsev2 =
-    { errors: Option<list<imagesimageslistresponsev2Errors>>
-      messages: Option<list<imagesimageslistresponsev2Messages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<imagesimageslistresponsev2Errors>
+      messages: list<imagesimageslistresponsev2Messages>
+      result: imagesimageslistresponsev2Result
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of imagesimageslistresponsev2 with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): imagesimageslistresponsev2 =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<imagesimageslistresponsev2Errors>,
+                          messages: list<imagesimageslistresponsev2Messages>,
+                          result: imagesimageslistresponsev2Result,
+                          success: bool): imagesimageslistresponsev2 =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 type imagesimagesstats =
     { count: Option<imagesimagesstatscount> }
@@ -596,101 +617,136 @@ type imagesimagesstatsresponseMessages =
         { code = code; message = message }
 
 type imagesimagesstatsresponse =
-    { errors: Option<list<imagesimagesstatsresponseErrors>>
-      messages: Option<list<imagesimagesstatsresponseMessages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<imagesimagesstatsresponseErrors>
+      messages: list<imagesimagesstatsresponseMessages>
+      result: imagesimagesstats
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of imagesimagesstatsresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): imagesimagesstatsresponse =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<imagesimagesstatsresponseErrors>,
+                          messages: list<imagesimagesstatsresponseMessages>,
+                          result: imagesimagesstats,
+                          success: bool): imagesimagesstatsresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 [<RequireQualifiedAccess>]
 type CloudflareImagesListImages =
     ///List images response
     | OK of payload: imagesimageslistresponse
+    ///List images response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type CloudflareImagesUploadAnImageViaUrl =
     ///Upload an image response
     | OK of payload: imagesimageresponsesingle
+    ///Upload an image response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type CloudflareImagesKeysListSigningKeys =
     ///List Signing Keys response
     | OK of payload: imagesimagekeyresponsecollection
+    ///List Signing Keys response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type CloudflareImagesKeysDeleteSigningKey =
     ///Delete Signing Key response
     | OK of payload: imagesimagekeyresponsecollection
+    ///Delete Signing Key response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type CloudflareImagesKeysAddSigningKey =
     ///Add Signing Key response
     | OK of payload: imagesimagekeyresponsecollection
+    ///Add Signing Key response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type CloudflareImagesImagesUsageStatistics =
     ///Images usage statistics response
     | OK of payload: imagesimagesstatsresponse
+    ///Images usage statistics response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type CloudflareImagesVariantsListVariants =
     ///List variants response
     | OK of payload: imagesimagevariantlistresponse
+    ///List variants response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type CloudflareImagesVariantsCreateAVariant =
     ///Create a variant response
     | OK of payload: imagesimagevariantsimpleresponse
+    ///Create a variant response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type CloudflareImagesVariantsDeleteAVariant =
     ///Delete a variant response
     | OK of payload: imagesdeletedresponse
+    ///Delete a variant response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type CloudflareImagesVariantsVariantDetails =
     ///Variant details response
     | OK of payload: imagesimagevariantsimpleresponse
+    ///Variant details response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type CloudflareImagesVariantsUpdateAVariant =
     ///Update a variant response
     | OK of payload: imagesimagevariantsimpleresponse
+    ///Update a variant response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type CloudflareImagesDeleteImage =
     ///Delete image response
     | OK of payload: imagesdeletedresponse
+    ///Delete image response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type CloudflareImagesImageDetails =
     ///Image details response
     | OK of payload: imagesimageresponsesingle
+    ///Image details response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type CloudflareImagesUpdateImage =
     ///Update image response
     | OK of payload: imagesimageresponsesingle
+    ///Update image response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type CloudflareImagesBaseImage =
     ///Base image response. Returns uploaded image data.
     | OK of payload: string
+    ///Base image response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type CloudflareImagesListImagesV2 =
     ///List images response
     | OK of payload: imagesimageslistresponsev2
-    ///Bad request
+    ///List images response failure
     | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type CloudflareImagesCreateAuthenticatedDirectUploadUrlV2 =
     ///Create authenticated direct upload URL V2 response
     | OK of payload: imagesimagedirectuploadresponsev2
+    ///Create authenticated direct upload URL V2 response failure
+    | BadRequest of payload: string

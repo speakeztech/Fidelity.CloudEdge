@@ -1,5 +1,13 @@
 namespace rec Fidelity.CloudEdge.Management.Queues.Types
 
+// Auto-generated stub types (missing from Hawaii output)
+type messages = string
+type ``mqconsumer-response`` = string
+type mqproducer = string
+type queues = string
+type seconds = string
+type unacknowledged = string
+
 type ``mqapi-v4-errorArrayItem`` =
     { code: int
       message: string }
@@ -337,17 +345,12 @@ type ``mqworker-producer`` =
     ///Creates an instance of mqworker-producer with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``mqworker-producer`` = { script = None; ``type`` = None }
 
-[<RequireQualifiedAccess>]
-type ``mqconsumer-response`` =
-    | HttpConsumer of ``mqhttp-consumer-response``
-    | WorkerConsumer of ``mqworker-consumer-response``
-
-[<RequireQualifiedAccess>]
-type ``mqproducer`` =
-    | R2Producer of ``mqr2-producer``
-    | WorkerProducer of ``mqworker-producer``
-
-type QueuesList_OKErrors = { code: int; message: string }
+type ``queues-listresponseErrors`` =
+    { code: int
+      message: string }
+    ///Creates an instance of queues-listresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``queues-listresponseErrors`` =
+        { code = code; message = message }
 
 type Resultinfo =
     { ///Total number of queues
@@ -360,59 +363,74 @@ type Resultinfo =
       total_count: Option<float>
       ///Total pages available without any search parameters
       total_pages: Option<float> }
+    ///Creates an instance of Resultinfo with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): Resultinfo =
+        { count = None
+          page = None
+          per_page = None
+          total_count = None
+          total_pages = None }
 
-type QueuesList_OK =
-    { errors: Option<list<QueuesList_OKErrors>>
+type ``queues-listresponse`` =
+    { errors: Option<list<``queues-listresponseErrors``>>
       messages: Option<``mqapi-v4-message``>
       ///Indicates if the API call was successful or not.
       success: Option<bool>
       result: Option<list<mqqueue>>
       result_info: Option<Resultinfo> }
+    ///Creates an instance of queues-listresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``queues-listresponse`` =
+        { errors = None
+          messages = None
+          success = None
+          result = None
+          result_info = None }
 
-[<RequireQualifiedAccess>]
-type QueuesList =
-    ///List of all Queues that belong to this account
-    | OK of payload: QueuesList_OK
+type ``queues-createresponseErrors`` =
+    { code: int
+      message: string }
+    ///Creates an instance of queues-createresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``queues-createresponseErrors`` =
+        { code = code; message = message }
 
-type QueuesCreatePayload =
-    { queue_name: ``mqqueue-name`` }
-    ///Creates an instance of QueuesCreatePayload with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (queue_name: ``mqqueue-name``): QueuesCreatePayload = { queue_name = queue_name }
-
-type QueuesCreate_OKErrors = { code: int; message: string }
-
-type QueuesCreate_OK =
-    { errors: Option<list<QueuesCreate_OKErrors>>
+type ``queues-createresponse`` =
+    { errors: Option<list<``queues-createresponseErrors``>>
       messages: Option<``mqapi-v4-message``>
       ///Indicates if the API call was successful or not.
       success: Option<bool>
       result: Option<mqqueue> }
+    ///Creates an instance of queues-createresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``queues-createresponse`` =
+        { errors = None
+          messages = None
+          success = None
+          result = None }
 
-[<RequireQualifiedAccess>]
-type QueuesCreate =
-    ///Created Queue
-    | OK of payload: QueuesCreate_OK
+type ``queues-getresponseErrors`` =
+    { code: int
+      message: string }
+    ///Creates an instance of queues-getresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``queues-getresponseErrors`` = { code = code; message = message }
 
-[<RequireQualifiedAccess>]
-type QueuesDelete =
-    ///Successful delete
-    | OK of payload: ``mqapi-v4-success``
-
-type QueuesGet_OKErrors = { code: int; message: string }
-
-type QueuesGet_OK =
-    { errors: Option<list<QueuesGet_OKErrors>>
+type ``queues-getresponse`` =
+    { errors: Option<list<``queues-getresponseErrors``>>
       messages: Option<``mqapi-v4-message``>
       ///Indicates if the API call was successful or not.
       success: Option<bool>
       result: Option<mqqueue> }
+    ///Creates an instance of queues-getresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``queues-getresponse`` =
+        { errors = None
+          messages = None
+          success = None
+          result = None }
 
-[<RequireQualifiedAccess>]
-type QueuesGet =
-    ///Details of the requested Queue
-    | OK of payload: QueuesGet_OK
-
-type QueuesUpdatePartial_OKErrors = { code: int; message: string }
+type ``queues-update-partialresponseErrors`` =
+    { code: int
+      message: string }
+    ///Creates an instance of queues-update-partialresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``queues-update-partialresponseErrors`` =
+        { code = code; message = message }
 
 type Result =
     { consumers: Option<list<``mqconsumer-response``>>
@@ -424,22 +442,39 @@ type Result =
       queue_id: Option<string>
       queue_name: Option<``mqqueue-name``>
       settings: Option<``mqqueue-settings``> }
+    ///Creates an instance of Result with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): Result =
+        { consumers = None
+          consumers_total_count = None
+          created_on = None
+          modified_on = None
+          producers = None
+          producers_total_count = None
+          queue_id = None
+          queue_name = None
+          settings = None }
 
-type QueuesUpdatePartial_OK =
-    { errors: Option<list<QueuesUpdatePartial_OKErrors>>
+type ``queues-update-partialresponse`` =
+    { errors: Option<list<``queues-update-partialresponseErrors``>>
       messages: Option<``mqapi-v4-message``>
       ///Indicates if the API call was successful or not.
       success: Option<bool>
       result: Option<Result> }
+    ///Creates an instance of queues-update-partialresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``queues-update-partialresponse`` =
+        { errors = None
+          messages = None
+          success = None
+          result = None }
 
-[<RequireQualifiedAccess>]
-type QueuesUpdatePartial =
-    ///Updated Queue
-    | OK of payload: QueuesUpdatePartial_OK
+type ``queues-updateresponseErrors`` =
+    { code: int
+      message: string }
+    ///Creates an instance of queues-updateresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``queues-updateresponseErrors`` =
+        { code = code; message = message }
 
-type QueuesUpdate_OKErrors = { code: int; message: string }
-
-type QueuesUpdate_OKResult =
+type ``queues-updateresponseResult`` =
     { consumers: Option<list<``mqconsumer-response``>>
       consumers_total_count: Option<float>
       created_on: Option<string>
@@ -449,87 +484,350 @@ type QueuesUpdate_OKResult =
       queue_id: Option<string>
       queue_name: Option<``mqqueue-name``>
       settings: Option<``mqqueue-settings``> }
+    ///Creates an instance of queues-updateresponseResult with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``queues-updateresponseResult`` =
+        { consumers = None
+          consumers_total_count = None
+          created_on = None
+          modified_on = None
+          producers = None
+          producers_total_count = None
+          queue_id = None
+          queue_name = None
+          settings = None }
 
-type QueuesUpdate_OK =
-    { errors: Option<list<QueuesUpdate_OKErrors>>
+type ``queues-updateresponse`` =
+    { errors: Option<list<``queues-updateresponseErrors``>>
       messages: Option<``mqapi-v4-message``>
       ///Indicates if the API call was successful or not.
       success: Option<bool>
-      result: Option<QueuesUpdate_OKResult> }
+      result: Option<``queues-updateresponseResult``> }
+    ///Creates an instance of queues-updateresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``queues-updateresponse`` =
+        { errors = None
+          messages = None
+          success = None
+          result = None }
 
-[<RequireQualifiedAccess>]
-type QueuesUpdate =
-    ///Updated Queue
-    | OK of payload: QueuesUpdate_OK
+type ``queues-list-consumersresponseErrors`` =
+    { code: int
+      message: string }
+    ///Creates an instance of queues-list-consumersresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``queues-list-consumersresponseErrors`` =
+        { code = code; message = message }
 
-type QueuesListConsumers_OKErrors = { code: int; message: string }
-
-type QueuesListConsumers_OK =
-    { errors: Option<list<QueuesListConsumers_OKErrors>>
+type ``queues-list-consumersresponse`` =
+    { errors: Option<list<``queues-list-consumersresponseErrors``>>
       messages: Option<``mqapi-v4-message``>
       ///Indicates if the API call was successful or not.
       success: Option<bool>
       result: Option<list<``mqconsumer-response``>> }
+    ///Creates an instance of queues-list-consumersresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``queues-list-consumersresponse`` =
+        { errors = None
+          messages = None
+          success = None
+          result = None }
 
-[<RequireQualifiedAccess>]
-type QueuesListConsumers =
-    ///All consumers attached to this Queue
-    | OK of payload: QueuesListConsumers_OK
+type ``queues-create-consumerresponseErrors`` =
+    { code: int
+      message: string }
+    ///Creates an instance of queues-create-consumerresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``queues-create-consumerresponseErrors`` =
+        { code = code; message = message }
 
-type QueuesCreateConsumer_OKErrors = { code: int; message: string }
-
-type QueuesCreateConsumer_OK =
-    { errors: Option<list<QueuesCreateConsumer_OKErrors>>
+type ``queues-create-consumerresponse`` =
+    { errors: Option<list<``queues-create-consumerresponseErrors``>>
       messages: Option<``mqapi-v4-message``>
       ///Indicates if the API call was successful or not.
       success: Option<bool>
       ///Response body representing a consumer
       result: Option<Newtonsoft.Json.Linq.JObject> }
+    ///Creates an instance of queues-create-consumerresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``queues-create-consumerresponse`` =
+        { errors = None
+          messages = None
+          success = None
+          result = None }
+
+type ``queues-get-consumerresponseErrors`` =
+    { code: int
+      message: string }
+    ///Creates an instance of queues-get-consumerresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``queues-get-consumerresponseErrors`` =
+        { code = code; message = message }
+
+type ``queues-get-consumerresponse`` =
+    { errors: Option<list<``queues-get-consumerresponseErrors``>>
+      messages: Option<``mqapi-v4-message``>
+      ///Indicates if the API call was successful or not.
+      success: Option<bool>
+      ///Response body representing a consumer
+      result: Option<Newtonsoft.Json.Linq.JObject> }
+    ///Creates an instance of queues-get-consumerresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``queues-get-consumerresponse`` =
+        { errors = None
+          messages = None
+          success = None
+          result = None }
+
+type ``queues-update-consumerresponseErrors`` =
+    { code: int
+      message: string }
+    ///Creates an instance of queues-update-consumerresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``queues-update-consumerresponseErrors`` =
+        { code = code; message = message }
+
+type ``queues-update-consumerresponse`` =
+    { errors: Option<list<``queues-update-consumerresponseErrors``>>
+      messages: Option<``mqapi-v4-message``>
+      ///Indicates if the API call was successful or not.
+      success: Option<bool>
+      ///Response body representing a consumer
+      result: Option<Newtonsoft.Json.Linq.JObject> }
+    ///Creates an instance of queues-update-consumerresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``queues-update-consumerresponse`` =
+        { errors = None
+          messages = None
+          success = None
+          result = None }
+
+type ``queues-ack-messagesresponseErrors`` =
+    { code: int
+      message: string }
+    ///Creates an instance of queues-ack-messagesresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``queues-ack-messagesresponseErrors`` =
+        { code = code; message = message }
+
+type ``queues-ack-messagesresponseResult`` =
+    { ///The number of messages that were succesfully acknowledged.
+      ackCount: Option<float>
+      ///The number of messages that were succesfully retried.
+      retryCount: Option<float>
+      warnings: Option<list<string>> }
+    ///Creates an instance of queues-ack-messagesresponseResult with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``queues-ack-messagesresponseResult`` =
+        { ackCount = None
+          retryCount = None
+          warnings = None }
+
+type ``queues-ack-messagesresponse`` =
+    { errors: Option<list<``queues-ack-messagesresponseErrors``>>
+      messages: Option<``mqapi-v4-message``>
+      ///Indicates if the API call was successful or not.
+      success: Option<bool>
+      result: Option<``queues-ack-messagesresponseResult``> }
+    ///Creates an instance of queues-ack-messagesresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``queues-ack-messagesresponse`` =
+        { errors = None
+          messages = None
+          success = None
+          result = None }
+
+type ``queues-pull-messagesresponseErrors`` =
+    { code: int
+      message: string }
+    ///Creates an instance of queues-pull-messagesresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``queues-pull-messagesresponseErrors`` =
+        { code = code; message = message }
+
+type Messages =
+    { attempts: Option<float>
+      body: Option<string>
+      id: Option<string>
+      ///An ID that represents an "in-flight" message that has been pulled from a Queue. You must hold on to this ID and use it to acknowledge this message.
+      lease_id: Option<``mqlease-id``>
+      metadata: Option<Newtonsoft.Json.Linq.JObject>
+      timestamp_ms: Option<float> }
+    ///Creates an instance of Messages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): Messages =
+        { attempts = None
+          body = None
+          id = None
+          lease_id = None
+          metadata = None
+          timestamp_ms = None }
+
+type ``queues-pull-messagesresponseResult`` =
+    { ///The number of unacknowledged messages in the queue
+      message_backlog_count: Option<float>
+      messages: Option<list<Messages>> }
+    ///Creates an instance of queues-pull-messagesresponseResult with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``queues-pull-messagesresponseResult`` =
+        { message_backlog_count = None
+          messages = None }
+
+type ``queues-pull-messagesresponse`` =
+    { errors: Option<list<``queues-pull-messagesresponseErrors``>>
+      messages: Option<``mqapi-v4-message``>
+      ///Indicates if the API call was successful or not.
+      success: Option<bool>
+      result: Option<``queues-pull-messagesresponseResult``> }
+    ///Creates an instance of queues-pull-messagesresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``queues-pull-messagesresponse`` =
+        { errors = None
+          messages = None
+          success = None
+          result = None }
+
+type ``queues-purge-getresponseErrors`` =
+    { code: int
+      message: string }
+    ///Creates an instance of queues-purge-getresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``queues-purge-getresponseErrors`` =
+        { code = code; message = message }
+
+type ``queues-purge-getresponseResult`` =
+    { ///Indicates if the last purge operation completed successfully.
+      completed: Option<string>
+      ///Timestamp when the last purge operation started.
+      started_at: Option<string> }
+    ///Creates an instance of queues-purge-getresponseResult with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``queues-purge-getresponseResult`` = { completed = None; started_at = None }
+
+type ``queues-purge-getresponse`` =
+    { errors: Option<list<``queues-purge-getresponseErrors``>>
+      messages: Option<``mqapi-v4-message``>
+      ///Indicates if the API call was successful or not.
+      success: Option<bool>
+      result: Option<``queues-purge-getresponseResult``> }
+    ///Creates an instance of queues-purge-getresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``queues-purge-getresponse`` =
+        { errors = None
+          messages = None
+          success = None
+          result = None }
+
+type ``queues-purgeresponseErrors`` =
+    { code: int
+      message: string }
+    ///Creates an instance of queues-purgeresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``queues-purgeresponseErrors`` =
+        { code = code; message = message }
+
+type ``queues-purgeresponseResult`` =
+    { consumers: Option<list<``mqconsumer-response``>>
+      consumers_total_count: Option<float>
+      created_on: Option<string>
+      modified_on: Option<string>
+      producers: Option<list<mqproducer>>
+      producers_total_count: Option<float>
+      queue_id: Option<string>
+      queue_name: Option<``mqqueue-name``>
+      settings: Option<``mqqueue-settings``> }
+    ///Creates an instance of queues-purgeresponseResult with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``queues-purgeresponseResult`` =
+        { consumers = None
+          consumers_total_count = None
+          created_on = None
+          modified_on = None
+          producers = None
+          producers_total_count = None
+          queue_id = None
+          queue_name = None
+          settings = None }
+
+type ``queues-purgeresponse`` =
+    { errors: Option<list<``queues-purgeresponseErrors``>>
+      messages: Option<``mqapi-v4-message``>
+      ///Indicates if the API call was successful or not.
+      success: Option<bool>
+      result: Option<``queues-purgeresponseResult``> }
+    ///Creates an instance of queues-purgeresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``queues-purgeresponse`` =
+        { errors = None
+          messages = None
+          success = None
+          result = None }
+
+[<RequireQualifiedAccess>]
+type QueuesList =
+    ///List of all Queues that belong to this account
+    | OK of payload: ``queues-listresponse``
+    ///Failure response
+    | BadRequest of payload: ``mqapi-v4-failure``
+
+type QueuesCreatePayload =
+    { queue_name: ``mqqueue-name`` }
+    ///Creates an instance of QueuesCreatePayload with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (queue_name: ``mqqueue-name``): QueuesCreatePayload = { queue_name = queue_name }
+
+[<RequireQualifiedAccess>]
+type QueuesCreate =
+    ///Created Queue
+    | OK of payload: ``queues-createresponse``
+    ///Failure response
+    | BadRequest of payload: ``mqapi-v4-failure``
+
+[<RequireQualifiedAccess>]
+type QueuesDelete =
+    ///Successful delete
+    | OK of payload: ``mqapi-v4-success``
+    ///Failure response
+    | BadRequest of payload: ``mqapi-v4-failure``
+
+[<RequireQualifiedAccess>]
+type QueuesGet =
+    ///Details of the requested Queue
+    | OK of payload: ``queues-getresponse``
+    ///Failure response
+    | BadRequest of payload: ``mqapi-v4-failure``
+
+[<RequireQualifiedAccess>]
+type QueuesUpdatePartial =
+    ///Updated Queue
+    | OK of payload: ``queues-update-partialresponse``
+    ///Failure response
+    | BadRequest of payload: ``mqapi-v4-failure``
+
+[<RequireQualifiedAccess>]
+type QueuesUpdate =
+    ///Updated Queue
+    | OK of payload: ``queues-updateresponse``
+    ///Failure response
+    | BadRequest of payload: ``mqapi-v4-failure``
+
+[<RequireQualifiedAccess>]
+type QueuesListConsumers =
+    ///All consumers attached to this Queue
+    | OK of payload: ``queues-list-consumersresponse``
+    ///Failure response
+    | BadRequest of payload: ``mqapi-v4-failure``
 
 [<RequireQualifiedAccess>]
 type QueuesCreateConsumer =
     ///Create Queue Consumer response.
-    | OK of payload: QueuesCreateConsumer_OK
+    | OK of payload: ``queues-create-consumerresponse``
+    ///Failure response
+    | BadRequest of payload: ``mqapi-v4-failure``
 
 [<RequireQualifiedAccess>]
 type QueuesDeleteConsumer =
     ///Successful consumer delete
     | OK of payload: ``mqapi-v4-success``
-
-type QueuesGetConsumer_OKErrors = { code: int; message: string }
-
-type QueuesGetConsumer_OK =
-    { errors: Option<list<QueuesGetConsumer_OKErrors>>
-      messages: Option<``mqapi-v4-message``>
-      ///Indicates if the API call was successful or not.
-      success: Option<bool>
-      ///Response body representing a consumer
-      result: Option<Newtonsoft.Json.Linq.JObject> }
+    ///Failure response
+    | BadRequest of payload: ``mqapi-v4-failure``
 
 [<RequireQualifiedAccess>]
 type QueuesGetConsumer =
     ///Get Queue Consumer response.
-    | OK of payload: QueuesGetConsumer_OK
-
-type QueuesUpdateConsumer_OKErrors = { code: int; message: string }
-
-type QueuesUpdateConsumer_OK =
-    { errors: Option<list<QueuesUpdateConsumer_OKErrors>>
-      messages: Option<``mqapi-v4-message``>
-      ///Indicates if the API call was successful or not.
-      success: Option<bool>
-      ///Response body representing a consumer
-      result: Option<Newtonsoft.Json.Linq.JObject> }
+    | OK of payload: ``queues-get-consumerresponse``
+    ///Get Queue Consumer response failure.
+    | BadRequest of payload: ``mqapi-v4-failure``
 
 [<RequireQualifiedAccess>]
 type QueuesUpdateConsumer =
     ///Update Queue Consumer response.
-    | OK of payload: QueuesUpdateConsumer_OK
+    | OK of payload: ``queues-update-consumerresponse``
+    ///Update Queue Consumer response failure.
+    | BadRequest of payload: ``mqapi-v4-failure``
 
 [<RequireQualifiedAccess>]
 type QueuesPushMessage =
     ///Successful message ingestion
     | OK of payload: ``mqapi-v4-success``
+    ///Failure response
+    | BadRequest of payload: ``mqapi-v4-failure``
 
 type Acks =
     { ///An ID that represents an "in-flight" message that has been pulled from a Queue. You must hold on to this ID and use it to acknowledge this message.
@@ -553,31 +851,19 @@ type QueuesAckMessagesPayload =
     ///Creates an instance of QueuesAckMessagesPayload with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): QueuesAckMessagesPayload = { acks = None; retries = None }
 
-type QueuesAckMessages_OKErrors = { code: int; message: string }
-
-type QueuesAckMessages_OKResult =
-    { ///The number of messages that were succesfully acknowledged.
-      ackCount: Option<float>
-      ///The number of messages that were succesfully retried.
-      retryCount: Option<float>
-      warnings: Option<list<string>> }
-
-type QueuesAckMessages_OK =
-    { errors: Option<list<QueuesAckMessages_OKErrors>>
-      messages: Option<``mqapi-v4-message``>
-      ///Indicates if the API call was successful or not.
-      success: Option<bool>
-      result: Option<QueuesAckMessages_OKResult> }
-
 [<RequireQualifiedAccess>]
 type QueuesAckMessages =
     ///Details of ACKs and retries
-    | OK of payload: QueuesAckMessages_OK
+    | OK of payload: ``queues-ack-messagesresponse``
+    ///Failure response
+    | BadRequest of payload: ``mqapi-v4-failure``
 
 [<RequireQualifiedAccess>]
 type QueuesPushMessages =
     ///Successful batch ingestion
     | OK of payload: ``mqapi-v4-success``
+    ///Failure response
+    | BadRequest of payload: ``mqapi-v4-failure``
 
 type QueuesPullMessagesPayload =
     { ///The maximum number of messages to include in a batch.
@@ -589,53 +875,19 @@ type QueuesPullMessagesPayload =
         { batch_size = None
           visibility_timeout_ms = None }
 
-type QueuesPullMessages_OKErrors = { code: int; message: string }
-
-type Messages =
-    { attempts: Option<float>
-      body: Option<string>
-      id: Option<string>
-      ///An ID that represents an "in-flight" message that has been pulled from a Queue. You must hold on to this ID and use it to acknowledge this message.
-      lease_id: Option<``mqlease-id``>
-      metadata: Option<Newtonsoft.Json.Linq.JObject>
-      timestamp_ms: Option<float> }
-
-type QueuesPullMessages_OKResult =
-    { ///The number of unacknowledged messages in the queue
-      message_backlog_count: Option<float>
-      messages: Option<list<Messages>> }
-
-type QueuesPullMessages_OK =
-    { errors: Option<list<QueuesPullMessages_OKErrors>>
-      messages: Option<``mqapi-v4-message``>
-      ///Indicates if the API call was successful or not.
-      success: Option<bool>
-      result: Option<QueuesPullMessages_OKResult> }
-
 [<RequireQualifiedAccess>]
 type QueuesPullMessages =
     ///A batch of messages in the Queue
-    | OK of payload: QueuesPullMessages_OK
-
-type QueuesPurgeGet_OKErrors = { code: int; message: string }
-
-type QueuesPurgeGet_OKResult =
-    { ///Indicates if the last purge operation completed successfully.
-      completed: Option<string>
-      ///Timestamp when the last purge operation started.
-      started_at: Option<string> }
-
-type QueuesPurgeGet_OK =
-    { errors: Option<list<QueuesPurgeGet_OKErrors>>
-      messages: Option<``mqapi-v4-message``>
-      ///Indicates if the API call was successful or not.
-      success: Option<bool>
-      result: Option<QueuesPurgeGet_OKResult> }
+    | OK of payload: ``queues-pull-messagesresponse``
+    ///Failure response
+    | BadRequest of payload: ``mqapi-v4-failure``
 
 [<RequireQualifiedAccess>]
 type QueuesPurgeGet =
     ///Details of the requested Queue
-    | OK of payload: QueuesPurgeGet_OK
+    | OK of payload: ``queues-purge-getresponse``
+    ///Failure response
+    | BadRequest of payload: ``mqapi-v4-failure``
 
 type QueuesPurgePayload =
     { ///Confimation that all messages will be deleted permanently.
@@ -643,27 +895,9 @@ type QueuesPurgePayload =
     ///Creates an instance of QueuesPurgePayload with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): QueuesPurgePayload = { delete_messages_permanently = None }
 
-type QueuesPurge_OKErrors = { code: int; message: string }
-
-type QueuesPurge_OKResult =
-    { consumers: Option<list<``mqconsumer-response``>>
-      consumers_total_count: Option<float>
-      created_on: Option<string>
-      modified_on: Option<string>
-      producers: Option<list<mqproducer>>
-      producers_total_count: Option<float>
-      queue_id: Option<string>
-      queue_name: Option<``mqqueue-name``>
-      settings: Option<``mqqueue-settings``> }
-
-type QueuesPurge_OK =
-    { errors: Option<list<QueuesPurge_OKErrors>>
-      messages: Option<``mqapi-v4-message``>
-      ///Indicates if the API call was successful or not.
-      success: Option<bool>
-      result: Option<QueuesPurge_OKResult> }
-
 [<RequireQualifiedAccess>]
 type QueuesPurge =
     ///Updated Queue
-    | OK of payload: QueuesPurge_OK
+    | OK of payload: ``queues-purgeresponse``
+    ///Failure response
+    | BadRequest of payload: ``mqapi-v4-failure``

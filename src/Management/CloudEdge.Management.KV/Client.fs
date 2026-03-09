@@ -46,7 +46,9 @@ type KVClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WorkersKvNamespaceListNamespaces.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WorkersKvNamespaceListNamespaces.OK(Serializer.deserialize content)
+            | _ -> return WorkersKvNamespaceListNamespaces.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -70,7 +72,9 @@ type KVClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WorkersKvNamespaceCreateANamespace.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WorkersKvNamespaceCreateANamespace.OK(Serializer.deserialize content)
+            | _ -> return WorkersKvNamespaceCreateANamespace.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -94,7 +98,9 @@ type KVClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WorkersKvNamespaceRemoveANamespace.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WorkersKvNamespaceRemoveANamespace.OK(Serializer.deserialize content)
+            | _ -> return WorkersKvNamespaceRemoveANamespace.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -118,7 +124,9 @@ type KVClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WorkersKvNamespaceGetANamespace.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WorkersKvNamespaceGetANamespace.OK(Serializer.deserialize content)
+            | _ -> return WorkersKvNamespaceGetANamespace.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -144,7 +152,9 @@ type KVClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WorkersKvNamespaceRenameANamespace.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WorkersKvNamespaceRenameANamespace.OK(Serializer.deserialize content)
+            | _ -> return WorkersKvNamespaceRenameANamespace.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -170,7 +180,9 @@ type KVClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WorkersKvNamespaceWriteMultipleKeyValuePairs.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WorkersKvNamespaceWriteMultipleKeyValuePairs.OK(Serializer.deserialize content)
+            | _ -> return WorkersKvNamespaceWriteMultipleKeyValuePairs.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -203,7 +215,9 @@ type KVClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WorkersKvNamespaceListANamespace'SKeys.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WorkersKvNamespaceListANamespace'SKeys.OK(Serializer.deserialize content)
+            | _ -> return WorkersKvNamespaceListANamespace'SKeys.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -229,7 +243,9 @@ type KVClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WorkersKvNamespaceReadTheMetadataForAKey.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WorkersKvNamespaceReadTheMetadataForAKey.OK(Serializer.deserialize content)
+            | _ -> return WorkersKvNamespaceReadTheMetadataForAKey.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -255,7 +271,9 @@ type KVClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WorkersKvNamespaceDeleteKeyValuePair.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WorkersKvNamespaceDeleteKeyValuePair.OK(Serializer.deserialize content)
+            | _ -> return WorkersKvNamespaceDeleteKeyValuePair.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -281,7 +299,9 @@ type KVClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WorkersKvNamespaceReadKeyValuePair.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WorkersKvNamespaceReadKeyValuePair.OK(Serializer.deserialize content)
+            | _ -> return WorkersKvNamespaceReadKeyValuePair.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -299,7 +319,7 @@ type KVClient(httpClient: HttpClient) =
             keyName: string,
             namespaceId: string,
             accountId: string,
-            body: string,
+            body: ``workers-kvvalue``,
             ?expiration: float,
             ?expirationTtl: float,
             ?cancellationToken: CancellationToken
@@ -322,5 +342,7 @@ type KVClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return WorkersKvNamespaceWriteKeyValuePairWithMetadata.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return WorkersKvNamespaceWriteKeyValuePairWithMetadata.OK(Serializer.deserialize content)
+            | _ -> return WorkersKvNamespaceWriteKeyValuePairWithMetadata.BadRequest(Serializer.deserialize content)
         }

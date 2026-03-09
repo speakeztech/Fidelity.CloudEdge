@@ -26,7 +26,9 @@ type CallsClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.getAsync httpClient "/accounts/{account_id}/calls/apps" requestParts cancellationToken
 
-            return CallsAppsList.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return CallsAppsList.OK(Serializer.deserialize content)
+            | _ -> return CallsAppsList.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -65,7 +67,9 @@ type CallsClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return CallsAppsDeleteApp.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return CallsAppsDeleteApp.OK(Serializer.deserialize content)
+            | _ -> return CallsAppsDeleteApp.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -84,7 +88,9 @@ type CallsClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return CallsAppsRetrieveAppDetails.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return CallsAppsRetrieveAppDetails.OK(Serializer.deserialize content)
+            | _ -> return CallsAppsRetrieveAppDetails.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -110,7 +116,9 @@ type CallsClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return CallsAppsUpdateAppDetails.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return CallsAppsUpdateAppDetails.OK(Serializer.deserialize content)
+            | _ -> return CallsAppsUpdateAppDetails.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -124,7 +132,9 @@ type CallsClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.getAsync httpClient "/accounts/{account_id}/calls/turn_keys" requestParts cancellationToken
 
-            return CallsTurnKeyList.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return CallsTurnKeyList.OK(Serializer.deserialize content)
+            | _ -> return CallsTurnKeyList.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -163,7 +173,9 @@ type CallsClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return CallsDeleteTurnKey.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return CallsDeleteTurnKey.OK(Serializer.deserialize content)
+            | _ -> return CallsDeleteTurnKey.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -182,7 +194,9 @@ type CallsClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return CallsRetrieveTurnKeyDetails.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return CallsRetrieveTurnKeyDetails.OK(Serializer.deserialize content)
+            | _ -> return CallsRetrieveTurnKeyDetails.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -208,5 +222,7 @@ type CallsClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return CallsUpdateTurnKey.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return CallsUpdateTurnKey.OK(Serializer.deserialize content)
+            | _ -> return CallsUpdateTurnKey.BadRequest(Serializer.deserialize content)
         }

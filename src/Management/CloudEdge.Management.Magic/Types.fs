@@ -1,5 +1,24 @@
 namespace rec Fidelity.CloudEdge.Management.Magic.Types
 
+// Auto-generated type aliases (Hawaii normalization fix)
+type ``magic-visibility-mnm_mnm_config_router_ip`` = ``magic-visibility-mnmmnmconfigrouterip``
+type ``magic-visibility-mnm_mnm_config_warp_device`` = ``magic-visibility-mnmmnmconfigwarpdevice``
+type ``magic-visibility-mnm_mnm_rule_ip_prefix`` = ``magic-visibility-mnmmnmruleipprefix``
+type magic_cidr = magiccidr
+type magic_colo_name = magiccoloname
+type magic_colo_region = magiccoloregion
+type magic_identifier = magicidentifier
+
+// Auto-generated stub types (missing from Hawaii output)
+type bytes = string
+type check = string
+type colo = string
+type flow = string
+type ``magicacl-subnet`` = string
+type magicapp = string
+type node = string
+type results = string
+
 ///Identifier.
 type dosidentifier = string
 
@@ -97,14 +116,14 @@ type ``magic-transitpackettype`` =
     | [<CompiledName "tcp">] Tcp
     | [<CompiledName "udp">] Udp
     | [<CompiledName "gre">] Gre
-    | [<CompiledName "gre+icmp">] GreIcmp
+    | [<CompiledName "gre+icmp">] GrePlus_icmp
     member this.Format() =
         match this with
         | Icmp -> "icmp"
         | Tcp -> "tcp"
         | Udp -> "udp"
         | Gre -> "gre"
-        | GreIcmp -> "gre+icmp"
+        | GrePlus_icmp -> "gre+icmp"
 
 type ``magic-transitpacketslost`` = int
 type ``magic-transitpacketsperttl`` = int
@@ -153,16 +172,6 @@ type ``magic-visibility-mnmmnmruleipprefixes`` = list<``magic-visibility-mnm_mnm
 ///The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.
 type ``magic-visibility-mnmmnmrulename`` = string
 type ``magic-visibility-mnmmnmrulepacketthreshold`` = float
-
-// Type aliases for underscore variants (Hawaii sanitization compatibility)
-type ``magic-visibility-mnm_mnm_config_router_ip`` = ``magic-visibility-mnmmnmconfigrouterip``
-type ``magic-visibility-mnm_mnm_config_warp_device`` = ``magic-visibility-mnmmnmconfigwarpdevice``
-type ``magic-visibility-mnm_mnm_rule_ip_prefix`` = ``magic-visibility-mnmmnmruleipprefix``
-type ``magic_identifier`` = ``magicidentifier``
-type ``magic_cidr`` = ``magiccidr``
-type ``magic_colo_name`` = ``magiccoloname``
-type ``magic_colo_region`` = ``magiccoloregion``
-type ``magicacl-subnet`` = string
 
 ///Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
@@ -1225,17 +1234,19 @@ type ``dosdns-protection-rule-list-responseResultinfo`` =
           total_count = None }
 
 type ``dosdns-protection-rule-list-response`` =
-    { errors: Option<list<``dosdns-protection-rule-list-responseErrors``>>
-      messages: Option<list<``dosdns-protection-rule-list-responseMessages``>>
+    { errors: list<``dosdns-protection-rule-list-responseErrors``>
+      messages: list<``dosdns-protection-rule-list-responseMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<``dosdns-protection-rule-list-responseResultinfo``>
       result: Option<list<dosDnsProtectionRule>> }
     ///Creates an instance of dosdns-protection-rule-list-response with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``dosdns-protection-rule-list-response`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``dosdns-protection-rule-list-responseErrors``>,
+                          messages: list<``dosdns-protection-rule-list-responseMessages``>,
+                          success: bool): ``dosdns-protection-rule-list-response`` =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
           result = None }
 
@@ -1274,16 +1285,18 @@ type ``dosdns-protection-rule-responseMessages`` =
           source = None }
 
 type ``dosdns-protection-rule-response`` =
-    { errors: Option<list<``dosdns-protection-rule-responseErrors``>>
-      messages: Option<list<``dosdns-protection-rule-responseMessages``>>
+    { errors: list<``dosdns-protection-rule-responseErrors``>
+      messages: list<``dosdns-protection-rule-responseMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<dosDnsProtectionRule> }
     ///Creates an instance of dosdns-protection-rule-response with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``dosdns-protection-rule-response`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``dosdns-protection-rule-responseErrors``>,
+                          messages: list<``dosdns-protection-rule-responseMessages``>,
+                          success: bool): ``dosdns-protection-rule-response`` =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type ``dosexpression-filter-list-responseErrorsSource`` =
@@ -1337,17 +1350,19 @@ type ``dosexpression-filter-list-responseResultinfo`` =
           total_count = None }
 
 type ``dosexpression-filter-list-response`` =
-    { errors: Option<list<``dosexpression-filter-list-responseErrors``>>
-      messages: Option<list<``dosexpression-filter-list-responseMessages``>>
+    { errors: list<``dosexpression-filter-list-responseErrors``>
+      messages: list<``dosexpression-filter-list-responseMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<``dosexpression-filter-list-responseResultinfo``>
       result: Option<list<dosExpressionFilter>> }
     ///Creates an instance of dosexpression-filter-list-response with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``dosexpression-filter-list-response`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``dosexpression-filter-list-responseErrors``>,
+                          messages: list<``dosexpression-filter-list-responseMessages``>,
+                          success: bool): ``dosexpression-filter-list-response`` =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
           result = None }
 
@@ -1386,16 +1401,18 @@ type ``dosexpression-filter-responseMessages`` =
           source = None }
 
 type ``dosexpression-filter-response`` =
-    { errors: Option<list<``dosexpression-filter-responseErrors``>>
-      messages: Option<list<``dosexpression-filter-responseMessages``>>
+    { errors: list<``dosexpression-filter-responseErrors``>
+      messages: list<``dosexpression-filter-responseMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<dosExpressionFilter> }
     ///Creates an instance of dosexpression-filter-response with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``dosexpression-filter-response`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``dosexpression-filter-responseErrors``>,
+                          messages: list<``dosexpression-filter-responseMessages``>,
+                          success: bool): ``dosexpression-filter-response`` =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type ``dosinfra-prefix-list-responseErrorsSource`` =
@@ -1449,17 +1466,19 @@ type ``dosinfra-prefix-list-responseResultinfo`` =
           total_count = None }
 
 type ``dosinfra-prefix-list-response`` =
-    { errors: Option<list<``dosinfra-prefix-list-responseErrors``>>
-      messages: Option<list<``dosinfra-prefix-list-responseMessages``>>
+    { errors: list<``dosinfra-prefix-list-responseErrors``>
+      messages: list<``dosinfra-prefix-list-responseMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<``dosinfra-prefix-list-responseResultinfo``>
       result: Option<list<dosInfraPrefix>> }
     ///Creates an instance of dosinfra-prefix-list-response with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``dosinfra-prefix-list-response`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``dosinfra-prefix-list-responseErrors``>,
+                          messages: list<``dosinfra-prefix-list-responseMessages``>,
+                          success: bool): ``dosinfra-prefix-list-response`` =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
           result = None }
 
@@ -1498,16 +1517,18 @@ type ``dosinfra-prefix-responseMessages`` =
           source = None }
 
 type ``dosinfra-prefix-response`` =
-    { errors: Option<list<``dosinfra-prefix-responseErrors``>>
-      messages: Option<list<``dosinfra-prefix-responseMessages``>>
+    { errors: list<``dosinfra-prefix-responseErrors``>
+      messages: list<``dosinfra-prefix-responseMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<dosInfraPrefix> }
     ///Creates an instance of dosinfra-prefix-response with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``dosinfra-prefix-response`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``dosinfra-prefix-responseErrors``>,
+                          messages: list<``dosinfra-prefix-responseMessages``>,
+                          success: bool): ``dosinfra-prefix-response`` =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type ``dosprefix-list-responseErrorsSource`` =
@@ -1561,17 +1582,19 @@ type ``dosprefix-list-responseResultinfo`` =
           total_count = None }
 
 type ``dosprefix-list-response`` =
-    { errors: Option<list<``dosprefix-list-responseErrors``>>
-      messages: Option<list<``dosprefix-list-responseMessages``>>
+    { errors: list<``dosprefix-list-responseErrors``>
+      messages: list<``dosprefix-list-responseMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<``dosprefix-list-responseResultinfo``>
       result: Option<list<dosPrefix>> }
     ///Creates an instance of dosprefix-list-response with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``dosprefix-list-response`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``dosprefix-list-responseErrors``>,
+                          messages: list<``dosprefix-list-responseMessages``>,
+                          success: bool): ``dosprefix-list-response`` =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
           result = None }
 
@@ -1610,16 +1633,18 @@ type ``dosprefix-responseMessages`` =
           source = None }
 
 type ``dosprefix-response`` =
-    { errors: Option<list<``dosprefix-responseErrors``>>
-      messages: Option<list<``dosprefix-responseMessages``>>
+    { errors: list<``dosprefix-responseErrors``>
+      messages: list<``dosprefix-responseMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<dosPrefix> }
     ///Creates an instance of dosprefix-response with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``dosprefix-response`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``dosprefix-responseErrors``>,
+                          messages: list<``dosprefix-responseMessages``>,
+                          success: bool): ``dosprefix-response`` =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type ``dosprotection-status-responseErrorsSource`` =
@@ -1657,16 +1682,18 @@ type ``dosprotection-status-responseMessages`` =
           source = None }
 
 type ``dosprotection-status-response`` =
-    { errors: Option<list<``dosprotection-status-responseErrors``>>
-      messages: Option<list<``dosprotection-status-responseMessages``>>
+    { errors: list<``dosprotection-status-responseErrors``>
+      messages: list<``dosprotection-status-responseMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<dosProtectionStatus> }
     ///Creates an instance of dosprotection-status-response with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``dosprotection-status-response`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``dosprotection-status-responseErrors``>,
+                          messages: list<``dosprotection-status-responseMessages``>,
+                          success: bool): ``dosprotection-status-response`` =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type ``dossyn-protection-rule-list-responseErrorsSource`` =
@@ -1720,17 +1747,19 @@ type ``dossyn-protection-rule-list-responseResultinfo`` =
           total_count = None }
 
 type ``dossyn-protection-rule-list-response`` =
-    { errors: Option<list<``dossyn-protection-rule-list-responseErrors``>>
-      messages: Option<list<``dossyn-protection-rule-list-responseMessages``>>
+    { errors: list<``dossyn-protection-rule-list-responseErrors``>
+      messages: list<``dossyn-protection-rule-list-responseMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<``dossyn-protection-rule-list-responseResultinfo``>
       result: Option<list<dosSynProtectionRule>> }
     ///Creates an instance of dossyn-protection-rule-list-response with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``dossyn-protection-rule-list-response`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``dossyn-protection-rule-list-responseErrors``>,
+                          messages: list<``dossyn-protection-rule-list-responseMessages``>,
+                          success: bool): ``dossyn-protection-rule-list-response`` =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
           result = None }
 
@@ -1769,16 +1798,18 @@ type ``dossyn-protection-rule-responseMessages`` =
           source = None }
 
 type ``dossyn-protection-rule-response`` =
-    { errors: Option<list<``dossyn-protection-rule-responseErrors``>>
-      messages: Option<list<``dossyn-protection-rule-responseMessages``>>
+    { errors: list<``dossyn-protection-rule-responseErrors``>
+      messages: list<``dossyn-protection-rule-responseMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<dosSynProtectionRule> }
     ///Creates an instance of dossyn-protection-rule-response with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``dossyn-protection-rule-response`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``dossyn-protection-rule-responseErrors``>,
+                          messages: list<``dossyn-protection-rule-responseMessages``>,
+                          success: bool): ``dossyn-protection-rule-response`` =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type ``dostcp-flow-protection-rule-list-responseErrorsSource`` =
@@ -1832,17 +1863,19 @@ type ``dostcp-flow-protection-rule-list-responseResultinfo`` =
           total_count = None }
 
 type ``dostcp-flow-protection-rule-list-response`` =
-    { errors: Option<list<``dostcp-flow-protection-rule-list-responseErrors``>>
-      messages: Option<list<``dostcp-flow-protection-rule-list-responseMessages``>>
+    { errors: list<``dostcp-flow-protection-rule-list-responseErrors``>
+      messages: list<``dostcp-flow-protection-rule-list-responseMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<``dostcp-flow-protection-rule-list-responseResultinfo``>
       result: Option<list<dosTcpFlowProtectionRule>> }
     ///Creates an instance of dostcp-flow-protection-rule-list-response with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``dostcp-flow-protection-rule-list-response`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``dostcp-flow-protection-rule-list-responseErrors``>,
+                          messages: list<``dostcp-flow-protection-rule-list-responseMessages``>,
+                          success: bool): ``dostcp-flow-protection-rule-list-response`` =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
           result = None }
 
@@ -1881,16 +1914,18 @@ type ``dostcp-flow-protection-rule-responseMessages`` =
           source = None }
 
 type ``dostcp-flow-protection-rule-response`` =
-    { errors: Option<list<``dostcp-flow-protection-rule-responseErrors``>>
-      messages: Option<list<``dostcp-flow-protection-rule-responseMessages``>>
+    { errors: list<``dostcp-flow-protection-rule-responseErrors``>
+      messages: list<``dostcp-flow-protection-rule-responseMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<dosTcpFlowProtectionRule> }
     ///Creates an instance of dostcp-flow-protection-rule-response with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``dostcp-flow-protection-rule-response`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``dostcp-flow-protection-rule-responseErrors``>,
+                          messages: list<``dostcp-flow-protection-rule-responseMessages``>,
+                          success: bool): ``dostcp-flow-protection-rule-response`` =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type ``magic-transitapi-response-commonErrorsSource`` =
@@ -3064,17 +3099,21 @@ type magicacldeletedresponseMessages =
         { code = code; message = message }
 
 type magicacldeletedresponse =
-    { errors: Option<list<magicacldeletedresponseErrors>>
-      messages: Option<list<magicacldeletedresponseMessages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<magicacldeletedresponseErrors>
+      messages: list<magicacldeletedresponseMessages>
+      ///Bidirectional ACL policy for network traffic within a site.
+      result: magicacl
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of magicacldeletedresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): magicacldeletedresponse =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<magicacldeletedresponseErrors>,
+                          messages: list<magicacldeletedresponseMessages>,
+                          result: magicacl,
+                          success: bool): magicacldeletedresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 type magicaclmodifiedresponseErrors =
     { code: int
@@ -3091,17 +3130,21 @@ type magicaclmodifiedresponseMessages =
         { code = code; message = message }
 
 type magicaclmodifiedresponse =
-    { errors: Option<list<magicaclmodifiedresponseErrors>>
-      messages: Option<list<magicaclmodifiedresponseMessages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<magicaclmodifiedresponseErrors>
+      messages: list<magicaclmodifiedresponseMessages>
+      ///Bidirectional ACL policy for network traffic within a site.
+      result: magicacl
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of magicaclmodifiedresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): magicaclmodifiedresponse =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<magicaclmodifiedresponseErrors>,
+                          messages: list<magicaclmodifiedresponseMessages>,
+                          result: magicacl,
+                          success: bool): magicaclmodifiedresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 type magicaclsingleresponseErrors =
     { code: int
@@ -3117,17 +3160,21 @@ type magicaclsingleresponseMessages =
         { code = code; message = message }
 
 type magicaclsingleresponse =
-    { errors: Option<list<magicaclsingleresponseErrors>>
-      messages: Option<list<magicaclsingleresponseMessages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<magicaclsingleresponseErrors>
+      messages: list<magicaclsingleresponseMessages>
+      ///Bidirectional ACL policy for network traffic within a site.
+      result: magicacl
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of magicaclsingleresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): magicaclsingleresponse =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<magicaclsingleresponseErrors>,
+                          messages: list<magicaclsingleresponseMessages>,
+                          result: magicacl,
+                          success: bool): magicaclsingleresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type magicaclupdaterequestProtocols =
@@ -3211,17 +3258,20 @@ type magicaclscollectionresponseMessages =
         { code = code; message = message }
 
 type magicaclscollectionresponse =
-    { errors: Option<list<magicaclscollectionresponseErrors>>
-      messages: Option<list<magicaclscollectionresponseMessages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<magicaclscollectionresponseErrors>
+      messages: list<magicaclscollectionresponseMessages>
+      result: list<magicacl>
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of magicaclscollectionresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): magicaclscollectionresponse =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<magicaclscollectionresponseErrors>,
+                          messages: list<magicaclscollectionresponseMessages>,
+                          result: list<magicacl>,
+                          success: bool): magicaclscollectionresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 type ``magicapi-response-commonErrors`` =
     { code: int
@@ -3363,17 +3413,21 @@ type magicappconfigsingleresponseMessages =
         { code = code; message = message }
 
 type magicappconfigsingleresponse =
-    { errors: Option<list<magicappconfigsingleresponseErrors>>
-      messages: Option<list<magicappconfigsingleresponseMessages>>
-      result: Option<Newtonsoft.Json.Linq.JObject>
+    { errors: list<magicappconfigsingleresponseErrors>
+      messages: list<magicappconfigsingleresponseMessages>
+      ///Traffic decision configuration for an app.
+      result: magicappconfig
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of magicappconfigsingleresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): magicappconfigsingleresponse =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<magicappconfigsingleresponseErrors>,
+                          messages: list<magicappconfigsingleresponseMessages>,
+                          result: magicappconfig,
+                          success: bool): magicappconfigsingleresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 type magicappconfigupdaterequest =
     { ///Magic account app ID.
@@ -3409,17 +3463,20 @@ type magicappconfigscollectionresponseMessages =
         { code = code; message = message }
 
 type magicappconfigscollectionresponse =
-    { errors: Option<list<magicappconfigscollectionresponseErrors>>
-      messages: Option<list<magicappconfigscollectionresponseMessages>>
-      result: Option<Newtonsoft.Json.Linq.JObject>
+    { errors: list<magicappconfigscollectionresponseErrors>
+      messages: list<magicappconfigscollectionresponseMessages>
+      result: list<magicappconfig>
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of magicappconfigscollectionresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): magicappconfigscollectionresponse =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<magicappconfigscollectionresponseErrors>,
+                          messages: list<magicappconfigscollectionresponseMessages>,
+                          result: list<magicappconfig>,
+                          success: bool): magicappconfigscollectionresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 type magicappsingleresponseErrors =
     { code: int
@@ -3435,17 +3492,21 @@ type magicappsingleresponseMessages =
         { code = code; message = message }
 
 type magicappsingleresponse =
-    { errors: Option<list<magicappsingleresponseErrors>>
-      messages: Option<list<magicappsingleresponseMessages>>
-      result: Option<Newtonsoft.Json.Linq.JObject>
+    { errors: list<magicappsingleresponseErrors>
+      messages: list<magicappsingleresponseMessages>
+      ///Custom app defined for an account.
+      result: magicaccountapp
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of magicappsingleresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): magicappsingleresponse =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<magicappsingleresponseErrors>,
+                          messages: list<magicappsingleresponseMessages>,
+                          result: magicaccountapp,
+                          success: bool): magicappsingleresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 type magicappupdaterequest =
     { ///FQDNs to associate with traffic decisions.
@@ -3541,17 +3602,20 @@ type magicappscollectionresponseMessages =
         { code = code; message = message }
 
 type magicappscollectionresponse =
-    { errors: Option<list<magicappscollectionresponseErrors>>
-      messages: Option<list<magicappscollectionresponseMessages>>
-      result: Option<list<string>>
+    { errors: list<magicappscollectionresponseErrors>
+      messages: list<magicappscollectionresponseMessages>
+      result: list<magicapp>
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of magicappscollectionresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): magicappscollectionresponse =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<magicappscollectionresponseErrors>,
+                          messages: list<magicappscollectionresponseMessages>,
+                          result: list<magicapp>,
+                          success: bool): magicappscollectionresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 type magicbgpconfig =
     { ///ASN used on the customer end of the BGP session
@@ -3623,17 +3687,20 @@ type ``magiccomponents-schemas-modifiedtunnelscollectionresponseMessages`` =
         { code = code; message = message }
 
 type ``magiccomponents-schemas-modifiedtunnelscollectionresponse`` =
-    { errors: Option<list<``magiccomponents-schemas-modifiedtunnelscollectionresponseErrors``>>
-      messages: Option<list<``magiccomponents-schemas-modifiedtunnelscollectionresponseMessages``>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<``magiccomponents-schemas-modifiedtunnelscollectionresponseErrors``>
+      messages: list<``magiccomponents-schemas-modifiedtunnelscollectionresponseMessages``>
+      result: Newtonsoft.Json.Linq.JToken
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of magiccomponents-schemas-modifiedtunnelscollectionresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``magiccomponents-schemas-modifiedtunnelscollectionresponse`` =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<``magiccomponents-schemas-modifiedtunnelscollectionresponseErrors``>,
+                          messages: list<``magiccomponents-schemas-modifiedtunnelscollectionresponseMessages``>,
+                          result: Newtonsoft.Json.Linq.JToken,
+                          success: bool): ``magiccomponents-schemas-modifiedtunnelscollectionresponse`` =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 type ``magiccomponents-schemas-tunnelmodifiedresponseErrors`` =
     { code: int
@@ -3658,17 +3725,20 @@ type Result =
           modified_interconnect = None }
 
 type ``magiccomponents-schemas-tunnelmodifiedresponse`` =
-    { errors: Option<list<``magiccomponents-schemas-tunnelmodifiedresponseErrors``>>
-      messages: Option<list<``magiccomponents-schemas-tunnelmodifiedresponseMessages``>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<``magiccomponents-schemas-tunnelmodifiedresponseErrors``>
+      messages: list<``magiccomponents-schemas-tunnelmodifiedresponseMessages``>
+      result: Result
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of magiccomponents-schemas-tunnelmodifiedresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``magiccomponents-schemas-tunnelmodifiedresponse`` =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<``magiccomponents-schemas-tunnelmodifiedresponseErrors``>,
+                          messages: list<``magiccomponents-schemas-tunnelmodifiedresponseMessages``>,
+                          result: Result,
+                          success: bool): ``magiccomponents-schemas-tunnelmodifiedresponse`` =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 type ``magiccomponents-schemas-tunnelsingleresponseErrors`` =
     { code: int
@@ -3690,17 +3760,20 @@ type ``magiccomponents-schemas-tunnelsingleresponseResult`` =
     static member Create (): ``magiccomponents-schemas-tunnelsingleresponseResult`` = { interconnect = None }
 
 type ``magiccomponents-schemas-tunnelsingleresponse`` =
-    { errors: Option<list<``magiccomponents-schemas-tunnelsingleresponseErrors``>>
-      messages: Option<list<``magiccomponents-schemas-tunnelsingleresponseMessages``>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<``magiccomponents-schemas-tunnelsingleresponseErrors``>
+      messages: list<``magiccomponents-schemas-tunnelsingleresponseMessages``>
+      result: ``magiccomponents-schemas-tunnelsingleresponseResult``
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of magiccomponents-schemas-tunnelsingleresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``magiccomponents-schemas-tunnelsingleresponse`` =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<``magiccomponents-schemas-tunnelsingleresponseErrors``>,
+                          messages: list<``magiccomponents-schemas-tunnelsingleresponseMessages``>,
+                          result: ``magiccomponents-schemas-tunnelsingleresponseResult``,
+                          success: bool): ``magiccomponents-schemas-tunnelsingleresponse`` =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 type ``magiccomponents-schemas-tunnelscollectionresponseErrors`` =
     { code: int
@@ -3717,17 +3790,20 @@ type ``magiccomponents-schemas-tunnelscollectionresponseMessages`` =
         { code = code; message = message }
 
 type ``magiccomponents-schemas-tunnelscollectionresponse`` =
-    { errors: Option<list<``magiccomponents-schemas-tunnelscollectionresponseErrors``>>
-      messages: Option<list<``magiccomponents-schemas-tunnelscollectionresponseMessages``>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<``magiccomponents-schemas-tunnelscollectionresponseErrors``>
+      messages: list<``magiccomponents-schemas-tunnelscollectionresponseMessages``>
+      result: Newtonsoft.Json.Linq.JToken
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of magiccomponents-schemas-tunnelscollectionresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``magiccomponents-schemas-tunnelscollectionresponse`` =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<``magiccomponents-schemas-tunnelscollectionresponseErrors``>,
+                          messages: list<``magiccomponents-schemas-tunnelscollectionresponseMessages``>,
+                          result: Newtonsoft.Json.Linq.JToken,
+                          success: bool): ``magiccomponents-schemas-tunnelscollectionresponse`` =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 type magiccreategretunnelrequest =
     { ///True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
@@ -3782,17 +3858,20 @@ type magiccreategretunnelresponseMessages =
         { code = code; message = message }
 
 type magiccreategretunnelresponse =
-    { errors: Option<list<magiccreategretunnelresponseErrors>>
-      messages: Option<list<magiccreategretunnelresponseMessages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<magiccreategretunnelresponseErrors>
+      messages: list<magiccreategretunnelresponseMessages>
+      result: ``magicgre-tunnel``
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of magiccreategretunnelresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): magiccreategretunnelresponse =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<magiccreategretunnelresponseErrors>,
+                          messages: list<magiccreategretunnelresponseMessages>,
+                          result: ``magicgre-tunnel``,
+                          success: bool): magiccreategretunnelresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 type magiccreaterouterequest =
     { ///An optional human provided description of the static route.
@@ -3831,17 +3910,20 @@ type magiccreaterouteresponseMessages =
         { code = code; message = message }
 
 type magiccreaterouteresponse =
-    { errors: Option<list<magiccreaterouteresponseErrors>>
-      messages: Option<list<magiccreaterouteresponseMessages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<magiccreaterouteresponseErrors>
+      messages: list<magiccreaterouteresponseMessages>
+      result: magicroute
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of magiccreaterouteresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): magiccreaterouteresponse =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<magiccreaterouteresponseErrors>,
+                          messages: list<magiccreaterouteresponseMessages>,
+                          result: magicroute,
+                          success: bool): magiccreaterouteresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 type magiccustomremoteidentities =
     { ///A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The
@@ -4360,17 +4442,20 @@ type magiclandeletedresponseMessages =
         { code = code; message = message }
 
 type magiclandeletedresponse =
-    { errors: Option<list<magiclandeletedresponseErrors>>
-      messages: Option<list<magiclandeletedresponseMessages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<magiclandeletedresponseErrors>
+      messages: list<magiclandeletedresponseMessages>
+      result: magiclan
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of magiclandeletedresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): magiclandeletedresponse =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<magiclandeletedresponseErrors>,
+                          messages: list<magiclandeletedresponseMessages>,
+                          result: magiclan,
+                          success: bool): magiclandeletedresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 type magiclandhcprelay =
     { ///List of DHCP server IPs.
@@ -4411,17 +4496,20 @@ type magiclanmodifiedresponseMessages =
         { code = code; message = message }
 
 type magiclanmodifiedresponse =
-    { errors: Option<list<magiclanmodifiedresponseErrors>>
-      messages: Option<list<magiclanmodifiedresponseMessages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<magiclanmodifiedresponseErrors>
+      messages: list<magiclanmodifiedresponseMessages>
+      result: magiclan
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of magiclanmodifiedresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): magiclanmodifiedresponse =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<magiclanmodifiedresponseErrors>,
+                          messages: list<magiclanmodifiedresponseMessages>,
+                          result: magiclan,
+                          success: bool): magiclanmodifiedresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 type magiclansingleresponseErrors =
     { code: int
@@ -4437,17 +4525,20 @@ type magiclansingleresponseMessages =
         { code = code; message = message }
 
 type magiclansingleresponse =
-    { errors: Option<list<magiclansingleresponseErrors>>
-      messages: Option<list<magiclansingleresponseMessages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<magiclansingleresponseErrors>
+      messages: list<magiclansingleresponseMessages>
+      result: magiclan
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of magiclansingleresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): magiclansingleresponse =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<magiclansingleresponseErrors>,
+                          messages: list<magiclansingleresponseMessages>,
+                          result: magiclan,
+                          success: bool): magiclansingleresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 ///If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address.
 type magiclanstaticaddressing =
@@ -4537,17 +4628,20 @@ type magiclanscollectionresponseMessages =
         { code = code; message = message }
 
 type magiclanscollectionresponse =
-    { errors: Option<list<magiclanscollectionresponseErrors>>
-      messages: Option<list<magiclanscollectionresponseMessages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<magiclanscollectionresponseErrors>
+      messages: list<magiclanscollectionresponseMessages>
+      result: list<magiclan>
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of magiclanscollectionresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): magiclanscollectionresponse =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<magiclanscollectionresponseErrors>,
+                          messages: list<magiclanscollectionresponseMessages>,
+                          result: list<magiclan>,
+                          success: bool): magiclanscollectionresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 ///Managed app defined by Cloudflare.
 type magicmanagedapp =
@@ -4587,17 +4681,20 @@ type magicmodifiedtunnelscollectionresponseMessages =
         { code = code; message = message }
 
 type magicmodifiedtunnelscollectionresponse =
-    { errors: Option<list<magicmodifiedtunnelscollectionresponseErrors>>
-      messages: Option<list<magicmodifiedtunnelscollectionresponseMessages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<magicmodifiedtunnelscollectionresponseErrors>
+      messages: list<magicmodifiedtunnelscollectionresponseMessages>
+      result: Newtonsoft.Json.Linq.JToken
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of magicmodifiedtunnelscollectionresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): magicmodifiedtunnelscollectionresponse =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<magicmodifiedtunnelscollectionresponseErrors>,
+                          messages: list<magicmodifiedtunnelscollectionresponseMessages>,
+                          result: Newtonsoft.Json.Linq.JToken,
+                          success: bool): magicmodifiedtunnelscollectionresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 type magicmultipleroutedeleteresponseErrors =
     { code: int
@@ -4614,17 +4711,20 @@ type magicmultipleroutedeleteresponseMessages =
         { code = code; message = message }
 
 type magicmultipleroutedeleteresponse =
-    { errors: Option<list<magicmultipleroutedeleteresponseErrors>>
-      messages: Option<list<magicmultipleroutedeleteresponseMessages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<magicmultipleroutedeleteresponseErrors>
+      messages: list<magicmultipleroutedeleteresponseMessages>
+      result: Newtonsoft.Json.Linq.JToken
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of magicmultipleroutedeleteresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): magicmultipleroutedeleteresponse =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<magicmultipleroutedeleteresponseErrors>,
+                          messages: list<magicmultipleroutedeleteresponseMessages>,
+                          result: Newtonsoft.Json.Linq.JToken,
+                          success: bool): magicmultipleroutedeleteresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 type magicmultipleroutemodifiedresponseErrors =
     { code: int
@@ -4641,17 +4741,20 @@ type magicmultipleroutemodifiedresponseMessages =
         { code = code; message = message }
 
 type magicmultipleroutemodifiedresponse =
-    { errors: Option<list<magicmultipleroutemodifiedresponseErrors>>
-      messages: Option<list<magicmultipleroutemodifiedresponseMessages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<magicmultipleroutemodifiedresponseErrors>
+      messages: list<magicmultipleroutemodifiedresponseMessages>
+      result: Newtonsoft.Json.Linq.JToken
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of magicmultipleroutemodifiedresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): magicmultipleroutemodifiedresponse =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<magicmultipleroutemodifiedresponseErrors>,
+                          messages: list<magicmultipleroutemodifiedresponseMessages>,
+                          result: Newtonsoft.Json.Linq.JToken,
+                          success: bool): magicmultipleroutemodifiedresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 type magicnat =
     { ///A valid CIDR notation representing an IP range.
@@ -4713,17 +4816,21 @@ type magicnetflowconfigsingleresponseMessages =
         { code = code; message = message }
 
 type magicnetflowconfigsingleresponse =
-    { errors: Option<list<magicnetflowconfigsingleresponseErrors>>
-      messages: Option<list<magicnetflowconfigsingleresponseMessages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<magicnetflowconfigsingleresponseErrors>
+      messages: list<magicnetflowconfigsingleresponseMessages>
+      ///NetFlow configuration for a site.
+      result: magicnetflowconfig
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of magicnetflowconfigsingleresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): magicnetflowconfigsingleresponse =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<magicnetflowconfigsingleresponseErrors>,
+                          messages: list<magicnetflowconfigsingleresponseMessages>,
+                          result: magicnetflowconfig,
+                          success: bool): magicnetflowconfigsingleresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 type magicpskgenerationresponseErrors =
     { code: int
@@ -4740,17 +4847,20 @@ type magicpskgenerationresponseMessages =
         { code = code; message = message }
 
 type magicpskgenerationresponse =
-    { errors: Option<list<magicpskgenerationresponseErrors>>
-      messages: Option<list<magicpskgenerationresponseMessages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<magicpskgenerationresponseErrors>
+      messages: list<magicpskgenerationresponseMessages>
+      result: Newtonsoft.Json.Linq.JToken
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of magicpskgenerationresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): magicpskgenerationresponse =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<magicpskgenerationresponseErrors>,
+                          messages: list<magicpskgenerationresponseMessages>,
+                          result: Newtonsoft.Json.Linq.JToken,
+                          success: bool): magicpskgenerationresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 ///The PSK metadata that includes when the PSK was generated.
 type magicpskmetadata =
@@ -4844,17 +4954,20 @@ type magicroutedeletedresponseResult =
     static member Create (): magicroutedeletedresponseResult = { deleted = None; deleted_route = None }
 
 type magicroutedeletedresponse =
-    { errors: Option<list<magicroutedeletedresponseErrors>>
-      messages: Option<list<magicroutedeletedresponseMessages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<magicroutedeletedresponseErrors>
+      messages: list<magicroutedeletedresponseMessages>
+      result: magicroutedeletedresponseResult
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of magicroutedeletedresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): magicroutedeletedresponse =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<magicroutedeletedresponseErrors>,
+                          messages: list<magicroutedeletedresponseMessages>,
+                          result: magicroutedeletedresponseResult,
+                          success: bool): magicroutedeletedresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 type magicroutemodifiedresponseErrors =
     { code: int
@@ -4879,17 +4992,20 @@ type magicroutemodifiedresponseResult =
           modified_route = None }
 
 type magicroutemodifiedresponse =
-    { errors: Option<list<magicroutemodifiedresponseErrors>>
-      messages: Option<list<magicroutemodifiedresponseMessages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<magicroutemodifiedresponseErrors>
+      messages: list<magicroutemodifiedresponseMessages>
+      result: magicroutemodifiedresponseResult
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of magicroutemodifiedresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): magicroutemodifiedresponse =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<magicroutemodifiedresponseErrors>,
+                          messages: list<magicroutemodifiedresponseMessages>,
+                          result: magicroutemodifiedresponseResult,
+                          success: bool): magicroutemodifiedresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 type magicroutesingleresponseErrors =
     { code: int
@@ -4911,17 +5027,20 @@ type magicroutesingleresponseResult =
     static member Create (): magicroutesingleresponseResult = { route = None }
 
 type magicroutesingleresponse =
-    { errors: Option<list<magicroutesingleresponseErrors>>
-      messages: Option<list<magicroutesingleresponseMessages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<magicroutesingleresponseErrors>
+      messages: list<magicroutesingleresponseMessages>
+      result: magicroutesingleresponseResult
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of magicroutesingleresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): magicroutesingleresponse =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<magicroutesingleresponseErrors>,
+                          messages: list<magicroutesingleresponseMessages>,
+                          result: magicroutesingleresponseResult,
+                          success: bool): magicroutesingleresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 type magicrouteupdatemanyrequest =
     { routes: list<magicrouteupdatesinglerequest> }
@@ -5003,17 +5122,20 @@ type magicroutescollectionresponseMessages =
         { code = code; message = message }
 
 type magicroutescollectionresponse =
-    { errors: Option<list<magicroutescollectionresponseErrors>>
-      messages: Option<list<magicroutescollectionresponseMessages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<magicroutescollectionresponseErrors>
+      messages: list<magicroutescollectionresponseMessages>
+      result: Newtonsoft.Json.Linq.JToken
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of magicroutescollectionresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): magicroutescollectionresponse =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<magicroutescollectionresponseErrors>,
+                          messages: list<magicroutescollectionresponseMessages>,
+                          result: Newtonsoft.Json.Linq.JToken,
+                          success: bool): magicroutescollectionresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 type ``magicschemas-createipsectunnelresponseErrors`` =
     { code: int
@@ -5030,17 +5152,20 @@ type ``magicschemas-createipsectunnelresponseMessages`` =
         { code = code; message = message }
 
 type ``magicschemas-createipsectunnelresponse`` =
-    { errors: Option<list<``magicschemas-createipsectunnelresponseErrors``>>
-      messages: Option<list<``magicschemas-createipsectunnelresponseMessages``>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<``magicschemas-createipsectunnelresponseErrors``>
+      messages: list<``magicschemas-createipsectunnelresponseMessages``>
+      result: ``magicipsec-tunnel``
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of magicschemas-createipsectunnelresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``magicschemas-createipsectunnelresponse`` =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<``magicschemas-createipsectunnelresponseErrors``>,
+                          messages: list<``magicschemas-createipsectunnelresponseMessages``>,
+                          result: ``magicipsec-tunnel``,
+                          success: bool): ``magicschemas-createipsectunnelresponse`` =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 type ``magicschemas-modifiedtunnelscollectionresponseErrors`` =
     { code: int
@@ -5057,17 +5182,20 @@ type ``magicschemas-modifiedtunnelscollectionresponseMessages`` =
         { code = code; message = message }
 
 type ``magicschemas-modifiedtunnelscollectionresponse`` =
-    { errors: Option<list<``magicschemas-modifiedtunnelscollectionresponseErrors``>>
-      messages: Option<list<``magicschemas-modifiedtunnelscollectionresponseMessages``>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<``magicschemas-modifiedtunnelscollectionresponseErrors``>
+      messages: list<``magicschemas-modifiedtunnelscollectionresponseMessages``>
+      result: Newtonsoft.Json.Linq.JToken
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of magicschemas-modifiedtunnelscollectionresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``magicschemas-modifiedtunnelscollectionresponse`` =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<``magicschemas-modifiedtunnelscollectionresponseErrors``>,
+                          messages: list<``magicschemas-modifiedtunnelscollectionresponseMessages``>,
+                          result: Newtonsoft.Json.Linq.JToken,
+                          success: bool): ``magicschemas-modifiedtunnelscollectionresponse`` =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 type ``magicschemas-tunneldeletedresponseErrors`` =
     { code: int
@@ -5092,17 +5220,20 @@ type ``magicschemas-tunneldeletedresponseResult`` =
           deleted_ipsec_tunnel = None }
 
 type ``magicschemas-tunneldeletedresponse`` =
-    { errors: Option<list<``magicschemas-tunneldeletedresponseErrors``>>
-      messages: Option<list<``magicschemas-tunneldeletedresponseMessages``>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<``magicschemas-tunneldeletedresponseErrors``>
+      messages: list<``magicschemas-tunneldeletedresponseMessages``>
+      result: ``magicschemas-tunneldeletedresponseResult``
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of magicschemas-tunneldeletedresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``magicschemas-tunneldeletedresponse`` =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<``magicschemas-tunneldeletedresponseErrors``>,
+                          messages: list<``magicschemas-tunneldeletedresponseMessages``>,
+                          result: ``magicschemas-tunneldeletedresponseResult``,
+                          success: bool): ``magicschemas-tunneldeletedresponse`` =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 type ``magicschemas-tunnelmodifiedresponseErrors`` =
     { code: int
@@ -5127,17 +5258,20 @@ type ``magicschemas-tunnelmodifiedresponseResult`` =
           modified_ipsec_tunnel = None }
 
 type ``magicschemas-tunnelmodifiedresponse`` =
-    { errors: Option<list<``magicschemas-tunnelmodifiedresponseErrors``>>
-      messages: Option<list<``magicschemas-tunnelmodifiedresponseMessages``>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<``magicschemas-tunnelmodifiedresponseErrors``>
+      messages: list<``magicschemas-tunnelmodifiedresponseMessages``>
+      result: ``magicschemas-tunnelmodifiedresponseResult``
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of magicschemas-tunnelmodifiedresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``magicschemas-tunnelmodifiedresponse`` =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<``magicschemas-tunnelmodifiedresponseErrors``>,
+                          messages: list<``magicschemas-tunnelmodifiedresponseMessages``>,
+                          result: ``magicschemas-tunnelmodifiedresponseResult``,
+                          success: bool): ``magicschemas-tunnelmodifiedresponse`` =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 type ``magicschemas-tunnelsingleresponseErrors`` =
     { code: int
@@ -5159,17 +5293,20 @@ type ``magicschemas-tunnelsingleresponseResult`` =
     static member Create (): ``magicschemas-tunnelsingleresponseResult`` = { ipsec_tunnel = None }
 
 type ``magicschemas-tunnelsingleresponse`` =
-    { errors: Option<list<``magicschemas-tunnelsingleresponseErrors``>>
-      messages: Option<list<``magicschemas-tunnelsingleresponseMessages``>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<``magicschemas-tunnelsingleresponseErrors``>
+      messages: list<``magicschemas-tunnelsingleresponseMessages``>
+      result: ``magicschemas-tunnelsingleresponseResult``
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of magicschemas-tunnelsingleresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``magicschemas-tunnelsingleresponse`` =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<``magicschemas-tunnelsingleresponseErrors``>,
+                          messages: list<``magicschemas-tunnelsingleresponseMessages``>,
+                          result: ``magicschemas-tunnelsingleresponseResult``,
+                          success: bool): ``magicschemas-tunnelsingleresponse`` =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 type ``magicschemas-tunnelscollectionresponseErrors`` =
     { code: int
@@ -5186,17 +5323,20 @@ type ``magicschemas-tunnelscollectionresponseMessages`` =
         { code = code; message = message }
 
 type ``magicschemas-tunnelscollectionresponse`` =
-    { errors: Option<list<``magicschemas-tunnelscollectionresponseErrors``>>
-      messages: Option<list<``magicschemas-tunnelscollectionresponseMessages``>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<``magicschemas-tunnelscollectionresponseErrors``>
+      messages: list<``magicschemas-tunnelscollectionresponseMessages``>
+      result: Newtonsoft.Json.Linq.JToken
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of magicschemas-tunnelscollectionresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``magicschemas-tunnelscollectionresponse`` =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<``magicschemas-tunnelscollectionresponseErrors``>,
+                          messages: list<``magicschemas-tunnelscollectionresponseMessages``>,
+                          result: Newtonsoft.Json.Linq.JToken,
+                          success: bool): ``magicschemas-tunnelscollectionresponse`` =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 ///Used only for ECMP routes.
 type magicscope =
@@ -5257,17 +5397,20 @@ type magicsitedeletedresponseMessages =
         { code = code; message = message }
 
 type magicsitedeletedresponse =
-    { errors: Option<list<magicsitedeletedresponseErrors>>
-      messages: Option<list<magicsitedeletedresponseMessages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<magicsitedeletedresponseErrors>
+      messages: list<magicsitedeletedresponseMessages>
+      result: magicsite
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of magicsitedeletedresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): magicsitedeletedresponse =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<magicsitedeletedresponseErrors>,
+                          messages: list<magicsitedeletedresponseMessages>,
+                          result: magicsite,
+                          success: bool): magicsitedeletedresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 type magicsitemodifiedresponseErrors =
     { code: int
@@ -5284,17 +5427,20 @@ type magicsitemodifiedresponseMessages =
         { code = code; message = message }
 
 type magicsitemodifiedresponse =
-    { errors: Option<list<magicsitemodifiedresponseErrors>>
-      messages: Option<list<magicsitemodifiedresponseMessages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<magicsitemodifiedresponseErrors>
+      messages: list<magicsitemodifiedresponseMessages>
+      result: magicsite
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of magicsitemodifiedresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): magicsitemodifiedresponse =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<magicsitemodifiedresponseErrors>,
+                          messages: list<magicsitemodifiedresponseMessages>,
+                          result: magicsite,
+                          success: bool): magicsitemodifiedresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 type magicsitesingleresponseErrors =
     { code: int
@@ -5311,17 +5457,20 @@ type magicsitesingleresponseMessages =
         { code = code; message = message }
 
 type magicsitesingleresponse =
-    { errors: Option<list<magicsitesingleresponseErrors>>
-      messages: Option<list<magicsitesingleresponseMessages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<magicsitesingleresponseErrors>
+      messages: list<magicsitesingleresponseMessages>
+      result: magicsite
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of magicsitesingleresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): magicsitesingleresponse =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<magicsitesingleresponseErrors>,
+                          messages: list<magicsitesingleresponseMessages>,
+                          result: magicsite,
+                          success: bool): magicsitesingleresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 type magicsiteupdaterequest =
     { ///Magic Connector identifier tag.
@@ -5377,17 +5526,20 @@ type magicsitescollectionresponseMessages =
         { code = code; message = message }
 
 type magicsitescollectionresponse =
-    { errors: Option<list<magicsitescollectionresponseErrors>>
-      messages: Option<list<magicsitescollectionresponseMessages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<magicsitescollectionresponseErrors>
+      messages: list<magicsitescollectionresponseMessages>
+      result: list<magicsite>
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of magicsitescollectionresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): magicsitescollectionresponse =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<magicsitescollectionresponseErrors>,
+                          messages: list<magicsitescollectionresponseMessages>,
+                          result: list<magicsite>,
+                          success: bool): magicsitescollectionresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 type magictunneldeletedresponseErrors =
     { code: int
@@ -5412,17 +5564,20 @@ type magictunneldeletedresponseResult =
           deleted_gre_tunnel = None }
 
 type magictunneldeletedresponse =
-    { errors: Option<list<magictunneldeletedresponseErrors>>
-      messages: Option<list<magictunneldeletedresponseMessages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<magictunneldeletedresponseErrors>
+      messages: list<magictunneldeletedresponseMessages>
+      result: magictunneldeletedresponseResult
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of magictunneldeletedresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): magictunneldeletedresponse =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<magictunneldeletedresponseErrors>,
+                          messages: list<magictunneldeletedresponseMessages>,
+                          result: magictunneldeletedresponseResult,
+                          success: bool): magictunneldeletedresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type magictunnelhealthcheckRate =
@@ -5495,17 +5650,20 @@ type magictunnelmodifiedresponseResult =
           modified_gre_tunnel = None }
 
 type magictunnelmodifiedresponse =
-    { errors: Option<list<magictunnelmodifiedresponseErrors>>
-      messages: Option<list<magictunnelmodifiedresponseMessages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<magictunnelmodifiedresponseErrors>
+      messages: list<magictunnelmodifiedresponseMessages>
+      result: magictunnelmodifiedresponseResult
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of magictunnelmodifiedresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): magictunnelmodifiedresponse =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<magictunnelmodifiedresponseErrors>,
+                          messages: list<magictunnelmodifiedresponseMessages>,
+                          result: magictunnelmodifiedresponseResult,
+                          success: bool): magictunnelmodifiedresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 type magictunnelsingleresponseErrors =
     { code: int
@@ -5527,17 +5685,20 @@ type magictunnelsingleresponseResult =
     static member Create (): magictunnelsingleresponseResult = { gre_tunnel = None }
 
 type magictunnelsingleresponse =
-    { errors: Option<list<magictunnelsingleresponseErrors>>
-      messages: Option<list<magictunnelsingleresponseMessages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<magictunnelsingleresponseErrors>
+      messages: list<magictunnelsingleresponseMessages>
+      result: magictunnelsingleresponseResult
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of magictunnelsingleresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): magictunnelsingleresponse =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<magictunnelsingleresponseErrors>,
+                          messages: list<magictunnelsingleresponseMessages>,
+                          result: magictunnelsingleresponseResult,
+                          success: bool): magictunnelsingleresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 type magictunnelscollectionresponseErrors =
     { code: int
@@ -5554,17 +5715,20 @@ type magictunnelscollectionresponseMessages =
         { code = code; message = message }
 
 type magictunnelscollectionresponse =
-    { errors: Option<list<magictunnelscollectionresponseErrors>>
-      messages: Option<list<magictunnelscollectionresponseMessages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<magictunnelscollectionresponseErrors>
+      messages: list<magictunnelscollectionresponseMessages>
+      result: Newtonsoft.Json.Linq.JToken
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of magictunnelscollectionresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): magictunnelscollectionresponse =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<magictunnelscollectionresponseErrors>,
+                          messages: list<magictunnelscollectionresponseMessages>,
+                          result: Newtonsoft.Json.Linq.JToken,
+                          success: bool): magictunnelscollectionresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type Healthcheckrate =
@@ -5618,17 +5782,20 @@ type magicwandeletedresponseMessages =
         { code = code; message = message }
 
 type magicwandeletedresponse =
-    { errors: Option<list<magicwandeletedresponseErrors>>
-      messages: Option<list<magicwandeletedresponseMessages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<magicwandeletedresponseErrors>
+      messages: list<magicwandeletedresponseMessages>
+      result: magicwan
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of magicwandeletedresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): magicwandeletedresponse =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<magicwandeletedresponseErrors>,
+                          messages: list<magicwandeletedresponseMessages>,
+                          result: magicwan,
+                          success: bool): magicwandeletedresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 type magicwanmodifiedresponseErrors =
     { code: int
@@ -5645,17 +5812,20 @@ type magicwanmodifiedresponseMessages =
         { code = code; message = message }
 
 type magicwanmodifiedresponse =
-    { errors: Option<list<magicwanmodifiedresponseErrors>>
-      messages: Option<list<magicwanmodifiedresponseMessages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<magicwanmodifiedresponseErrors>
+      messages: list<magicwanmodifiedresponseMessages>
+      result: magicwan
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of magicwanmodifiedresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): magicwanmodifiedresponse =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<magicwanmodifiedresponseErrors>,
+                          messages: list<magicwanmodifiedresponseMessages>,
+                          result: magicwan,
+                          success: bool): magicwanmodifiedresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 type magicwansingleresponseErrors =
     { code: int
@@ -5671,17 +5841,20 @@ type magicwansingleresponseMessages =
         { code = code; message = message }
 
 type magicwansingleresponse =
-    { errors: Option<list<magicwansingleresponseErrors>>
-      messages: Option<list<magicwansingleresponseMessages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<magicwansingleresponseErrors>
+      messages: list<magicwansingleresponseMessages>
+      result: magicwan
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of magicwansingleresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): magicwansingleresponse =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<magicwansingleresponseErrors>,
+                          messages: list<magicwansingleresponseMessages>,
+                          result: magicwan,
+                          success: bool): magicwansingleresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 ///(optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode.
 type magicwanstaticaddressing =
@@ -5744,17 +5917,20 @@ type magicwanscollectionresponseMessages =
         { code = code; message = message }
 
 type magicwanscollectionresponse =
-    { errors: Option<list<magicwanscollectionresponseErrors>>
-      messages: Option<list<magicwanscollectionresponseMessages>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<magicwanscollectionresponseErrors>
+      messages: list<magicwanscollectionresponseMessages>
+      result: list<magicwan>
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of magicwanscollectionresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): magicwanscollectionresponse =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<magicwanscollectionresponseErrors>,
+                          messages: list<magicwanscollectionresponseMessages>,
+                          result: list<magicwan>,
+                          success: bool): magicwanscollectionresponse =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 type mcnapplyprogress =
     { ``done``: int
@@ -5833,16 +6009,19 @@ type mcncatalogsync =
           update_mode = update_mode }
 
 type mcncatalogsyncsprebuiltpoliciesresponse =
-    { messages: Option<list<mcnerror>>
-      success: Option<bool>
-      errors: Option<list<mcnerror>>
-      result: Option<list<mcncatalogsyncsprebuiltpolicy>> }
+    { messages: list<mcnerror>
+      success: bool
+      errors: list<mcnerror>
+      result: list<mcncatalogsyncsprebuiltpolicy> }
     ///Creates an instance of mcncatalogsyncsprebuiltpoliciesresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mcncatalogsyncsprebuiltpoliciesresponse =
-        { messages = None
-          success = None
-          errors = None
-          result = None }
+    static member Create (messages: list<mcnerror>,
+                          success: bool,
+                          errors: list<mcnerror>,
+                          result: list<mcncatalogsyncsprebuiltpolicy>): mcncatalogsyncsprebuiltpoliciesresponse =
+        { messages = messages
+          success = success
+          errors = errors
+          result = result }
 
 type mcncatalogsyncsprebuiltpolicy =
     { applicable_destinations: list<mcncatalogsyncdestinationtype>
@@ -5913,16 +6092,16 @@ type mcncreatecatalogsyncrequest =
           update_mode = update_mode }
 
 type mcncreatecatalogsyncresponse =
-    { messages: Option<list<mcnerror>>
-      success: Option<bool>
-      errors: Option<list<mcnerror>>
-      result: Option<mcncatalogsync> }
+    { messages: list<mcnerror>
+      success: bool
+      errors: list<mcnerror>
+      result: mcncatalogsync }
     ///Creates an instance of mcncreatecatalogsyncresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mcncreatecatalogsyncresponse =
-        { messages = None
-          success = None
-          errors = None
-          result = None }
+    static member Create (messages: list<mcnerror>, success: bool, errors: list<mcnerror>, result: mcncatalogsync): mcncreatecatalogsyncresponse =
+        { messages = messages
+          success = success
+          errors = errors
+          result = result }
 
 type mcncreateonramprequest =
     { adopted_hub_id: Option<mcnresourceid>
@@ -5968,16 +6147,16 @@ type mcncreateonramprequest =
           vpc = None }
 
 type mcncreateonrampresponse =
-    { messages: Option<list<mcnerror>>
-      success: Option<bool>
-      errors: Option<list<mcnerror>>
-      result: Option<mcnonramp> }
+    { messages: list<mcnerror>
+      success: bool
+      errors: list<mcnerror>
+      result: mcnonramp }
     ///Creates an instance of mcncreateonrampresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mcncreateonrampresponse =
-        { messages = None
-          success = None
-          errors = None
-          result = None }
+    static member Create (messages: list<mcnerror>, success: bool, errors: list<mcnerror>, result: mcnonramp): mcncreateonrampresponse =
+        { messages = messages
+          success = success
+          errors = errors
+          result = result }
 
 type mcncreateproviderrequest =
     { cloud_type: mcncloudtype
@@ -5990,52 +6169,52 @@ type mcncreateproviderrequest =
           friendly_name = friendly_name }
 
 type mcncreateproviderresponse =
-    { messages: Option<list<mcnerror>>
-      success: Option<bool>
-      errors: Option<list<mcnerror>>
-      result: Option<mcnprovider> }
+    { messages: list<mcnerror>
+      success: bool
+      errors: list<mcnerror>
+      result: mcnprovider }
     ///Creates an instance of mcncreateproviderresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mcncreateproviderresponse =
-        { messages = None
-          success = None
-          errors = None
-          result = None }
+    static member Create (messages: list<mcnerror>, success: bool, errors: list<mcnerror>, result: mcnprovider): mcncreateproviderresponse =
+        { messages = messages
+          success = success
+          errors = errors
+          result = result }
 
 type mcndeletecatalogsyncresponse =
-    { messages: Option<list<mcnerror>>
-      success: Option<bool>
-      errors: Option<list<mcnerror>>
-      result: Option<mcndeletedcatalogsync> }
+    { messages: list<mcnerror>
+      success: bool
+      errors: list<mcnerror>
+      result: mcndeletedcatalogsync }
     ///Creates an instance of mcndeletecatalogsyncresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mcndeletecatalogsyncresponse =
-        { messages = None
-          success = None
-          errors = None
-          result = None }
+    static member Create (messages: list<mcnerror>, success: bool, errors: list<mcnerror>, result: mcndeletedcatalogsync): mcndeletecatalogsyncresponse =
+        { messages = messages
+          success = success
+          errors = errors
+          result = result }
 
 type mcndeleteonrampresponse =
-    { messages: Option<list<mcnerror>>
-      success: Option<bool>
-      errors: Option<list<mcnerror>>
-      result: Option<mcndeletedonramp> }
+    { messages: list<mcnerror>
+      success: bool
+      errors: list<mcnerror>
+      result: mcndeletedonramp }
     ///Creates an instance of mcndeleteonrampresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mcndeleteonrampresponse =
-        { messages = None
-          success = None
-          errors = None
-          result = None }
+    static member Create (messages: list<mcnerror>, success: bool, errors: list<mcnerror>, result: mcndeletedonramp): mcndeleteonrampresponse =
+        { messages = messages
+          success = success
+          errors = errors
+          result = result }
 
 type mcndeleteproviderresponse =
-    { messages: Option<list<mcnerror>>
-      success: Option<bool>
-      errors: Option<list<mcnerror>>
-      result: Option<mcndeletedprovider> }
+    { messages: list<mcnerror>
+      success: bool
+      errors: list<mcnerror>
+      result: mcndeletedprovider }
     ///Creates an instance of mcndeleteproviderresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mcndeleteproviderresponse =
-        { messages = None
-          success = None
-          errors = None
-          result = None }
+    static member Create (messages: list<mcnerror>, success: bool, errors: list<mcnerror>, result: mcndeletedprovider): mcndeleteproviderresponse =
+        { messages = messages
+          success = success
+          errors = errors
+          result = result }
 
 type mcndeletedcatalogsync =
     { id: mcncatalogsyncid }
@@ -6257,38 +6436,41 @@ type mcngcpsetup =
           tag_cli_command = tag_cli_command }
 
 type mcngetmagicwanaddressspaceresponse =
-    { messages: Option<list<mcnerror>>
-      success: Option<bool>
-      errors: Option<list<mcnerror>>
-      result: Option<mcnmagicwanaddressspace> }
+    { messages: list<mcnerror>
+      success: bool
+      errors: list<mcnerror>
+      result: mcnmagicwanaddressspace }
     ///Creates an instance of mcngetmagicwanaddressspaceresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mcngetmagicwanaddressspaceresponse =
-        { messages = None
-          success = None
-          errors = None
-          result = None }
+    static member Create (messages: list<mcnerror>,
+                          success: bool,
+                          errors: list<mcnerror>,
+                          result: mcnmagicwanaddressspace): mcngetmagicwanaddressspaceresponse =
+        { messages = messages
+          success = success
+          errors = errors
+          result = result }
 
 type mcngetonrampresponse =
-    { messages: Option<list<mcnerror>>
-      success: Option<bool>
-      errors: Option<list<mcnerror>>
-      result: Option<mcnonramp> }
+    { messages: list<mcnerror>
+      success: bool
+      errors: list<mcnerror>
+      result: mcnonramp }
     ///Creates an instance of mcngetonrampresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mcngetonrampresponse =
-        { messages = None
-          success = None
-          errors = None
-          result = None }
+    static member Create (messages: list<mcnerror>, success: bool, errors: list<mcnerror>, result: mcnonramp): mcngetonrampresponse =
+        { messages = messages
+          success = success
+          errors = errors
+          result = result }
 
 type mcngoodresponse =
-    { messages: Option<list<mcnerror>>
-      success: Option<bool>
-      errors: Option<list<mcnerror>> }
+    { messages: list<mcnerror>
+      success: bool
+      errors: list<mcnerror> }
     ///Creates an instance of mcngoodresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mcngoodresponse =
-        { messages = None
-          success = None
-          errors = None }
+    static member Create (messages: list<mcnerror>, success: bool, errors: list<mcnerror>): mcngoodresponse =
+        { messages = messages
+          success = success
+          errors = errors }
 
 type mcngoodresponsecollection =
     { messages: Option<list<mcnerror>>
@@ -6310,16 +6492,16 @@ type mcnlistitem =
         { item_type = item_type; list = list }
 
 type mcnlistonrampsresponse =
-    { messages: Option<list<mcnerror>>
-      success: Option<bool>
-      errors: Option<list<mcnerror>>
-      result: Option<list<mcnonramp>> }
+    { messages: list<mcnerror>
+      success: bool
+      errors: list<mcnerror>
+      result: list<mcnonramp> }
     ///Creates an instance of mcnlistonrampsresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mcnlistonrampsresponse =
-        { messages = None
-          success = None
-          errors = None
-          result = None }
+    static member Create (messages: list<mcnerror>, success: bool, errors: list<mcnerror>, result: list<mcnonramp>): mcnlistonrampsresponse =
+        { messages = messages
+          success = success
+          errors = errors
+          result = result }
 
 type mcnmagicwanaddressspace =
     { prefixes: list<mcncidrprefix> }
@@ -6486,16 +6668,19 @@ type mcnproviderdiscoveryprogress =
           unit = unit }
 
 type mcnproviderinitialsetupresponse =
-    { messages: Option<list<mcnerror>>
-      success: Option<bool>
-      errors: Option<list<mcnerror>>
-      result: Option<Newtonsoft.Json.Linq.JObject> }
+    { messages: list<mcnerror>
+      success: bool
+      errors: list<mcnerror>
+      result: Newtonsoft.Json.Linq.JObject }
     ///Creates an instance of mcnproviderinitialsetupresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mcnproviderinitialsetupresponse =
-        { messages = None
-          success = None
-          errors = None
-          result = None }
+    static member Create (messages: list<mcnerror>,
+                          success: bool,
+                          errors: list<mcnerror>,
+                          result: Newtonsoft.Json.Linq.JObject): mcnproviderinitialsetupresponse =
+        { messages = messages
+          success = success
+          errors = errors
+          result = result }
 
 type mcnproviderstatus =
     { credentials_good_since: Option<string>
@@ -6538,90 +6723,93 @@ type mcnproviderstatus =
           regions = regions }
 
 type mcnreadaccountcatalogsyncresponse =
-    { messages: Option<list<mcnerror>>
-      success: Option<bool>
-      errors: Option<list<mcnerror>>
-      result: Option<mcncatalogsync> }
+    { messages: list<mcnerror>
+      success: bool
+      errors: list<mcnerror>
+      result: mcncatalogsync }
     ///Creates an instance of mcnreadaccountcatalogsyncresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mcnreadaccountcatalogsyncresponse =
-        { messages = None
-          success = None
-          errors = None
-          result = None }
+    static member Create (messages: list<mcnerror>, success: bool, errors: list<mcnerror>, result: mcncatalogsync): mcnreadaccountcatalogsyncresponse =
+        { messages = messages
+          success = success
+          errors = errors
+          result = result }
 
 type mcnreadaccountcatalogsyncsresponse =
-    { messages: Option<list<mcnerror>>
-      success: Option<bool>
-      errors: Option<list<mcnerror>>
-      result: Option<list<mcncatalogsync>> }
+    { messages: list<mcnerror>
+      success: bool
+      errors: list<mcnerror>
+      result: list<mcncatalogsync> }
     ///Creates an instance of mcnreadaccountcatalogsyncsresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mcnreadaccountcatalogsyncsresponse =
-        { messages = None
-          success = None
-          errors = None
-          result = None }
+    static member Create (messages: list<mcnerror>, success: bool, errors: list<mcnerror>, result: list<mcncatalogsync>): mcnreadaccountcatalogsyncsresponse =
+        { messages = messages
+          success = success
+          errors = errors
+          result = result }
 
 type mcnreadaccountproviderresponse =
-    { messages: Option<list<mcnerror>>
-      success: Option<bool>
-      errors: Option<list<mcnerror>>
-      result: Option<mcnprovider> }
+    { messages: list<mcnerror>
+      success: bool
+      errors: list<mcnerror>
+      result: mcnprovider }
     ///Creates an instance of mcnreadaccountproviderresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mcnreadaccountproviderresponse =
-        { messages = None
-          success = None
-          errors = None
-          result = None }
+    static member Create (messages: list<mcnerror>, success: bool, errors: list<mcnerror>, result: mcnprovider): mcnreadaccountproviderresponse =
+        { messages = messages
+          success = success
+          errors = errors
+          result = result }
 
 type mcnreadaccountprovidersresponse =
-    { messages: Option<list<mcnerror>>
-      success: Option<bool>
-      errors: Option<list<mcnerror>>
-      result: Option<list<mcnprovider>> }
+    { messages: list<mcnerror>
+      success: bool
+      errors: list<mcnerror>
+      result: list<mcnprovider> }
     ///Creates an instance of mcnreadaccountprovidersresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mcnreadaccountprovidersresponse =
-        { messages = None
-          success = None
-          errors = None
-          result = None }
+    static member Create (messages: list<mcnerror>, success: bool, errors: list<mcnerror>, result: list<mcnprovider>): mcnreadaccountprovidersresponse =
+        { messages = messages
+          success = success
+          errors = errors
+          result = result }
 
 type mcnreadaccountresourceresponse =
-    { messages: Option<list<mcnerror>>
-      success: Option<bool>
-      errors: Option<list<mcnerror>>
-      result: Option<mcnresourcedetails> }
+    { messages: list<mcnerror>
+      success: bool
+      errors: list<mcnerror>
+      result: mcnresourcedetails }
     ///Creates an instance of mcnreadaccountresourceresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mcnreadaccountresourceresponse =
-        { messages = None
-          success = None
-          errors = None
-          result = None }
+    static member Create (messages: list<mcnerror>, success: bool, errors: list<mcnerror>, result: mcnresourcedetails): mcnreadaccountresourceresponse =
+        { messages = messages
+          success = success
+          errors = errors
+          result = result }
 
 type mcnreadaccountresourcesresponse =
-    { messages: Option<list<mcnerror>>
+    { messages: list<mcnerror>
       result_info: Option<mcnresultinfo>
-      success: Option<bool>
-      errors: Option<list<mcnerror>>
-      result: Option<list<mcnresourcedetails>> }
+      success: bool
+      errors: list<mcnerror>
+      result: list<mcnresourcedetails> }
     ///Creates an instance of mcnreadaccountresourcesresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mcnreadaccountresourcesresponse =
-        { messages = None
+    static member Create (messages: list<mcnerror>,
+                          success: bool,
+                          errors: list<mcnerror>,
+                          result: list<mcnresourcedetails>): mcnreadaccountresourcesresponse =
+        { messages = messages
           result_info = None
-          success = None
-          errors = None
-          result = None }
+          success = success
+          errors = errors
+          result = result }
 
 type mcnrefreshcatalogsyncresponse =
-    { messages: Option<list<mcnerror>>
-      success: Option<bool>
-      errors: Option<list<mcnerror>>
-      result: Option<mcnpolicyresult> }
+    { messages: list<mcnerror>
+      success: bool
+      errors: list<mcnerror>
+      result: mcnpolicyresult }
     ///Creates an instance of mcnrefreshcatalogsyncresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mcnrefreshcatalogsyncresponse =
-        { messages = None
-          success = None
-          errors = None
-          result = None }
+    static member Create (messages: list<mcnerror>, success: bool, errors: list<mcnerror>, result: mcnpolicyresult): mcnrefreshcatalogsyncresponse =
+        { messages = messages
+          success = success
+          errors = errors
+          result = result }
 
 type mcnresourcedetails =
     { account_id: mcnaccountid
@@ -6765,16 +6953,19 @@ type mcnresourcescatalogpolicypreviewrequest =
     static member Create (policy: string): mcnresourcescatalogpolicypreviewrequest = { policy = policy }
 
 type mcnresourcescatalogpolicypreviewresponse =
-    { messages: Option<list<mcnerror>>
-      success: Option<bool>
-      errors: Option<list<mcnerror>>
-      result: Option<mcnresourcescatalogpolicypreview> }
+    { messages: list<mcnerror>
+      success: bool
+      errors: list<mcnerror>
+      result: mcnresourcescatalogpolicypreview }
     ///Creates an instance of mcnresourcescatalogpolicypreviewresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mcnresourcescatalogpolicypreviewresponse =
-        { messages = None
-          success = None
-          errors = None
-          result = None }
+    static member Create (messages: list<mcnerror>,
+                          success: bool,
+                          errors: list<mcnerror>,
+                          result: mcnresourcescatalogpolicypreview): mcnresourcescatalogpolicypreviewresponse =
+        { messages = messages
+          success = success
+          errors = errors
+          result = result }
 
 type mcnresponse =
     { messages: list<mcnerror>
@@ -6834,16 +7025,16 @@ type mcnupdatecatalogsyncrequest =
           update_mode = None }
 
 type mcnupdatecatalogsyncresponse =
-    { messages: Option<list<mcnerror>>
-      success: Option<bool>
-      errors: Option<list<mcnerror>>
-      result: Option<mcncatalogsync> }
+    { messages: list<mcnerror>
+      success: bool
+      errors: list<mcnerror>
+      result: mcncatalogsync }
     ///Creates an instance of mcnupdatecatalogsyncresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mcnupdatecatalogsyncresponse =
-        { messages = None
-          success = None
-          errors = None
-          result = None }
+    static member Create (messages: list<mcnerror>, success: bool, errors: list<mcnerror>, result: mcncatalogsync): mcnupdatecatalogsyncresponse =
+        { messages = messages
+          success = success
+          errors = errors
+          result = result }
 
 type mcnupdatemagicwanaddressspacerequest =
     { prefixes: list<mcncidrprefix> }
@@ -6851,16 +7042,19 @@ type mcnupdatemagicwanaddressspacerequest =
     static member Create (prefixes: list<mcncidrprefix>): mcnupdatemagicwanaddressspacerequest = { prefixes = prefixes }
 
 type mcnupdatemagicwanaddressspaceresponse =
-    { messages: Option<list<mcnerror>>
-      success: Option<bool>
-      errors: Option<list<mcnerror>>
-      result: Option<mcnmagicwanaddressspace> }
+    { messages: list<mcnerror>
+      success: bool
+      errors: list<mcnerror>
+      result: mcnmagicwanaddressspace }
     ///Creates an instance of mcnupdatemagicwanaddressspaceresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mcnupdatemagicwanaddressspaceresponse =
-        { messages = None
-          success = None
-          errors = None
-          result = None }
+    static member Create (messages: list<mcnerror>,
+                          success: bool,
+                          errors: list<mcnerror>,
+                          result: mcnmagicwanaddressspace): mcnupdatemagicwanaddressspaceresponse =
+        { messages = messages
+          success = success
+          errors = errors
+          result = result }
 
 type mcnupdateonramprequest =
     { attached_hubs: Option<list<mcnresourceid>>
@@ -6885,16 +7079,16 @@ type mcnupdateonramprequest =
           vpc = None }
 
 type mcnupdateonrampresponse =
-    { messages: Option<list<mcnerror>>
-      success: Option<bool>
-      errors: Option<list<mcnerror>>
-      result: Option<mcnonramp> }
+    { messages: list<mcnerror>
+      success: bool
+      errors: list<mcnerror>
+      result: mcnonramp }
     ///Creates an instance of mcnupdateonrampresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mcnupdateonrampresponse =
-        { messages = None
-          success = None
-          errors = None
-          result = None }
+    static member Create (messages: list<mcnerror>, success: bool, errors: list<mcnerror>, result: mcnonramp): mcnupdateonrampresponse =
+        { messages = messages
+          success = success
+          errors = errors
+          result = result }
 
 type mcnupdateproviderrequest =
     { aws_arn: Option<string>
@@ -6915,16 +7109,16 @@ type mcnupdateproviderrequest =
           gcp_service_account_email = None }
 
 type mcnupdateproviderresponse =
-    { messages: Option<list<mcnerror>>
-      success: Option<bool>
-      errors: Option<list<mcnerror>>
-      result: Option<mcnprovider> }
+    { messages: list<mcnerror>
+      success: bool
+      errors: list<mcnerror>
+      result: mcnprovider }
     ///Creates an instance of mcnupdateproviderresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mcnupdateproviderresponse =
-        { messages = None
-          success = None
-          errors = None
-          result = None }
+    static member Create (messages: list<mcnerror>, success: bool, errors: list<mcnerror>, result: mcnprovider): mcnupdateproviderresponse =
+        { messages = messages
+          success = success
+          errors = errors
+          result = result }
 
 type mcnyamldiff =
     { diff: string
@@ -7040,40 +7234,49 @@ type mconncustomerconnectorcreaterequest =
           timezone = None }
 
 type mconncustomerconnectorcreateresponse =
-    { messages: Option<list<mconncodedmessage>>
-      success: Option<bool>
-      errors: Option<list<mconncodedmessage>>
-      result: Option<mconncustomerconnector> }
+    { messages: list<mconncodedmessage>
+      success: bool
+      errors: list<mconncodedmessage>
+      result: mconncustomerconnector }
     ///Creates an instance of mconncustomerconnectorcreateresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mconncustomerconnectorcreateresponse =
-        { messages = None
-          success = None
-          errors = None
-          result = None }
+    static member Create (messages: list<mconncodedmessage>,
+                          success: bool,
+                          errors: list<mconncodedmessage>,
+                          result: mconncustomerconnector): mconncustomerconnectorcreateresponse =
+        { messages = messages
+          success = success
+          errors = errors
+          result = result }
 
 type mconncustomerconnectordeleteresponse =
-    { messages: Option<list<mconncodedmessage>>
-      success: Option<bool>
-      errors: Option<list<mconncodedmessage>>
-      result: Option<mconncustomerconnector> }
+    { messages: list<mconncodedmessage>
+      success: bool
+      errors: list<mconncodedmessage>
+      result: mconncustomerconnector }
     ///Creates an instance of mconncustomerconnectordeleteresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mconncustomerconnectordeleteresponse =
-        { messages = None
-          success = None
-          errors = None
-          result = None }
+    static member Create (messages: list<mconncodedmessage>,
+                          success: bool,
+                          errors: list<mconncodedmessage>,
+                          result: mconncustomerconnector): mconncustomerconnectordeleteresponse =
+        { messages = messages
+          success = success
+          errors = errors
+          result = result }
 
 type mconncustomerconnectorfetchresponse =
-    { messages: Option<list<mconncodedmessage>>
-      success: Option<bool>
-      errors: Option<list<mconncodedmessage>>
-      result: Option<mconncustomerconnector> }
+    { messages: list<mconncodedmessage>
+      success: bool
+      errors: list<mconncodedmessage>
+      result: mconncustomerconnector }
     ///Creates an instance of mconncustomerconnectorfetchresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mconncustomerconnectorfetchresponse =
-        { messages = None
-          success = None
-          errors = None
-          result = None }
+    static member Create (messages: list<mconncodedmessage>,
+                          success: bool,
+                          errors: list<mconncodedmessage>,
+                          result: mconncustomerconnector): mconncustomerconnectorfetchresponse =
+        { messages = messages
+          success = success
+          errors = errors
+          result = result }
 
 type mconncustomerconnectorfields =
     { activated: Option<bool>
@@ -7096,16 +7299,19 @@ type mconncustomerconnectorfields =
           timezone = None }
 
 type mconncustomerconnectorlistresponse =
-    { messages: Option<list<mconncodedmessage>>
-      success: Option<bool>
-      errors: Option<list<mconncodedmessage>>
-      result: Option<list<mconncustomerconnector>> }
+    { messages: list<mconncodedmessage>
+      success: bool
+      errors: list<mconncodedmessage>
+      result: list<mconncustomerconnector> }
     ///Creates an instance of mconncustomerconnectorlistresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mconncustomerconnectorlistresponse =
-        { messages = None
-          success = None
-          errors = None
-          result = None }
+    static member Create (messages: list<mconncodedmessage>,
+                          success: bool,
+                          errors: list<mconncodedmessage>,
+                          result: list<mconncustomerconnector>): mconncustomerconnectorlistresponse =
+        { messages = messages
+          success = success
+          errors = errors
+          result = result }
 
 type mconncustomerconnectorupdaterequest =
     { activated: Option<bool>
@@ -7131,16 +7337,19 @@ type mconncustomerconnectorupdaterequest =
           provision_license = None }
 
 type mconncustomerconnectorupdateresponse =
-    { messages: Option<list<mconncodedmessage>>
-      success: Option<bool>
-      errors: Option<list<mconncodedmessage>>
-      result: Option<mconncustomerconnector> }
+    { messages: list<mconncodedmessage>
+      success: bool
+      errors: list<mconncodedmessage>
+      result: mconncustomerconnector }
     ///Creates an instance of mconncustomerconnectorupdateresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mconncustomerconnectorupdateresponse =
-        { messages = None
-          success = None
-          errors = None
-          result = None }
+    static member Create (messages: list<mconncodedmessage>,
+                          success: bool,
+                          errors: list<mconncodedmessage>,
+                          result: mconncustomerconnector): mconncustomerconnectorupdateresponse =
+        { messages = messages
+          success = success
+          errors = errors
+          result = result }
 
 type mconncustomerdevice =
     { id: mconnuuid
@@ -7163,15 +7372,15 @@ type mconncustomerdeviceoptions =
 type mconncustomereventgetsuccess =
     { errors: Option<list<mconncodedmessage>>
       messages: Option<list<mconncodedmessage>>
-      success: Option<bool>
+      success: bool
       ///Recorded Event
-      result: Option<mconnrecordedevent> }
+      result: mconnrecordedevent }
     ///Creates an instance of mconncustomereventgetsuccess with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mconncustomereventgetsuccess =
+    static member Create (success: bool, result: mconnrecordedevent): mconncustomereventgetsuccess =
         { errors = None
           messages = None
-          success = None
-          result = None }
+          success = success
+          result = result }
 
 type mconncustomereventsgetlatestresult =
     { count: float
@@ -7183,14 +7392,14 @@ type mconncustomereventsgetlatestresult =
 type mconncustomereventsgetlatestsuccess =
     { errors: Option<list<mconncodedmessage>>
       messages: Option<list<mconncodedmessage>>
-      success: Option<bool>
-      result: Option<mconncustomereventsgetlatestresult> }
+      success: bool
+      result: mconncustomereventsgetlatestresult }
     ///Creates an instance of mconncustomereventsgetlatestsuccess with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mconncustomereventsgetlatestsuccess =
+    static member Create (success: bool, result: mconncustomereventsgetlatestresult): mconncustomereventsgetlatestsuccess =
         { errors = None
           messages = None
-          success = None
-          result = None }
+          success = success
+          result = result }
 
 type mconncustomereventsgetresult =
     { count: float
@@ -7205,27 +7414,27 @@ type mconncustomereventsgetresult =
 type mconncustomereventsgetsuccess =
     { errors: Option<list<mconncodedmessage>>
       messages: Option<list<mconncodedmessage>>
-      success: Option<bool>
-      result: Option<mconncustomereventsgetresult> }
+      success: bool
+      result: mconncustomereventsgetresult }
     ///Creates an instance of mconncustomereventsgetsuccess with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mconncustomereventsgetsuccess =
+    static member Create (success: bool, result: mconncustomereventsgetresult): mconncustomereventsgetsuccess =
         { errors = None
           messages = None
-          success = None
-          result = None }
+          success = success
+          result = result }
 
 type mconncustomersnapshotgetsuccess =
     { errors: Option<list<mconncodedmessage>>
       messages: Option<list<mconncodedmessage>>
-      success: Option<bool>
+      success: bool
       ///Snapshot
-      result: Option<mconnsnapshot> }
+      result: mconnsnapshot }
     ///Creates an instance of mconncustomersnapshotgetsuccess with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mconncustomersnapshotgetsuccess =
+    static member Create (success: bool, result: mconnsnapshot): mconncustomersnapshotgetsuccess =
         { errors = None
           messages = None
-          success = None
-          result = None }
+          success = success
+          result = result }
 
 type mconncustomersnapshotsgetlatestresult =
     { count: float
@@ -7237,14 +7446,14 @@ type mconncustomersnapshotsgetlatestresult =
 type mconncustomersnapshotsgetlatestsuccess =
     { errors: Option<list<mconncodedmessage>>
       messages: Option<list<mconncodedmessage>>
-      success: Option<bool>
-      result: Option<mconncustomersnapshotsgetlatestresult> }
+      success: bool
+      result: mconncustomersnapshotsgetlatestresult }
     ///Creates an instance of mconncustomersnapshotsgetlatestsuccess with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mconncustomersnapshotsgetlatestsuccess =
+    static member Create (success: bool, result: mconncustomersnapshotsgetlatestresult): mconncustomersnapshotsgetlatestsuccess =
         { errors = None
           messages = None
-          success = None
-          result = None }
+          success = success
+          result = result }
 
 type mconncustomersnapshotsgetresult =
     { count: float
@@ -7259,14 +7468,14 @@ type mconncustomersnapshotsgetresult =
 type mconncustomersnapshotsgetsuccess =
     { errors: Option<list<mconncodedmessage>>
       messages: Option<list<mconncodedmessage>>
-      success: Option<bool>
-      result: Option<mconncustomersnapshotsgetresult> }
+      success: bool
+      result: mconncustomersnapshotsgetresult }
     ///Creates an instance of mconncustomersnapshotsgetsuccess with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): mconncustomersnapshotsgetsuccess =
+    static member Create (success: bool, result: mconncustomersnapshotsgetresult): mconncustomersnapshotsgetsuccess =
         { errors = None
           messages = None
-          success = None
-          result = None }
+          success = success
+          result = result }
 
 type mconnenvelope =
     { errors: Option<list<mconncodedmessage>>
@@ -8158,71 +8367,99 @@ type DeleteDnsProtectionRulesForAccount =
 type ListDnsProtectionRulesForAccount =
     ///List all DNS Protection rules response.
     | OK of payload: ``dosdns-protection-rule-list-response``
+    ///List all DNS Protection rules failure.
+    | BadRequest of payload: ``dosapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type CreateDnsProtectionRule =
     ///Create DNS Protection rule response.
     | OK of payload: ``dosdns-protection-rule-response``
+    ///Create DNS Protection rule failure.
+    | BadRequest of payload: ``dosapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type DeleteDnsProtectionRule =
     ///Delete DNS Protection rule response.
     | OK of payload: ``dosapi-response-common``
+    ///Delete DNS Protection rule failure.
+    | BadRequest of payload: ``dosapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type GetDnsProtectionRule =
     ///Get DNS Protection rule response.
     | OK of payload: ``dosdns-protection-rule-response``
+    ///Get DNS Protection rule failure.
+    | BadRequest of payload: ``dosapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type UpdateDnsProtectionRule =
     ///Update DNS Protection rule response.
     | OK of payload: ``dosdns-protection-rule-response``
+    ///Update DNS Protection rule failure.
+    | BadRequest of payload: ``dosapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type DeleteAllowlistPrefixesForAccount =
     ///Delete all allowlist prefixes response.
     | OK of payload: ``dosapi-response-common``
+    ///Delete all allowlist prefixes failure.
+    | BadRequest of payload: ``dosapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type ListAllowlistPrefixesForAccount =
     ///List all allowlist prefixes response.
     | OK of payload: ``dosinfra-prefix-list-response``
+    ///List all allowlist prefixes failure.
+    | BadRequest of payload: ``dosapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type CreateAllowlistedPrefix =
     ///Create allowlist prefix response.
     | OK of payload: ``dosinfra-prefix-response``
+    ///Create allowlist prefix failure.
+    | BadRequest of payload: ``dosapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type DeleteAllowlistPrefix =
     ///Delete allowlist prefix response.
     | OK of payload: ``dosapi-response-common``
+    ///Delete allowlist prefix failure.
+    | BadRequest of payload: ``dosapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type GetAllowlistPrefix =
     ///Get allowlist prefix response.
     | OK of payload: ``dosinfra-prefix-response``
+    ///Get allowlist prefix failure.
+    | BadRequest of payload: ``dosapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type UpdateAllowlistPrefix =
     ///Update allowlist prefix response.
     | OK of payload: ``dosinfra-prefix-response``
+    ///Update allowlist prefix failure.
+    | BadRequest of payload: ``dosapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type DeletePrefixesForAccount =
     ///Delete all prefixes response.
     | OK of payload: ``dosapi-response-common``
+    ///Delete all prefixes failure.
+    | BadRequest of payload: ``dosapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type ListPrefixesForAccount =
     ///List all prefixes response.
     | OK of payload: ``dosprefix-list-response``
+    ///List all allowlist prefixes failure.
+    | BadRequest of payload: ``dosapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type CreatePrefix =
     ///Create prefix response.
     | OK of payload: ``dosprefix-response``
+    ///Create prefix failure.
+    | BadRequest of payload: ``dosapi-response-common-failure``
 
 type BulkCreatePrefixesPayloadArrayItem =
     { ///A comment describing the prefix.
@@ -8243,196 +8480,274 @@ type BulkCreatePrefixesPayload = list<BulkCreatePrefixesPayloadArrayItem>
 type BulkCreatePrefixes =
     ///Create multiple prefixes response.
     | OK of payload: ``dosprefix-list-response``
+    ///Create multiple prefixes failure.
+    | BadRequest of payload: ``dosapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type DeletePrefix =
     ///Delete prefix response.
     | OK of payload: ``dosapi-response-common``
+    ///Delete prefix failure.
+    | BadRequest of payload: ``dosapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type GetPrefix =
     ///Get prefix response.
     | OK of payload: ``dosprefix-response``
+    ///Get prefix failure.
+    | BadRequest of payload: ``dosapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type UpdatePrefix =
     ///Update prefix response.
     | OK of payload: ``dosprefix-response``
+    ///Update prefix failure.
+    | BadRequest of payload: ``dosapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type DeleteSynProtectionFiltersForAccount =
     ///Delete all SYN Protection filters response.
     | OK of payload: ``dosapi-response-common``
+    ///Delete all SYN Protection filters failure.
+    | BadRequest of payload: ``dosapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type ListSynProtectionFiltersForAccount =
     ///List all SYN Protection filters response.
     | OK of payload: ``dosexpression-filter-list-response``
+    ///List all SYN Protection filters failure.
+    | BadRequest of payload: ``dosapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type CreateSynProtectionFilter =
     ///Create SYN Protection filter response.
     | OK of payload: ``dosexpression-filter-response``
+    ///Create SYN Protection filter failure.
+    | BadRequest of payload: ``dosapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type DeleteSynProtectionFilter =
     ///Delete SYN Protection filter response.
     | OK of payload: ``dosapi-response-common``
+    ///Delete SYN Protection filter failure.
+    | BadRequest of payload: ``dosapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type GetSynProtectionFilter =
     ///Get SYN Protection filter response.
     | OK of payload: ``dosexpression-filter-response``
+    ///Get SYN Protection filter failure.
+    | BadRequest of payload: ``dosapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type UpdateSynProtectionFilter =
     ///Update SYN Protection filter response.
     | OK of payload: ``dosexpression-filter-response``
+    ///Update SYN Protection filter failure.
+    | BadRequest of payload: ``dosapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type DeleteSynProtectionRulesForAccount =
     ///Delete all SYN Protection rules response.
     | OK of payload: ``dosapi-response-common``
+    ///Delete all SYN Protection rules failure.
+    | BadRequest of payload: ``dosapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type ListSynProtectionRulesForAccount =
     ///List all SYN Protection rules response.
     | OK of payload: ``dossyn-protection-rule-list-response``
+    ///List all SYN Protection rules failure.
+    | BadRequest of payload: ``dosapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type CreateSynProtectionRule =
     ///Create SYN Protection rule response.
     | OK of payload: ``dossyn-protection-rule-response``
+    ///Create SYN Protection rule failure.
+    | BadRequest of payload: ``dosapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type DeleteSynProtectionRule =
     ///Delete SYN Protection rule response.
     | OK of payload: ``dosapi-response-common``
+    ///Delete SYN Protection rule failure.
+    | BadRequest of payload: ``dosapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type GetSynProtectionRule =
     ///Get SYN Protection rule response.
     | OK of payload: ``dossyn-protection-rule-response``
+    ///Get SYN Protection rule failure.
+    | BadRequest of payload: ``dosapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type UpdateSynProtectionRule =
     ///Update SYN Protection rule response.
     | OK of payload: ``dossyn-protection-rule-response``
+    ///Update SYN Protection rule failure.
+    | BadRequest of payload: ``dosapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type DeleteTcpFlowProtectionFiltersForAccount =
     ///Delete all TCP Flow Protection filters response.
     | OK of payload: ``dosapi-response-common``
+    ///Delete all TCP Flow Protection filters failure.
+    | BadRequest of payload: ``dosapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type ListTcpFlowProtectionFiltersForAccount =
     ///List all TCP Flow Protection filters response.
     | OK of payload: ``dosexpression-filter-list-response``
+    ///List all TCP Flow Protection filters failure.
+    | BadRequest of payload: ``dosapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type CreateTcpFlowProtectionFilter =
     ///Create TCP Flow Protection filter response.
     | OK of payload: ``dosexpression-filter-response``
+    ///Create TCP Flow Protection filter failure.
+    | BadRequest of payload: ``dosapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type DeleteTcpFlowProtectionFilter =
     ///Delete TCP Flow Protection filter response.
     | OK of payload: ``dosapi-response-common``
+    ///Delete TCP Flow Protection filter failure.
+    | BadRequest of payload: ``dosapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type GetTcpFlowProtectionFilter =
     ///Get TCP Flow Protection filter response.
     | OK of payload: ``dosexpression-filter-response``
+    ///Get TCP Flow Protection filter failure.
+    | BadRequest of payload: ``dosapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type UpdateTcpFlowProtectionFilter =
     ///Update TCP Flow Protection filter response.
     | OK of payload: ``dosexpression-filter-response``
+    ///Update TCP Flow Protection filter failure.
+    | BadRequest of payload: ``dosapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type DeleteTcpFlowProtectionRulesForAccount =
     ///Delete all TCP Flow Protection rules response.
     | OK of payload: ``dosapi-response-common``
+    ///Delete all TCP Flow Protection rules failure.
+    | BadRequest of payload: ``dosapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type ListTcpFlowProtectionRulesForAccount =
     ///List all TCP Flow Protection rules response.
     | OK of payload: ``dostcp-flow-protection-rule-list-response``
+    ///List all TCP Flow Protection rules failure.
+    | BadRequest of payload: ``dosapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type CreateTcpFlowProtectionRule =
     ///Create TCP Flow Protection rule response.
     | OK of payload: ``dostcp-flow-protection-rule-response``
+    ///Create TCP Flow Protection rule failure.
+    | BadRequest of payload: ``dosapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type DeleteTcpFlowProtectionRule =
     ///Delete TCP Flow Protection rule response.
     | OK of payload: ``dosapi-response-common``
+    ///Delete TCP Flow Protection rule failure.
+    | BadRequest of payload: ``dosapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type GetTcpFlowProtectionRule =
     ///Get TCP Flow Protection rule response.
     | OK of payload: ``dostcp-flow-protection-rule-response``
+    ///Get TCP Flow Protection rule failure.
+    | BadRequest of payload: ``dosapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type UpdateTcpFlowProtectionRule =
     ///Update TCP Flow Protection rule response.
     | OK of payload: ``dostcp-flow-protection-rule-response``
+    ///Update TCP Flow Protection rule failure.
+    | BadRequest of payload: ``dosapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type GetProtectionStatus =
     ///Get protection status response.
     | OK of payload: ``dosprotection-status-response``
+    ///Get protection status failure.
+    | BadRequest of payload: ``dosapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type UpdateProtectionStatus =
     ///Update protection status response.
     | OK of payload: ``dosprotection-status-response``
+    ///Update protection status failure.
+    | BadRequest of payload: ``dosapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type MagicAccountAppsListApps =
     ///List Apps response
     | OK of payload: magicappscollectionresponse
+    ///List Apps response failure
+    | BadRequest of payload: ``magicapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type MagicAccountAppsAddApp =
     ///Create Account App response
     | Created of payload: magicappsingleresponse
+    ///Create Account App response failure
+    | BadRequest of payload: ``magicapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type MagicAccountAppsDeleteApp =
     ///Delete App response
     | OK of payload: magicappsingleresponse
+    ///Delete App response failure
+    | BadRequest of payload: ``magicapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type MagicAccountAppsPatchApp =
     ///Update App response
     | OK of payload: magicappsingleresponse
+    ///Update App response failure
+    | BadRequest of payload: ``magicapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type MagicAccountAppsUpdateApp =
     ///Update App response
     | OK of payload: magicappsingleresponse
+    ///Update App response failure
+    | BadRequest of payload: ``magicapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type MagicInterconnectsListInterconnects =
     ///List interconnects response
     | OK of payload: ``magiccomponents-schemas-tunnelscollectionresponse``
+    ///List interconnects response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type MagicInterconnectsUpdateMultipleInterconnects =
     ///Update multiple interconnects response
     | OK of payload: ``magiccomponents-schemas-modifiedtunnelscollectionresponse``
+    ///Update multiple interconnects response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type MagicInterconnectsListInterconnectDetails =
     ///List interconnect Details response
     | OK of payload: ``magiccomponents-schemas-tunnelsingleresponse``
+    ///List interconnect Details response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type MagicInterconnectsUpdateInterconnect =
     ///Update interconnect response
     | OK of payload: ``magiccomponents-schemas-tunnelmodifiedresponse``
+    ///Update interconnect response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type CatalogSyncsList =
@@ -9153,268 +9468,376 @@ type MconnConnectorTelemetrySnapshotsGet =
 type MagicGreTunnelsListGreTunnels =
     ///List GRE tunnels response
     | OK of payload: magictunnelscollectionresponse
+    ///List GRE tunnels response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type MagicGreTunnelsCreateGreTunnels =
     ///Create GRE tunnels response
     | OK of payload: magiccreategretunnelresponse
+    ///Create GRE tunnels response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type MagicGreTunnelsUpdateMultipleGreTunnels =
     ///Update multiple GRE tunnels response
     | OK of payload: magicmodifiedtunnelscollectionresponse
+    ///Update multiple GRE tunnels response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type MagicGreTunnelsDeleteGreTunnel =
     ///Delete GRE Tunnel response
     | OK of payload: magictunneldeletedresponse
+    ///Delete GRE Tunnel response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type MagicGreTunnelsListGreTunnelDetails =
     ///List GRE Tunnel Details response
     | OK of payload: magictunnelsingleresponse
+    ///List GRE Tunnel Details response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type MagicGreTunnelsUpdateGreTunnel =
     ///Update GRE Tunnel response
     | OK of payload: magictunnelmodifiedresponse
+    ///Update GRE Tunnel response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type MagicIpsecTunnelsListIpsecTunnels =
     ///List IPsec tunnels response
     | OK of payload: ``magicschemas-tunnelscollectionresponse``
+    ///List IPsec tunnels response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type MagicIpsecTunnelsCreateIpsecTunnels =
     ///Create IPsec tunnels response
     | OK of payload: ``magicschemas-createipsectunnelresponse``
+    ///Create IPsec tunnels response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type MagicIpsecTunnelsUpdateMultipleIpsecTunnels =
     ///Update multiple IPsec tunnels response
     | OK of payload: ``magicschemas-modifiedtunnelscollectionresponse``
+    ///Update multiple IPsec tunnels response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type MagicIpsecTunnelsDeleteIpsecTunnel =
     ///Delete IPsec Tunnel response
     | OK of payload: ``magicschemas-tunneldeletedresponse``
+    ///Delete IPsec Tunnel response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type MagicIpsecTunnelsListIpsecTunnelDetails =
     ///List IPsec tunnel details response
     | OK of payload: ``magicschemas-tunnelsingleresponse``
+    ///List IPsec tunnel details response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type MagicIpsecTunnelsUpdateIpsecTunnel =
     ///Update IPsec Tunnel response
     | OK of payload: ``magicschemas-tunnelmodifiedresponse``
+    ///Update IPsec Tunnel response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type ``MagicIpsecTunnelsGeneratePreSharedKey(Psk)ForIpsecTunnels`` =
     ///Generate Pre Shared Key (PSK) for IPsec tunnels response
     | OK of payload: magicpskgenerationresponse
+    ///Generate Pre Shared Key (PSK) for IPsec tunnels response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type MagicStaticRoutesDeleteManyRoutes =
     ///Delete Many Routes response
     | OK of payload: magicmultipleroutedeleteresponse
+    ///Delete Many Routes response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type MagicStaticRoutesListRoutes =
     ///List Routes response
     | OK of payload: magicroutescollectionresponse
+    ///List Routes response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type MagicStaticRoutesCreateRoutes =
     ///Create Routes response
     | OK of payload: magiccreaterouteresponse
+    ///Create Routes response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type MagicStaticRoutesUpdateManyRoutes =
     ///Update Many Routes response
     | OK of payload: magicmultipleroutemodifiedresponse
+    ///Update Many Routes response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type MagicStaticRoutesDeleteRoute =
     ///Delete Route response
     | OK of payload: magicroutedeletedresponse
+    ///Delete Route response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type MagicStaticRoutesRouteDetails =
     ///Route Details response
     | OK of payload: magicroutesingleresponse
+    ///Route Details response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type MagicStaticRoutesUpdateRoute =
     ///Update Route response
     | OK of payload: magicroutemodifiedresponse
+    ///Update Route response failure
+    | BadRequest of payload: string
 
 [<RequireQualifiedAccess>]
 type MagicSitesListSites =
     ///List Sites response
     | OK of payload: magicsitescollectionresponse
+    ///List Sites response failure
+    | BadRequest of payload: ``magicapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type MagicSitesCreateSite =
     ///Create Site response
     | OK of payload: magicsitesingleresponse
+    ///Create Site response failure
+    | BadRequest of payload: ``magicapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type MagicSitesDeleteSite =
     ///Delete Site response
     | OK of payload: magicsitedeletedresponse
+    ///Delete Site response failure
+    | BadRequest of payload: ``magicapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type MagicSitesSiteDetails =
     ///Site Details response
     | OK of payload: magicsitesingleresponse
+    ///Site Details response failure
+    | BadRequest of payload: ``magicapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type MagicSitesPatchSite =
     ///Patch Site response
     | OK of payload: magicsitemodifiedresponse
+    ///Patch Site response failure
+    | BadRequest of payload: ``magicapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type MagicSitesUpdateSite =
     ///Update Site response
     | OK of payload: magicsitemodifiedresponse
+    ///Update Site response failure
+    | BadRequest of payload: ``magicapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type MagicSiteAclsListAcls =
     ///List Site ACLs response
     | OK of payload: magicaclscollectionresponse
+    ///List Site ACLs response failure
+    | BadRequest of payload: ``magicapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type MagicSiteAclsCreateAcl =
     ///Create Site ACL response
     | OK of payload: magicaclsingleresponse
+    ///Create Site ACL response failure
+    | BadRequest of payload: ``magicapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type MagicSiteAclsDeleteAcl =
     ///Delete Site ACL response
     | OK of payload: magicacldeletedresponse
+    ///Delete Site ACL response failure
+    | BadRequest of payload: ``magicapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type MagicSiteAclsAclDetails =
     ///Site ACL Details response
     | OK of payload: magicaclsingleresponse
+    ///Site ACL Details response failure
+    | BadRequest of payload: ``magicapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type MagicSiteAclsPatchAcl =
     ///Patch Site ACL response
     | OK of payload: magicaclmodifiedresponse
+    ///Patch Site ACL response failure
+    | BadRequest of payload: ``magicapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type MagicSiteAclsUpdateAcl =
     ///Update Site ACL response
     | OK of payload: magicaclmodifiedresponse
+    ///Update Site ACL response failure
+    | BadRequest of payload: ``magicapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type MagicSiteAppConfigsListAppConfigs =
     ///List App Configs response
     | OK of payload: magicappconfigscollectionresponse
+    ///List App Configs response failure
+    | BadRequest of payload: ``magicapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type MagicSiteAppConfigsAddAppConfig =
     ///Create Site App Config response
     | Created of payload: magicappconfigsingleresponse
+    ///Create Site App Config response failure
+    | BadRequest of payload: ``magicapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type MagicSiteAppConfigsDeleteAppConfig =
     ///Delete App Config response
     | OK of payload: magicappconfigsingleresponse
+    ///Delete App Config response failure
+    | BadRequest of payload: ``magicapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type MagicSiteAppConfigsPatchAppConfig =
     ///Update Site App Config response
     | OK of payload: magicappconfigsingleresponse
+    ///Update Site App Config response failure
+    | BadRequest of payload: ``magicapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type MagicSiteAppConfigsUpdateAppConfig =
     ///Update Site App Config response
     | OK of payload: magicappconfigsingleresponse
+    ///Update Site App Config response failure
+    | BadRequest of payload: ``magicapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type MagicSiteLansListLans =
     ///List Site LANs response
     | OK of payload: magiclanscollectionresponse
+    ///List Site LANs response failure
+    | BadRequest of payload: ``magicapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type MagicSiteLansCreateLan =
     ///Create Site LAN response
     | OK of payload: magiclanscollectionresponse
+    ///Create Site LAN response failure
+    | BadRequest of payload: ``magicapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type MagicSiteLansDeleteLan =
     ///Delete Site LAN response
     | OK of payload: magiclandeletedresponse
+    ///Delete Site LAN response failure
+    | BadRequest of payload: ``magicapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type MagicSiteLansLanDetails =
     ///Site LAN Details response
     | OK of payload: magiclansingleresponse
+    ///Site LAN Details response failure
+    | BadRequest of payload: ``magicapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type MagicSiteLansPatchLan =
     ///Patch Site LAN response
     | OK of payload: magiclanmodifiedresponse
+    ///Patch Site LAN response failure
+    | BadRequest of payload: ``magicapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type MagicSiteLansUpdateLan =
     ///Update Site LAN response
     | OK of payload: magiclanmodifiedresponse
+    ///Update Site LAN response failure
+    | BadRequest of payload: ``magicapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type MagicSiteNetflowConfigDeleteNetflowConfig =
     ///Delete NetFlow Configuration response
     | OK of payload: magicnetflowconfigsingleresponse
+    ///Delete NetFlow Configuration response failure
+    | BadRequest of payload: ``magicapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type MagicSiteNetflowConfigDetails =
     ///Get NetFlow Configuration response
     | OK of payload: magicnetflowconfigsingleresponse
+    ///Get NetFlow Configuration response failure
+    | BadRequest of payload: ``magicapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type MagicSiteNetflowConfigPatchNetflowConfig =
     ///Update NetFlow Configuration response
     | OK of payload: magicnetflowconfigsingleresponse
+    ///Update NetFlow Configuration response failure
+    | BadRequest of payload: ``magicapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type MagicSiteNetflowConfigCreateNetflowConfig =
     ///Create NetFlow Configuration response
     | Created of payload: magicnetflowconfigsingleresponse
+    ///Create NetFlow Configuration response failure
+    | BadRequest of payload: ``magicapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type MagicSiteNetflowConfigUpdateNetflowConfig =
     ///Update NetFlow Configuration response
     | OK of payload: magicnetflowconfigsingleresponse
+    ///Update NetFlow Configuration response failure
+    | BadRequest of payload: ``magicapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type MagicSiteWansListWans =
     ///List Site WANs response
     | OK of payload: magicwanscollectionresponse
+    ///List Site WANs response failure
+    | BadRequest of payload: ``magicapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type MagicSiteWansCreateWan =
     ///Create Site WAN response
     | OK of payload: magicwanscollectionresponse
+    ///Create Site WAN response failure
+    | BadRequest of payload: ``magicapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type MagicSiteWansDeleteWan =
     ///Delete Site WAN response
     | OK of payload: magicwandeletedresponse
+    ///Delete Site WAN response failure
+    | BadRequest of payload: ``magicapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type MagicSiteWansWanDetails =
     ///Site WAN Details response
     | OK of payload: magicwansingleresponse
+    ///Site WAN Details response failure
+    | BadRequest of payload: ``magicapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type MagicSiteWansPatchWan =
     ///Patch Site WAN response
     | OK of payload: magicwanmodifiedresponse
+    ///Patch Site WAN response failure
+    | BadRequest of payload: ``magicapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type MagicSiteWansUpdateWan =
     ///Update Site WAN response
     | OK of payload: magicwanmodifiedresponse
+    ///Update Site WAN response failure
+    | BadRequest of payload: ``magicapi-response-common-failure``

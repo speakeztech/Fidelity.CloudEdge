@@ -17,6 +17,8 @@
     <Compile Include="ClientConstructionTests.fs" />
     <Compile Include="SerializationTests.fs" />
     <Compile Include="InfrastructureTests.fs" />
+    <Compile Include="ResponseTypeTests.fs" />
+    <Compile Include="PreprocessorTests.fs" />
     <Compile Include="Main.fs" />
   </ItemGroup>
 

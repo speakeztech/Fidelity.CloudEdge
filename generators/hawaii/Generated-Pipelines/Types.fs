@@ -1,5 +1,10 @@
 namespace rec Fidelity.CloudEdge.Management.Pipelines.Types
 
+// Auto-generated stub types (missing from Hawaii output)
+type bytes = string
+type files = string
+type source = string
+
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type ``cloudflare-pipelinesDecimalEncoding`` =
     | [<CompiledName "number">] Number
@@ -541,10 +546,19 @@ type GetV4AccountsByAccountIdPipelinesDeprecated_OK =
       ///Indicates whether the API call was successful.
       success: ``cloudflare-pipelinesworker-pipelines-common-success`` }
 
+type Errors = { code: float; message: string }
+
+type GetV4AccountsByAccountIdPipelinesDeprecated_BadRequest =
+    { errors: list<Errors>
+      results: Newtonsoft.Json.Linq.JObject
+      success: Newtonsoft.Json.Linq.JToken }
+
 [<RequireQualifiedAccess>]
 type GetV4AccountsByAccountIdPipelinesDeprecated =
     ///[DEPRECATED] Lists the pipelines. Use /pipelines/v1/pipelines instead.
     | OK of payload: GetV4AccountsByAccountIdPipelinesDeprecated_OK
+    ///Indicates the error trying to list pipelines.
+    | BadRequest of payload: GetV4AccountsByAccountIdPipelinesDeprecated_BadRequest
 
 type PostV4AccountsByAccountIdPipelinesDeprecatedPayloadDestinationBatch =
     { ///Specifies rough maximum size of files.
@@ -660,10 +674,19 @@ type PostV4AccountsByAccountIdPipelinesDeprecated_OK =
     { ///Indicates whether the API call was successful.
       success: ``cloudflare-pipelinesworker-pipelines-common-success`` }
 
+type PostV4AccountsByAccountIdPipelinesDeprecated_BadRequestErrors = { code: float; message: string }
+
+type PostV4AccountsByAccountIdPipelinesDeprecated_BadRequest =
+    { errors: list<PostV4AccountsByAccountIdPipelinesDeprecated_BadRequestErrors>
+      results: Newtonsoft.Json.Linq.JObject
+      success: Newtonsoft.Json.Linq.JToken }
+
 [<RequireQualifiedAccess>]
 type PostV4AccountsByAccountIdPipelinesDeprecated =
     ///[DEPRECATED] Indicates a successfully created pipeline. Use /pipelines/v1/pipelines instead.
     | OK of payload: PostV4AccountsByAccountIdPipelinesDeprecated_OK
+    ///Indicates an error in creating a pipeline.
+    | BadRequest of payload: PostV4AccountsByAccountIdPipelinesDeprecated_BadRequest
 
 type Result =
     { created_at: string
@@ -697,6 +720,8 @@ type GetV4AccountsByAccountIdPipelinesV1Pipelines_OK =
 type GetV4AccountsByAccountIdPipelinesV1Pipelines =
     ///Indicates a successfully listed Pipelines.
     | OK of payload: GetV4AccountsByAccountIdPipelinesV1Pipelines_OK
+    ///Indicates an error in listing Pipelines.
+    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 type PostV4AccountsByAccountIdPipelinesV1PipelinesPayload =
     { ///Specifies the name of the Pipeline.
@@ -728,11 +753,15 @@ type PostV4AccountsByAccountIdPipelinesV1Pipelines_OK =
 type PostV4AccountsByAccountIdPipelinesV1Pipelines =
     ///Indicates a successfully created Pipeline.
     | OK of payload: PostV4AccountsByAccountIdPipelinesV1Pipelines_OK
+    ///Indicates an error in creating a Pipeline.
+    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<RequireQualifiedAccess>]
 type DeleteV4AccountsByAccountIdPipelinesV1PipelinesByPipelineId =
     ///Indicates a successfully deleted Pipeline.
     | OK of payload: Newtonsoft.Json.Linq.JToken
+    ///Indicates an error in listing Pipelines.
+    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type TablesType =
@@ -778,6 +807,8 @@ type GetV4AccountsByAccountIdPipelinesV1PipelinesByPipelineId_OK =
 type GetV4AccountsByAccountIdPipelinesV1PipelinesByPipelineId =
     ///Indicates a successfully retrieved Pipeline.
     | OK of payload: GetV4AccountsByAccountIdPipelinesV1PipelinesByPipelineId_OK
+    ///Indicates an error in retrieving Pipelines.
+    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type GetV4AccountsByAccountIdPipelinesV1Sinks_OKResultType =
@@ -822,6 +853,8 @@ type GetV4AccountsByAccountIdPipelinesV1Sinks_OK =
 type GetV4AccountsByAccountIdPipelinesV1Sinks =
     ///Indicates successfully listed Sinks.
     | OK of payload: GetV4AccountsByAccountIdPipelinesV1Sinks_OK
+    ///Indicates an error in listing Sinks.
+    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type PostV4AccountsByAccountIdPipelinesV1SinksPayloadType =
@@ -880,11 +913,15 @@ type PostV4AccountsByAccountIdPipelinesV1Sinks_OK =
 type PostV4AccountsByAccountIdPipelinesV1Sinks =
     ///Indicates a successfully created Sink.
     | OK of payload: PostV4AccountsByAccountIdPipelinesV1Sinks_OK
+    ///Indicates an error in creating a Sink.
+    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<RequireQualifiedAccess>]
 type DeleteV4AccountsByAccountIdPipelinesV1SinksBySinkId =
     ///Indicates a successfully deleted Sink.
     | OK of payload: Newtonsoft.Json.Linq.JToken
+    ///Indicates an error in listing Sinks.
+    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
 type GetV4AccountsByAccountIdPipelinesV1SinksBySinkId_OKResultType =
@@ -918,6 +955,8 @@ type GetV4AccountsByAccountIdPipelinesV1SinksBySinkId_OK =
 type GetV4AccountsByAccountIdPipelinesV1SinksBySinkId =
     ///Indicates that Sink was retrieved.
     | OK of payload: GetV4AccountsByAccountIdPipelinesV1SinksBySinkId_OK
+    ///Indicates an error in listing Sinks.
+    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 ///Specifies the CORS options for the HTTP endpoint.
 type HttpCors = { origins: Option<list<string>> }
@@ -970,6 +1009,8 @@ type GetV4AccountsByAccountIdPipelinesV1Streams_OK =
 type GetV4AccountsByAccountIdPipelinesV1Streams =
     ///Indicates a successfully created Stream.
     | OK of payload: GetV4AccountsByAccountIdPipelinesV1Streams_OK
+    ///Indicates an error in listing Streams.
+    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 ///Specifies the CORS options for the HTTP endpoint.
 type PostV4AccountsByAccountIdPipelinesV1StreamsPayloadHttpCors =
@@ -1052,11 +1093,15 @@ type PostV4AccountsByAccountIdPipelinesV1Streams_OK =
 type PostV4AccountsByAccountIdPipelinesV1Streams =
     ///Indicates a successfully created Stream.
     | OK of payload: PostV4AccountsByAccountIdPipelinesV1Streams_OK
+    ///Indicates an error in creating a Stream.
+    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<RequireQualifiedAccess>]
 type DeleteV4AccountsByAccountIdPipelinesV1StreamsByStreamId =
     ///Indicates a successfully deleted Stream.
     | OK of payload: Newtonsoft.Json.Linq.JToken
+    ///Indicates an error in listing Streams.
+    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 ///Specifies the CORS options for the HTTP endpoint.
 type GetV4AccountsByAccountIdPipelinesV1StreamsByStreamId_OKResultHttpCors = { origins: Option<list<string>> }
@@ -1098,6 +1143,8 @@ type GetV4AccountsByAccountIdPipelinesV1StreamsByStreamId_OK =
 type GetV4AccountsByAccountIdPipelinesV1StreamsByStreamId =
     ///Indicates a successfully retrieved Stream.
     | OK of payload: GetV4AccountsByAccountIdPipelinesV1StreamsByStreamId_OK
+    ///Indicates an error in retrieving Stream.
+    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 ///Specifies the CORS options for the HTTP endpoint.
 type PatchV4AccountsByAccountIdPipelinesV1StreamsByStreamIdPayloadHttpCors =
@@ -1171,6 +1218,8 @@ type PatchV4AccountsByAccountIdPipelinesV1StreamsByStreamId_OK =
 type PatchV4AccountsByAccountIdPipelinesV1StreamsByStreamId =
     ///Indicates a successfully updated Stream.
     | OK of payload: PatchV4AccountsByAccountIdPipelinesV1StreamsByStreamId_OK
+    ///Indicates an error in creating a Stream.
+    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 type PostV4AccountsByAccountIdPipelinesV1ValidateSqlPayload =
     { ///Specifies SQL to validate.
@@ -1192,20 +1241,24 @@ type PostV4AccountsByAccountIdPipelinesV1ValidateSql_OK =
 type PostV4AccountsByAccountIdPipelinesV1ValidateSql =
     ///Indicates SQL validation success.
     | OK of payload: PostV4AccountsByAccountIdPipelinesV1ValidateSql_OK
+    ///Indicates SQL validation failed.
+    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<RequireQualifiedAccess>]
 type DeleteV4AccountsByAccountIdPipelinesByPipelineNameDeprecated =
     ///[DEPRECATED] Indicates a successfully deleted pipeline.
     | OK of payload: Newtonsoft.Json.Linq.JToken
+    ///Indicates an error in deleting a pipeline.
+    | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 type GetV4AccountsByAccountIdPipelinesByPipelineNameDeprecated_OK =
     { ///Indicates whether the API call was successful.
       success: ``cloudflare-pipelinesworker-pipelines-common-success`` }
 
-type Errors = { code: float; message: string }
+type GetV4AccountsByAccountIdPipelinesByPipelineNameDeprecated_NotFoundErrors = { code: float; message: string }
 
 type GetV4AccountsByAccountIdPipelinesByPipelineNameDeprecated_NotFound =
-    { errors: list<Errors>
+    { errors: list<GetV4AccountsByAccountIdPipelinesByPipelineNameDeprecated_NotFoundErrors>
       results: Newtonsoft.Json.Linq.JObject
       success: Newtonsoft.Json.Linq.JToken }
 
@@ -1329,7 +1382,16 @@ type PutV4AccountsByAccountIdPipelinesByPipelineNameDeprecated_OK =
     { ///Indicates whether the API call was successful.
       success: ``cloudflare-pipelinesworker-pipelines-common-success`` }
 
+type PutV4AccountsByAccountIdPipelinesByPipelineNameDeprecated_BadRequestErrors = { code: float; message: string }
+
+type PutV4AccountsByAccountIdPipelinesByPipelineNameDeprecated_BadRequest =
+    { errors: list<PutV4AccountsByAccountIdPipelinesByPipelineNameDeprecated_BadRequestErrors>
+      results: Newtonsoft.Json.Linq.JObject
+      success: Newtonsoft.Json.Linq.JToken }
+
 [<RequireQualifiedAccess>]
 type PutV4AccountsByAccountIdPipelinesByPipelineNameDeprecated =
     ///[DEPRECATED] Indicates a successfully updated pipeline.
     | OK of payload: PutV4AccountsByAccountIdPipelinesByPipelineNameDeprecated_OK
+    ///Indicates an error updating pipeline.
+    | BadRequest of payload: PutV4AccountsByAccountIdPipelinesByPipelineNameDeprecated_BadRequest

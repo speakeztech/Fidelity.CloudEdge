@@ -51,7 +51,9 @@ type R2Client(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.getAsync httpClient "/accounts/{account_id}/r2/buckets" requestParts cancellationToken
 
-            return R2ListBuckets.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return R2ListBuckets.OK(Serializer.deserialize content)
+            | _ -> return R2ListBuckets.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -74,7 +76,9 @@ type R2Client(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.postAsync httpClient "/accounts/{account_id}/r2/buckets" requestParts cancellationToken
 
-            return R2CreateBucket.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return R2CreateBucket.OK(Serializer.deserialize content)
+            | _ -> return R2CreateBucket.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -101,7 +105,9 @@ type R2Client(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return R2DeleteBucket.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return R2DeleteBucket.OK(Serializer.deserialize content)
+            | _ -> return R2DeleteBucket.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -128,7 +134,9 @@ type R2Client(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return R2GetBucket.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return R2GetBucket.OK(Serializer.deserialize content)
+            | _ -> return R2GetBucket.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -157,7 +165,9 @@ type R2Client(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return R2PatchBucket.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return R2PatchBucket.OK(Serializer.deserialize content)
+            | _ -> return R2PatchBucket.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -184,7 +194,9 @@ type R2Client(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return R2DeleteBucketSippyConfig.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return R2DeleteBucketSippyConfig.OK(Serializer.deserialize content)
+            | _ -> return R2DeleteBucketSippyConfig.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -211,7 +223,9 @@ type R2Client(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return R2GetBucketSippyConfig.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return R2GetBucketSippyConfig.OK(Serializer.deserialize content)
+            | _ -> return R2GetBucketSippyConfig.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -238,5 +252,7 @@ type R2Client(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return R2PutBucketSippyConfig.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return R2PutBucketSippyConfig.OK(Serializer.deserialize content)
+            | _ -> return R2PutBucketSippyConfig.BadRequest(Serializer.deserialize content)
         }

@@ -72,7 +72,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ListDnsProtectionRulesForAccount.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ListDnsProtectionRulesForAccount.OK(Serializer.deserialize content)
+            | _ -> return ListDnsProtectionRulesForAccount.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -99,7 +101,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return CreateDnsProtectionRule.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return CreateDnsProtectionRule.OK(Serializer.deserialize content)
+            | _ -> return CreateDnsProtectionRule.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -121,7 +125,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return DeleteDnsProtectionRule.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return DeleteDnsProtectionRule.OK(Serializer.deserialize content)
+            | _ -> return DeleteDnsProtectionRule.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -143,7 +149,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return GetDnsProtectionRule.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return GetDnsProtectionRule.OK(Serializer.deserialize content)
+            | _ -> return GetDnsProtectionRule.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -173,7 +181,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return UpdateDnsProtectionRule.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return UpdateDnsProtectionRule.OK(Serializer.deserialize content)
+            | _ -> return UpdateDnsProtectionRule.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -193,7 +203,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return DeleteAllowlistPrefixesForAccount.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return DeleteAllowlistPrefixesForAccount.OK(Serializer.deserialize content)
+            | _ -> return DeleteAllowlistPrefixesForAccount.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -233,7 +245,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ListAllowlistPrefixesForAccount.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ListAllowlistPrefixesForAccount.OK(Serializer.deserialize content)
+            | _ -> return ListAllowlistPrefixesForAccount.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -260,7 +274,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return CreateAllowlistedPrefix.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return CreateAllowlistedPrefix.OK(Serializer.deserialize content)
+            | _ -> return CreateAllowlistedPrefix.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -282,7 +298,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return DeleteAllowlistPrefix.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return DeleteAllowlistPrefix.OK(Serializer.deserialize content)
+            | _ -> return DeleteAllowlistPrefix.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -304,7 +322,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return GetAllowlistPrefix.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return GetAllowlistPrefix.OK(Serializer.deserialize content)
+            | _ -> return GetAllowlistPrefix.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -334,7 +354,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return UpdateAllowlistPrefix.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return UpdateAllowlistPrefix.OK(Serializer.deserialize content)
+            | _ -> return UpdateAllowlistPrefix.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -354,7 +376,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return DeletePrefixesForAccount.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return DeletePrefixesForAccount.OK(Serializer.deserialize content)
+            | _ -> return DeletePrefixesForAccount.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -394,7 +418,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ListPrefixesForAccount.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ListPrefixesForAccount.OK(Serializer.deserialize content)
+            | _ -> return ListPrefixesForAccount.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -416,7 +442,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return CreatePrefix.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return CreatePrefix.OK(Serializer.deserialize content)
+            | _ -> return CreatePrefix.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -443,7 +471,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return BulkCreatePrefixes.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return BulkCreatePrefixes.OK(Serializer.deserialize content)
+            | _ -> return BulkCreatePrefixes.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -465,7 +495,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return DeletePrefix.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return DeletePrefix.OK(Serializer.deserialize content)
+            | _ -> return DeletePrefix.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -487,7 +519,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return GetPrefix.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return GetPrefix.OK(Serializer.deserialize content)
+            | _ -> return GetPrefix.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -517,7 +551,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return UpdatePrefix.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return UpdatePrefix.OK(Serializer.deserialize content)
+            | _ -> return UpdatePrefix.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -537,7 +573,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return DeleteSynProtectionFiltersForAccount.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return DeleteSynProtectionFiltersForAccount.OK(Serializer.deserialize content)
+            | _ -> return DeleteSynProtectionFiltersForAccount.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -581,7 +619,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ListSynProtectionFiltersForAccount.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ListSynProtectionFiltersForAccount.OK(Serializer.deserialize content)
+            | _ -> return ListSynProtectionFiltersForAccount.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -608,7 +648,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return CreateSynProtectionFilter.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return CreateSynProtectionFilter.OK(Serializer.deserialize content)
+            | _ -> return CreateSynProtectionFilter.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -630,7 +672,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return DeleteSynProtectionFilter.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return DeleteSynProtectionFilter.OK(Serializer.deserialize content)
+            | _ -> return DeleteSynProtectionFilter.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -652,7 +696,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return GetSynProtectionFilter.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return GetSynProtectionFilter.OK(Serializer.deserialize content)
+            | _ -> return GetSynProtectionFilter.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -682,7 +728,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return UpdateSynProtectionFilter.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return UpdateSynProtectionFilter.OK(Serializer.deserialize content)
+            | _ -> return UpdateSynProtectionFilter.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -702,7 +750,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return DeleteSynProtectionRulesForAccount.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return DeleteSynProtectionRulesForAccount.OK(Serializer.deserialize content)
+            | _ -> return DeleteSynProtectionRulesForAccount.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -742,7 +792,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ListSynProtectionRulesForAccount.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ListSynProtectionRulesForAccount.OK(Serializer.deserialize content)
+            | _ -> return ListSynProtectionRulesForAccount.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -769,7 +821,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return CreateSynProtectionRule.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return CreateSynProtectionRule.OK(Serializer.deserialize content)
+            | _ -> return CreateSynProtectionRule.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -791,7 +845,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return DeleteSynProtectionRule.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return DeleteSynProtectionRule.OK(Serializer.deserialize content)
+            | _ -> return DeleteSynProtectionRule.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -813,7 +869,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return GetSynProtectionRule.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return GetSynProtectionRule.OK(Serializer.deserialize content)
+            | _ -> return GetSynProtectionRule.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -843,7 +901,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return UpdateSynProtectionRule.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return UpdateSynProtectionRule.OK(Serializer.deserialize content)
+            | _ -> return UpdateSynProtectionRule.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -863,7 +923,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return DeleteTcpFlowProtectionFiltersForAccount.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return DeleteTcpFlowProtectionFiltersForAccount.OK(Serializer.deserialize content)
+            | _ -> return DeleteTcpFlowProtectionFiltersForAccount.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -907,7 +969,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ListTcpFlowProtectionFiltersForAccount.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ListTcpFlowProtectionFiltersForAccount.OK(Serializer.deserialize content)
+            | _ -> return ListTcpFlowProtectionFiltersForAccount.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -934,7 +998,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return CreateTcpFlowProtectionFilter.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return CreateTcpFlowProtectionFilter.OK(Serializer.deserialize content)
+            | _ -> return CreateTcpFlowProtectionFilter.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -961,7 +1027,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return DeleteTcpFlowProtectionFilter.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return DeleteTcpFlowProtectionFilter.OK(Serializer.deserialize content)
+            | _ -> return DeleteTcpFlowProtectionFilter.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -983,7 +1051,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return GetTcpFlowProtectionFilter.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return GetTcpFlowProtectionFilter.OK(Serializer.deserialize content)
+            | _ -> return GetTcpFlowProtectionFilter.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1013,7 +1083,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return UpdateTcpFlowProtectionFilter.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return UpdateTcpFlowProtectionFilter.OK(Serializer.deserialize content)
+            | _ -> return UpdateTcpFlowProtectionFilter.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1033,7 +1105,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return DeleteTcpFlowProtectionRulesForAccount.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return DeleteTcpFlowProtectionRulesForAccount.OK(Serializer.deserialize content)
+            | _ -> return DeleteTcpFlowProtectionRulesForAccount.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1073,7 +1147,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ListTcpFlowProtectionRulesForAccount.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ListTcpFlowProtectionRulesForAccount.OK(Serializer.deserialize content)
+            | _ -> return ListTcpFlowProtectionRulesForAccount.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1100,7 +1176,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return CreateTcpFlowProtectionRule.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return CreateTcpFlowProtectionRule.OK(Serializer.deserialize content)
+            | _ -> return CreateTcpFlowProtectionRule.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1122,7 +1200,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return DeleteTcpFlowProtectionRule.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return DeleteTcpFlowProtectionRule.OK(Serializer.deserialize content)
+            | _ -> return DeleteTcpFlowProtectionRule.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1144,7 +1224,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return GetTcpFlowProtectionRule.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return GetTcpFlowProtectionRule.OK(Serializer.deserialize content)
+            | _ -> return GetTcpFlowProtectionRule.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1174,7 +1256,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return UpdateTcpFlowProtectionRule.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return UpdateTcpFlowProtectionRule.OK(Serializer.deserialize content)
+            | _ -> return UpdateTcpFlowProtectionRule.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1194,7 +1278,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return GetProtectionStatus.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return GetProtectionStatus.OK(Serializer.deserialize content)
+            | _ -> return GetProtectionStatus.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1221,7 +1307,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return UpdateProtectionStatus.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return UpdateProtectionStatus.OK(Serializer.deserialize content)
+            | _ -> return UpdateProtectionStatus.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1235,7 +1323,9 @@ type MagicClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.getAsync httpClient "/accounts/{account_id}/magic/apps" requestParts cancellationToken
 
-            return MagicAccountAppsListApps.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicAccountAppsListApps.OK(Serializer.deserialize content)
+            | _ -> return MagicAccountAppsListApps.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1255,7 +1345,9 @@ type MagicClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.postAsync httpClient "/accounts/{account_id}/magic/apps" requestParts cancellationToken
 
-            return MagicAccountAppsAddApp.Created(Serializer.deserialize content)
+            match int status with
+            | 201 -> return MagicAccountAppsAddApp.Created(Serializer.deserialize content)
+            | _ -> return MagicAccountAppsAddApp.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1279,7 +1371,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicAccountAppsDeleteApp.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicAccountAppsDeleteApp.OK(Serializer.deserialize content)
+            | _ -> return MagicAccountAppsDeleteApp.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1305,7 +1399,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicAccountAppsPatchApp.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicAccountAppsPatchApp.OK(Serializer.deserialize content)
+            | _ -> return MagicAccountAppsPatchApp.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1331,7 +1427,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicAccountAppsUpdateApp.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicAccountAppsUpdateApp.OK(Serializer.deserialize content)
+            | _ -> return MagicAccountAppsUpdateApp.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1359,7 +1457,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicInterconnectsListInterconnects.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicInterconnectsListInterconnects.OK(Serializer.deserialize content)
+            | _ -> return MagicInterconnectsListInterconnects.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1387,7 +1487,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicInterconnectsUpdateMultipleInterconnects.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicInterconnectsUpdateMultipleInterconnects.OK(Serializer.deserialize content)
+            | _ -> return MagicInterconnectsUpdateMultipleInterconnects.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1418,7 +1520,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicInterconnectsListInterconnectDetails.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicInterconnectsListInterconnectDetails.OK(Serializer.deserialize content)
+            | _ -> return MagicInterconnectsListInterconnectDetails.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1452,7 +1556,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicInterconnectsUpdateInterconnect.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicInterconnectsUpdateInterconnect.OK(Serializer.deserialize content)
+            | _ -> return MagicInterconnectsUpdateInterconnect.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -2998,7 +3104,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicGreTunnelsListGreTunnels.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicGreTunnelsListGreTunnels.OK(Serializer.deserialize content)
+            | _ -> return MagicGreTunnelsListGreTunnels.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -3029,7 +3137,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicGreTunnelsCreateGreTunnels.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicGreTunnelsCreateGreTunnels.OK(Serializer.deserialize content)
+            | _ -> return MagicGreTunnelsCreateGreTunnels.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -3057,7 +3167,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicGreTunnelsUpdateMultipleGreTunnels.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicGreTunnelsUpdateMultipleGreTunnels.OK(Serializer.deserialize content)
+            | _ -> return MagicGreTunnelsUpdateMultipleGreTunnels.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -3088,7 +3200,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicGreTunnelsDeleteGreTunnel.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicGreTunnelsDeleteGreTunnel.OK(Serializer.deserialize content)
+            | _ -> return MagicGreTunnelsDeleteGreTunnel.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -3119,7 +3233,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicGreTunnelsListGreTunnelDetails.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicGreTunnelsListGreTunnelDetails.OK(Serializer.deserialize content)
+            | _ -> return MagicGreTunnelsListGreTunnelDetails.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -3153,7 +3269,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicGreTunnelsUpdateGreTunnel.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicGreTunnelsUpdateGreTunnel.OK(Serializer.deserialize content)
+            | _ -> return MagicGreTunnelsUpdateGreTunnel.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -3181,7 +3299,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicIpsecTunnelsListIpsecTunnels.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicIpsecTunnelsListIpsecTunnels.OK(Serializer.deserialize content)
+            | _ -> return MagicIpsecTunnelsListIpsecTunnels.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -3212,7 +3332,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicIpsecTunnelsCreateIpsecTunnels.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicIpsecTunnelsCreateIpsecTunnels.OK(Serializer.deserialize content)
+            | _ -> return MagicIpsecTunnelsCreateIpsecTunnels.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -3240,7 +3362,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicIpsecTunnelsUpdateMultipleIpsecTunnels.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicIpsecTunnelsUpdateMultipleIpsecTunnels.OK(Serializer.deserialize content)
+            | _ -> return MagicIpsecTunnelsUpdateMultipleIpsecTunnels.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -3271,7 +3395,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicIpsecTunnelsDeleteIpsecTunnel.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicIpsecTunnelsDeleteIpsecTunnel.OK(Serializer.deserialize content)
+            | _ -> return MagicIpsecTunnelsDeleteIpsecTunnel.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -3302,7 +3428,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicIpsecTunnelsListIpsecTunnelDetails.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicIpsecTunnelsListIpsecTunnelDetails.OK(Serializer.deserialize content)
+            | _ -> return MagicIpsecTunnelsListIpsecTunnelDetails.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -3336,7 +3464,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicIpsecTunnelsUpdateIpsecTunnel.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicIpsecTunnelsUpdateIpsecTunnel.OK(Serializer.deserialize content)
+            | _ -> return MagicIpsecTunnelsUpdateIpsecTunnel.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -3360,7 +3490,14 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ``MagicIpsecTunnelsGeneratePreSharedKey(Psk)ForIpsecTunnels``.OK(Serializer.deserialize content)
+            match int status with
+            | 200 ->
+                return ``MagicIpsecTunnelsGeneratePreSharedKey(Psk)ForIpsecTunnels``.OK(Serializer.deserialize content)
+            | _ ->
+                return
+                    ``MagicIpsecTunnelsGeneratePreSharedKey(Psk)ForIpsecTunnels``.BadRequest(
+                        Serializer.deserialize content
+                    )
         }
 
     ///<summary>
@@ -3380,7 +3517,9 @@ type MagicClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.deleteAsync httpClient "/accounts/{account_id}/magic/routes" requestParts cancellationToken
 
-            return MagicStaticRoutesDeleteManyRoutes.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicStaticRoutesDeleteManyRoutes.OK(Serializer.deserialize content)
+            | _ -> return MagicStaticRoutesDeleteManyRoutes.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -3394,7 +3533,9 @@ type MagicClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.getAsync httpClient "/accounts/{account_id}/magic/routes" requestParts cancellationToken
 
-            return MagicStaticRoutesListRoutes.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicStaticRoutesListRoutes.OK(Serializer.deserialize content)
+            | _ -> return MagicStaticRoutesListRoutes.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -3414,7 +3555,9 @@ type MagicClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.postAsync httpClient "/accounts/{account_id}/magic/routes" requestParts cancellationToken
 
-            return MagicStaticRoutesCreateRoutes.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicStaticRoutesCreateRoutes.OK(Serializer.deserialize content)
+            | _ -> return MagicStaticRoutesCreateRoutes.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -3434,7 +3577,9 @@ type MagicClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.putAsync httpClient "/accounts/{account_id}/magic/routes" requestParts cancellationToken
 
-            return MagicStaticRoutesUpdateManyRoutes.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicStaticRoutesUpdateManyRoutes.OK(Serializer.deserialize content)
+            | _ -> return MagicStaticRoutesUpdateManyRoutes.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -3458,7 +3603,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicStaticRoutesDeleteRoute.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicStaticRoutesDeleteRoute.OK(Serializer.deserialize content)
+            | _ -> return MagicStaticRoutesDeleteRoute.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -3482,7 +3629,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicStaticRoutesRouteDetails.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicStaticRoutesRouteDetails.OK(Serializer.deserialize content)
+            | _ -> return MagicStaticRoutesRouteDetails.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -3508,7 +3657,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicStaticRoutesUpdateRoute.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicStaticRoutesUpdateRoute.OK(Serializer.deserialize content)
+            | _ -> return MagicStaticRoutesUpdateRoute.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -3524,7 +3675,9 @@ type MagicClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.getAsync httpClient "/accounts/{account_id}/magic/sites" requestParts cancellationToken
 
-            return MagicSitesListSites.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicSitesListSites.OK(Serializer.deserialize content)
+            | _ -> return MagicSitesListSites.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -3544,7 +3697,9 @@ type MagicClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.postAsync httpClient "/accounts/{account_id}/magic/sites" requestParts cancellationToken
 
-            return MagicSitesCreateSite.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicSitesCreateSite.OK(Serializer.deserialize content)
+            | _ -> return MagicSitesCreateSite.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -3563,7 +3718,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicSitesDeleteSite.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicSitesDeleteSite.OK(Serializer.deserialize content)
+            | _ -> return MagicSitesDeleteSite.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -3594,7 +3751,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicSitesSiteDetails.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicSitesSiteDetails.OK(Serializer.deserialize content)
+            | _ -> return MagicSitesSiteDetails.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -3620,7 +3779,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicSitesPatchSite.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicSitesPatchSite.OK(Serializer.deserialize content)
+            | _ -> return MagicSitesPatchSite.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -3646,7 +3807,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicSitesUpdateSite.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicSitesUpdateSite.OK(Serializer.deserialize content)
+            | _ -> return MagicSitesUpdateSite.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -3665,7 +3828,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicSiteAclsListAcls.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicSiteAclsListAcls.OK(Serializer.deserialize content)
+            | _ -> return MagicSiteAclsListAcls.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -3695,7 +3860,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicSiteAclsCreateAcl.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicSiteAclsCreateAcl.OK(Serializer.deserialize content)
+            | _ -> return MagicSiteAclsCreateAcl.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -3721,7 +3888,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicSiteAclsDeleteAcl.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicSiteAclsDeleteAcl.OK(Serializer.deserialize content)
+            | _ -> return MagicSiteAclsDeleteAcl.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -3747,7 +3916,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicSiteAclsAclDetails.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicSiteAclsAclDetails.OK(Serializer.deserialize content)
+            | _ -> return MagicSiteAclsAclDetails.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -3775,7 +3946,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicSiteAclsPatchAcl.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicSiteAclsPatchAcl.OK(Serializer.deserialize content)
+            | _ -> return MagicSiteAclsPatchAcl.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -3803,7 +3976,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicSiteAclsUpdateAcl.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicSiteAclsUpdateAcl.OK(Serializer.deserialize content)
+            | _ -> return MagicSiteAclsUpdateAcl.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -3827,7 +4002,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicSiteAppConfigsListAppConfigs.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicSiteAppConfigsListAppConfigs.OK(Serializer.deserialize content)
+            | _ -> return MagicSiteAppConfigsListAppConfigs.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -3853,7 +4030,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicSiteAppConfigsAddAppConfig.Created(Serializer.deserialize content)
+            match int status with
+            | 201 -> return MagicSiteAppConfigsAddAppConfig.Created(Serializer.deserialize content)
+            | _ -> return MagicSiteAppConfigsAddAppConfig.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -3879,7 +4058,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicSiteAppConfigsDeleteAppConfig.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicSiteAppConfigsDeleteAppConfig.OK(Serializer.deserialize content)
+            | _ -> return MagicSiteAppConfigsDeleteAppConfig.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -3907,7 +4088,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicSiteAppConfigsPatchAppConfig.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicSiteAppConfigsPatchAppConfig.OK(Serializer.deserialize content)
+            | _ -> return MagicSiteAppConfigsPatchAppConfig.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -3935,7 +4118,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicSiteAppConfigsUpdateAppConfig.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicSiteAppConfigsUpdateAppConfig.OK(Serializer.deserialize content)
+            | _ -> return MagicSiteAppConfigsUpdateAppConfig.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -3954,7 +4139,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicSiteLansListLans.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicSiteLansListLans.OK(Serializer.deserialize content)
+            | _ -> return MagicSiteLansListLans.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -3980,7 +4167,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicSiteLansCreateLan.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicSiteLansCreateLan.OK(Serializer.deserialize content)
+            | _ -> return MagicSiteLansCreateLan.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -4006,7 +4195,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicSiteLansDeleteLan.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicSiteLansDeleteLan.OK(Serializer.deserialize content)
+            | _ -> return MagicSiteLansDeleteLan.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -4032,7 +4223,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicSiteLansLanDetails.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicSiteLansLanDetails.OK(Serializer.deserialize content)
+            | _ -> return MagicSiteLansLanDetails.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -4060,7 +4253,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicSiteLansPatchLan.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicSiteLansPatchLan.OK(Serializer.deserialize content)
+            | _ -> return MagicSiteLansPatchLan.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -4088,7 +4283,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicSiteLansUpdateLan.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicSiteLansUpdateLan.OK(Serializer.deserialize content)
+            | _ -> return MagicSiteLansUpdateLan.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -4112,7 +4309,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicSiteNetflowConfigDeleteNetflowConfig.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicSiteNetflowConfigDeleteNetflowConfig.OK(Serializer.deserialize content)
+            | _ -> return MagicSiteNetflowConfigDeleteNetflowConfig.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -4136,7 +4335,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicSiteNetflowConfigDetails.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicSiteNetflowConfigDetails.OK(Serializer.deserialize content)
+            | _ -> return MagicSiteNetflowConfigDetails.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -4162,7 +4363,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicSiteNetflowConfigPatchNetflowConfig.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicSiteNetflowConfigPatchNetflowConfig.OK(Serializer.deserialize content)
+            | _ -> return MagicSiteNetflowConfigPatchNetflowConfig.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -4188,7 +4391,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicSiteNetflowConfigCreateNetflowConfig.Created(Serializer.deserialize content)
+            match int status with
+            | 201 -> return MagicSiteNetflowConfigCreateNetflowConfig.Created(Serializer.deserialize content)
+            | _ -> return MagicSiteNetflowConfigCreateNetflowConfig.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -4214,7 +4419,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicSiteNetflowConfigUpdateNetflowConfig.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicSiteNetflowConfigUpdateNetflowConfig.OK(Serializer.deserialize content)
+            | _ -> return MagicSiteNetflowConfigUpdateNetflowConfig.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -4233,7 +4440,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicSiteWansListWans.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicSiteWansListWans.OK(Serializer.deserialize content)
+            | _ -> return MagicSiteWansListWans.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -4259,7 +4468,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicSiteWansCreateWan.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicSiteWansCreateWan.OK(Serializer.deserialize content)
+            | _ -> return MagicSiteWansCreateWan.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -4285,7 +4496,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicSiteWansDeleteWan.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicSiteWansDeleteWan.OK(Serializer.deserialize content)
+            | _ -> return MagicSiteWansDeleteWan.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -4311,7 +4524,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicSiteWansWanDetails.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicSiteWansWanDetails.OK(Serializer.deserialize content)
+            | _ -> return MagicSiteWansWanDetails.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -4339,7 +4554,9 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicSiteWansPatchWan.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicSiteWansPatchWan.OK(Serializer.deserialize content)
+            | _ -> return MagicSiteWansPatchWan.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -4367,5 +4584,7 @@ type MagicClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return MagicSiteWansUpdateWan.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return MagicSiteWansUpdateWan.OK(Serializer.deserialize content)
+            | _ -> return MagicSiteWansUpdateWan.BadRequest(Serializer.deserialize content)
         }

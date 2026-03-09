@@ -98,19 +98,24 @@ type ``argo-analyticsresponsesingleMessages`` =
         { code = code; message = message }
 
 type ``argo-analyticsresponsesingle`` =
-    { errors: Option<list<``argo-analyticsresponsesingleErrors``>>
-      messages: Option<list<``argo-analyticsresponsesingleMessages``>>
-      result: Option<Newtonsoft.Json.Linq.JToken>
+    { errors: list<``argo-analyticsresponsesingleErrors``>
+      messages: list<``argo-analyticsresponsesingleMessages``>
+      result: Newtonsoft.Json.Linq.JObject
       ///Whether the API call was successful
-      success: Option<bool> }
+      success: bool }
     ///Creates an instance of argo-analyticsresponsesingle with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``argo-analyticsresponsesingle`` =
-        { errors = None
-          messages = None
-          result = None
-          success = None }
+    static member Create (errors: list<``argo-analyticsresponsesingleErrors``>,
+                          messages: list<``argo-analyticsresponsesingleMessages``>,
+                          result: Newtonsoft.Json.Linq.JObject,
+                          success: bool): ``argo-analyticsresponsesingle`` =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 [<RequireQualifiedAccess>]
 type ArgoAnalyticsForZoneArgoAnalyticsForAZone =
     ///Argo Analytics for a zone response
     | OK of payload: ``argo-analyticsresponsesingle``
+    ///Argo Analytics for a zone response failure
+    | BadRequest of payload: string

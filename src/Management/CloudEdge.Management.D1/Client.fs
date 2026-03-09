@@ -39,7 +39,9 @@ type D1Client(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.getAsync httpClient "/accounts/{account_id}/d1/database" requestParts cancellationToken
 
-            return D1ListDatabases.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return D1ListDatabases.OK(Serializer.deserialize content)
+            | _ -> return D1ListDatabases.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -59,7 +61,9 @@ type D1Client(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.postAsync httpClient "/accounts/{account_id}/d1/database" requestParts cancellationToken
 
-            return D1CreateDatabase.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return D1CreateDatabase.OK(Serializer.deserialize content)
+            | _ -> return D1CreateDatabase.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -78,7 +82,9 @@ type D1Client(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return D1DeleteDatabase.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return D1DeleteDatabase.OK(Serializer.deserialize content)
+            | _ -> return D1DeleteDatabase.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -97,7 +103,9 @@ type D1Client(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return D1GetDatabase.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return D1GetDatabase.OK(Serializer.deserialize content)
+            | _ -> return D1GetDatabase.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -123,7 +131,9 @@ type D1Client(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return D1UpdatePartialDatabase.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return D1UpdatePartialDatabase.OK(Serializer.deserialize content)
+            | _ -> return D1UpdatePartialDatabase.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -149,7 +159,9 @@ type D1Client(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return D1UpdateDatabase.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return D1UpdateDatabase.OK(Serializer.deserialize content)
+            | _ -> return D1UpdateDatabase.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -168,7 +180,9 @@ type D1Client(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return D1QueryDatabase.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return D1QueryDatabase.OK(Serializer.deserialize content)
+            | _ -> return D1QueryDatabase.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -187,5 +201,7 @@ type D1Client(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return D1RawDatabaseQuery.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return D1RawDatabaseQuery.OK(Serializer.deserialize content)
+            | _ -> return D1RawDatabaseQuery.BadRequest(Serializer.deserialize content)
         }

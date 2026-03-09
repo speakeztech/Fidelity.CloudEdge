@@ -15,7 +15,14 @@
       ],
       "hawaiiConfig": "kv-hawaii.json",
       "namespace": "Fidelity.CloudEdge.Management.KV",
-      "postProcessors": [],
+      "postProcessors": [
+        {
+          "name": "fix-type-aliases",
+          "args": {
+            "aliases": "workers-kv_key_name_bulk=workers-kvkeynamebulk,workers-kvvalue=string"
+          }
+        }
+      ],
       "status": "active"
     },
     "r2": {
@@ -86,6 +93,15 @@
           "args": {
             "methodName": "WorkerPutScriptSecret",
             "bodyType": "Types.workersbindingkindsecrettext"
+          }
+        },
+        {
+          "name": "fix-dollar-identifiers"
+        },
+        {
+          "name": "fix-type-aliases",
+          "args": {
+            "aliases": "workers_compatibility_flag=workerscompatibilityflag"
           }
         }
       ],

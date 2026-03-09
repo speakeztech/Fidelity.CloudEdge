@@ -1,5 +1,38 @@
 namespace rec Fidelity.CloudEdge.Management.Access.Types
 
+// Auto-generated type aliases (Hawaii normalization fix)
+type access_approval_group = accessapprovalgroup
+type access_rdp_clipboard_format = accessrdpclipboardformat
+type ``access_schemas-approval_group`` = ``accessschemas-approvalgroup``
+type access_seat = accessseat
+
+// Auto-generated stub types (missing from Hawaii output)
+type access_rule = string
+type ``access_schemas-scim_config_single_authentication`` = string
+type access_scim_config_single_authentication = string
+type accessappid = string
+type accessapprequest = string
+type accessappresponse = string
+type accessdestinations = string
+type ``accessschemas-allowedheaders`` = string
+type ``accessschemas-allowedorigins`` = string
+type applications = string
+type approvals = string
+type apps = string
+type attrname = string
+type authentication = string
+type basic = string
+type days = string
+type execution = string
+type names = string
+type oasis = string
+type precedence = string
+type results = string
+type risk = string
+type unspecified = string
+type uri = string
+type your = string
+
 type accessaccessseat = bool
 ///The event that occurred, such as a login attempt.
 type accessaction = string
@@ -624,16 +657,16 @@ type Messages =
           source = None }
 
 type ``accessaccess-requestscomponents-schemas-responsecollection`` =
-    { errors: Option<list<Errors>>
-      messages: Option<list<Messages>>
+    { errors: list<Errors>
+      messages: list<Messages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<list<``accessaccess-requests``>> }
     ///Creates an instance of accessaccess-requestscomponents-schemas-responsecollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``accessaccess-requestscomponents-schemas-responsecollection`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<Errors>, messages: list<Messages>, success: bool): ``accessaccess-requestscomponents-schemas-responsecollection`` =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type Group =
@@ -745,16 +778,18 @@ type Result =
           isActive = None }
 
 type accessactivesessionresponse =
-    { errors: Option<list<accessactivesessionresponseErrors>>
-      messages: Option<list<accessactivesessionresponseMessages>>
+    { errors: list<accessactivesessionresponseErrors>
+      messages: list<accessactivesessionresponseMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<Result> }
     ///Creates an instance of accessactivesessionresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): accessactivesessionresponse =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<accessactivesessionresponseErrors>,
+                          messages: list<accessactivesessionresponseMessages>,
+                          success: bool): accessactivesessionresponse =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type accessactivesessionsresponseErrorsSource =
@@ -832,17 +867,19 @@ type accessactivesessionsresponseResult =
           name = None }
 
 type accessactivesessionsresponse =
-    { errors: Option<list<accessactivesessionsresponseErrors>>
-      messages: Option<list<accessactivesessionsresponseMessages>>
+    { errors: list<accessactivesessionsresponseErrors>
+      messages: list<accessactivesessionsresponseMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<Resultinfo>
       result: Option<list<accessactivesessionsresponseResult>> }
     ///Creates an instance of accessactivesessionsresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): accessactivesessionsresponse =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<accessactivesessionsresponseErrors>,
+                          messages: list<accessactivesessionsresponseMessages>,
+                          success: bool): accessactivesessionsresponse =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
           result = None }
 
@@ -1066,16 +1103,18 @@ type ``accessapp-policiescomponents-schemas-idresponseResult`` =
     static member Create (): ``accessapp-policiescomponents-schemas-idresponseResult`` = { id = None }
 
 type ``accessapp-policiescomponents-schemas-idresponse`` =
-    { errors: Option<list<``accessapp-policiescomponents-schemas-idresponseErrors``>>
-      messages: Option<list<``accessapp-policiescomponents-schemas-idresponseMessages``>>
+    { errors: list<``accessapp-policiescomponents-schemas-idresponseErrors``>
+      messages: list<``accessapp-policiescomponents-schemas-idresponseMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<``accessapp-policiescomponents-schemas-idresponseResult``> }
     ///Creates an instance of accessapp-policiescomponents-schemas-idresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``accessapp-policiescomponents-schemas-idresponse`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``accessapp-policiescomponents-schemas-idresponseErrors``>,
+                          messages: list<``accessapp-policiescomponents-schemas-idresponseMessages``>,
+                          success: bool): ``accessapp-policiescomponents-schemas-idresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type ``accessapp-policiescomponents-schemas-responsecollectionErrorsSource`` =
@@ -1131,17 +1170,19 @@ type ``accessapp-policiescomponents-schemas-responsecollectionResultinfo`` =
           total_count = None }
 
 type ``accessapp-policiescomponents-schemas-responsecollection`` =
-    { errors: Option<list<``accessapp-policiescomponents-schemas-responsecollectionErrors``>>
-      messages: Option<list<``accessapp-policiescomponents-schemas-responsecollectionMessages``>>
+    { errors: list<``accessapp-policiescomponents-schemas-responsecollectionErrors``>
+      messages: list<``accessapp-policiescomponents-schemas-responsecollectionMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<``accessapp-policiescomponents-schemas-responsecollectionResultinfo``>
       result: Option<list<accessapppolicyresponse>> }
     ///Creates an instance of accessapp-policiescomponents-schemas-responsecollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``accessapp-policiescomponents-schemas-responsecollection`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``accessapp-policiescomponents-schemas-responsecollectionErrors``>,
+                          messages: list<``accessapp-policiescomponents-schemas-responsecollectionMessages``>,
+                          success: bool): ``accessapp-policiescomponents-schemas-responsecollection`` =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
           result = None }
 
@@ -1180,16 +1221,18 @@ type ``accessapp-policiescomponents-schemas-singleresponseMessages`` =
           source = None }
 
 type ``accessapp-policiescomponents-schemas-singleresponse`` =
-    { errors: Option<list<``accessapp-policiescomponents-schemas-singleresponseErrors``>>
-      messages: Option<list<``accessapp-policiescomponents-schemas-singleresponseMessages``>>
+    { errors: list<``accessapp-policiescomponents-schemas-singleresponseErrors``>
+      messages: list<``accessapp-policiescomponents-schemas-singleresponseMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<accessapppolicyresponse> }
     ///Creates an instance of accessapp-policiescomponents-schemas-singleresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``accessapp-policiescomponents-schemas-singleresponse`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``accessapp-policiescomponents-schemas-singleresponseErrors``>,
+                          messages: list<``accessapp-policiescomponents-schemas-singleresponseMessages``>,
+                          success: bool): ``accessapp-policiescomponents-schemas-singleresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type Footerlinks =
@@ -1474,17 +1517,19 @@ type ``accessappscomponents-schemas-responsecollectionResultinfo`` =
           total_count = None }
 
 type ``accessappscomponents-schemas-responsecollection`` =
-    { errors: Option<list<``accessappscomponents-schemas-responsecollectionErrors``>>
-      messages: Option<list<``accessappscomponents-schemas-responsecollectionMessages``>>
+    { errors: list<``accessappscomponents-schemas-responsecollectionErrors``>
+      messages: list<``accessappscomponents-schemas-responsecollectionMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<``accessappscomponents-schemas-responsecollectionResultinfo``>
       result: Option<list<accessappresponse>> }
     ///Creates an instance of accessappscomponents-schemas-responsecollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``accessappscomponents-schemas-responsecollection`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``accessappscomponents-schemas-responsecollectionErrors``>,
+                          messages: list<``accessappscomponents-schemas-responsecollectionMessages``>,
+                          success: bool): ``accessappscomponents-schemas-responsecollection`` =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
           result = None }
 
@@ -1588,16 +1633,18 @@ type ``accessappscomponents-schemas-singleresponseMessages`` =
           source = None }
 
 type ``accessappscomponents-schemas-singleresponse`` =
-    { errors: Option<list<``accessappscomponents-schemas-singleresponseErrors``>>
-      messages: Option<list<``accessappscomponents-schemas-singleresponseMessages``>>
+    { errors: list<``accessappscomponents-schemas-singleresponseErrors``>
+      messages: list<``accessappscomponents-schemas-singleresponseMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<Newtonsoft.Json.Linq.JToken> }
     ///Creates an instance of accessappscomponents-schemas-singleresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``accessappscomponents-schemas-singleresponse`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``accessappscomponents-schemas-singleresponseErrors``>,
+                          messages: list<``accessappscomponents-schemas-singleresponseMessages``>,
+                          success: bool): ``accessappscomponents-schemas-singleresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type ``accessappscomponents-schemas-singleresponse-2ErrorsSource`` =
@@ -2009,17 +2056,19 @@ type ``accessbookmarkscomponents-schemas-responsecollectionResultinfo`` =
           total_count = None }
 
 type ``accessbookmarkscomponents-schemas-responsecollection`` =
-    { errors: Option<list<``accessbookmarkscomponents-schemas-responsecollectionErrors``>>
-      messages: Option<list<``accessbookmarkscomponents-schemas-responsecollectionMessages``>>
+    { errors: list<``accessbookmarkscomponents-schemas-responsecollectionErrors``>
+      messages: list<``accessbookmarkscomponents-schemas-responsecollectionMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<``accessbookmarkscomponents-schemas-responsecollectionResultinfo``>
       result: Option<list<accessbookmarks>> }
     ///Creates an instance of accessbookmarkscomponents-schemas-responsecollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``accessbookmarkscomponents-schemas-responsecollection`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``accessbookmarkscomponents-schemas-responsecollectionErrors``>,
+                          messages: list<``accessbookmarkscomponents-schemas-responsecollectionMessages``>,
+                          success: bool): ``accessbookmarkscomponents-schemas-responsecollection`` =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
           result = None }
 
@@ -2058,16 +2107,18 @@ type ``accessbookmarkscomponents-schemas-singleresponseMessages`` =
           source = None }
 
 type ``accessbookmarkscomponents-schemas-singleresponse`` =
-    { errors: Option<list<``accessbookmarkscomponents-schemas-singleresponseErrors``>>
-      messages: Option<list<``accessbookmarkscomponents-schemas-singleresponseMessages``>>
+    { errors: list<``accessbookmarkscomponents-schemas-singleresponseErrors``>
+      messages: list<``accessbookmarkscomponents-schemas-singleresponseMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<accessbookmarks> }
     ///Creates an instance of accessbookmarkscomponents-schemas-singleresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``accessbookmarkscomponents-schemas-singleresponse`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``accessbookmarkscomponents-schemas-singleresponseErrors``>,
+                          messages: list<``accessbookmarkscomponents-schemas-singleresponseMessages``>,
+                          success: bool): ``accessbookmarkscomponents-schemas-singleresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type accessca =
@@ -2187,17 +2238,19 @@ type ``accesscacomponents-schemas-responsecollectionResultinfo`` =
           total_count = None }
 
 type ``accesscacomponents-schemas-responsecollection`` =
-    { errors: Option<list<``accesscacomponents-schemas-responsecollectionErrors``>>
-      messages: Option<list<``accesscacomponents-schemas-responsecollectionMessages``>>
+    { errors: list<``accesscacomponents-schemas-responsecollectionErrors``>
+      messages: list<``accesscacomponents-schemas-responsecollectionMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<``accesscacomponents-schemas-responsecollectionResultinfo``>
       result: Option<list<accessca>> }
     ///Creates an instance of accesscacomponents-schemas-responsecollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``accesscacomponents-schemas-responsecollection`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``accesscacomponents-schemas-responsecollectionErrors``>,
+                          messages: list<``accesscacomponents-schemas-responsecollectionMessages``>,
+                          success: bool): ``accesscacomponents-schemas-responsecollection`` =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
           result = None }
 
@@ -2301,16 +2354,18 @@ type ``accesscacomponents-schemas-singleresponseMessages`` =
           source = None }
 
 type ``accesscacomponents-schemas-singleresponse`` =
-    { errors: Option<list<``accesscacomponents-schemas-singleresponseErrors``>>
-      messages: Option<list<``accesscacomponents-schemas-singleresponseMessages``>>
+    { errors: list<``accesscacomponents-schemas-singleresponseErrors``>
+      messages: list<``accesscacomponents-schemas-singleresponseMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<accessca> }
     ///Creates an instance of accesscacomponents-schemas-singleresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``accesscacomponents-schemas-singleresponse`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``accesscacomponents-schemas-singleresponseErrors``>,
+                          messages: list<``accesscacomponents-schemas-singleresponseMessages``>,
+                          success: bool): ``accesscacomponents-schemas-singleresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type ``accesscacomponents-schemas-singleresponse-2ErrorsSource`` =
@@ -2528,17 +2583,19 @@ type ``accesscertificatescomponents-schemas-responsecollectionResultinfo`` =
           total_count = None }
 
 type ``accesscertificatescomponents-schemas-responsecollection`` =
-    { errors: Option<list<``accesscertificatescomponents-schemas-responsecollectionErrors``>>
-      messages: Option<list<``accesscertificatescomponents-schemas-responsecollectionMessages``>>
+    { errors: list<``accesscertificatescomponents-schemas-responsecollectionErrors``>
+      messages: list<``accesscertificatescomponents-schemas-responsecollectionMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<``accesscertificatescomponents-schemas-responsecollectionResultinfo``>
       result: Option<list<accesscertificates>> }
     ///Creates an instance of accesscertificatescomponents-schemas-responsecollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``accesscertificatescomponents-schemas-responsecollection`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``accesscertificatescomponents-schemas-responsecollectionErrors``>,
+                          messages: list<``accesscertificatescomponents-schemas-responsecollectionMessages``>,
+                          success: bool): ``accesscertificatescomponents-schemas-responsecollection`` =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
           result = None }
 
@@ -2644,16 +2701,18 @@ type ``accesscertificatescomponents-schemas-singleresponseMessages`` =
           source = None }
 
 type ``accesscertificatescomponents-schemas-singleresponse`` =
-    { errors: Option<list<``accesscertificatescomponents-schemas-singleresponseErrors``>>
-      messages: Option<list<``accesscertificatescomponents-schemas-singleresponseMessages``>>
+    { errors: list<``accesscertificatescomponents-schemas-singleresponseErrors``>
+      messages: list<``accesscertificatescomponents-schemas-singleresponseMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<accesscertificates> }
     ///Creates an instance of accesscertificatescomponents-schemas-singleresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``accesscertificatescomponents-schemas-singleresponse`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``accesscertificatescomponents-schemas-singleresponseErrors``>,
+                          messages: list<``accesscertificatescomponents-schemas-singleresponseMessages``>,
+                          success: bool): ``accesscertificatescomponents-schemas-singleresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type ``accesscertificatescomponents-schemas-singleresponse-2ErrorsSource`` =
@@ -2802,16 +2861,18 @@ type ``accesscomponents-schemas-idresponseResult`` =
     static member Create (): ``accesscomponents-schemas-idresponseResult`` = { id = None }
 
 type ``accesscomponents-schemas-idresponse`` =
-    { errors: Option<list<``accesscomponents-schemas-idresponseErrors``>>
-      messages: Option<list<``accesscomponents-schemas-idresponseMessages``>>
+    { errors: list<``accesscomponents-schemas-idresponseErrors``>
+      messages: list<``accesscomponents-schemas-idresponseMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<``accesscomponents-schemas-idresponseResult``> }
     ///Creates an instance of accesscomponents-schemas-idresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``accesscomponents-schemas-idresponse`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``accesscomponents-schemas-idresponseErrors``>,
+                          messages: list<``accesscomponents-schemas-idresponseMessages``>,
+                          success: bool): ``accesscomponents-schemas-idresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type ``accesscomponents-schemas-responsecollectionErrorsSource`` =
@@ -2865,17 +2926,19 @@ type ``accesscomponents-schemas-responsecollectionResultinfo`` =
           total_count = None }
 
 type ``accesscomponents-schemas-responsecollection`` =
-    { errors: Option<list<``accesscomponents-schemas-responsecollectionErrors``>>
-      messages: Option<list<``accesscomponents-schemas-responsecollectionMessages``>>
+    { errors: list<``accesscomponents-schemas-responsecollectionErrors``>
+      messages: list<``accesscomponents-schemas-responsecollectionMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<``accesscomponents-schemas-responsecollectionResultinfo``>
       result: Option<list<``accessservice-tokens``>> }
     ///Creates an instance of accesscomponents-schemas-responsecollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``accesscomponents-schemas-responsecollection`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``accesscomponents-schemas-responsecollectionErrors``>,
+                          messages: list<``accesscomponents-schemas-responsecollectionMessages``>,
+                          success: bool): ``accesscomponents-schemas-responsecollection`` =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
           result = None }
 
@@ -2914,16 +2977,18 @@ type ``accesscomponents-schemas-singleresponseMessages`` =
           source = None }
 
 type ``accesscomponents-schemas-singleresponse`` =
-    { errors: Option<list<``accesscomponents-schemas-singleresponseErrors``>>
-      messages: Option<list<``accesscomponents-schemas-singleresponseMessages``>>
+    { errors: list<``accesscomponents-schemas-singleresponseErrors``>
+      messages: list<``accesscomponents-schemas-singleresponseMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<``accessidentity-providers``> }
     ///Creates an instance of accesscomponents-schemas-singleresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``accesscomponents-schemas-singleresponse`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``accesscomponents-schemas-singleresponseErrors``>,
+                          messages: list<``accesscomponents-schemas-singleresponseMessages``>,
+                          success: bool): ``accesscomponents-schemas-singleresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 ///The rules that define how users may connect to targets secured by your application.
@@ -3083,16 +3148,18 @@ type accesscreateresponseResult =
           updated_at = None }
 
 type accesscreateresponse =
-    { errors: Option<list<accesscreateresponseErrors>>
-      messages: Option<list<accesscreateresponseMessages>>
+    { errors: list<accesscreateresponseErrors>
+      messages: list<accesscreateresponseMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<accesscreateresponseResult> }
     ///Creates an instance of accesscreateresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): accesscreateresponse =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<accesscreateresponseErrors>,
+                          messages: list<accesscreateresponseMessages>,
+                          success: bool): accesscreateresponse =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type accesscreatedat = Map<string, Newtonsoft.Json.Linq.JToken>
@@ -3160,17 +3227,19 @@ type ``accesscustom-pagescomponents-schemas-responsecollectionResultinfo`` =
           total_count = None }
 
 type ``accesscustom-pagescomponents-schemas-responsecollection`` =
-    { errors: Option<list<``accesscustom-pagescomponents-schemas-responsecollectionErrors``>>
-      messages: Option<list<``accesscustom-pagescomponents-schemas-responsecollectionMessages``>>
+    { errors: list<``accesscustom-pagescomponents-schemas-responsecollectionErrors``>
+      messages: list<``accesscustom-pagescomponents-schemas-responsecollectionMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<``accesscustom-pagescomponents-schemas-responsecollectionResultinfo``>
       result: Option<list<accesscustompagewithouthtml>> }
     ///Creates an instance of accesscustom-pagescomponents-schemas-responsecollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``accesscustom-pagescomponents-schemas-responsecollection`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``accesscustom-pagescomponents-schemas-responsecollectionErrors``>,
+                          messages: list<``accesscustom-pagescomponents-schemas-responsecollectionMessages``>,
+                          success: bool): ``accesscustom-pagescomponents-schemas-responsecollection`` =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
           result = None }
 
@@ -3209,16 +3278,18 @@ type ``accesscustom-pagescomponents-schemas-singleresponseMessages`` =
           source = None }
 
 type ``accesscustom-pagescomponents-schemas-singleresponse`` =
-    { errors: Option<list<``accesscustom-pagescomponents-schemas-singleresponseErrors``>>
-      messages: Option<list<``accesscustom-pagescomponents-schemas-singleresponseMessages``>>
+    { errors: list<``accesscustom-pagescomponents-schemas-singleresponseErrors``>
+      messages: list<``accesscustom-pagescomponents-schemas-singleresponseMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<accesscustompage> }
     ///Creates an instance of accesscustom-pagescomponents-schemas-singleresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``accesscustom-pagescomponents-schemas-singleresponse`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``accesscustom-pagescomponents-schemas-singleresponseErrors``>,
+                          messages: list<``accesscustom-pagescomponents-schemas-singleresponseMessages``>,
+                          success: bool): ``accesscustom-pagescomponents-schemas-singleresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type accesscustompage =
@@ -3311,16 +3382,18 @@ type accessdeleteauthenticatorresponseMessages =
           source = None }
 
 type accessdeleteauthenticatorresponse =
-    { errors: Option<list<accessdeleteauthenticatorresponseErrors>>
-      messages: Option<list<accessdeleteauthenticatorresponseMessages>>
+    { errors: list<accessdeleteauthenticatorresponseErrors>
+      messages: list<accessdeleteauthenticatorresponseMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<Newtonsoft.Json.Linq.JObject> }
     ///Creates an instance of accessdeleteauthenticatorresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): accessdeleteauthenticatorresponse =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<accessdeleteauthenticatorresponseErrors>,
+                          messages: list<accessdeleteauthenticatorresponseMessages>,
+                          success: bool): accessdeleteauthenticatorresponse =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type accessdeleteuserresponseErrorsSource =
@@ -3358,16 +3431,18 @@ type accessdeleteuserresponseMessages =
           source = None }
 
 type accessdeleteuserresponse =
-    { errors: Option<list<accessdeleteuserresponseErrors>>
-      messages: Option<list<accessdeleteuserresponseMessages>>
+    { errors: list<accessdeleteuserresponseErrors>
+      messages: list<accessdeleteuserresponseMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<Newtonsoft.Json.Linq.JObject> }
     ///Creates an instance of accessdeleteuserresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): accessdeleteuserresponse =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<accessdeleteuserresponseErrors>,
+                          messages: list<accessdeleteuserresponseMessages>,
+                          success: bool): accessdeleteuserresponse =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type accessdeviceposturecheck =
@@ -3602,17 +3677,19 @@ type accessfailedloginresponseResult =
     static member Create (): accessfailedloginresponseResult = { expiration = None; metadata = None }
 
 type accessfailedloginresponse =
-    { errors: Option<list<accessfailedloginresponseErrors>>
-      messages: Option<list<accessfailedloginresponseMessages>>
+    { errors: list<accessfailedloginresponseErrors>
+      messages: list<accessfailedloginresponseMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<accessfailedloginresponseResultinfo>
       result: Option<list<accessfailedloginresponseResult>> }
     ///Creates an instance of accessfailedloginresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): accessfailedloginresponse =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<accessfailedloginresponseErrors>,
+                          messages: list<accessfailedloginresponseMessages>,
+                          success: bool): accessfailedloginresponse =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
           result = None }
 
@@ -3698,17 +3775,19 @@ type ``accessgatewaycacomponents-schemas-responsecollectionResultinfo`` =
           total_count = None }
 
 type ``accessgatewaycacomponents-schemas-responsecollection`` =
-    { errors: Option<list<``accessgatewaycacomponents-schemas-responsecollectionErrors``>>
-      messages: Option<list<``accessgatewaycacomponents-schemas-responsecollectionMessages``>>
+    { errors: list<``accessgatewaycacomponents-schemas-responsecollectionErrors``>
+      messages: list<``accessgatewaycacomponents-schemas-responsecollectionMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<``accessgatewaycacomponents-schemas-responsecollectionResultinfo``>
       result: Option<list<``accessschemas-certificates``>> }
     ///Creates an instance of accessgatewaycacomponents-schemas-responsecollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``accessgatewaycacomponents-schemas-responsecollection`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``accessgatewaycacomponents-schemas-responsecollectionErrors``>,
+                          messages: list<``accessgatewaycacomponents-schemas-responsecollectionMessages``>,
+                          success: bool): ``accessgatewaycacomponents-schemas-responsecollection`` =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
           result = None }
 
@@ -3747,16 +3826,18 @@ type ``accessgatewaycacomponents-schemas-singleresponseMessages`` =
           source = None }
 
 type ``accessgatewaycacomponents-schemas-singleresponse`` =
-    { errors: Option<list<``accessgatewaycacomponents-schemas-singleresponseErrors``>>
-      messages: Option<list<``accessgatewaycacomponents-schemas-singleresponseMessages``>>
+    { errors: list<``accessgatewaycacomponents-schemas-singleresponseErrors``>
+      messages: list<``accessgatewaycacomponents-schemas-singleresponseMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<``accessschemas-certificates``> }
     ///Creates an instance of accessgatewaycacomponents-schemas-singleresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``accessgatewaycacomponents-schemas-singleresponse`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``accessgatewaycacomponents-schemas-singleresponseErrors``>,
+                          messages: list<``accessgatewaycacomponents-schemas-singleresponseMessages``>,
+                          success: bool): ``accessgatewaycacomponents-schemas-singleresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type ``accessgeneric-oauth-config`` =
@@ -4172,16 +4253,18 @@ type ``accessgroupscomponents-schemas-singleresponseMessages`` =
           source = None }
 
 type ``accessgroupscomponents-schemas-singleresponse`` =
-    { errors: Option<list<``accessgroupscomponents-schemas-singleresponseErrors``>>
-      messages: Option<list<``accessgroupscomponents-schemas-singleresponseMessages``>>
+    { errors: list<``accessgroupscomponents-schemas-singleresponseErrors``>
+      messages: list<``accessgroupscomponents-schemas-singleresponseMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<``accessschemas-groups``> }
     ///Creates an instance of accessgroupscomponents-schemas-singleresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``accessgroupscomponents-schemas-singleresponse`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``accessgroupscomponents-schemas-singleresponseErrors``>,
+                          messages: list<``accessgroupscomponents-schemas-singleresponseMessages``>,
+                          success: bool): ``accessgroupscomponents-schemas-singleresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type ``accessgroupscomponents-schemas-singleresponse-2ErrorsSource`` =
@@ -4289,16 +4372,16 @@ type accessidresponseResult =
     static member Create (): accessidresponseResult = { id = None }
 
 type accessidresponse =
-    { errors: Option<list<accessidresponseErrors>>
-      messages: Option<list<accessidresponseMessages>>
+    { errors: list<accessidresponseErrors>
+      messages: list<accessidresponseMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<accessidresponseResult> }
     ///Creates an instance of accessidresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): accessidresponse =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<accessidresponseErrors>, messages: list<accessidresponseMessages>, success: bool): accessidresponse =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type accessidentityIdp =
@@ -4714,16 +4797,18 @@ type ``accesskeyscomponents-schemas-singleresponseMessages`` =
           source = None }
 
 type ``accesskeyscomponents-schemas-singleresponse`` =
-    { errors: Option<list<``accesskeyscomponents-schemas-singleresponseErrors``>>
-      messages: Option<list<``accesskeyscomponents-schemas-singleresponseMessages``>>
+    { errors: list<``accesskeyscomponents-schemas-singleresponseErrors``>
+      messages: list<``accesskeyscomponents-schemas-singleresponseMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<accesskeyconfig> }
     ///Creates an instance of accesskeyscomponents-schemas-singleresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``accesskeyscomponents-schemas-singleresponse`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``accesskeyscomponents-schemas-singleresponseErrors``>,
+                          messages: list<``accesskeyscomponents-schemas-singleresponseMessages``>,
+                          success: bool): ``accesskeyscomponents-schemas-singleresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 ///The design of the App Launcher landing page shown to users when they log in.
@@ -4841,16 +4926,18 @@ type accesslastseenidentityresponseResult =
           version = None }
 
 type accesslastseenidentityresponse =
-    { errors: Option<list<accesslastseenidentityresponseErrors>>
-      messages: Option<list<accesslastseenidentityresponseMessages>>
+    { errors: list<accesslastseenidentityresponseErrors>
+      messages: list<accesslastseenidentityresponseMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<accesslastseenidentityresponseResult> }
     ///Creates an instance of accesslastseenidentityresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): accesslastseenidentityresponse =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<accesslastseenidentityresponseErrors>,
+                          messages: list<accesslastseenidentityresponseMessages>,
+                          success: bool): accesslastseenidentityresponse =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type Linkedapptoken =
@@ -5177,16 +5264,18 @@ type accessnameresponseResult =
     static member Create (): accessnameresponseResult = { name = None }
 
 type accessnameresponse =
-    { errors: Option<list<accessnameresponseErrors>>
-      messages: Option<list<accessnameresponseMessages>>
+    { errors: list<accessnameresponseErrors>
+      messages: list<accessnameresponseMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<accessnameresponseResult> }
     ///Creates an instance of accessnameresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): accessnameresponse =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<accessnameresponseErrors>,
+                          messages: list<accessnameresponseMessages>,
+                          success: bool): accessnameresponse =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 ///Settings for OAuth dynamic client registration.
@@ -6214,16 +6303,18 @@ type accesspolicycheckresponseResult =
           user_identity = None }
 
 type accesspolicycheckresponse =
-    { errors: Option<list<accesspolicycheckresponseErrors>>
-      messages: Option<list<accesspolicycheckresponseMessages>>
+    { errors: list<accesspolicycheckresponseErrors>
+      messages: list<accesspolicycheckresponseMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<accesspolicycheckresponseResult> }
     ///Creates an instance of accesspolicycheckresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): accesspolicycheckresponse =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<accesspolicycheckresponseErrors>,
+                          messages: list<accesspolicycheckresponseMessages>,
+                          success: bool): accesspolicycheckresponse =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type accesspolicyinitreq =
@@ -6274,16 +6365,18 @@ type accesspolicyinitrespResult =
     static member Create (): accesspolicyinitrespResult = { id = None; status = None }
 
 type accesspolicyinitresp =
-    { errors: Option<list<accesspolicyinitrespErrors>>
-      messages: Option<list<accesspolicyinitrespMessages>>
+    { errors: list<accesspolicyinitrespErrors>
+      messages: list<accesspolicyinitrespMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<accesspolicyinitrespResult> }
     ///Creates an instance of accesspolicyinitresp with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): accesspolicyinitresp =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<accesspolicyinitrespErrors>,
+                          messages: list<accesspolicyinitrespMessages>,
+                          success: bool): accesspolicyinitresp =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type accesspolicyreq =
@@ -6448,16 +6541,18 @@ type accesspolicyupdaterespResult =
           users_errored = None }
 
 type accesspolicyupdateresp =
-    { errors: Option<list<accesspolicyupdaterespErrors>>
-      messages: Option<list<accesspolicyupdaterespMessages>>
+    { errors: list<accesspolicyupdaterespErrors>
+      messages: list<accesspolicyupdaterespMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<accesspolicyupdaterespResult> }
     ///Creates an instance of accesspolicyupdateresp with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): accesspolicyupdateresp =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<accesspolicyupdaterespErrors>,
+                          messages: list<accesspolicyupdaterespMessages>,
+                          success: bool): accesspolicyupdateresp =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type accesspolicyusers =
@@ -6511,17 +6606,19 @@ type accesspolicyusersrespMessages =
           source = None }
 
 type accesspolicyusersresp =
-    { errors: Option<list<accesspolicyusersrespErrors>>
-      messages: Option<list<accesspolicyusersrespMessages>>
+    { errors: list<accesspolicyusersrespErrors>
+      messages: list<accesspolicyusersrespMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       ///Page of processed users.
       result: Option<list<accesspolicyusers>> }
     ///Creates an instance of accesspolicyusersresp with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): accesspolicyusersresp =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<accesspolicyusersrespErrors>,
+                          messages: list<accesspolicyusersrespMessages>,
+                          success: bool): accesspolicyusersresp =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type accessproxyendpointprops =
@@ -6706,17 +6803,19 @@ type accessresponsecollectionResultinfo =
           total_count = None }
 
 type accessresponsecollection =
-    { errors: Option<list<accessresponsecollectionErrors>>
-      messages: Option<list<accessresponsecollectionMessages>>
+    { errors: list<accessresponsecollectionErrors>
+      messages: list<accessresponsecollectionMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<accessresponsecollectionResultinfo>
       result: Option<list<string>> }
     ///Creates an instance of accessresponsecollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): accessresponsecollection =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<accessresponsecollectionErrors>,
+                          messages: list<accessresponsecollectionMessages>,
+                          success: bool): accessresponsecollection =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
           result = None }
 
@@ -6771,17 +6870,19 @@ type accessresponsecollectionhostnamesResultinfo =
           total_count = None }
 
 type accessresponsecollectionhostnames =
-    { errors: Option<list<accessresponsecollectionhostnamesErrors>>
-      messages: Option<list<accessresponsecollectionhostnamesMessages>>
+    { errors: list<accessresponsecollectionhostnamesErrors>
+      messages: list<accessresponsecollectionhostnamesMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<accessresponsecollectionhostnamesResultinfo>
       result: Option<list<accesssettings>> }
     ///Creates an instance of accessresponsecollectionhostnames with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): accessresponsecollectionhostnames =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<accessresponsecollectionhostnamesErrors>,
+                          messages: list<accessresponsecollectionhostnamesMessages>,
+                          success: bool): accessresponsecollectionhostnames =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
           result = None }
 
@@ -6862,16 +6963,18 @@ type ``accessreusable-policiescomponents-schemas-idresponseResult`` =
     static member Create (): ``accessreusable-policiescomponents-schemas-idresponseResult`` = { id = None }
 
 type ``accessreusable-policiescomponents-schemas-idresponse`` =
-    { errors: Option<list<``accessreusable-policiescomponents-schemas-idresponseErrors``>>
-      messages: Option<list<``accessreusable-policiescomponents-schemas-idresponseMessages``>>
+    { errors: list<``accessreusable-policiescomponents-schemas-idresponseErrors``>
+      messages: list<``accessreusable-policiescomponents-schemas-idresponseMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<``accessreusable-policiescomponents-schemas-idresponseResult``> }
     ///Creates an instance of accessreusable-policiescomponents-schemas-idresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``accessreusable-policiescomponents-schemas-idresponse`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``accessreusable-policiescomponents-schemas-idresponseErrors``>,
+                          messages: list<``accessreusable-policiescomponents-schemas-idresponseMessages``>,
+                          success: bool): ``accessreusable-policiescomponents-schemas-idresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type ``accessreusable-policiescomponents-schemas-responsecollectionErrorsSource`` =
@@ -6927,17 +7030,19 @@ type ``accessreusable-policiescomponents-schemas-responsecollectionResultinfo`` 
           total_count = None }
 
 type ``accessreusable-policiescomponents-schemas-responsecollection`` =
-    { errors: Option<list<``accessreusable-policiescomponents-schemas-responsecollectionErrors``>>
-      messages: Option<list<``accessreusable-policiescomponents-schemas-responsecollectionMessages``>>
+    { errors: list<``accessreusable-policiescomponents-schemas-responsecollectionErrors``>
+      messages: list<``accessreusable-policiescomponents-schemas-responsecollectionMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<``accessreusable-policiescomponents-schemas-responsecollectionResultinfo``>
       result: Option<list<accessreusablepolicyresp>> }
     ///Creates an instance of accessreusable-policiescomponents-schemas-responsecollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``accessreusable-policiescomponents-schemas-responsecollection`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``accessreusable-policiescomponents-schemas-responsecollectionErrors``>,
+                          messages: list<``accessreusable-policiescomponents-schemas-responsecollectionMessages``>,
+                          success: bool): ``accessreusable-policiescomponents-schemas-responsecollection`` =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
           result = None }
 
@@ -6978,16 +7083,18 @@ type ``accessreusable-policiescomponents-schemas-singleresponseMessages`` =
           source = None }
 
 type ``accessreusable-policiescomponents-schemas-singleresponse`` =
-    { errors: Option<list<``accessreusable-policiescomponents-schemas-singleresponseErrors``>>
-      messages: Option<list<``accessreusable-policiescomponents-schemas-singleresponseMessages``>>
+    { errors: list<``accessreusable-policiescomponents-schemas-singleresponseErrors``>
+      messages: list<``accessreusable-policiescomponents-schemas-singleresponseMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<accessreusablepolicyresp> }
     ///Creates an instance of accessreusable-policiescomponents-schemas-singleresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``accessreusable-policiescomponents-schemas-singleresponse`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``accessreusable-policiescomponents-schemas-singleresponseErrors``>,
+                          messages: list<``accessreusable-policiescomponents-schemas-singleresponseMessages``>,
+                          success: bool): ``accessreusable-policiescomponents-schemas-singleresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type accessreusablepolicyresp =
@@ -8178,16 +8285,18 @@ type ``accessschemas-idresponseResult`` =
     static member Create (): ``accessschemas-idresponseResult`` = { id = None }
 
 type ``accessschemas-idresponse`` =
-    { errors: Option<list<``accessschemas-idresponseErrors``>>
-      messages: Option<list<``accessschemas-idresponseMessages``>>
+    { errors: list<``accessschemas-idresponseErrors``>
+      messages: list<``accessschemas-idresponseMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<``accessschemas-idresponseResult``> }
     ///Creates an instance of accessschemas-idresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``accessschemas-idresponse`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``accessschemas-idresponseErrors``>,
+                          messages: list<``accessschemas-idresponseMessages``>,
+                          success: bool): ``accessschemas-idresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
@@ -9156,17 +9265,19 @@ type ``accessschemas-responsecollectionResultinfo`` =
           total_count = None }
 
 type ``accessschemas-responsecollection`` =
-    { errors: Option<list<``accessschemas-responsecollectionErrors``>>
-      messages: Option<list<``accessschemas-responsecollectionMessages``>>
+    { errors: list<``accessschemas-responsecollectionErrors``>
+      messages: list<``accessschemas-responsecollectionMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<``accessschemas-responsecollectionResultinfo``>
       result: Option<list<``accessschemas-groups``>> }
     ///Creates an instance of accessschemas-responsecollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``accessschemas-responsecollection`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``accessschemas-responsecollectionErrors``>,
+                          messages: list<``accessschemas-responsecollectionMessages``>,
+                          success: bool): ``accessschemas-responsecollection`` =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
           result = None }
 
@@ -9642,16 +9753,18 @@ type ``accessschemas-singleresponseMessages`` =
           source = None }
 
 type ``accessschemas-singleresponse`` =
-    { errors: Option<list<``accessschemas-singleresponseErrors``>>
-      messages: Option<list<``accessschemas-singleresponseMessages``>>
+    { errors: list<``accessschemas-singleresponseErrors``>
+      messages: list<``accessschemas-singleresponseMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<``accessservice-tokens``> }
     ///Creates an instance of accessschemas-singleresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``accessschemas-singleresponse`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``accessschemas-singleresponseErrors``>,
+                          messages: list<``accessschemas-singleresponseMessages``>,
+                          success: bool): ``accessschemas-singleresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type ``accessschemas-sshprops`` =
@@ -10135,17 +10248,19 @@ type accessscimgroupsresponseResultinfo =
           total_count = None }
 
 type accessscimgroupsresponse =
-    { errors: Option<list<accessscimgroupsresponseErrors>>
-      messages: Option<list<accessscimgroupsresponseMessages>>
+    { errors: list<accessscimgroupsresponseErrors>
+      messages: list<accessscimgroupsresponseMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<accessscimgroupsresponseResultinfo>
       result: Option<list<accessgroups>> }
     ///Creates an instance of accessscimgroupsresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): accessscimgroupsresponse =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<accessscimgroupsresponseErrors>,
+                          messages: list<accessscimgroupsresponseMessages>,
+                          success: bool): accessscimgroupsresponse =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
           result = None }
 
@@ -10200,17 +10315,19 @@ type accessscimupdatelogsresponseResultinfo =
           total_count = None }
 
 type accessscimupdatelogsresponse =
-    { errors: Option<list<accessscimupdatelogsresponseErrors>>
-      messages: Option<list<accessscimupdatelogsresponseMessages>>
+    { errors: list<accessscimupdatelogsresponseErrors>
+      messages: list<accessscimupdatelogsresponseMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<accessscimupdatelogsresponseResultinfo>
       result: Option<list<accessresponses>> }
     ///Creates an instance of accessscimupdatelogsresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): accessscimupdatelogsresponse =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<accessscimupdatelogsresponseErrors>,
+                          messages: list<accessscimupdatelogsresponseMessages>,
+                          success: bool): accessscimupdatelogsresponse =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
           result = None }
 
@@ -10265,17 +10382,19 @@ type accessscimusersresponseResultinfo =
           total_count = None }
 
 type accessscimusersresponse =
-    { errors: Option<list<accessscimusersresponseErrors>>
-      messages: Option<list<accessscimusersresponseMessages>>
+    { errors: list<accessscimusersresponseErrors>
+      messages: list<accessscimusersresponseMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<accessscimusersresponseResultinfo>
       result: Option<list<accessusers>> }
     ///Creates an instance of accessscimusersresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): accessscimusersresponse =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<accessscimusersresponseErrors>,
+                          messages: list<accessscimusersresponseMessages>,
+                          success: bool): accessscimusersresponse =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
           result = None }
 
@@ -10360,17 +10479,19 @@ type ``accessseatscomponents-schemas-responsecollectionResultinfo`` =
           total_count = None }
 
 type ``accessseatscomponents-schemas-responsecollection`` =
-    { errors: Option<list<``accessseatscomponents-schemas-responsecollectionErrors``>>
-      messages: Option<list<``accessseatscomponents-schemas-responsecollectionMessages``>>
+    { errors: list<``accessseatscomponents-schemas-responsecollectionErrors``>
+      messages: list<``accessseatscomponents-schemas-responsecollectionMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<``accessseatscomponents-schemas-responsecollectionResultinfo``>
       result: Option<list<accessseats>> }
     ///Creates an instance of accessseatscomponents-schemas-responsecollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``accessseatscomponents-schemas-responsecollection`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``accessseatscomponents-schemas-responsecollectionErrors``>,
+                          messages: list<``accessseatscomponents-schemas-responsecollectionMessages``>,
+                          success: bool): ``accessseatscomponents-schemas-responsecollection`` =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
           result = None }
 
@@ -10670,16 +10791,18 @@ type accesssingleresponseMessages =
           source = None }
 
 type accesssingleresponse =
-    { errors: Option<list<accesssingleresponseErrors>>
-      messages: Option<list<accesssingleresponseMessages>>
+    { errors: list<accesssingleresponseErrors>
+      messages: list<accesssingleresponseMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<accessorganizations> }
     ///Creates an instance of accesssingleresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): accesssingleresponse =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<accesssingleresponseErrors>,
+                          messages: list<accesssingleresponseMessages>,
+                          success: bool): accesssingleresponse =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type accesssingleresponseupdateErrorsSource =
@@ -10764,16 +10887,18 @@ type accesssingleresponsewithouthtmlMessages =
           source = None }
 
 type accesssingleresponsewithouthtml =
-    { errors: Option<list<accesssingleresponsewithouthtmlErrors>>
-      messages: Option<list<accesssingleresponsewithouthtmlMessages>>
+    { errors: list<accesssingleresponsewithouthtmlErrors>
+      messages: list<accesssingleresponsewithouthtmlMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<accesscustompagewithouthtml> }
     ///Creates an instance of accesssingleresponsewithouthtml with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): accesssingleresponsewithouthtml =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<accesssingleresponsewithouthtmlErrors>,
+                          messages: list<accesssingleresponsewithouthtmlMessages>,
+                          success: bool): accesssingleresponsewithouthtml =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type accesssingleuserresponseErrorsSource =
@@ -10811,16 +10936,18 @@ type accesssingleuserresponseMessages =
           source = None }
 
 type accesssingleuserresponse =
-    { errors: Option<list<accesssingleuserresponseErrors>>
-      messages: Option<list<accesssingleuserresponseMessages>>
+    { errors: list<accesssingleuserresponseErrors>
+      messages: list<accesssingleuserresponseMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<``accessschemas-users``> }
     ///Creates an instance of accesssingleuserresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): accesssingleuserresponse =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<accesssingleuserresponseErrors>,
+                          messages: list<accesssingleuserresponseMessages>,
+                          success: bool): accesssingleuserresponse =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type accesssshprops =
@@ -10999,17 +11126,19 @@ type ``accesstagscomponents-schemas-responsecollectionResultinfo`` =
           total_count = None }
 
 type ``accesstagscomponents-schemas-responsecollection`` =
-    { errors: Option<list<``accesstagscomponents-schemas-responsecollectionErrors``>>
-      messages: Option<list<``accesstagscomponents-schemas-responsecollectionMessages``>>
+    { errors: list<``accesstagscomponents-schemas-responsecollectionErrors``>
+      messages: list<``accesstagscomponents-schemas-responsecollectionMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<``accesstagscomponents-schemas-responsecollectionResultinfo``>
       result: Option<list<accesstag>> }
     ///Creates an instance of accesstagscomponents-schemas-responsecollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``accesstagscomponents-schemas-responsecollection`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``accesstagscomponents-schemas-responsecollectionErrors``>,
+                          messages: list<``accesstagscomponents-schemas-responsecollectionMessages``>,
+                          success: bool): ``accesstagscomponents-schemas-responsecollection`` =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
           result = None }
 
@@ -11048,17 +11177,19 @@ type ``accesstagscomponents-schemas-singleresponseMessages`` =
           source = None }
 
 type ``accesstagscomponents-schemas-singleresponse`` =
-    { errors: Option<list<``accesstagscomponents-schemas-singleresponseErrors``>>
-      messages: Option<list<``accesstagscomponents-schemas-singleresponseMessages``>>
+    { errors: list<``accesstagscomponents-schemas-singleresponseErrors``>
+      messages: list<``accesstagscomponents-schemas-singleresponseMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       ///A tag
       result: Option<accesstag> }
     ///Creates an instance of accesstagscomponents-schemas-singleresponse with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``accesstagscomponents-schemas-singleresponse`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``accesstagscomponents-schemas-singleresponseErrors``>,
+                          messages: list<``accesstagscomponents-schemas-singleresponseMessages``>,
+                          success: bool): ``accesstagscomponents-schemas-singleresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type accesstargetcriteriabase =
@@ -11197,14 +11328,10 @@ type ``accessuserscomponents-schemas-responsecollectionMessages`` =
           source = None }
 
 type ``accessuserscomponents-schemas-responsecollectionResultinfo`` =
-    { ///Total number of results for the requested service.
-      count: Option<float>
-      ///Current page within paginated list of results.
-      page: Option<float>
-      ///Number of results per page of results.
-      per_page: Option<float>
-      ///Total results available without any search parameters.
-      total_count: Option<float> }
+    { count: Option<Newtonsoft.Json.Linq.JToken>
+      page: Option<Newtonsoft.Json.Linq.JToken>
+      per_page: Option<Newtonsoft.Json.Linq.JToken>
+      total_count: Option<Newtonsoft.Json.Linq.JToken> }
     ///Creates an instance of accessuserscomponents-schemas-responsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): ``accessuserscomponents-schemas-responsecollectionResultinfo`` =
         { count = None
@@ -11212,30 +11339,20 @@ type ``accessuserscomponents-schemas-responsecollectionResultinfo`` =
           per_page = None
           total_count = None }
 
-type ``ResultinfoFromaccessuserscomponents-schemas-responsecollection`` =
-    { count: Option<Newtonsoft.Json.Linq.JToken>
-      page: Option<Newtonsoft.Json.Linq.JToken>
-      per_page: Option<Newtonsoft.Json.Linq.JToken>
-      total_count: Option<Newtonsoft.Json.Linq.JToken> }
-    ///Creates an instance of ResultinfoFromaccessuserscomponents-schemas-responsecollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``ResultinfoFromaccessuserscomponents-schemas-responsecollection`` =
-        { count = None
-          page = None
-          per_page = None
-          total_count = None }
-
 type ``accessuserscomponents-schemas-responsecollection`` =
-    { errors: Option<list<``accessuserscomponents-schemas-responsecollectionErrors``>>
-      messages: Option<list<``accessuserscomponents-schemas-responsecollectionMessages``>>
+    { errors: list<``accessuserscomponents-schemas-responsecollectionErrors``>
+      messages: list<``accessuserscomponents-schemas-responsecollectionMessages``>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<``accessuserscomponents-schemas-responsecollectionResultinfo``>
       result: Option<list<``accessschemas-users``>> }
     ///Creates an instance of accessuserscomponents-schemas-responsecollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``accessuserscomponents-schemas-responsecollection`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<``accessuserscomponents-schemas-responsecollectionErrors``>,
+                          messages: list<``accessuserscomponents-schemas-responsecollectionMessages``>,
+                          success: bool): ``accessuserscomponents-schemas-responsecollection`` =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
           result = None }
 
@@ -11454,6 +11571,222 @@ type accessyandex =
           scim_config = None
           ``type`` = None }
 
+type ``access-applications-add-an-applicationresponseErrorsSource`` =
+    { pointer: Option<string> }
+    ///Creates an instance of access-applications-add-an-applicationresponseErrorsSource with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``access-applications-add-an-applicationresponseErrorsSource`` = { pointer = None }
+
+type ``access-applications-add-an-applicationresponseErrors`` =
+    { code: int
+      documentation_url: Option<string>
+      message: string
+      source: Option<``access-applications-add-an-applicationresponseErrorsSource``> }
+    ///Creates an instance of access-applications-add-an-applicationresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``access-applications-add-an-applicationresponseErrors`` =
+        { code = code
+          documentation_url = None
+          message = message
+          source = None }
+
+type ``access-applications-add-an-applicationresponseMessagesSource`` =
+    { pointer: Option<string> }
+    ///Creates an instance of access-applications-add-an-applicationresponseMessagesSource with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``access-applications-add-an-applicationresponseMessagesSource`` = { pointer = None }
+
+type ``access-applications-add-an-applicationresponseMessages`` =
+    { code: int
+      documentation_url: Option<string>
+      message: string
+      source: Option<``access-applications-add-an-applicationresponseMessagesSource``> }
+    ///Creates an instance of access-applications-add-an-applicationresponseMessages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``access-applications-add-an-applicationresponseMessages`` =
+        { code = code
+          documentation_url = None
+          message = message
+          source = None }
+
+type ``access-applications-add-an-applicationresponse`` =
+    { errors: list<``access-applications-add-an-applicationresponseErrors``>
+      messages: list<``access-applications-add-an-applicationresponseMessages``>
+      ///Whether the API call was successful.
+      success: bool
+      result: Option<Newtonsoft.Json.Linq.JToken> }
+    ///Creates an instance of access-applications-add-an-applicationresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``access-applications-add-an-applicationresponseErrors``>,
+                          messages: list<``access-applications-add-an-applicationresponseMessages``>,
+                          success: bool): ``access-applications-add-an-applicationresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
+          result = None }
+
+type ``access-applications-update-an-access-applicationresponseErrorsSource`` =
+    { pointer: Option<string> }
+    ///Creates an instance of access-applications-update-an-access-applicationresponseErrorsSource with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``access-applications-update-an-access-applicationresponseErrorsSource`` =
+        { pointer = None }
+
+type ``access-applications-update-an-access-applicationresponseErrors`` =
+    { code: int
+      documentation_url: Option<string>
+      message: string
+      source: Option<``access-applications-update-an-access-applicationresponseErrorsSource``> }
+    ///Creates an instance of access-applications-update-an-access-applicationresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``access-applications-update-an-access-applicationresponseErrors`` =
+        { code = code
+          documentation_url = None
+          message = message
+          source = None }
+
+type ``access-applications-update-an-access-applicationresponseMessagesSource`` =
+    { pointer: Option<string> }
+    ///Creates an instance of access-applications-update-an-access-applicationresponseMessagesSource with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``access-applications-update-an-access-applicationresponseMessagesSource`` =
+        { pointer = None }
+
+type ``access-applications-update-an-access-applicationresponseMessages`` =
+    { code: int
+      documentation_url: Option<string>
+      message: string
+      source: Option<``access-applications-update-an-access-applicationresponseMessagesSource``> }
+    ///Creates an instance of access-applications-update-an-access-applicationresponseMessages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``access-applications-update-an-access-applicationresponseMessages`` =
+        { code = code
+          documentation_url = None
+          message = message
+          source = None }
+
+type ``access-applications-update-an-access-applicationresponse`` =
+    { errors: list<``access-applications-update-an-access-applicationresponseErrors``>
+      messages: list<``access-applications-update-an-access-applicationresponseMessages``>
+      ///Whether the API call was successful.
+      success: bool
+      result: Option<Newtonsoft.Json.Linq.JToken> }
+    ///Creates an instance of access-applications-update-an-access-applicationresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``access-applications-update-an-access-applicationresponseErrors``>,
+                          messages: list<``access-applications-update-an-access-applicationresponseMessages``>,
+                          success: bool): ``access-applications-update-an-access-applicationresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
+          result = None }
+
+type ``zero-trust-organization-get-your-zero-trust-organization-doh-settingsresponseErrorsSource`` =
+    { pointer: Option<string> }
+    ///Creates an instance of zero-trust-organization-get-your-zero-trust-organization-doh-settingsresponseErrorsSource with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``zero-trust-organization-get-your-zero-trust-organization-doh-settingsresponseErrorsSource`` =
+        { pointer = None }
+
+type ``zero-trust-organization-get-your-zero-trust-organization-doh-settingsresponseErrors`` =
+    { code: int
+      documentation_url: Option<string>
+      message: string
+      source: Option<``zero-trust-organization-get-your-zero-trust-organization-doh-settingsresponseErrorsSource``> }
+    ///Creates an instance of zero-trust-organization-get-your-zero-trust-organization-doh-settingsresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``zero-trust-organization-get-your-zero-trust-organization-doh-settingsresponseErrors`` =
+        { code = code
+          documentation_url = None
+          message = message
+          source = None }
+
+type ``zero-trust-organization-get-your-zero-trust-organization-doh-settingsresponseMessagesSource`` =
+    { pointer: Option<string> }
+    ///Creates an instance of zero-trust-organization-get-your-zero-trust-organization-doh-settingsresponseMessagesSource with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``zero-trust-organization-get-your-zero-trust-organization-doh-settingsresponseMessagesSource`` =
+        { pointer = None }
+
+type ``zero-trust-organization-get-your-zero-trust-organization-doh-settingsresponseMessages`` =
+    { code: int
+      documentation_url: Option<string>
+      message: string
+      source: Option<``zero-trust-organization-get-your-zero-trust-organization-doh-settingsresponseMessagesSource``> }
+    ///Creates an instance of zero-trust-organization-get-your-zero-trust-organization-doh-settingsresponseMessages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``zero-trust-organization-get-your-zero-trust-organization-doh-settingsresponseMessages`` =
+        { code = code
+          documentation_url = None
+          message = message
+          source = None }
+
+type ``zero-trust-organization-get-your-zero-trust-organization-doh-settingsresponseResult`` =
+    { ///The duration the DoH JWT is valid for. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.  Note that the maximum duration for this setting is the same as the key rotation period on the account.
+      doh_jwt_duration: Option<string> }
+    ///Creates an instance of zero-trust-organization-get-your-zero-trust-organization-doh-settingsresponseResult with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``zero-trust-organization-get-your-zero-trust-organization-doh-settingsresponseResult`` =
+        { doh_jwt_duration = None }
+
+type ``zero-trust-organization-get-your-zero-trust-organization-doh-settingsresponse`` =
+    { errors: list<``zero-trust-organization-get-your-zero-trust-organization-doh-settingsresponseErrors``>
+      messages: list<``zero-trust-organization-get-your-zero-trust-organization-doh-settingsresponseMessages``>
+      ///Whether the API call was successful.
+      success: bool
+      result: Option<``zero-trust-organization-get-your-zero-trust-organization-doh-settingsresponseResult``> }
+    ///Creates an instance of zero-trust-organization-get-your-zero-trust-organization-doh-settingsresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``zero-trust-organization-get-your-zero-trust-organization-doh-settingsresponseErrors``>,
+                          messages: list<``zero-trust-organization-get-your-zero-trust-organization-doh-settingsresponseMessages``>,
+                          success: bool): ``zero-trust-organization-get-your-zero-trust-organization-doh-settingsresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
+          result = None }
+
+type ``zero-trust-organization-update-your-zero-trust-organization-doh-settingsresponseErrorsSource`` =
+    { pointer: Option<string> }
+    ///Creates an instance of zero-trust-organization-update-your-zero-trust-organization-doh-settingsresponseErrorsSource with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``zero-trust-organization-update-your-zero-trust-organization-doh-settingsresponseErrorsSource`` =
+        { pointer = None }
+
+type ``zero-trust-organization-update-your-zero-trust-organization-doh-settingsresponseErrors`` =
+    { code: int
+      documentation_url: Option<string>
+      message: string
+      source: Option<``zero-trust-organization-update-your-zero-trust-organization-doh-settingsresponseErrorsSource``> }
+    ///Creates an instance of zero-trust-organization-update-your-zero-trust-organization-doh-settingsresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``zero-trust-organization-update-your-zero-trust-organization-doh-settingsresponseErrors`` =
+        { code = code
+          documentation_url = None
+          message = message
+          source = None }
+
+type ``zero-trust-organization-update-your-zero-trust-organization-doh-settingsresponseMessagesSource`` =
+    { pointer: Option<string> }
+    ///Creates an instance of zero-trust-organization-update-your-zero-trust-organization-doh-settingsresponseMessagesSource with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``zero-trust-organization-update-your-zero-trust-organization-doh-settingsresponseMessagesSource`` =
+        { pointer = None }
+
+type ``zero-trust-organization-update-your-zero-trust-organization-doh-settingsresponseMessages`` =
+    { code: int
+      documentation_url: Option<string>
+      message: string
+      source: Option<``zero-trust-organization-update-your-zero-trust-organization-doh-settingsresponseMessagesSource``> }
+    ///Creates an instance of zero-trust-organization-update-your-zero-trust-organization-doh-settingsresponseMessages with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``zero-trust-organization-update-your-zero-trust-organization-doh-settingsresponseMessages`` =
+        { code = code
+          documentation_url = None
+          message = message
+          source = None }
+
+type ``zero-trust-organization-update-your-zero-trust-organization-doh-settingsresponseResult`` =
+    { ///The duration the DoH JWT is valid for. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.  Note that the maximum duration for this setting is the same as the key rotation period on the account. Default expiration is 24h
+      doh_jwt_duration: Option<accessdohjwtduration> }
+    ///Creates an instance of zero-trust-organization-update-your-zero-trust-organization-doh-settingsresponseResult with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``zero-trust-organization-update-your-zero-trust-organization-doh-settingsresponseResult`` =
+        { doh_jwt_duration = None }
+
+type ``zero-trust-organization-update-your-zero-trust-organization-doh-settingsresponse`` =
+    { errors: list<``zero-trust-organization-update-your-zero-trust-organization-doh-settingsresponseErrors``>
+      messages: list<``zero-trust-organization-update-your-zero-trust-organization-doh-settingsresponseMessages``>
+      ///Whether the API call was successful.
+      success: bool
+      result: Option<``zero-trust-organization-update-your-zero-trust-organization-doh-settingsresponseResult``> }
+    ///Creates an instance of zero-trust-organization-update-your-zero-trust-organization-doh-settingsresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``zero-trust-organization-update-your-zero-trust-organization-doh-settingsresponseErrors``>,
+                          messages: list<``zero-trust-organization-update-your-zero-trust-organization-doh-settingsresponseMessages``>,
+                          success: bool): ``zero-trust-organization-update-your-zero-trust-organization-doh-settingsresponse`` =
+        { errors = errors
+          messages = messages
+          success = success
+          result = None }
+
 type McpPortalsApiListPortals_OKResult =
     { created_at: Option<System.DateTimeOffset>
       created_by: Option<string>
@@ -11477,27 +11810,6 @@ type McpPortalsApiListPortals_BadRequest =
     { errors: list<McpPortalsApiListPortals_BadRequestErrors>
       result: Newtonsoft.Json.Linq.JObject
       success: bool }
-
-
-// Type aliases for underscore-based names (generated from swagger)
-type access_rdp_clipboard_format = accessrdpclipboardformat
-type access_approval_group = accessapprovalgroup
-type ``access_schemas-approval_group`` = ``accessschemas-approvalgroup``
-type access_rule = Newtonsoft.Json.Linq.JObject
-
-// Type aliases for missing app-related types
-type accessappid = accessappuid
-type accessapprequest = Newtonsoft.Json.Linq.JObject
-
-
-// Additional type aliases
-type ``access_schemas-scim_config_single_authentication`` = Newtonsoft.Json.Linq.JObject
-type access_scim_config_single_authentication = Newtonsoft.Json.Linq.JObject
-type access_seat = accessseat
-type accessappresponse = Newtonsoft.Json.Linq.JObject
-type accessdestinations = list<string>
-type ``accessschemas-allowedheaders`` = accessallowedheaders
-type ``accessschemas-allowedorigins`` = accessallowedorigins
 
 [<RequireQualifiedAccess>]
 type McpPortalsApiListPortals =
@@ -12083,136 +12395,190 @@ type McpPortalsApiSyncServer =
 type AccessApplicationsListAccessApplications =
     ///List Access applications response
     | OK of payload: ``accessappscomponents-schemas-responsecollection``
+    ///List Access applications response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessApplicationsAddAnApplication =
     ///Add an Access application response
-    | Created of payload: string
+    | Created of payload: ``access-applications-add-an-applicationresponse``
+    ///Add an Access application response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessShortLivedCertificateCAsListShortLivedCertificateCAs =
     ///List short-lived certificate CAs response
     | OK of payload: ``accesscacomponents-schemas-responsecollection``
+    ///List short-lived certificate CAs response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessApplicationsDeleteAnAccessApplication =
     ///Delete an Access application response
     | Accepted of payload: accessidresponse
+    ///Delete an Access application response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessApplicationsGetAnAccessApplication =
     ///Get an Access application response
     | OK of payload: ``accessappscomponents-schemas-singleresponse``
+    ///Get an Access application response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessApplicationsUpdateAnAccessApplication =
     ///Update an Access application response
-    | OK of payload: string
+    | OK of payload: ``access-applications-update-an-access-applicationresponse``
+    ///Update an Access application response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessShortLivedCertificateCAsDeleteAShortLivedCertificateCa =
     ///Delete a short-lived certificate CA response
     | Accepted of payload: ``accessschemas-idresponse``
+    ///Delete a short-lived certificate CA response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessShortLivedCertificateCAsGetAShortLivedCertificateCa =
     ///Get a short-lived certificate CA response
     | OK of payload: ``accesscacomponents-schemas-singleresponse``
+    ///Get a short-lived certificate CA response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessShortLivedCertificateCAsCreateAShortLivedCertificateCa =
     ///Create a short-lived certificate CA response
     | OK of payload: ``accesscacomponents-schemas-singleresponse``
+    ///Create a short-lived certificate CA response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessPoliciesListAccessAppPolicies =
     ///List Access application policies response
     | OK of payload: ``accessapp-policiescomponents-schemas-responsecollection``
+    ///List Access application policies response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessPoliciesCreateAnAccessPolicy =
     ///Create an Access application policy response.
     | Created of payload: ``accessapp-policiescomponents-schemas-singleresponse``
+    ///Create an Access application policy response failure.
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessPoliciesDeleteAnAccessPolicy =
     ///Delete an Access application policy response.
     | Accepted of payload: ``accessapp-policiescomponents-schemas-idresponse``
+    ///Delete an Access application policy response failure.
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessPoliciesGetAnAccessPolicy =
     ///Get an Access policy response.
     | OK of payload: ``accessapp-policiescomponents-schemas-singleresponse``
+    ///Get an Access policy response failure.
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessPoliciesUpdateAnAccessPolicy =
     ///Update an Access application policy response.
     | OK of payload: ``accessapp-policiescomponents-schemas-singleresponse``
+    ///Update an Access application policy response failure.
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessPoliciesConvertReusable =
     ///Convert an Access application policy to a reusable policy
     | OK of payload: ``accessapp-policiescomponents-schemas-responsecollection``
+    ///Convert an Access application policy to a reusable policy failure.
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessApplicationsRevokeServiceTokens =
     ///Revoke application tokens response
     | Accepted of payload: ``accessschemas-emptyresponse``
+    ///Revoke application tokens response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessApplicationsPatchUpdateAccessApplicationSettings =
     ///Update Access application settings response
     | Accepted of payload: string
+    ///Update Access application settings response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessApplicationsPutUpdateAccessApplicationSettings =
     ///Update Access application settings response
     | Accepted of payload: string
+    ///Update Access application settings response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessApplicationsTestAccessPolicies =
     ///Test Access policies response
     | OK of payload: accesspolicycheckresponse
+    ///Test Access policies response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type ``AccessBookmarkApplications(Deprecated)ListBookmarkApplications`` =
     ///List Bookmark applications response
     | OK of payload: ``accessbookmarkscomponents-schemas-responsecollection``
+    ///List Bookmark applications response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type ``AccessBookmarkApplications(Deprecated)DeleteABookmarkApplication`` =
     ///Delete a Bookmark application response
     | OK of payload: accessidresponse
+    ///Delete a Bookmark application response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type ``AccessBookmarkApplications(Deprecated)GetABookmarkApplication`` =
     ///Get a Bookmark application response
     | OK of payload: ``accessbookmarkscomponents-schemas-singleresponse``
+    ///Get a Bookmark application response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type ``AccessBookmarkApplications(Deprecated)CreateABookmarkApplication`` =
     ///Create a Bookmark application response
     | OK of payload: ``accessbookmarkscomponents-schemas-singleresponse``
+    ///Create a Bookmark application response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type ``AccessBookmarkApplications(Deprecated)UpdateABookmarkApplication`` =
     ///Update a Bookmark application response
     | OK of payload: ``accessbookmarkscomponents-schemas-singleresponse``
+    ///Update a Bookmark application response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessMtlsAuthenticationListMtlsCertificates =
     ///List mTLS certificates response
     | OK of payload: ``accesscertificatescomponents-schemas-responsecollection``
+    ///List mTLS certificates response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessMtlsAuthenticationAddAnMtlsCertificate =
     ///Add an mTLS certificate response
     | Created of payload: ``accesscertificatescomponents-schemas-singleresponse``
+    ///Add an mTLS certificate response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessMtlsAuthenticationListMtlsCertificatesHostnameSettings =
     ///List mTLS hostname settings response
     | OK of payload: accessresponsecollectionhostnames
+    ///List mTLS hostname settings response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 type AccessMtlsAuthenticationUpdateAnMtlsCertificateSettingsPayload =
     { settings: list<accesssettings> }
@@ -12224,171 +12590,239 @@ type AccessMtlsAuthenticationUpdateAnMtlsCertificateSettingsPayload =
 type AccessMtlsAuthenticationUpdateAnMtlsCertificateSettings =
     ///Update an mTLS certificates hostname settings response
     | Accepted of payload: accessresponsecollectionhostnames
+    ///Update an mTLS certificates hostname settings failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessMtlsAuthenticationDeleteAnMtlsCertificate =
     ///Delete an mTLS certificate response
     | OK of payload: ``accesscomponents-schemas-idresponse``
+    ///Delete an mTLS certificate response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessMtlsAuthenticationGetAnMtlsCertificate =
     ///Get an mTLS certificate response
     | OK of payload: ``accesscertificatescomponents-schemas-singleresponse``
+    ///Get an mTLS certificate response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessMtlsAuthenticationUpdateAnMtlsCertificate =
     ///Update an mTLS certificate response
     | OK of payload: ``accesscertificatescomponents-schemas-singleresponse``
+    ///Update an mTLS certificate response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessCustomPagesListCustomPages =
     ///List custom pages response
     | OK of payload: ``accesscustom-pagescomponents-schemas-responsecollection``
+    ///List custom pages response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessCustomPagesCreateACustomPage =
     ///Create a custom page response
     | Created of payload: accesssingleresponsewithouthtml
+    ///Create a custom page response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessCustomPagesDeleteACustomPage =
     ///Delete a custom page response
     | Accepted of payload: ``accesscomponents-schemas-idresponse``
+    ///Delete a custom page response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessCustomPagesGetACustomPage =
     ///Get a custom page response
     | OK of payload: ``accesscustom-pagescomponents-schemas-singleresponse``
+    ///Get a custom page response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessCustomPagesUpdateACustomPage =
     ///Update a custom page response
     | OK of payload: accesssingleresponsewithouthtml
+    ///Update a custom page response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessGatewayCaListSSHCa =
     ///List SSH Certificate Authorities (CA) response
     | OK of payload: ``accessgatewaycacomponents-schemas-responsecollection``
+    ///List SSH Certificate Authorities (CA) response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessGatewayCaAddAnSSHCa =
     ///Add a new SSH Certificate Authority (CA) response
     | Created of payload: ``accessgatewaycacomponents-schemas-singleresponse``
+    ///Add a new SSH Certificate Authority (CA) response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessGatewayCaDeleteAnSSHCa =
     ///Delete an SSH Certificate Authority (CA) response
     | OK of payload: accessidresponse
+    ///Delete an SSH Certificate Authority (CA) response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessGroupsListAccessGroups =
     ///List Access groups response
     | OK of payload: ``accessschemas-responsecollection``
+    ///List Access groups response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessGroupsCreateAnAccessGroup =
     ///Create an Access group response
     | Created of payload: ``accessgroupscomponents-schemas-singleresponse``
+    ///Create an Access group response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessGroupsDeleteAnAccessGroup =
     ///Delete an Access group response
     | Accepted of payload: accessidresponse
+    ///Delete an Access group response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessGroupsGetAnAccessGroup =
     ///Get an Access group response
     | OK of payload: ``accessgroupscomponents-schemas-singleresponse``
+    ///Get an Access group response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessGroupsUpdateAnAccessGroup =
     ///Update an Access group response
     | OK of payload: ``accessgroupscomponents-schemas-singleresponse``
+    ///Update an Access group response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessIdentityProvidersListAccessIdentityProviders =
     ///List Access identity providers response
     | OK of payload: accessresponsecollection
+    ///List Access identity providers response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessIdentityProvidersAddAnAccessIdentityProvider =
     ///Add an Access identity provider response
     | Created of payload: ``accesscomponents-schemas-singleresponse``
+    ///Add an Access identity provider response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessIdentityProvidersDeleteAnAccessIdentityProvider =
     ///Delete an Access identity provider response
     | Accepted of payload: accessidresponse
+    ///Delete an Access identity provider response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessIdentityProvidersGetAnAccessIdentityProvider =
     ///Get an Access identity provider response
     | OK of payload: ``accesscomponents-schemas-singleresponse``
+    ///Get an Access identity provider response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessIdentityProvidersUpdateAnAccessIdentityProvider =
     ///Update an Access identity provider response
     | OK of payload: ``accesscomponents-schemas-singleresponse``
+    ///Update an Access identity provider response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessIdentityProvidersListScimGroupResources =
     ///List SCIM Group resources response
     | OK of payload: accessscimgroupsresponse
+    ///List SCIM Group resources response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessIdentityProvidersListScimUserResources =
     ///List SCIM User resources response
     | OK of payload: accessscimusersresponse
+    ///List SCIM User resources response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessKeyConfigurationGetTheAccessKeyConfiguration =
     ///Get the Access key configuration response
     | OK of payload: ``accesskeyscomponents-schemas-singleresponse``
+    ///Get the Access key configuration response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessKeyConfigurationUpdateTheAccessKeyConfiguration =
     ///Update the Access key configuration response
     | OK of payload: ``accesskeyscomponents-schemas-singleresponse``
+    ///Update the Access key configuration response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessKeyConfigurationRotateAccessKeys =
     ///Rotate Access keys response
     | OK of payload: ``accesskeyscomponents-schemas-singleresponse``
+    ///Rotate Access keys response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessAuthenticationLogsGetAccessAuthenticationLogs =
     ///Get Access authentication logs response
     | OK of payload: ``accessaccess-requestscomponents-schemas-responsecollection``
+    ///Get Access authentication logs response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessScimUpdateLogsListAccessScimUpdateLogs =
     ///Get Access SCIM update logs response
     | OK of payload: accessscimupdatelogsresponse
+    ///Get Access SCIM update logs response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type ZeroTrustOrganizationGetYourZeroTrustOrganization =
     ///Get your Zero Trust organization response
     | OK of payload: accesssingleresponse
+    ///Get your Zero Trust organization response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type ZeroTrustOrganizationCreateYourZeroTrustOrganization =
     ///Create your Zero Trust organization response
     | Created of payload: accesssingleresponse
+    ///Create your Zero Trust organization response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type ZeroTrustOrganizationUpdateYourZeroTrustOrganization =
     ///Update your Zero Trust organization response
     | OK of payload: accesssingleresponse
+    ///Update your Zero Trust organization response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type ZeroTrustOrganizationGetYourZeroTrustOrganizationDohSettings =
     ///Get your Zero Trust organization DoH settings response
-    | OK of payload: string
+    | OK of payload: ``zero-trust-organization-get-your-zero-trust-organization-doh-settingsresponse``
+    ///Get your Zero Trust organization DoH settings response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type ZeroTrustOrganizationUpdateYourZeroTrustOrganizationDohSettings =
     ///Update your Zero Trust organization DoH settings response
-    | Created of payload: string
+    | Created of payload: ``zero-trust-organization-update-your-zero-trust-organization-doh-settingsresponse``
+    ///Update your Zero Trust organization DoH settings response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type ZeroTrustOrganizationRevokeAllAccessTokensForAUser =
@@ -12399,26 +12833,36 @@ type ZeroTrustOrganizationRevokeAllAccessTokensForAUser =
 type AccessPoliciesListAccessReusablePolicies =
     ///List Access reusable policies response.
     | OK of payload: ``accessreusable-policiescomponents-schemas-responsecollection``
+    ///List Access reusable policies response failure.
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessPoliciesCreateAnAccessReusablePolicy =
     ///Create an Access reusable policy response.
     | Created of payload: ``accessreusable-policiescomponents-schemas-singleresponse``
+    ///Create an Access reusable policy response failure.
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessPoliciesDeleteAnAccessReusablePolicy =
     ///Delete an Access reusable policy response.
     | Accepted of payload: ``accessreusable-policiescomponents-schemas-idresponse``
+    ///Delete an Access reusable policy response failure.
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessPoliciesGetAnAccessReusablePolicy =
     ///Get an Access reusable policy response.
     | OK of payload: ``accessreusable-policiescomponents-schemas-singleresponse``
+    ///Get an Access reusable policy response failure.
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessPoliciesUpdateAnAccessReusablePolicy =
     ///Update an Access reusable policy response.
     | OK of payload: ``accessreusable-policiescomponents-schemas-singleresponse``
+    ///Update an Access reusable policy response failure.
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessPolicyTests =
@@ -12445,113 +12889,159 @@ type AccessPolicyTestsGetAUserPage =
 type ZeroTrustSeatsUpdateAUserSeat =
     ///Update a user seat response
     | OK of payload: ``accessseatscomponents-schemas-responsecollection``
+    ///Update a user seat response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessServiceTokensListServiceTokens =
     ///List service tokens response
     | OK of payload: ``accesscomponents-schemas-responsecollection``
+    ///List service tokens response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessServiceTokensCreateAServiceToken =
     ///Create a service token response
     | Created of payload: accesscreateresponse
+    ///Create a service token response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessServiceTokensDeleteAServiceToken =
     ///Delete a service token response
     | OK of payload: ``accessschemas-singleresponse``
+    ///Delete a service token response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessServiceTokensGetAServiceToken =
     ///Get a service token response
     | OK of payload: ``accessschemas-singleresponse``
+    ///Get a service token response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessServiceTokensUpdateAServiceToken =
     ///Update a service token response
     | OK of payload: ``accessschemas-singleresponse``
+    ///Update a service token response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessServiceTokensRefreshAServiceToken =
     ///Refresh a service token response
     | OK of payload: ``accessschemas-singleresponse``
+    ///Refresh a service token response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessServiceTokensRotateAServiceToken =
     ///Rotate a service token response
     | OK of payload: accesscreateresponse
+    ///Rotate a service token response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessTagsListTags =
     ///List tags response
     | OK of payload: ``accesstagscomponents-schemas-responsecollection``
+    ///List tags response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessTagsCreateTag =
     ///Create a tag response
     | Created of payload: ``accesstagscomponents-schemas-singleresponse``
+    ///Create a tag response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessTagsDeleteATag =
     ///Delete a tag response
     | Accepted of payload: accessnameresponse
+    ///Delete a tag response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessTagsGetATag =
     ///Get a tag response
     | OK of payload: ``accesstagscomponents-schemas-singleresponse``
+    ///Get a tag response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type AccessTagsUpdateATag =
     ///Update a tag response
     | OK of payload: ``accesstagscomponents-schemas-singleresponse``
+    ///Update a tag response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type ZeroTrustUsersGetUsers =
     ///Get users response
     | OK of payload: ``accessuserscomponents-schemas-responsecollection``
+    ///Get users response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type ZeroTrustUsersCreateUser =
     ///Create user response
     | Created of payload: accesssingleuserresponse
+    ///Create user response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type ZeroTrustUsersDeleteUser =
     ///Delete user response
     | Accepted of payload: accessdeleteuserresponse
+    ///Delete user response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type ZeroTrustUsersGetUser =
     ///Get user response
     | OK of payload: accesssingleuserresponse
+    ///Get user response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type ZeroTrustUsersUpdateUser =
     ///Update user response
     | OK of payload: accesssingleuserresponse
+    ///Update user response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type ZeroTrustUsersGetActiveSessions =
     ///Get active sessions response
     | OK of payload: accessactivesessionsresponse
+    ///Get active sessions response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type ZeroTrustUsersGetActiveSession =
     ///Get active session response
     | OK of payload: accessactivesessionresponse
+    ///Get active session response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type ZeroTrustUsersGetFailedLogins =
     ///Get failed logins response
     | OK of payload: accessfailedloginresponse
+    ///Get failed logins response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type ZeroTrustUsersGetLastSeenIdentity =
     ///Get active session response
     | OK of payload: accesslastseenidentityresponse
+    ///Get active session response failure
+    | BadRequest of payload: ``accessapi-response-common-failure``
 
 [<RequireQualifiedAccess>]
 type ZeroTrustUsersDeleteMfaAuthenticator =
     ///Delete authenticator response.
     | OK of payload: accessdeleteauthenticatorresponse
+    ///Delete authenticator response failure.
+    | BadRequest of payload: ``accessapi-response-common-failure``

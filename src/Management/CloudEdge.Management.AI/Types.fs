@@ -1,5 +1,10 @@
 namespace rec Fidelity.CloudEdge.Management.AI.Types
 
+// Auto-generated stub types (missing from Hawaii output)
+type provided = string
+type strings = string
+type tokens = string
+
 type Result =
     { created_at: System.DateTimeOffset
       description: string

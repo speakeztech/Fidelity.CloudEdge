@@ -63,7 +63,9 @@ type TunnelsClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.getAsync httpClient "/accounts/{account_id}/cfd_tunnel" requestParts cancellationToken
 
-            return CloudflareTunnelListCloudflareTunnels.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return CloudflareTunnelListCloudflareTunnels.OK(Serializer.deserialize content)
+            | _ -> return CloudflareTunnelListCloudflareTunnels.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -83,7 +85,9 @@ type TunnelsClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.postAsync httpClient "/accounts/{account_id}/cfd_tunnel" requestParts cancellationToken
 
-            return CloudflareTunnelCreateACloudflareTunnel.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return CloudflareTunnelCreateACloudflareTunnel.OK(Serializer.deserialize content)
+            | _ -> return CloudflareTunnelCreateACloudflareTunnel.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -107,7 +111,9 @@ type TunnelsClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return CloudflareTunnelDeleteACloudflareTunnel.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return CloudflareTunnelDeleteACloudflareTunnel.OK(Serializer.deserialize content)
+            | _ -> return CloudflareTunnelDeleteACloudflareTunnel.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -131,7 +137,9 @@ type TunnelsClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return CloudflareTunnelGetACloudflareTunnel.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return CloudflareTunnelGetACloudflareTunnel.OK(Serializer.deserialize content)
+            | _ -> return CloudflareTunnelGetACloudflareTunnel.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -157,7 +165,9 @@ type TunnelsClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return CloudflareTunnelUpdateACloudflareTunnel.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return CloudflareTunnelUpdateACloudflareTunnel.OK(Serializer.deserialize content)
+            | _ -> return CloudflareTunnelUpdateACloudflareTunnel.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -181,7 +191,9 @@ type TunnelsClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return CloudflareTunnelConfigurationGetConfiguration.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return CloudflareTunnelConfigurationGetConfiguration.OK(Serializer.deserialize content)
+            | _ -> return CloudflareTunnelConfigurationGetConfiguration.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -207,7 +219,9 @@ type TunnelsClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return CloudflareTunnelConfigurationPutConfiguration.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return CloudflareTunnelConfigurationPutConfiguration.OK(Serializer.deserialize content)
+            | _ -> return CloudflareTunnelConfigurationPutConfiguration.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -234,7 +248,9 @@ type TunnelsClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return CloudflareTunnelCleanUpCloudflareTunnelConnections.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return CloudflareTunnelCleanUpCloudflareTunnelConnections.OK(Serializer.deserialize content)
+            | _ -> return CloudflareTunnelCleanUpCloudflareTunnelConnections.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -258,7 +274,9 @@ type TunnelsClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return CloudflareTunnelListCloudflareTunnelConnections.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return CloudflareTunnelListCloudflareTunnelConnections.OK(Serializer.deserialize content)
+            | _ -> return CloudflareTunnelListCloudflareTunnelConnections.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -284,7 +302,9 @@ type TunnelsClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return CloudflareTunnelGetCloudflareTunnelConnector.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return CloudflareTunnelGetCloudflareTunnelConnector.OK(Serializer.deserialize content)
+            | _ -> return CloudflareTunnelGetCloudflareTunnelConnector.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -310,7 +330,9 @@ type TunnelsClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return CloudflareTunnelGetACloudflareTunnelManagementToken.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return CloudflareTunnelGetACloudflareTunnelManagementToken.OK(Serializer.deserialize content)
+            | _ -> return CloudflareTunnelGetACloudflareTunnelManagementToken.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -334,5 +356,7 @@ type TunnelsClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return CloudflareTunnelGetACloudflareTunnelToken.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return CloudflareTunnelGetACloudflareTunnelToken.OK(Serializer.deserialize content)
+            | _ -> return CloudflareTunnelGetACloudflareTunnelToken.BadRequest(Serializer.deserialize content)
         }

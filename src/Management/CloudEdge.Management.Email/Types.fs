@@ -1,5 +1,19 @@
 namespace rec Fidelity.CloudEdge.Management.Email.Types
 
+// Auto-generated type aliases (Hawaii normalization fix)
+type email_email_routing_get_response_dns_error = emailemailroutinggetresponsednserror
+type email_rule_action = emailruleaction
+type ``email_rule_catchall-action`` = ``emailrulecatchall-action``
+type ``email_rule_catchall-matcher`` = ``emailrulecatchall-matcher``
+type email_rule_matcher = emailrulematcher
+
+// Auto-generated stub types (missing from Hawaii output)
+type action = string
+type matcher = string
+type results = string
+type supported = string
+type your = string
+
 ///Account Identifier
 type ``email-securityAccountId`` = string
 type ``email-securityAllowPolicyId`` = int
@@ -133,7 +147,7 @@ type emaildestinationaddressidentifier = string
 type emaildestinationaddresstag = string
 ///The contact email address of the user.
 type emailemail = string
-type emailemailroutinggetresponsednserrors = list<emailemailroutinggetresponsednserror>
+type emailemailroutinggetresponsednserrors = list<email_email_routing_get_response_dns_error>
 ///The date and time the settings have been created.
 type emailemailsettingcreated = System.DateTimeOffset
 type emailemailsettingenabled = bool
@@ -186,13 +200,13 @@ type emailmessagesArrayItem =
 type emailmessages = list<emailmessagesArrayItem>
 ///The date and time the destination address was last modified.
 type emailmodified = System.DateTimeOffset
-type emailruleactions = list<emailruleaction>
-type ``emailrulecatchall-actions`` = list<``emailrulecatchall-action``>
-type ``emailrulecatchall-matchers`` = list<``emailrulecatchall-matcher``>
+type emailruleactions = list<email_rule_action>
+type ``emailrulecatchall-actions`` = list<``email_rule_catchall-action``>
+type ``emailrulecatchall-matchers`` = list<``email_rule_catchall-matcher``>
 type emailruleenabled = bool
 ///Routing rule identifier.
 type emailruleidentifier = string
-type emailrulematchers = list<emailrulematcher>
+type emailrulematchers = list<email_rule_matcher>
 ///Routing rule name.
 type emailrulename = string
 type emailrulepriority = float
@@ -1148,16 +1162,18 @@ type emaildestinationaddressresponsesingleMessages =
           source = None }
 
 type emaildestinationaddressresponsesingle =
-    { errors: Option<list<emaildestinationaddressresponsesingleErrors>>
-      messages: Option<list<emaildestinationaddressresponsesingleMessages>>
+    { errors: list<emaildestinationaddressresponsesingleErrors>
+      messages: list<emaildestinationaddressresponsesingleMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result: Option<emailaddresses> }
     ///Creates an instance of emaildestinationaddressresponsesingle with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): emaildestinationaddressresponsesingle =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<emaildestinationaddressresponsesingleErrors>,
+                          messages: list<emaildestinationaddressresponsesingleMessages>,
+                          success: bool): emaildestinationaddressresponsesingle =
+        { errors = errors
+          messages = messages
+          success = success
           result = None }
 
 type emaildestinationaddressesresponsecollectionErrorsSource =
@@ -1195,14 +1211,10 @@ type emaildestinationaddressesresponsecollectionMessages =
           source = None }
 
 type emaildestinationaddressesresponsecollectionResultinfo =
-    { ///Total number of results for the requested service.
-      count: Option<float>
-      ///Current page within paginated list of results.
-      page: Option<float>
-      ///Number of results per page of results.
-      per_page: Option<float>
-      ///Total results available without any search parameters.
-      total_count: Option<float> }
+    { count: Option<Newtonsoft.Json.Linq.JToken>
+      page: Option<Newtonsoft.Json.Linq.JToken>
+      per_page: Option<Newtonsoft.Json.Linq.JToken>
+      total_count: Option<Newtonsoft.Json.Linq.JToken> }
     ///Creates an instance of emaildestinationaddressesresponsecollectionResultinfo with all optional fields initialized to None. The required fields are parameters of this function
     static member Create (): emaildestinationaddressesresponsecollectionResultinfo =
         { count = None
@@ -1210,30 +1222,20 @@ type emaildestinationaddressesresponsecollectionResultinfo =
           per_page = None
           total_count = None }
 
-type ResultinfoFromemaildestinationaddressesresponsecollection =
-    { count: Option<Newtonsoft.Json.Linq.JToken>
-      page: Option<Newtonsoft.Json.Linq.JToken>
-      per_page: Option<Newtonsoft.Json.Linq.JToken>
-      total_count: Option<Newtonsoft.Json.Linq.JToken> }
-    ///Creates an instance of ResultinfoFromemaildestinationaddressesresponsecollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ResultinfoFromemaildestinationaddressesresponsecollection =
-        { count = None
-          page = None
-          per_page = None
-          total_count = None }
-
 type emaildestinationaddressesresponsecollection =
-    { errors: Option<list<emaildestinationaddressesresponsecollectionErrors>>
-      messages: Option<list<emaildestinationaddressesresponsecollectionMessages>>
+    { errors: list<emaildestinationaddressesresponsecollectionErrors>
+      messages: list<emaildestinationaddressesresponsecollectionMessages>
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<emaildestinationaddressesresponsecollectionResultinfo>
       result: Option<list<emailaddresses>> }
     ///Creates an instance of emaildestinationaddressesresponsecollection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): emaildestinationaddressesresponsecollection =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<emaildestinationaddressesresponsecollectionErrors>,
+                          messages: list<emaildestinationaddressesresponsecollectionMessages>,
+                          success: bool): emaildestinationaddressesresponsecollection =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None
           result = None }
 
@@ -2001,12 +2003,1003 @@ type emailupdateruleproperties =
           name = None
           priority = None }
 
+type emailsecurityinvestigateresponse =
+    { errors: list<``email-securityMessage``>
+      messages: list<``email-securityMessage``>
+      success: bool
+      result: list<``email-securityMailsearchMessage``>
+      result_info: ``email-securityCursorWithLegacyResultInfo`` }
+    ///Creates an instance of emailsecurityinvestigateresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``email-securityMessage``>,
+                          messages: list<``email-securityMessage``>,
+                          success: bool,
+                          result: list<``email-securityMailsearchMessage``>,
+                          result_info: ``email-securityCursorWithLegacyResultInfo``): emailsecurityinvestigateresponse =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result
+          result_info = result_info }
+
+type emailsecuritypostbulkmessagemoveresponse =
+    { errors: list<``email-securityMessage``>
+      messages: list<``email-securityMessage``>
+      success: bool
+      result: list<``email-securityMoveResponseItem``> }
+    ///Creates an instance of emailsecuritypostbulkmessagemoveresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``email-securityMessage``>,
+                          messages: list<``email-securityMessage``>,
+                          success: bool,
+                          result: list<``email-securityMoveResponseItem``>): emailsecuritypostbulkmessagemoveresponse =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
+
+type emailsecuritypostpreviewresponseResult =
+    { ///A base64 encoded PNG image of the email.
+      screenshot: string }
+    ///Creates an instance of emailsecuritypostpreviewresponseResult with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (screenshot: string): emailsecuritypostpreviewresponseResult = { screenshot = screenshot }
+
+type emailsecuritypostpreviewresponse =
+    { errors: list<``email-securityMessage``>
+      messages: list<``email-securityMessage``>
+      success: bool
+      result: emailsecuritypostpreviewresponseResult }
+    ///Creates an instance of emailsecuritypostpreviewresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``email-securityMessage``>,
+                          messages: list<``email-securityMessage``>,
+                          success: bool,
+                          result: emailsecuritypostpreviewresponseResult): emailsecuritypostpreviewresponse =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
+
+type emailsecuritypostreleaseresponse =
+    { errors: list<``email-securityMessage``>
+      messages: list<``email-securityMessage``>
+      success: bool
+      result: list<``email-securityReleaseResponse``> }
+    ///Creates an instance of emailsecuritypostreleaseresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``email-securityMessage``>,
+                          messages: list<``email-securityMessage``>,
+                          success: bool,
+                          result: list<``email-securityReleaseResponse``>): emailsecuritypostreleaseresponse =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
+
+type emailsecuritygetmessageresponse =
+    { errors: list<``email-securityMessage``>
+      messages: list<``email-securityMessage``>
+      success: bool
+      result: Newtonsoft.Json.Linq.JToken }
+    ///Creates an instance of emailsecuritygetmessageresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``email-securityMessage``>,
+                          messages: list<``email-securityMessage``>,
+                          success: bool,
+                          result: Newtonsoft.Json.Linq.JToken): emailsecuritygetmessageresponse =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
+
+type Senderinfo =
+    { ///The name of the autonomous system.
+      as_name: Option<string>
+      ///The number of the autonomous system.
+      as_number: Option<int64>
+      geo: Option<string>
+      ip: Option<string>
+      pld: Option<string> }
+    ///Creates an instance of Senderinfo with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): Senderinfo =
+        { as_name = None
+          as_number = None
+          geo = None
+          ip = None
+          pld = None }
+
+type Validation =
+    { comment: Option<string>
+      dkim: Option<Newtonsoft.Json.Linq.JToken>
+      dmarc: Option<Newtonsoft.Json.Linq.JToken>
+      spf: Option<Newtonsoft.Json.Linq.JToken> }
+    ///Creates an instance of Validation with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): Validation =
+        { comment = None
+          dkim = None
+          dmarc = None
+          spf = None }
+
+type emailsecuritygetmessagedetectionsresponseResult =
+    { action: string
+      attachments: list<``email-securityAttachment``>
+      final_disposition: Option<Newtonsoft.Json.Linq.JToken>
+      headers: list<``email-securityMessageHeader``>
+      links: list<``email-securityLink``>
+      sender_info: Senderinfo
+      threat_categories: list<``email-securityThreatCategory``>
+      validation: Validation }
+    ///Creates an instance of emailsecuritygetmessagedetectionsresponseResult with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (action: string,
+                          attachments: list<``email-securityAttachment``>,
+                          headers: list<``email-securityMessageHeader``>,
+                          links: list<``email-securityLink``>,
+                          sender_info: Senderinfo,
+                          threat_categories: list<``email-securityThreatCategory``>,
+                          validation: Validation): emailsecuritygetmessagedetectionsresponseResult =
+        { action = action
+          attachments = attachments
+          final_disposition = None
+          headers = headers
+          links = links
+          sender_info = sender_info
+          threat_categories = threat_categories
+          validation = validation }
+
+type emailsecuritygetmessagedetectionsresponse =
+    { errors: list<``email-securityMessage``>
+      messages: list<``email-securityMessage``>
+      success: bool
+      result: emailsecuritygetmessagedetectionsresponseResult }
+    ///Creates an instance of emailsecuritygetmessagedetectionsresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``email-securityMessage``>,
+                          messages: list<``email-securityMessage``>,
+                          success: bool,
+                          result: emailsecuritygetmessagedetectionsresponseResult): emailsecuritygetmessagedetectionsresponse =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
+
+type emailsecuritypostmessagemoveresponse =
+    { errors: list<``email-securityMessage``>
+      messages: list<``email-securityMessage``>
+      success: bool
+      result: list<``email-securityMoveResponseItem``> }
+    ///Creates an instance of emailsecuritypostmessagemoveresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``email-securityMessage``>,
+                          messages: list<``email-securityMessage``>,
+                          success: bool,
+                          result: list<``email-securityMoveResponseItem``>): emailsecuritypostmessagemoveresponse =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
+
+type emailsecuritygetmessagepreviewresponseResult =
+    { ///A base64 encoded PNG image of the email.
+      screenshot: string }
+    ///Creates an instance of emailsecuritygetmessagepreviewresponseResult with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (screenshot: string): emailsecuritygetmessagepreviewresponseResult =
+        { screenshot = screenshot }
+
+type emailsecuritygetmessagepreviewresponse =
+    { errors: list<``email-securityMessage``>
+      messages: list<``email-securityMessage``>
+      success: bool
+      result: emailsecuritygetmessagepreviewresponseResult }
+    ///Creates an instance of emailsecuritygetmessagepreviewresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``email-securityMessage``>,
+                          messages: list<``email-securityMessage``>,
+                          success: bool,
+                          result: emailsecuritygetmessagepreviewresponseResult): emailsecuritygetmessagepreviewresponse =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
+
+type emailsecuritygetmessagerawresponseResult =
+    { ///A UTF-8 encoded eml file of the email.
+      raw: string }
+    ///Creates an instance of emailsecuritygetmessagerawresponseResult with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (raw: string): emailsecuritygetmessagerawresponseResult = { raw = raw }
+
+type emailsecuritygetmessagerawresponse =
+    { errors: list<``email-securityMessage``>
+      messages: list<``email-securityMessage``>
+      success: bool
+      result: emailsecuritygetmessagerawresponseResult }
+    ///Creates an instance of emailsecuritygetmessagerawresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``email-securityMessage``>,
+                          messages: list<``email-securityMessage``>,
+                          success: bool,
+                          result: emailsecuritygetmessagerawresponseResult): emailsecuritygetmessagerawresponse =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
+
+type emailsecuritypostreclassifyresponse =
+    { errors: list<``email-securityMessage``>
+      messages: list<``email-securityMessage``>
+      success: bool
+      result: Newtonsoft.Json.Linq.JObject }
+    ///Creates an instance of emailsecuritypostreclassifyresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``email-securityMessage``>,
+                          messages: list<``email-securityMessage``>,
+                          success: bool,
+                          result: Newtonsoft.Json.Linq.JObject): emailsecuritypostreclassifyresponse =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
+
+type Inbound =
+    { lines: Option<list<``email-securityTraceLine``>>
+      pending: Option<bool> }
+    ///Creates an instance of Inbound with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): Inbound = { lines = None; pending = None }
+
+type Outbound =
+    { lines: Option<list<``email-securityTraceLine``>>
+      pending: Option<bool> }
+    ///Creates an instance of Outbound with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): Outbound = { lines = None; pending = None }
+
+type emailsecuritygetmessagetraceresponseResult =
+    { inbound: Inbound
+      outbound: Outbound }
+    ///Creates an instance of emailsecuritygetmessagetraceresponseResult with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (inbound: Inbound, outbound: Outbound): emailsecuritygetmessagetraceresponseResult =
+        { inbound = inbound
+          outbound = outbound }
+
+type emailsecuritygetmessagetraceresponse =
+    { errors: list<``email-securityMessage``>
+      messages: list<``email-securityMessage``>
+      success: bool
+      result: emailsecuritygetmessagetraceresponseResult }
+    ///Creates an instance of emailsecuritygetmessagetraceresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``email-securityMessage``>,
+                          messages: list<``email-securityMessage``>,
+                          success: bool,
+                          result: emailsecuritygetmessagetraceresponseResult): emailsecuritygetmessagetraceresponse =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
+
+type emailsecuritygetphishguardreportsresponse =
+    { errors: list<``email-securityMessage``>
+      messages: list<``email-securityMessage``>
+      success: bool
+      result: list<``email-securityPhishGuardReport``> }
+    ///Creates an instance of emailsecuritygetphishguardreportsresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``email-securityMessage``>,
+                          messages: list<``email-securityMessage``>,
+                          success: bool,
+                          result: list<``email-securityPhishGuardReport``>): emailsecuritygetphishguardreportsresponse =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
+
+type emailsecuritylistallowpoliciesresponse =
+    { errors: list<``email-securityMessage``>
+      messages: list<``email-securityMessage``>
+      success: bool
+      result: list<``email-securityAllowPolicy``>
+      result_info: ``email-securityResultInfo`` }
+    ///Creates an instance of emailsecuritylistallowpoliciesresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``email-securityMessage``>,
+                          messages: list<``email-securityMessage``>,
+                          success: bool,
+                          result: list<``email-securityAllowPolicy``>,
+                          result_info: ``email-securityResultInfo``): emailsecuritylistallowpoliciesresponse =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result
+          result_info = result_info }
+
+type emailsecuritycreateallowpolicyresponse =
+    { errors: list<``email-securityMessage``>
+      messages: list<``email-securityMessage``>
+      success: bool
+      result: Newtonsoft.Json.Linq.JToken }
+    ///Creates an instance of emailsecuritycreateallowpolicyresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``email-securityMessage``>,
+                          messages: list<``email-securityMessage``>,
+                          success: bool,
+                          result: Newtonsoft.Json.Linq.JToken): emailsecuritycreateallowpolicyresponse =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
+
+type Deletes =
+    { ///The unique identifier for the allow policy.
+      id: int }
+    ///Creates an instance of Deletes with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (id: int): Deletes = { id = id }
+
+type emailsecuritybatchallowpoliciesresponseResult =
+    { deletes: list<Deletes>
+      patches: list<``email-securityAllowPolicy``>
+      posts: list<``email-securityAllowPolicy``>
+      puts: list<``email-securityAllowPolicy``> }
+    ///Creates an instance of emailsecuritybatchallowpoliciesresponseResult with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (deletes: list<Deletes>,
+                          patches: list<``email-securityAllowPolicy``>,
+                          posts: list<``email-securityAllowPolicy``>,
+                          puts: list<``email-securityAllowPolicy``>): emailsecuritybatchallowpoliciesresponseResult =
+        { deletes = deletes
+          patches = patches
+          posts = posts
+          puts = puts }
+
+type emailsecuritybatchallowpoliciesresponse =
+    { errors: list<``email-securityMessage``>
+      messages: list<``email-securityMessage``>
+      success: bool
+      result: emailsecuritybatchallowpoliciesresponseResult }
+    ///Creates an instance of emailsecuritybatchallowpoliciesresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``email-securityMessage``>,
+                          messages: list<``email-securityMessage``>,
+                          success: bool,
+                          result: emailsecuritybatchallowpoliciesresponseResult): emailsecuritybatchallowpoliciesresponse =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
+
+type emailsecuritydeleteallowpolicyresponseResult =
+    { ///The unique identifier for the allow policy.
+      id: int }
+    ///Creates an instance of emailsecuritydeleteallowpolicyresponseResult with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (id: int): emailsecuritydeleteallowpolicyresponseResult = { id = id }
+
+type emailsecuritydeleteallowpolicyresponse =
+    { errors: list<``email-securityMessage``>
+      messages: list<``email-securityMessage``>
+      success: bool
+      result: emailsecuritydeleteallowpolicyresponseResult }
+    ///Creates an instance of emailsecuritydeleteallowpolicyresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``email-securityMessage``>,
+                          messages: list<``email-securityMessage``>,
+                          success: bool,
+                          result: emailsecuritydeleteallowpolicyresponseResult): emailsecuritydeleteallowpolicyresponse =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
+
+type emailsecuritygetallowpolicyresponse =
+    { errors: list<``email-securityMessage``>
+      messages: list<``email-securityMessage``>
+      success: bool
+      result: Newtonsoft.Json.Linq.JToken }
+    ///Creates an instance of emailsecuritygetallowpolicyresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``email-securityMessage``>,
+                          messages: list<``email-securityMessage``>,
+                          success: bool,
+                          result: Newtonsoft.Json.Linq.JToken): emailsecuritygetallowpolicyresponse =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
+
+type emailsecurityupdateallowpolicyresponse =
+    { errors: list<``email-securityMessage``>
+      messages: list<``email-securityMessage``>
+      success: bool
+      result: Newtonsoft.Json.Linq.JToken }
+    ///Creates an instance of emailsecurityupdateallowpolicyresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``email-securityMessage``>,
+                          messages: list<``email-securityMessage``>,
+                          success: bool,
+                          result: Newtonsoft.Json.Linq.JToken): emailsecurityupdateallowpolicyresponse =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
+
+type emailsecuritylistblockedsendersresponse =
+    { errors: list<``email-securityMessage``>
+      messages: list<``email-securityMessage``>
+      success: bool
+      result: list<``email-securityBlockedSender``>
+      result_info: ``email-securityResultInfo`` }
+    ///Creates an instance of emailsecuritylistblockedsendersresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``email-securityMessage``>,
+                          messages: list<``email-securityMessage``>,
+                          success: bool,
+                          result: list<``email-securityBlockedSender``>,
+                          result_info: ``email-securityResultInfo``): emailsecuritylistblockedsendersresponse =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result
+          result_info = result_info }
+
+type emailsecuritycreateblockedsenderresponse =
+    { errors: list<``email-securityMessage``>
+      messages: list<``email-securityMessage``>
+      success: bool
+      result: Newtonsoft.Json.Linq.JToken }
+    ///Creates an instance of emailsecuritycreateblockedsenderresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``email-securityMessage``>,
+                          messages: list<``email-securityMessage``>,
+                          success: bool,
+                          result: Newtonsoft.Json.Linq.JToken): emailsecuritycreateblockedsenderresponse =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
+
+type emailsecuritybatchblockedsendersresponseResultDeletes =
+    { ///The unique identifier for the allow policy.
+      id: int }
+    ///Creates an instance of emailsecuritybatchblockedsendersresponseResultDeletes with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (id: int): emailsecuritybatchblockedsendersresponseResultDeletes = { id = id }
+
+type emailsecuritybatchblockedsendersresponseResult =
+    { deletes: list<emailsecuritybatchblockedsendersresponseResultDeletes>
+      patches: list<``email-securityBlockedSender``>
+      posts: list<``email-securityBlockedSender``>
+      puts: list<``email-securityBlockedSender``> }
+    ///Creates an instance of emailsecuritybatchblockedsendersresponseResult with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (deletes: list<emailsecuritybatchblockedsendersresponseResultDeletes>,
+                          patches: list<``email-securityBlockedSender``>,
+                          posts: list<``email-securityBlockedSender``>,
+                          puts: list<``email-securityBlockedSender``>): emailsecuritybatchblockedsendersresponseResult =
+        { deletes = deletes
+          patches = patches
+          posts = posts
+          puts = puts }
+
+type emailsecuritybatchblockedsendersresponse =
+    { errors: list<``email-securityMessage``>
+      messages: list<``email-securityMessage``>
+      success: bool
+      result: emailsecuritybatchblockedsendersresponseResult }
+    ///Creates an instance of emailsecuritybatchblockedsendersresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``email-securityMessage``>,
+                          messages: list<``email-securityMessage``>,
+                          success: bool,
+                          result: emailsecuritybatchblockedsendersresponseResult): emailsecuritybatchblockedsendersresponse =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
+
+type emailsecuritydeleteblockedsenderresponseResult =
+    { ///The unique identifier for the allow policy.
+      id: int }
+    ///Creates an instance of emailsecuritydeleteblockedsenderresponseResult with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (id: int): emailsecuritydeleteblockedsenderresponseResult = { id = id }
+
+type emailsecuritydeleteblockedsenderresponse =
+    { errors: list<``email-securityMessage``>
+      messages: list<``email-securityMessage``>
+      success: bool
+      result: emailsecuritydeleteblockedsenderresponseResult }
+    ///Creates an instance of emailsecuritydeleteblockedsenderresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``email-securityMessage``>,
+                          messages: list<``email-securityMessage``>,
+                          success: bool,
+                          result: emailsecuritydeleteblockedsenderresponseResult): emailsecuritydeleteblockedsenderresponse =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
+
+type emailsecuritygetblockedsenderresponse =
+    { errors: list<``email-securityMessage``>
+      messages: list<``email-securityMessage``>
+      success: bool
+      result: Newtonsoft.Json.Linq.JToken }
+    ///Creates an instance of emailsecuritygetblockedsenderresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``email-securityMessage``>,
+                          messages: list<``email-securityMessage``>,
+                          success: bool,
+                          result: Newtonsoft.Json.Linq.JToken): emailsecuritygetblockedsenderresponse =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
+
+type emailsecurityupdateblockedsenderresponse =
+    { errors: list<``email-securityMessage``>
+      messages: list<``email-securityMessage``>
+      success: bool
+      result: Newtonsoft.Json.Linq.JToken }
+    ///Creates an instance of emailsecurityupdateblockedsenderresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``email-securityMessage``>,
+                          messages: list<``email-securityMessage``>,
+                          success: bool,
+                          result: Newtonsoft.Json.Linq.JToken): emailsecurityupdateblockedsenderresponse =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
+
+type emailsecuritydeletedomainsresponseResult =
+    { ///The unique identifier for the domain.
+      id: int }
+    ///Creates an instance of emailsecuritydeletedomainsresponseResult with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (id: int): emailsecuritydeletedomainsresponseResult = { id = id }
+
+type emailsecuritydeletedomainsresponse =
+    { errors: list<``email-securityMessage``>
+      messages: list<``email-securityMessage``>
+      success: bool
+      result: list<emailsecuritydeletedomainsresponseResult> }
+    ///Creates an instance of emailsecuritydeletedomainsresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``email-securityMessage``>,
+                          messages: list<``email-securityMessage``>,
+                          success: bool,
+                          result: list<emailsecuritydeletedomainsresponseResult>): emailsecuritydeletedomainsresponse =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
+
+type emailsecuritylistdomainsresponse =
+    { errors: list<``email-securityMessage``>
+      messages: list<``email-securityMessage``>
+      success: bool
+      result: list<``email-securityDomain``>
+      result_info: ``email-securityResultInfo`` }
+    ///Creates an instance of emailsecuritylistdomainsresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``email-securityMessage``>,
+                          messages: list<``email-securityMessage``>,
+                          success: bool,
+                          result: list<``email-securityDomain``>,
+                          result_info: ``email-securityResultInfo``): emailsecuritylistdomainsresponse =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result
+          result_info = result_info }
+
+type emailsecuritydeletedomainresponseResult =
+    { ///The unique identifier for the domain.
+      id: int }
+    ///Creates an instance of emailsecuritydeletedomainresponseResult with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (id: int): emailsecuritydeletedomainresponseResult = { id = id }
+
+type emailsecuritydeletedomainresponse =
+    { errors: list<``email-securityMessage``>
+      messages: list<``email-securityMessage``>
+      success: bool
+      result: emailsecuritydeletedomainresponseResult }
+    ///Creates an instance of emailsecuritydeletedomainresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``email-securityMessage``>,
+                          messages: list<``email-securityMessage``>,
+                          success: bool,
+                          result: emailsecuritydeletedomainresponseResult): emailsecuritydeletedomainresponse =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
+
+[<Fable.Core.StringEnum; RequireQualifiedAccess>]
+type emailsecuritygetdomainresponseResultRegions =
+    | [<CompiledName "GLOBAL">] GLOBAL
+    | [<CompiledName "AU">] AU
+    | [<CompiledName "DE">] DE
+    | [<CompiledName "IN">] IN
+    | [<CompiledName "US">] US
+    member this.Format() =
+        match this with
+        | GLOBAL -> "GLOBAL"
+        | AU -> "AU"
+        | DE -> "DE"
+        | IN -> "IN"
+        | US -> "US"
+
+type emailsecuritygetdomainresponseResult =
+    { allowed_delivery_modes: list<``email-securityDeliveryMode``>
+      authorization: Option<Newtonsoft.Json.Linq.JToken>
+      created_at: System.DateTimeOffset
+      dmarc_status: Option<Newtonsoft.Json.Linq.JToken>
+      domain: string
+      drop_dispositions: list<``email-securityDispositionLabel``>
+      emails_processed: Option<Newtonsoft.Json.Linq.JToken>
+      folder: Option<Newtonsoft.Json.Linq.JToken>
+      ///The unique identifier for the domain.
+      id: int
+      inbox_provider: Option<Newtonsoft.Json.Linq.JToken>
+      integration_id: Option<System.Guid>
+      ip_restrictions: list<string>
+      last_modified: System.DateTimeOffset
+      lookback_hops: int
+      o365_tenant_id: Option<string>
+      regions: list<emailsecuritygetdomainresponseResultRegions>
+      require_tls_inbound: Option<bool>
+      require_tls_outbound: Option<bool>
+      spf_status: Option<Newtonsoft.Json.Linq.JToken>
+      transport: string }
+    ///Creates an instance of emailsecuritygetdomainresponseResult with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (allowed_delivery_modes: list<``email-securityDeliveryMode``>,
+                          created_at: System.DateTimeOffset,
+                          domain: string,
+                          drop_dispositions: list<``email-securityDispositionLabel``>,
+                          id: int,
+                          ip_restrictions: list<string>,
+                          last_modified: System.DateTimeOffset,
+                          lookback_hops: int,
+                          regions: list<emailsecuritygetdomainresponseResultRegions>,
+                          transport: string): emailsecuritygetdomainresponseResult =
+        { allowed_delivery_modes = allowed_delivery_modes
+          authorization = None
+          created_at = created_at
+          dmarc_status = None
+          domain = domain
+          drop_dispositions = drop_dispositions
+          emails_processed = None
+          folder = None
+          id = id
+          inbox_provider = None
+          integration_id = None
+          ip_restrictions = ip_restrictions
+          last_modified = last_modified
+          lookback_hops = lookback_hops
+          o365_tenant_id = None
+          regions = regions
+          require_tls_inbound = None
+          require_tls_outbound = None
+          spf_status = None
+          transport = transport }
+
+type emailsecuritygetdomainresponse =
+    { errors: list<``email-securityMessage``>
+      messages: list<``email-securityMessage``>
+      success: bool
+      result: emailsecuritygetdomainresponseResult }
+    ///Creates an instance of emailsecuritygetdomainresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``email-securityMessage``>,
+                          messages: list<``email-securityMessage``>,
+                          success: bool,
+                          result: emailsecuritygetdomainresponseResult): emailsecuritygetdomainresponse =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
+
+[<Fable.Core.StringEnum; RequireQualifiedAccess>]
+type emailsecurityupdatedomainresponseResultRegions =
+    | [<CompiledName "GLOBAL">] GLOBAL
+    | [<CompiledName "AU">] AU
+    | [<CompiledName "DE">] DE
+    | [<CompiledName "IN">] IN
+    | [<CompiledName "US">] US
+    member this.Format() =
+        match this with
+        | GLOBAL -> "GLOBAL"
+        | AU -> "AU"
+        | DE -> "DE"
+        | IN -> "IN"
+        | US -> "US"
+
+type emailsecurityupdatedomainresponseResult =
+    { allowed_delivery_modes: list<``email-securityDeliveryMode``>
+      authorization: Option<Newtonsoft.Json.Linq.JToken>
+      created_at: System.DateTimeOffset
+      dmarc_status: Option<Newtonsoft.Json.Linq.JToken>
+      domain: string
+      drop_dispositions: list<``email-securityDispositionLabel``>
+      emails_processed: Option<Newtonsoft.Json.Linq.JToken>
+      folder: Option<Newtonsoft.Json.Linq.JToken>
+      ///The unique identifier for the domain.
+      id: int
+      inbox_provider: Option<Newtonsoft.Json.Linq.JToken>
+      integration_id: Option<System.Guid>
+      ip_restrictions: list<string>
+      last_modified: System.DateTimeOffset
+      lookback_hops: int
+      o365_tenant_id: Option<string>
+      regions: list<emailsecurityupdatedomainresponseResultRegions>
+      require_tls_inbound: Option<bool>
+      require_tls_outbound: Option<bool>
+      spf_status: Option<Newtonsoft.Json.Linq.JToken>
+      transport: string }
+    ///Creates an instance of emailsecurityupdatedomainresponseResult with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (allowed_delivery_modes: list<``email-securityDeliveryMode``>,
+                          created_at: System.DateTimeOffset,
+                          domain: string,
+                          drop_dispositions: list<``email-securityDispositionLabel``>,
+                          id: int,
+                          ip_restrictions: list<string>,
+                          last_modified: System.DateTimeOffset,
+                          lookback_hops: int,
+                          regions: list<emailsecurityupdatedomainresponseResultRegions>,
+                          transport: string): emailsecurityupdatedomainresponseResult =
+        { allowed_delivery_modes = allowed_delivery_modes
+          authorization = None
+          created_at = created_at
+          dmarc_status = None
+          domain = domain
+          drop_dispositions = drop_dispositions
+          emails_processed = None
+          folder = None
+          id = id
+          inbox_provider = None
+          integration_id = None
+          ip_restrictions = ip_restrictions
+          last_modified = last_modified
+          lookback_hops = lookback_hops
+          o365_tenant_id = None
+          regions = regions
+          require_tls_inbound = None
+          require_tls_outbound = None
+          spf_status = None
+          transport = transport }
+
+type emailsecurityupdatedomainresponse =
+    { errors: list<``email-securityMessage``>
+      messages: list<``email-securityMessage``>
+      success: bool
+      result: emailsecurityupdatedomainresponseResult }
+    ///Creates an instance of emailsecurityupdatedomainresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``email-securityMessage``>,
+                          messages: list<``email-securityMessage``>,
+                          success: bool,
+                          result: emailsecurityupdatedomainresponseResult): emailsecurityupdatedomainresponse =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
+
+type emailsecuritylistdisplaynamesresponse =
+    { errors: list<``email-securityMessage``>
+      messages: list<``email-securityMessage``>
+      success: bool
+      result: list<``email-securityDisplayName``>
+      result_info: ``email-securityResultInfo`` }
+    ///Creates an instance of emailsecuritylistdisplaynamesresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``email-securityMessage``>,
+                          messages: list<``email-securityMessage``>,
+                          success: bool,
+                          result: list<``email-securityDisplayName``>,
+                          result_info: ``email-securityResultInfo``): emailsecuritylistdisplaynamesresponse =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result
+          result_info = result_info }
+
+type emailsecuritycreatedisplaynameresponse =
+    { errors: list<``email-securityMessage``>
+      messages: list<``email-securityMessage``>
+      success: bool
+      result: Newtonsoft.Json.Linq.JToken }
+    ///Creates an instance of emailsecuritycreatedisplaynameresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``email-securityMessage``>,
+                          messages: list<``email-securityMessage``>,
+                          success: bool,
+                          result: Newtonsoft.Json.Linq.JToken): emailsecuritycreatedisplaynameresponse =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
+
+type emailsecuritydeletedisplaynameresponseResult =
+    { id: int }
+    ///Creates an instance of emailsecuritydeletedisplaynameresponseResult with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (id: int): emailsecuritydeletedisplaynameresponseResult = { id = id }
+
+type emailsecuritydeletedisplaynameresponse =
+    { errors: list<``email-securityMessage``>
+      messages: list<``email-securityMessage``>
+      success: bool
+      result: emailsecuritydeletedisplaynameresponseResult }
+    ///Creates an instance of emailsecuritydeletedisplaynameresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``email-securityMessage``>,
+                          messages: list<``email-securityMessage``>,
+                          success: bool,
+                          result: emailsecuritydeletedisplaynameresponseResult): emailsecuritydeletedisplaynameresponse =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
+
+type emailsecuritygetdisplaynameresponse =
+    { errors: list<``email-securityMessage``>
+      messages: list<``email-securityMessage``>
+      success: bool
+      result: Newtonsoft.Json.Linq.JToken }
+    ///Creates an instance of emailsecuritygetdisplaynameresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``email-securityMessage``>,
+                          messages: list<``email-securityMessage``>,
+                          success: bool,
+                          result: Newtonsoft.Json.Linq.JToken): emailsecuritygetdisplaynameresponse =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
+
+type emailsecurityupdatedisplaynameresponse =
+    { errors: list<``email-securityMessage``>
+      messages: list<``email-securityMessage``>
+      success: bool
+      result: Newtonsoft.Json.Linq.JToken }
+    ///Creates an instance of emailsecurityupdatedisplaynameresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``email-securityMessage``>,
+                          messages: list<``email-securityMessage``>,
+                          success: bool,
+                          result: Newtonsoft.Json.Linq.JToken): emailsecurityupdatedisplaynameresponse =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
+
+type emailsecuritybatchsendingdomainrestrictionsresponseResultDeletes =
+    { id: int }
+    ///Creates an instance of emailsecuritybatchsendingdomainrestrictionsresponseResultDeletes with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (id: int): emailsecuritybatchsendingdomainrestrictionsresponseResultDeletes = { id = id }
+
+type emailsecuritybatchsendingdomainrestrictionsresponseResult =
+    { deletes: list<emailsecuritybatchsendingdomainrestrictionsresponseResultDeletes> }
+    ///Creates an instance of emailsecuritybatchsendingdomainrestrictionsresponseResult with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (deletes: list<emailsecuritybatchsendingdomainrestrictionsresponseResultDeletes>): emailsecuritybatchsendingdomainrestrictionsresponseResult =
+        { deletes = deletes }
+
+type emailsecuritybatchsendingdomainrestrictionsresponse =
+    { errors: list<``email-securityMessage``>
+      messages: list<``email-securityMessage``>
+      success: bool
+      result: emailsecuritybatchsendingdomainrestrictionsresponseResult }
+    ///Creates an instance of emailsecuritybatchsendingdomainrestrictionsresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``email-securityMessage``>,
+                          messages: list<``email-securityMessage``>,
+                          success: bool,
+                          result: emailsecuritybatchsendingdomainrestrictionsresponseResult): emailsecuritybatchsendingdomainrestrictionsresponse =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
+
+type emailsecuritylisttrusteddomainsresponse =
+    { errors: list<``email-securityMessage``>
+      messages: list<``email-securityMessage``>
+      success: bool
+      result: list<``email-securityTrustedDomain``>
+      result_info: ``email-securityResultInfo`` }
+    ///Creates an instance of emailsecuritylisttrusteddomainsresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``email-securityMessage``>,
+                          messages: list<``email-securityMessage``>,
+                          success: bool,
+                          result: list<``email-securityTrustedDomain``>,
+                          result_info: ``email-securityResultInfo``): emailsecuritylisttrusteddomainsresponse =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result
+          result_info = result_info }
+
+type emailsecuritycreatetrusteddomainresponse =
+    { errors: list<``email-securityMessage``>
+      messages: list<``email-securityMessage``>
+      success: bool
+      result: Newtonsoft.Json.Linq.JToken }
+    ///Creates an instance of emailsecuritycreatetrusteddomainresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``email-securityMessage``>,
+                          messages: list<``email-securityMessage``>,
+                          success: bool,
+                          result: Newtonsoft.Json.Linq.JToken): emailsecuritycreatetrusteddomainresponse =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
+
+type emailsecuritybatchtrusteddomainsresponseResultDeletes =
+    { ///The unique identifier for the trusted domain.
+      id: int }
+    ///Creates an instance of emailsecuritybatchtrusteddomainsresponseResultDeletes with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (id: int): emailsecuritybatchtrusteddomainsresponseResultDeletes = { id = id }
+
+type emailsecuritybatchtrusteddomainsresponseResult =
+    { deletes: list<emailsecuritybatchtrusteddomainsresponseResultDeletes>
+      patches: list<``email-securityTrustedDomain``>
+      posts: list<``email-securityTrustedDomain``>
+      puts: list<``email-securityTrustedDomain``> }
+    ///Creates an instance of emailsecuritybatchtrusteddomainsresponseResult with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (deletes: list<emailsecuritybatchtrusteddomainsresponseResultDeletes>,
+                          patches: list<``email-securityTrustedDomain``>,
+                          posts: list<``email-securityTrustedDomain``>,
+                          puts: list<``email-securityTrustedDomain``>): emailsecuritybatchtrusteddomainsresponseResult =
+        { deletes = deletes
+          patches = patches
+          posts = posts
+          puts = puts }
+
+type emailsecuritybatchtrusteddomainsresponse =
+    { errors: list<``email-securityMessage``>
+      messages: list<``email-securityMessage``>
+      success: bool
+      result: emailsecuritybatchtrusteddomainsresponseResult }
+    ///Creates an instance of emailsecuritybatchtrusteddomainsresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``email-securityMessage``>,
+                          messages: list<``email-securityMessage``>,
+                          success: bool,
+                          result: emailsecuritybatchtrusteddomainsresponseResult): emailsecuritybatchtrusteddomainsresponse =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
+
+type emailsecuritydeletetrusteddomainresponseResult =
+    { ///The unique identifier for the trusted domain.
+      id: int }
+    ///Creates an instance of emailsecuritydeletetrusteddomainresponseResult with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (id: int): emailsecuritydeletetrusteddomainresponseResult = { id = id }
+
+type emailsecuritydeletetrusteddomainresponse =
+    { errors: list<``email-securityMessage``>
+      messages: list<``email-securityMessage``>
+      success: bool
+      result: emailsecuritydeletetrusteddomainresponseResult }
+    ///Creates an instance of emailsecuritydeletetrusteddomainresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``email-securityMessage``>,
+                          messages: list<``email-securityMessage``>,
+                          success: bool,
+                          result: emailsecuritydeletetrusteddomainresponseResult): emailsecuritydeletetrusteddomainresponse =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
+
+type emailsecuritygettrusteddomainresponse =
+    { errors: list<``email-securityMessage``>
+      messages: list<``email-securityMessage``>
+      success: bool
+      result: Newtonsoft.Json.Linq.JToken }
+    ///Creates an instance of emailsecuritygettrusteddomainresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``email-securityMessage``>,
+                          messages: list<``email-securityMessage``>,
+                          success: bool,
+                          result: Newtonsoft.Json.Linq.JToken): emailsecuritygettrusteddomainresponse =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
+
+type emailsecurityupdatetrusteddomainresponse =
+    { errors: list<``email-securityMessage``>
+      messages: list<``email-securityMessage``>
+      success: bool
+      result: Newtonsoft.Json.Linq.JToken }
+    ///Creates an instance of emailsecurityupdatetrusteddomainresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``email-securityMessage``>,
+                          messages: list<``email-securityMessage``>,
+                          success: bool,
+                          result: Newtonsoft.Json.Linq.JToken): emailsecurityupdatetrusteddomainresponse =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result }
+
+type emailsecuritysubmissionsresponse =
+    { errors: list<``email-securityMessage``>
+      messages: list<``email-securityMessage``>
+      success: bool
+      result: list<``email-securitySubmission``>
+      result_info: ``email-securityResultInfo`` }
+    ///Creates an instance of emailsecuritysubmissionsresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``email-securityMessage``>,
+                          messages: list<``email-securityMessage``>,
+                          success: bool,
+                          result: list<``email-securitySubmission``>,
+                          result_info: ``email-securityResultInfo``): emailsecuritysubmissionsresponse =
+        { errors = errors
+          messages = messages
+          success = success
+          result = result
+          result_info = result_info }
+
 [<RequireQualifiedAccess>]
 type EmailSecurityInvestigate =
     ///Contains the search results for the provided query.
-    | OK of payload: string
+    | OK of payload: emailsecurityinvestigateresponse
     ///The search is taking longer than expected. Use the Location header to poll for results.
-    | Accepted of payload: string
+    | Accepted of payload: emailsecurityinvestigateresponse
     | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
@@ -2035,7 +3028,7 @@ type EmailSecurityPostBulkMessageMovePayload =
 
 [<RequireQualifiedAccess>]
 type EmailSecurityPostBulkMessageMove =
-    | OK of payload: string
+    | OK of payload: emailsecuritypostbulkmessagemoveresponse
     | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 type EmailSecurityPostPreviewPayload =
@@ -2047,24 +3040,24 @@ type EmailSecurityPostPreviewPayload =
 
 [<RequireQualifiedAccess>]
 type EmailSecurityPostPreview =
-    | OK of payload: string
+    | OK of payload: emailsecuritypostpreviewresponse
     | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<RequireQualifiedAccess>]
 type EmailSecurityPostRelease =
-    | OK of payload: string
+    | OK of payload: emailsecuritypostreleaseresponse
     | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<RequireQualifiedAccess>]
 type EmailSecurityGetMessage =
     ///Contains the email message details.
-    | OK of payload: string
+    | OK of payload: emailsecuritygetmessageresponse
     | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<RequireQualifiedAccess>]
 type EmailSecurityGetMessageDetections =
     ///Contains the email message details.
-    | OK of payload: string
+    | OK of payload: emailsecuritygetmessagedetectionsresponse
     | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
@@ -2090,19 +3083,19 @@ type EmailSecurityPostMessageMovePayload =
 
 [<RequireQualifiedAccess>]
 type EmailSecurityPostMessageMove =
-    | OK of payload: string
+    | OK of payload: emailsecuritypostmessagemoveresponse
     | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<RequireQualifiedAccess>]
 type EmailSecurityGetMessagePreview =
     ///Contains a preview of the email.
-    | OK of payload: string
+    | OK of payload: emailsecuritygetmessagepreviewresponse
     | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<RequireQualifiedAccess>]
 type EmailSecurityGetMessageRaw =
     ///Contains the raw content of the email.
-    | OK of payload: string
+    | OK of payload: emailsecuritygetmessagerawresponse
     | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
@@ -2135,46 +3128,46 @@ type EmailSecurityPostReclassifyPayload =
 
 [<RequireQualifiedAccess>]
 type EmailSecurityPostReclassify =
-    | Accepted of payload: string
+    | Accepted of payload: emailsecuritypostreclassifyresponse
     | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<RequireQualifiedAccess>]
 type EmailSecurityGetMessageTrace =
     ///Contains the email trace.
-    | OK of payload: string
+    | OK of payload: emailsecuritygetmessagetraceresponse
     | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<RequireQualifiedAccess>]
 type EmailSecurityGetPhishguardReports =
     ///Contains a list of PhishGuard reports.
-    | OK of payload: string
+    | OK of payload: emailsecuritygetphishguardreportsresponse
     | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<RequireQualifiedAccess>]
 type EmailSecurityListAllowPolicies =
     ///Contains a list of allow policies for the account.
-    | OK of payload: string
+    | OK of payload: emailsecuritylistallowpoliciesresponse
     | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<RequireQualifiedAccess>]
 type EmailSecurityCreateAllowPolicy =
     ///Contains the newly created policy.
-    | Created of payload: string
+    | Created of payload: emailsecuritycreateallowpolicyresponse
     | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
-type Deletes =
+type EmailSecurityBatchAllowPoliciesPayloadDeletes =
     { ///The unique identifier for the allow policy.
       id: int }
-    ///Creates an instance of Deletes with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (id: int): Deletes = { id = id }
+    ///Creates an instance of EmailSecurityBatchAllowPoliciesPayloadDeletes with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (id: int): EmailSecurityBatchAllowPoliciesPayloadDeletes = { id = id }
 
 type EmailSecurityBatchAllowPoliciesPayload =
-    { deletes: list<Deletes>
+    { deletes: list<EmailSecurityBatchAllowPoliciesPayloadDeletes>
       patches: list<string>
       posts: list<``email-securityCreateAllowPolicy``>
       puts: list<string> }
     ///Creates an instance of EmailSecurityBatchAllowPoliciesPayload with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (deletes: list<Deletes>,
+    static member Create (deletes: list<EmailSecurityBatchAllowPoliciesPayloadDeletes>,
                           patches: list<string>,
                           posts: list<``email-securityCreateAllowPolicy``>,
                           puts: list<string>): EmailSecurityBatchAllowPoliciesPayload =
@@ -2185,34 +3178,34 @@ type EmailSecurityBatchAllowPoliciesPayload =
 
 [<RequireQualifiedAccess>]
 type EmailSecurityBatchAllowPolicies =
-    | OK of payload: string
+    | OK of payload: emailsecuritybatchallowpoliciesresponse
     | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<RequireQualifiedAccess>]
 type EmailSecurityDeleteAllowPolicy =
-    | OK of payload: string
+    | OK of payload: emailsecuritydeleteallowpolicyresponse
     | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<RequireQualifiedAccess>]
 type EmailSecurityGetAllowPolicy =
-    | OK of payload: string
+    | OK of payload: emailsecuritygetallowpolicyresponse
     | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<RequireQualifiedAccess>]
 type EmailSecurityUpdateAllowPolicy =
-    | OK of payload: string
+    | OK of payload: emailsecurityupdateallowpolicyresponse
     | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<RequireQualifiedAccess>]
 type EmailSecurityListBlockedSenders =
     ///Contains a list of blocked senders for the account.
-    | OK of payload: string
+    | OK of payload: emailsecuritylistblockedsendersresponse
     | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<RequireQualifiedAccess>]
 type EmailSecurityCreateBlockedSender =
     ///Contains the newly created pattern.
-    | Created of payload: string
+    | Created of payload: emailsecuritycreateblockedsenderresponse
     | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 type EmailSecurityBatchBlockedSendersPayloadDeletes =
@@ -2238,22 +3231,22 @@ type EmailSecurityBatchBlockedSendersPayload =
 
 [<RequireQualifiedAccess>]
 type EmailSecurityBatchBlockedSenders =
-    | OK of payload: string
+    | OK of payload: emailsecuritybatchblockedsendersresponse
     | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<RequireQualifiedAccess>]
 type EmailSecurityDeleteBlockedSender =
-    | OK of payload: string
+    | OK of payload: emailsecuritydeleteblockedsenderresponse
     | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<RequireQualifiedAccess>]
 type EmailSecurityGetBlockedSender =
-    | OK of payload: string
+    | OK of payload: emailsecuritygetblockedsenderresponse
     | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<RequireQualifiedAccess>]
 type EmailSecurityUpdateBlockedSender =
-    | OK of payload: string
+    | OK of payload: emailsecurityupdateblockedsenderresponse
     | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 type EmailSecurityDeleteDomainsPayloadArrayItem =
@@ -2266,24 +3259,24 @@ type EmailSecurityDeleteDomainsPayload = list<EmailSecurityDeleteDomainsPayloadA
 
 [<RequireQualifiedAccess>]
 type EmailSecurityDeleteDomains =
-    | OK of payload: string
+    | OK of payload: emailsecuritydeletedomainsresponse
     | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<RequireQualifiedAccess>]
 type EmailSecurityListDomains =
     ///Contains a list of domains for the account.
-    | OK of payload: string
+    | OK of payload: emailsecuritylistdomainsresponse
     | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<RequireQualifiedAccess>]
 type EmailSecurityDeleteDomain =
     ///Deletes the domain with the provided id.
-    | OK of payload: string
+    | OK of payload: emailsecuritydeletedomainresponse
     | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<RequireQualifiedAccess>]
 type EmailSecurityGetDomain =
-    | OK of payload: string
+    | OK of payload: emailsecuritygetdomainresponse
     | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<Fable.Core.StringEnum; RequireQualifiedAccess>]
@@ -2329,28 +3322,28 @@ type EmailSecurityUpdateDomainPayload =
 
 [<RequireQualifiedAccess>]
 type EmailSecurityUpdateDomain =
-    | OK of payload: string
+    | OK of payload: emailsecurityupdatedomainresponse
     | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<RequireQualifiedAccess>]
 type EmailSecurityListDisplayNames =
     ///Contains the list of impersonation registry entries for the account.
-    | OK of payload: string
+    | OK of payload: emailsecuritylistdisplaynamesresponse
     | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<RequireQualifiedAccess>]
 type EmailSecurityCreateDisplayName =
-    | Created of payload: string
+    | Created of payload: emailsecuritycreatedisplaynameresponse
     | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<RequireQualifiedAccess>]
 type EmailSecurityDeleteDisplayName =
-    | OK of payload: string
+    | OK of payload: emailsecuritydeletedisplaynameresponse
     | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<RequireQualifiedAccess>]
 type EmailSecurityGetDisplayName =
-    | OK of payload: string
+    | OK of payload: emailsecuritygetdisplaynameresponse
     | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 type EmailSecurityUpdateDisplayNamePayload =
@@ -2365,7 +3358,7 @@ type EmailSecurityUpdateDisplayNamePayload =
 
 [<RequireQualifiedAccess>]
 type EmailSecurityUpdateDisplayName =
-    | OK of payload: string
+    | OK of payload: emailsecurityupdatedisplaynameresponse
     | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 type EmailSecurityBatchSendingDomainRestrictionsPayloadDeletes =
@@ -2381,19 +3374,19 @@ type EmailSecurityBatchSendingDomainRestrictionsPayload =
 
 [<RequireQualifiedAccess>]
 type EmailSecurityBatchSendingDomainRestrictions =
-    | OK of payload: string
+    | OK of payload: emailsecuritybatchsendingdomainrestrictionsresponse
     | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<RequireQualifiedAccess>]
 type EmailSecurityListTrustedDomains =
     ///Contains the list of trusted domains for the account.
-    | OK of payload: string
+    | OK of payload: emailsecuritylisttrusteddomainsresponse
     | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<RequireQualifiedAccess>]
 type EmailSecurityCreateTrustedDomain =
     ///Contains the new trusted domain in the shape of the request body.
-    | Created of payload: string
+    | Created of payload: emailsecuritycreatetrusteddomainresponse
     | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 type EmailSecurityBatchTrustedDomainsPayloadDeletes =
@@ -2419,17 +3412,17 @@ type EmailSecurityBatchTrustedDomainsPayload =
 
 [<RequireQualifiedAccess>]
 type EmailSecurityBatchTrustedDomains =
-    | OK of payload: string
+    | OK of payload: emailsecuritybatchtrusteddomainsresponse
     | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<RequireQualifiedAccess>]
 type EmailSecurityDeleteTrustedDomain =
-    | OK of payload: string
+    | OK of payload: emailsecuritydeletetrusteddomainresponse
     | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<RequireQualifiedAccess>]
 type EmailSecurityGetTrustedDomain =
-    | OK of payload: string
+    | OK of payload: emailsecuritygettrusteddomainresponse
     | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 type EmailSecurityUpdateTrustedDomainPayload =
@@ -2453,12 +3446,12 @@ type EmailSecurityUpdateTrustedDomainPayload =
 
 [<RequireQualifiedAccess>]
 type EmailSecurityUpdateTrustedDomain =
-    | OK of payload: string
+    | OK of payload: emailsecurityupdatetrusteddomainresponse
     | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<RequireQualifiedAccess>]
 type EmailSecuritySubmissions =
-    | OK of payload: string
+    | OK of payload: emailsecuritysubmissionsresponse
     | BadRequest of payload: Newtonsoft.Json.Linq.JToken
 
 [<RequireQualifiedAccess>]

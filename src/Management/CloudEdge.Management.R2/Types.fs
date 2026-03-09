@@ -1,5 +1,12 @@
 namespace rec Fidelity.CloudEdge.Management.R2.Types
 
+// Auto-generated stub types (missing from Hawaii output)
+type ciphers = string
+type maintenance = string
+type objects = string
+type results = string
+type storage = string
+
 ///Use this to identify the account.
 type ``r2-data-catalogaccount-id`` = string
 
@@ -207,17 +214,19 @@ type Resultinfo =
 
 type ``r2-data-catalogapi-response-collection`` =
     { ///Contains errors if the API call was unsuccessful.
-      errors: Option<list<Errors>>
+      errors: list<Errors>
       ///Contains informational messages.
-      messages: Option<list<Messages>>
+      messages: list<Messages>
       ///Indicates whether the API call was successful.
-      success: Option<``r2-data-catalogapi-response-success``>
+      success: ``r2-data-catalogapi-response-success``
       result_info: Option<Resultinfo> }
     ///Creates an instance of r2-data-catalogapi-response-collection with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): ``r2-data-catalogapi-response-collection`` =
-        { errors = None
-          messages = None
-          success = None
+    static member Create (errors: list<Errors>,
+                          messages: list<Messages>,
+                          success: ``r2-data-catalogapi-response-success``): ``r2-data-catalogapi-response-collection`` =
+        { errors = errors
+          messages = messages
+          success = success
           result_info = None }
 
 type ``r2-data-catalogapi-response-common-failureErrors`` =
@@ -1787,24 +1796,205 @@ type r2v4responselistErrors =
     static member Create (code: int, message: string): r2v4responselistErrors = { code = code; message = message }
 
 type r2v4responselist =
-    { errors: Option<list<r2v4responselistErrors>>
-      messages: Option<r2messages>
-      result: Option<Newtonsoft.Json.Linq.JObject>
+    { errors: list<r2v4responselistErrors>
+      messages: r2messages
+      result: Newtonsoft.Json.Linq.JObject
       ///Whether the API call was successful.
-      success: Option<bool>
+      success: bool
       result_info: Option<r2resultinfo> }
     ///Creates an instance of r2v4responselist with all optional fields initialized to None. The required fields are parameters of this function
-    static member Create (): r2v4responselist =
-        { errors = None
-          messages = None
-          result = None
-          success = None
+    static member Create (errors: list<r2v4responselistErrors>,
+                          messages: r2messages,
+                          result: Newtonsoft.Json.Linq.JObject,
+                          success: bool): r2v4responselist =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success
           result_info = None }
+
+type ``r2-list-bucketsresponseErrors`` =
+    { code: int
+      message: string }
+    ///Creates an instance of r2-list-bucketsresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``r2-list-bucketsresponseErrors`` =
+        { code = code; message = message }
+
+type Result =
+    { buckets: Option<list<r2bucket>> }
+    ///Creates an instance of Result with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): Result = { buckets = None }
+
+type ``r2-list-bucketsresponse`` =
+    { errors: list<``r2-list-bucketsresponseErrors``>
+      messages: r2messages
+      result: Result
+      ///Whether the API call was successful.
+      success: bool
+      result_info: Option<r2resultinfo> }
+    ///Creates an instance of r2-list-bucketsresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``r2-list-bucketsresponseErrors``>,
+                          messages: r2messages,
+                          result: Result,
+                          success: bool): ``r2-list-bucketsresponse`` =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success
+          result_info = None }
+
+type ``r2-create-bucketresponseErrors`` =
+    { code: int
+      message: string }
+    ///Creates an instance of r2-create-bucketresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``r2-create-bucketresponseErrors`` =
+        { code = code; message = message }
+
+type ``r2-create-bucketresponse`` =
+    { errors: list<``r2-create-bucketresponseErrors``>
+      messages: r2messages
+      ///A single R2 bucket.
+      result: r2bucket
+      ///Whether the API call was successful.
+      success: bool }
+    ///Creates an instance of r2-create-bucketresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``r2-create-bucketresponseErrors``>,
+                          messages: r2messages,
+                          result: r2bucket,
+                          success: bool): ``r2-create-bucketresponse`` =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
+
+type ``r2-get-bucketresponseErrors`` =
+    { code: int
+      message: string }
+    ///Creates an instance of r2-get-bucketresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``r2-get-bucketresponseErrors`` =
+        { code = code; message = message }
+
+type ``r2-get-bucketresponse`` =
+    { errors: list<``r2-get-bucketresponseErrors``>
+      messages: r2messages
+      ///A single R2 bucket.
+      result: r2bucket
+      ///Whether the API call was successful.
+      success: bool }
+    ///Creates an instance of r2-get-bucketresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``r2-get-bucketresponseErrors``>,
+                          messages: r2messages,
+                          result: r2bucket,
+                          success: bool): ``r2-get-bucketresponse`` =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
+
+type ``r2-patch-bucketresponseErrors`` =
+    { code: int
+      message: string }
+    ///Creates an instance of r2-patch-bucketresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``r2-patch-bucketresponseErrors`` =
+        { code = code; message = message }
+
+type ``r2-patch-bucketresponse`` =
+    { errors: list<``r2-patch-bucketresponseErrors``>
+      messages: r2messages
+      ///A single R2 bucket.
+      result: r2bucket
+      ///Whether the API call was successful.
+      success: bool }
+    ///Creates an instance of r2-patch-bucketresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``r2-patch-bucketresponseErrors``>,
+                          messages: r2messages,
+                          result: r2bucket,
+                          success: bool): ``r2-patch-bucketresponse`` =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
+
+type ``r2-delete-bucket-sippy-configresponseErrors`` =
+    { code: int
+      message: string }
+    ///Creates an instance of r2-delete-bucket-sippy-configresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``r2-delete-bucket-sippy-configresponseErrors`` =
+        { code = code; message = message }
+
+type ``r2-delete-bucket-sippy-configresponseResult`` =
+    { enabled: Option<bool> }
+    ///Creates an instance of r2-delete-bucket-sippy-configresponseResult with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (): ``r2-delete-bucket-sippy-configresponseResult`` = { enabled = None }
+
+type ``r2-delete-bucket-sippy-configresponse`` =
+    { errors: list<``r2-delete-bucket-sippy-configresponseErrors``>
+      messages: r2messages
+      result: ``r2-delete-bucket-sippy-configresponseResult``
+      ///Whether the API call was successful.
+      success: bool }
+    ///Creates an instance of r2-delete-bucket-sippy-configresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``r2-delete-bucket-sippy-configresponseErrors``>,
+                          messages: r2messages,
+                          result: ``r2-delete-bucket-sippy-configresponseResult``,
+                          success: bool): ``r2-delete-bucket-sippy-configresponse`` =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
+
+type ``r2-get-bucket-sippy-configresponseErrors`` =
+    { code: int
+      message: string }
+    ///Creates an instance of r2-get-bucket-sippy-configresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``r2-get-bucket-sippy-configresponseErrors`` =
+        { code = code; message = message }
+
+type ``r2-get-bucket-sippy-configresponse`` =
+    { errors: list<``r2-get-bucket-sippy-configresponseErrors``>
+      messages: r2messages
+      result: r2sippy
+      ///Whether the API call was successful.
+      success: bool }
+    ///Creates an instance of r2-get-bucket-sippy-configresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``r2-get-bucket-sippy-configresponseErrors``>,
+                          messages: r2messages,
+                          result: r2sippy,
+                          success: bool): ``r2-get-bucket-sippy-configresponse`` =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
+
+type ``r2-put-bucket-sippy-configresponseErrors`` =
+    { code: int
+      message: string }
+    ///Creates an instance of r2-put-bucket-sippy-configresponseErrors with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (code: int, message: string): ``r2-put-bucket-sippy-configresponseErrors`` =
+        { code = code; message = message }
+
+type ``r2-put-bucket-sippy-configresponse`` =
+    { errors: list<``r2-put-bucket-sippy-configresponseErrors``>
+      messages: r2messages
+      result: r2sippy
+      ///Whether the API call was successful.
+      success: bool }
+    ///Creates an instance of r2-put-bucket-sippy-configresponse with all optional fields initialized to None. The required fields are parameters of this function
+    static member Create (errors: list<``r2-put-bucket-sippy-configresponseErrors``>,
+                          messages: r2messages,
+                          result: r2sippy,
+                          success: bool): ``r2-put-bucket-sippy-configresponse`` =
+        { errors = errors
+          messages = messages
+          result = result
+          success = success }
 
 [<RequireQualifiedAccess>]
 type R2ListBuckets =
     ///List Buckets response.
-    | OK of payload: string
+    | OK of payload: ``r2-list-bucketsresponse``
+    ///List Buckets response failure.
+    | BadRequest of payload: r2v4responsefailure
 
 type R2CreateBucketPayload =
     { ///Location of the bucket.
@@ -1822,34 +2012,48 @@ type R2CreateBucketPayload =
 [<RequireQualifiedAccess>]
 type R2CreateBucket =
     ///Create Bucket response.
-    | OK of payload: string
+    | OK of payload: ``r2-create-bucketresponse``
+    ///Create Bucket response failure.
+    | BadRequest of payload: r2v4responsefailure
 
 [<RequireQualifiedAccess>]
 type R2DeleteBucket =
     ///Delete Bucket response.
     | OK of payload: r2v4response
+    ///Delete Bucket response failure.
+    | BadRequest of payload: r2v4responsefailure
 
 [<RequireQualifiedAccess>]
 type R2GetBucket =
     ///Get Bucket response.
-    | OK of payload: string
+    | OK of payload: ``r2-get-bucketresponse``
+    ///Get Bucket response failure.
+    | BadRequest of payload: r2v4responsefailure
 
 [<RequireQualifiedAccess>]
 type R2PatchBucket =
     ///Patch Bucket response.
-    | OK of payload: string
+    | OK of payload: ``r2-patch-bucketresponse``
+    ///Get Bucket response failure.
+    | BadRequest of payload: r2v4responsefailure
 
 [<RequireQualifiedAccess>]
 type R2DeleteBucketSippyConfig =
     ///Delete Sippy Configuration response.
-    | OK of payload: string
+    | OK of payload: ``r2-delete-bucket-sippy-configresponse``
+    ///Delete Sippy Configuration response failure.
+    | BadRequest of payload: r2v4responsefailure
 
 [<RequireQualifiedAccess>]
 type R2GetBucketSippyConfig =
     ///Get Sippy Configuration response.
-    | OK of payload: string
+    | OK of payload: ``r2-get-bucket-sippy-configresponse``
+    ///Get Sippy Configuration response failure.
+    | BadRequest of payload: r2v4responsefailure
 
 [<RequireQualifiedAccess>]
 type R2PutBucketSippyConfig =
     ///Set Sippy Configuration response.
-    | OK of payload: string
+    | OK of payload: ``r2-put-bucket-sippy-configresponse``
+    ///Get Sippy Configuration response failure.
+    | BadRequest of payload: r2v4responsefailure

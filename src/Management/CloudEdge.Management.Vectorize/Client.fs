@@ -30,7 +30,9 @@ type VectorizeClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return VectorizeListVectorizeIndexes.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return VectorizeListVectorizeIndexes.OK(Serializer.deserialize content)
+            | _ -> return VectorizeListVectorizeIndexes.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -54,7 +56,9 @@ type VectorizeClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return VectorizeCreateVectorizeIndex.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return VectorizeCreateVectorizeIndex.OK(Serializer.deserialize content)
+            | _ -> return VectorizeCreateVectorizeIndex.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -78,7 +82,9 @@ type VectorizeClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return VectorizeDeleteVectorizeIndex.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return VectorizeDeleteVectorizeIndex.OK(Serializer.deserialize content)
+            | _ -> return VectorizeDeleteVectorizeIndex.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -102,7 +108,9 @@ type VectorizeClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return VectorizeGetVectorizeIndex.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return VectorizeGetVectorizeIndex.OK(Serializer.deserialize content)
+            | _ -> return VectorizeGetVectorizeIndex.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -128,7 +136,9 @@ type VectorizeClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return VectorizeDeleteVectorsById.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return VectorizeDeleteVectorsById.OK(Serializer.deserialize content)
+            | _ -> return VectorizeDeleteVectorsById.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -154,7 +164,9 @@ type VectorizeClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return VectorizeGetVectorsById.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return VectorizeGetVectorsById.OK(Serializer.deserialize content)
+            | _ -> return VectorizeGetVectorsById.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -173,16 +185,24 @@ type VectorizeClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return VectorizeIndexInfo.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return VectorizeIndexInfo.OK(Serializer.deserialize content)
+            | _ -> return VectorizeIndexInfo.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
     ///Inserts vectors into the specified index and returns a mutation id corresponding to the vectors enqueued for insertion.
     ///</summary>
+    ///<param name="accountId"></param>
+    ///<param name="indexName"></param>
+    ///<param name="body">ndjson file containing vectors to insert.</param>
+    ///<param name="unparsableBehavior"></param>
+    ///<param name="cancellationToken"></param>
     member this.VectorizeInsertVector
         (
             accountId: string,
             indexName: string,
+            body: string,
             ?unparsableBehavior: string,
             ?cancellationToken: CancellationToken
         ) =
@@ -190,6 +210,7 @@ type VectorizeClient(httpClient: HttpClient) =
             let requestParts =
                 [ RequestPart.path ("account_id", accountId)
                   RequestPart.path ("index_name", indexName)
+                  RequestPart.jsonContent body
                   if unparsableBehavior.IsSome then
                       RequestPart.query ("unparsable-behavior", unparsableBehavior.Value) ]
 
@@ -200,7 +221,9 @@ type VectorizeClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return VectorizeInsertVector.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return VectorizeInsertVector.OK(Serializer.deserialize content)
+            | _ -> return VectorizeInsertVector.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -230,7 +253,9 @@ type VectorizeClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return VectorizeListVectors.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return VectorizeListVectors.OK(Serializer.deserialize content)
+            | _ -> return VectorizeListVectors.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -256,7 +281,9 @@ type VectorizeClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return VectorizeCreateMetadataIndex.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return VectorizeCreateMetadataIndex.OK(Serializer.deserialize content)
+            | _ -> return VectorizeCreateMetadataIndex.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -282,7 +309,9 @@ type VectorizeClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return VectorizeDeleteMetadataIndex.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return VectorizeDeleteMetadataIndex.OK(Serializer.deserialize content)
+            | _ -> return VectorizeDeleteMetadataIndex.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -306,7 +335,9 @@ type VectorizeClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return VectorizeListMetadataIndexes.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return VectorizeListMetadataIndexes.OK(Serializer.deserialize content)
+            | _ -> return VectorizeListMetadataIndexes.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -332,16 +363,24 @@ type VectorizeClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return VectorizeQueryVector.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return VectorizeQueryVector.OK(Serializer.deserialize content)
+            | _ -> return VectorizeQueryVector.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
     ///Upserts vectors into the specified index, creating them if they do not exist and returns a mutation id corresponding to the vectors enqueued for upsertion.
     ///</summary>
+    ///<param name="accountId"></param>
+    ///<param name="indexName"></param>
+    ///<param name="body">ndjson file containing vectors to upsert.</param>
+    ///<param name="unparsableBehavior"></param>
+    ///<param name="cancellationToken"></param>
     member this.VectorizeUpsertVector
         (
             accountId: string,
             indexName: string,
+            body: string,
             ?unparsableBehavior: string,
             ?cancellationToken: CancellationToken
         ) =
@@ -349,6 +388,7 @@ type VectorizeClient(httpClient: HttpClient) =
             let requestParts =
                 [ RequestPart.path ("account_id", accountId)
                   RequestPart.path ("index_name", indexName)
+                  RequestPart.jsonContent body
                   if unparsableBehavior.IsSome then
                       RequestPart.query ("unparsable-behavior", unparsableBehavior.Value) ]
 
@@ -359,5 +399,7 @@ type VectorizeClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return VectorizeUpsertVector.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return VectorizeUpsertVector.OK(Serializer.deserialize content)
+            | _ -> return VectorizeUpsertVector.BadRequest(Serializer.deserialize content)
         }

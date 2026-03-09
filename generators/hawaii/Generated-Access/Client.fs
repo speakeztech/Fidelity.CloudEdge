@@ -329,7 +329,9 @@ type AccessClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.getAsync httpClient "/accounts/{account_id}/access/apps" requestParts cancellationToken
 
-            return AccessApplicationsListAccessApplications.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccessApplicationsListAccessApplications.OK(Serializer.deserialize content)
+            | _ -> return AccessApplicationsListAccessApplications.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -349,7 +351,9 @@ type AccessClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.postAsync httpClient "/accounts/{account_id}/access/apps" requestParts cancellationToken
 
-            return AccessApplicationsAddAnApplication.Created(Serializer.deserialize content)
+            match int status with
+            | 201 -> return AccessApplicationsAddAnApplication.Created(Serializer.deserialize content)
+            | _ -> return AccessApplicationsAddAnApplication.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -370,7 +374,14 @@ type AccessClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.getAsync httpClient "/accounts/{account_id}/access/apps/ca" requestParts cancellationToken
 
-            return AccessShortLivedCertificateCAsListShortLivedCertificateCAs.OK(Serializer.deserialize content)
+            match int status with
+            | 200 ->
+                return AccessShortLivedCertificateCAsListShortLivedCertificateCAs.OK(Serializer.deserialize content)
+            | _ ->
+                return
+                    AccessShortLivedCertificateCAsListShortLivedCertificateCAs.BadRequest(
+                        Serializer.deserialize content
+                    )
         }
 
     ///<summary>
@@ -394,7 +405,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessApplicationsDeleteAnAccessApplication.Accepted(Serializer.deserialize content)
+            match int status with
+            | 202 -> return AccessApplicationsDeleteAnAccessApplication.Accepted(Serializer.deserialize content)
+            | _ -> return AccessApplicationsDeleteAnAccessApplication.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -418,7 +431,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessApplicationsGetAnAccessApplication.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccessApplicationsGetAnAccessApplication.OK(Serializer.deserialize content)
+            | _ -> return AccessApplicationsGetAnAccessApplication.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -444,7 +459,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessApplicationsUpdateAnAccessApplication.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccessApplicationsUpdateAnAccessApplication.OK(Serializer.deserialize content)
+            | _ -> return AccessApplicationsUpdateAnAccessApplication.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -468,7 +485,17 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessShortLivedCertificateCAsDeleteAShortLivedCertificateCa.Accepted(Serializer.deserialize content)
+            match int status with
+            | 202 ->
+                return
+                    AccessShortLivedCertificateCAsDeleteAShortLivedCertificateCa.Accepted(
+                        Serializer.deserialize content
+                    )
+            | _ ->
+                return
+                    AccessShortLivedCertificateCAsDeleteAShortLivedCertificateCa.BadRequest(
+                        Serializer.deserialize content
+                    )
         }
 
     ///<summary>
@@ -492,7 +519,11 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessShortLivedCertificateCAsGetAShortLivedCertificateCa.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccessShortLivedCertificateCAsGetAShortLivedCertificateCa.OK(Serializer.deserialize content)
+            | _ ->
+                return
+                    AccessShortLivedCertificateCAsGetAShortLivedCertificateCa.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -516,7 +547,14 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessShortLivedCertificateCAsCreateAShortLivedCertificateCa.OK(Serializer.deserialize content)
+            match int status with
+            | 200 ->
+                return AccessShortLivedCertificateCAsCreateAShortLivedCertificateCa.OK(Serializer.deserialize content)
+            | _ ->
+                return
+                    AccessShortLivedCertificateCAsCreateAShortLivedCertificateCa.BadRequest(
+                        Serializer.deserialize content
+                    )
         }
 
     ///<summary>
@@ -547,7 +585,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessPoliciesListAccessAppPolicies.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccessPoliciesListAccessAppPolicies.OK(Serializer.deserialize content)
+            | _ -> return AccessPoliciesListAccessAppPolicies.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -577,7 +617,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessPoliciesCreateAnAccessPolicy.Created(Serializer.deserialize content)
+            match int status with
+            | 201 -> return AccessPoliciesCreateAnAccessPolicy.Created(Serializer.deserialize content)
+            | _ -> return AccessPoliciesCreateAnAccessPolicy.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -607,7 +649,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessPoliciesDeleteAnAccessPolicy.Accepted(Serializer.deserialize content)
+            match int status with
+            | 202 -> return AccessPoliciesDeleteAnAccessPolicy.Accepted(Serializer.deserialize content)
+            | _ -> return AccessPoliciesDeleteAnAccessPolicy.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -637,7 +681,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessPoliciesGetAnAccessPolicy.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccessPoliciesGetAnAccessPolicy.OK(Serializer.deserialize content)
+            | _ -> return AccessPoliciesGetAnAccessPolicy.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -670,7 +716,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessPoliciesUpdateAnAccessPolicy.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccessPoliciesUpdateAnAccessPolicy.OK(Serializer.deserialize content)
+            | _ -> return AccessPoliciesUpdateAnAccessPolicy.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -700,7 +748,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessPoliciesConvertReusable.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccessPoliciesConvertReusable.OK(Serializer.deserialize content)
+            | _ -> return AccessPoliciesConvertReusable.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -724,7 +774,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessApplicationsRevokeServiceTokens.Accepted(Serializer.deserialize content)
+            match int status with
+            | 202 -> return AccessApplicationsRevokeServiceTokens.Accepted(Serializer.deserialize content)
+            | _ -> return AccessApplicationsRevokeServiceTokens.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -750,7 +802,11 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessApplicationsPatchUpdateAccessApplicationSettings.Accepted(Serializer.deserialize content)
+            match int status with
+            | 202 ->
+                return AccessApplicationsPatchUpdateAccessApplicationSettings.Accepted(Serializer.deserialize content)
+            | _ ->
+                return AccessApplicationsPatchUpdateAccessApplicationSettings.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -776,7 +832,11 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessApplicationsPutUpdateAccessApplicationSettings.Accepted(Serializer.deserialize content)
+            match int status with
+            | 202 ->
+                return AccessApplicationsPutUpdateAccessApplicationSettings.Accepted(Serializer.deserialize content)
+            | _ ->
+                return AccessApplicationsPutUpdateAccessApplicationSettings.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -800,7 +860,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessApplicationsTestAccessPolicies.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccessApplicationsTestAccessPolicies.OK(Serializer.deserialize content)
+            | _ -> return AccessApplicationsTestAccessPolicies.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -825,7 +887,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessMtlsAuthenticationListMtlsCertificates.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccessMtlsAuthenticationListMtlsCertificates.OK(Serializer.deserialize content)
+            | _ -> return AccessMtlsAuthenticationListMtlsCertificates.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -849,7 +913,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessMtlsAuthenticationAddAnMtlsCertificate.Created(Serializer.deserialize content)
+            match int status with
+            | 201 -> return AccessMtlsAuthenticationAddAnMtlsCertificate.Created(Serializer.deserialize content)
+            | _ -> return AccessMtlsAuthenticationAddAnMtlsCertificate.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -871,7 +937,14 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessMtlsAuthenticationListMtlsCertificatesHostnameSettings.OK(Serializer.deserialize content)
+            match int status with
+            | 200 ->
+                return AccessMtlsAuthenticationListMtlsCertificatesHostnameSettings.OK(Serializer.deserialize content)
+            | _ ->
+                return
+                    AccessMtlsAuthenticationListMtlsCertificatesHostnameSettings.BadRequest(
+                        Serializer.deserialize content
+                    )
         }
 
     ///<summary>
@@ -895,7 +968,12 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessMtlsAuthenticationUpdateAnMtlsCertificateSettings.Accepted(Serializer.deserialize content)
+            match int status with
+            | 202 ->
+                return AccessMtlsAuthenticationUpdateAnMtlsCertificateSettings.Accepted(Serializer.deserialize content)
+            | _ ->
+                return
+                    AccessMtlsAuthenticationUpdateAnMtlsCertificateSettings.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -919,7 +997,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessMtlsAuthenticationDeleteAnMtlsCertificate.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccessMtlsAuthenticationDeleteAnMtlsCertificate.OK(Serializer.deserialize content)
+            | _ -> return AccessMtlsAuthenticationDeleteAnMtlsCertificate.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -943,7 +1023,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessMtlsAuthenticationGetAnMtlsCertificate.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccessMtlsAuthenticationGetAnMtlsCertificate.OK(Serializer.deserialize content)
+            | _ -> return AccessMtlsAuthenticationGetAnMtlsCertificate.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -969,7 +1051,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessMtlsAuthenticationUpdateAnMtlsCertificate.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccessMtlsAuthenticationUpdateAnMtlsCertificate.OK(Serializer.deserialize content)
+            | _ -> return AccessMtlsAuthenticationUpdateAnMtlsCertificate.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -994,7 +1078,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessCustomPagesListCustomPages.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccessCustomPagesListCustomPages.OK(Serializer.deserialize content)
+            | _ -> return AccessCustomPagesListCustomPages.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1018,7 +1104,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessCustomPagesCreateACustomPage.Created(Serializer.deserialize content)
+            match int status with
+            | 201 -> return AccessCustomPagesCreateACustomPage.Created(Serializer.deserialize content)
+            | _ -> return AccessCustomPagesCreateACustomPage.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1042,7 +1130,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessCustomPagesDeleteACustomPage.Accepted(Serializer.deserialize content)
+            match int status with
+            | 202 -> return AccessCustomPagesDeleteACustomPage.Accepted(Serializer.deserialize content)
+            | _ -> return AccessCustomPagesDeleteACustomPage.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1066,7 +1156,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessCustomPagesGetACustomPage.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccessCustomPagesGetACustomPage.OK(Serializer.deserialize content)
+            | _ -> return AccessCustomPagesGetACustomPage.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1092,7 +1184,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessCustomPagesUpdateACustomPage.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccessCustomPagesUpdateACustomPage.OK(Serializer.deserialize content)
+            | _ -> return AccessCustomPagesUpdateACustomPage.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1110,7 +1204,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessGatewayCaListSSHCa.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccessGatewayCaListSSHCa.OK(Serializer.deserialize content)
+            | _ -> return AccessGatewayCaListSSHCa.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1128,7 +1224,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessGatewayCaAddAnSSHCa.Created(Serializer.deserialize content)
+            match int status with
+            | 201 -> return AccessGatewayCaAddAnSSHCa.Created(Serializer.deserialize content)
+            | _ -> return AccessGatewayCaAddAnSSHCa.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1152,7 +1250,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessGatewayCaDeleteAnSSHCa.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccessGatewayCaDeleteAnSSHCa.OK(Serializer.deserialize content)
+            | _ -> return AccessGatewayCaDeleteAnSSHCa.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1176,7 +1276,9 @@ type AccessClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.getAsync httpClient "/accounts/{account_id}/access/groups" requestParts cancellationToken
 
-            return AccessGroupsListAccessGroups.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccessGroupsListAccessGroups.OK(Serializer.deserialize content)
+            | _ -> return AccessGroupsListAccessGroups.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1196,7 +1298,9 @@ type AccessClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.postAsync httpClient "/accounts/{account_id}/access/groups" requestParts cancellationToken
 
-            return AccessGroupsCreateAnAccessGroup.Created(Serializer.deserialize content)
+            match int status with
+            | 201 -> return AccessGroupsCreateAnAccessGroup.Created(Serializer.deserialize content)
+            | _ -> return AccessGroupsCreateAnAccessGroup.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1220,7 +1324,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessGroupsDeleteAnAccessGroup.Accepted(Serializer.deserialize content)
+            match int status with
+            | 202 -> return AccessGroupsDeleteAnAccessGroup.Accepted(Serializer.deserialize content)
+            | _ -> return AccessGroupsDeleteAnAccessGroup.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1244,7 +1350,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessGroupsGetAnAccessGroup.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccessGroupsGetAnAccessGroup.OK(Serializer.deserialize content)
+            | _ -> return AccessGroupsGetAnAccessGroup.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1270,7 +1378,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessGroupsUpdateAnAccessGroup.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccessGroupsUpdateAnAccessGroup.OK(Serializer.deserialize content)
+            | _ -> return AccessGroupsUpdateAnAccessGroup.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1298,7 +1408,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessIdentityProvidersListAccessIdentityProviders.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccessIdentityProvidersListAccessIdentityProviders.OK(Serializer.deserialize content)
+            | _ -> return AccessIdentityProvidersListAccessIdentityProviders.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1322,7 +1434,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessIdentityProvidersAddAnAccessIdentityProvider.Created(Serializer.deserialize content)
+            match int status with
+            | 201 -> return AccessIdentityProvidersAddAnAccessIdentityProvider.Created(Serializer.deserialize content)
+            | _ -> return AccessIdentityProvidersAddAnAccessIdentityProvider.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1346,7 +1460,11 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessIdentityProvidersDeleteAnAccessIdentityProvider.Accepted(Serializer.deserialize content)
+            match int status with
+            | 202 ->
+                return AccessIdentityProvidersDeleteAnAccessIdentityProvider.Accepted(Serializer.deserialize content)
+            | _ ->
+                return AccessIdentityProvidersDeleteAnAccessIdentityProvider.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1370,7 +1488,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessIdentityProvidersGetAnAccessIdentityProvider.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccessIdentityProvidersGetAnAccessIdentityProvider.OK(Serializer.deserialize content)
+            | _ -> return AccessIdentityProvidersGetAnAccessIdentityProvider.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1396,7 +1516,10 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessIdentityProvidersUpdateAnAccessIdentityProvider.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccessIdentityProvidersUpdateAnAccessIdentityProvider.OK(Serializer.deserialize content)
+            | _ ->
+                return AccessIdentityProvidersUpdateAnAccessIdentityProvider.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1432,7 +1555,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessIdentityProvidersListScimGroupResources.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccessIdentityProvidersListScimGroupResources.OK(Serializer.deserialize content)
+            | _ -> return AccessIdentityProvidersListScimGroupResources.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1474,7 +1599,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessIdentityProvidersListScimUserResources.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccessIdentityProvidersListScimUserResources.OK(Serializer.deserialize content)
+            | _ -> return AccessIdentityProvidersListScimUserResources.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1492,7 +1619,9 @@ type AccessClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.getAsync httpClient "/accounts/{account_id}/access/keys" requestParts cancellationToken
 
-            return AccessKeyConfigurationGetTheAccessKeyConfiguration.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccessKeyConfigurationGetTheAccessKeyConfiguration.OK(Serializer.deserialize content)
+            | _ -> return AccessKeyConfigurationGetTheAccessKeyConfiguration.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1512,7 +1641,10 @@ type AccessClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.putAsync httpClient "/accounts/{account_id}/access/keys" requestParts cancellationToken
 
-            return AccessKeyConfigurationUpdateTheAccessKeyConfiguration.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccessKeyConfigurationUpdateTheAccessKeyConfiguration.OK(Serializer.deserialize content)
+            | _ ->
+                return AccessKeyConfigurationUpdateTheAccessKeyConfiguration.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1530,7 +1662,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessKeyConfigurationRotateAccessKeys.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccessKeyConfigurationRotateAccessKeys.OK(Serializer.deserialize content)
+            | _ -> return AccessKeyConfigurationRotateAccessKeys.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1590,7 +1724,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessAuthenticationLogsGetAccessAuthenticationLogs.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccessAuthenticationLogsGetAccessAuthenticationLogs.OK(Serializer.deserialize content)
+            | _ -> return AccessAuthenticationLogsGetAccessAuthenticationLogs.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1604,9 +1740,9 @@ type AccessClient(httpClient: HttpClient) =
             ?direction: string,
             ?since: System.DateTimeOffset,
             ?until: System.DateTimeOffset,
-            ?status: ``accessrequests-status``,
-            ?resourceType: accessresourcetype,
-            ?requestMethod: accessrequestmethod,
+            ?status: string,
+            ?resourceType: string,
+            ?requestMethod: string,
             ?resourceUserEmail: string,
             ?resourceGroupName: string,
             ?cfResourceId: string,
@@ -1650,7 +1786,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessScimUpdateLogsListAccessScimUpdateLogs.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccessScimUpdateLogsListAccessScimUpdateLogs.OK(Serializer.deserialize content)
+            | _ -> return AccessScimUpdateLogsListAccessScimUpdateLogs.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1672,7 +1810,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustOrganizationGetYourZeroTrustOrganization.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustOrganizationGetYourZeroTrustOrganization.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustOrganizationGetYourZeroTrustOrganization.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1696,7 +1836,10 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustOrganizationCreateYourZeroTrustOrganization.Created(Serializer.deserialize content)
+            match int status with
+            | 201 -> return ZeroTrustOrganizationCreateYourZeroTrustOrganization.Created(Serializer.deserialize content)
+            | _ ->
+                return ZeroTrustOrganizationCreateYourZeroTrustOrganization.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1720,7 +1863,10 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustOrganizationUpdateYourZeroTrustOrganization.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustOrganizationUpdateYourZeroTrustOrganization.OK(Serializer.deserialize content)
+            | _ ->
+                return ZeroTrustOrganizationUpdateYourZeroTrustOrganization.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1742,7 +1888,14 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustOrganizationGetYourZeroTrustOrganizationDohSettings.OK(Serializer.deserialize content)
+            match int status with
+            | 200 ->
+                return ZeroTrustOrganizationGetYourZeroTrustOrganizationDohSettings.OK(Serializer.deserialize content)
+            | _ ->
+                return
+                    ZeroTrustOrganizationGetYourZeroTrustOrganizationDohSettings.BadRequest(
+                        Serializer.deserialize content
+                    )
         }
 
     ///<summary>
@@ -1766,8 +1919,17 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return
-                ZeroTrustOrganizationUpdateYourZeroTrustOrganizationDohSettings.Created(Serializer.deserialize content)
+            match int status with
+            | 201 ->
+                return
+                    ZeroTrustOrganizationUpdateYourZeroTrustOrganizationDohSettings.Created(
+                        Serializer.deserialize content
+                    )
+            | _ ->
+                return
+                    ZeroTrustOrganizationUpdateYourZeroTrustOrganizationDohSettings.BadRequest(
+                        Serializer.deserialize content
+                    )
         }
 
     ///<summary>
@@ -1819,7 +1981,9 @@ type AccessClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.getAsync httpClient "/accounts/{account_id}/access/policies" requestParts cancellationToken
 
-            return AccessPoliciesListAccessReusablePolicies.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccessPoliciesListAccessReusablePolicies.OK(Serializer.deserialize content)
+            | _ -> return AccessPoliciesListAccessReusablePolicies.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1839,7 +2003,9 @@ type AccessClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.postAsync httpClient "/accounts/{account_id}/access/policies" requestParts cancellationToken
 
-            return AccessPoliciesCreateAnAccessReusablePolicy.Created(Serializer.deserialize content)
+            match int status with
+            | 201 -> return AccessPoliciesCreateAnAccessReusablePolicy.Created(Serializer.deserialize content)
+            | _ -> return AccessPoliciesCreateAnAccessReusablePolicy.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1863,7 +2029,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessPoliciesDeleteAnAccessReusablePolicy.Accepted(Serializer.deserialize content)
+            match int status with
+            | 202 -> return AccessPoliciesDeleteAnAccessReusablePolicy.Accepted(Serializer.deserialize content)
+            | _ -> return AccessPoliciesDeleteAnAccessReusablePolicy.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1887,7 +2055,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessPoliciesGetAnAccessReusablePolicy.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccessPoliciesGetAnAccessReusablePolicy.OK(Serializer.deserialize content)
+            | _ -> return AccessPoliciesGetAnAccessReusablePolicy.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -1913,7 +2083,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessPoliciesUpdateAnAccessReusablePolicy.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccessPoliciesUpdateAnAccessReusablePolicy.OK(Serializer.deserialize content)
+            | _ -> return AccessPoliciesUpdateAnAccessReusablePolicy.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -2017,7 +2189,9 @@ type AccessClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.patchAsync httpClient "/accounts/{account_id}/access/seats" requestParts cancellationToken
 
-            return ZeroTrustSeatsUpdateAUserSeat.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustSeatsUpdateAUserSeat.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustSeatsUpdateAUserSeat.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -2045,7 +2219,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessServiceTokensListServiceTokens.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccessServiceTokensListServiceTokens.OK(Serializer.deserialize content)
+            | _ -> return AccessServiceTokensListServiceTokens.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -2069,7 +2245,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessServiceTokensCreateAServiceToken.Created(Serializer.deserialize content)
+            match int status with
+            | 201 -> return AccessServiceTokensCreateAServiceToken.Created(Serializer.deserialize content)
+            | _ -> return AccessServiceTokensCreateAServiceToken.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -2093,7 +2271,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessServiceTokensDeleteAServiceToken.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccessServiceTokensDeleteAServiceToken.OK(Serializer.deserialize content)
+            | _ -> return AccessServiceTokensDeleteAServiceToken.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -2117,7 +2297,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessServiceTokensGetAServiceToken.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccessServiceTokensGetAServiceToken.OK(Serializer.deserialize content)
+            | _ -> return AccessServiceTokensGetAServiceToken.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -2143,7 +2325,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessServiceTokensUpdateAServiceToken.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccessServiceTokensUpdateAServiceToken.OK(Serializer.deserialize content)
+            | _ -> return AccessServiceTokensUpdateAServiceToken.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -2167,7 +2351,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessServiceTokensRefreshAServiceToken.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccessServiceTokensRefreshAServiceToken.OK(Serializer.deserialize content)
+            | _ -> return AccessServiceTokensRefreshAServiceToken.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -2193,7 +2379,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessServiceTokensRotateAServiceToken.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccessServiceTokensRotateAServiceToken.OK(Serializer.deserialize content)
+            | _ -> return AccessServiceTokensRotateAServiceToken.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -2209,7 +2397,9 @@ type AccessClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.getAsync httpClient "/accounts/{account_id}/access/tags" requestParts cancellationToken
 
-            return AccessTagsListTags.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccessTagsListTags.OK(Serializer.deserialize content)
+            | _ -> return AccessTagsListTags.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -2224,7 +2414,9 @@ type AccessClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.postAsync httpClient "/accounts/{account_id}/access/tags" requestParts cancellationToken
 
-            return AccessTagsCreateTag.Created(Serializer.deserialize content)
+            match int status with
+            | 201 -> return AccessTagsCreateTag.Created(Serializer.deserialize content)
+            | _ -> return AccessTagsCreateTag.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -2243,7 +2435,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessTagsDeleteATag.Accepted(Serializer.deserialize content)
+            match int status with
+            | 202 -> return AccessTagsDeleteATag.Accepted(Serializer.deserialize content)
+            | _ -> return AccessTagsDeleteATag.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -2262,7 +2456,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessTagsGetATag.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccessTagsGetATag.OK(Serializer.deserialize content)
+            | _ -> return AccessTagsGetATag.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -2292,7 +2488,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return AccessTagsUpdateATag.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return AccessTagsUpdateATag.OK(Serializer.deserialize content)
+            | _ -> return AccessTagsUpdateATag.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -2319,7 +2517,9 @@ type AccessClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.getAsync httpClient "/accounts/{account_id}/access/users" requestParts cancellationToken
 
-            return ZeroTrustUsersGetUsers.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustUsersGetUsers.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustUsersGetUsers.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -2334,7 +2534,9 @@ type AccessClient(httpClient: HttpClient) =
             let! (status, content) =
                 OpenApiHttp.postAsync httpClient "/accounts/{account_id}/access/users" requestParts cancellationToken
 
-            return ZeroTrustUsersCreateUser.Created(Serializer.deserialize content)
+            match int status with
+            | 201 -> return ZeroTrustUsersCreateUser.Created(Serializer.deserialize content)
+            | _ -> return ZeroTrustUsersCreateUser.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -2353,7 +2555,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustUsersDeleteUser.Accepted(Serializer.deserialize content)
+            match int status with
+            | 202 -> return ZeroTrustUsersDeleteUser.Accepted(Serializer.deserialize content)
+            | _ -> return ZeroTrustUsersDeleteUser.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -2372,7 +2576,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustUsersGetUser.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustUsersGetUser.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustUsersGetUser.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -2398,7 +2604,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustUsersUpdateUser.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustUsersUpdateUser.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustUsersUpdateUser.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -2422,7 +2630,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustUsersGetActiveSessions.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustUsersGetActiveSessions.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustUsersGetActiveSessions.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -2448,7 +2658,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustUsersGetActiveSession.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustUsersGetActiveSession.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustUsersGetActiveSession.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -2472,7 +2684,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustUsersGetFailedLogins.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustUsersGetFailedLogins.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustUsersGetFailedLogins.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -2496,7 +2710,9 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustUsersGetLastSeenIdentity.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustUsersGetLastSeenIdentity.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustUsersGetLastSeenIdentity.BadRequest(Serializer.deserialize content)
         }
 
     ///<summary>
@@ -2522,5 +2738,7 @@ type AccessClient(httpClient: HttpClient) =
                     requestParts
                     cancellationToken
 
-            return ZeroTrustUsersDeleteMfaAuthenticator.OK(Serializer.deserialize content)
+            match int status with
+            | 200 -> return ZeroTrustUsersDeleteMfaAuthenticator.OK(Serializer.deserialize content)
+            | _ -> return ZeroTrustUsersDeleteMfaAuthenticator.BadRequest(Serializer.deserialize content)
         }
